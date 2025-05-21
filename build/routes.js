@@ -8613,6 +8613,300 @@ export default {
     "url": "www.alternativeto.net",
     "lang": "en"
   },
+  "amazfitwatchfaces": {
+    "routes": {
+      "/:device/:sort/:searchParams?": {
+        "path": "/:device/:sort/:searchParams?",
+        "name": "Watch Faces",
+        "url": "amazfitwatchfaces.com",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "example": "/amazfitwatchfaces/amazfit-x/fresh",
+        "parameters": {
+          "device": {
+            "description": "Device Id",
+            "options": [
+              {
+                "label": "Amazfit X",
+                "value": "amazfit-x"
+              },
+              {
+                "label": "Amazfit Band",
+                "value": "amazfit-band"
+              },
+              {
+                "label": "Amazfit Bip",
+                "value": "bip"
+              },
+              {
+                "label": "Amazfit Active",
+                "value": "active"
+              },
+              {
+                "label": "Amazfit Balance",
+                "value": "balance"
+              },
+              {
+                "label": "Amazfit Cheetah",
+                "value": "cheetah"
+              },
+              {
+                "label": "Amazfit Falcon",
+                "value": "falcon"
+              },
+              {
+                "label": "Amazfit GTR",
+                "value": "gtr"
+              },
+              {
+                "label": "Amazfit GTS",
+                "value": "gts"
+              },
+              {
+                "label": "Amazfit T-Rex",
+                "value": "t-rex"
+              },
+              {
+                "label": "Amazfit Stratos",
+                "value": "pace"
+              },
+              {
+                "label": "Amazfit Verge Lite",
+                "value": "verge-lite"
+              },
+              {
+                "label": "Haylou Watches",
+                "value": "haylou"
+              },
+              {
+                "label": "Huawei Watches",
+                "value": "huawei-watch-gt"
+              },
+              {
+                "label": "Xiaomi Mi Band 4",
+                "value": "mi-band-4"
+              },
+              {
+                "label": "Xiaomi Mi Band 5",
+                "value": "mi-band-5"
+              },
+              {
+                "label": "Xiaomi Mi Band 6",
+                "value": "mi-band-6"
+              },
+              {
+                "label": "Xiaomi Mi Band 7",
+                "value": "mi-band-7"
+              },
+              {
+                "label": "Xiaomi Smart Band 8",
+                "value": "mi-band"
+              },
+              {
+                "label": "Xiaomi Smart Band 9",
+                "value": "mi-band"
+              }
+            ]
+          },
+          "sort": {
+            "description": "Sort By",
+            "options": [
+              {
+                "label": "Fresh",
+                "value": "fresh"
+              },
+              {
+                "label": "Updated",
+                "value": "updated"
+              },
+              {
+                "label": "Random",
+                "value": "random"
+              },
+              {
+                "label": "Top",
+                "value": "top"
+              }
+            ]
+          },
+          "searchParams": {
+            "description": "Search Params"
+          }
+        },
+        "description": ":::tip\nIf you subscribe to [Updated watch faces for Amazfit X](https://amazfitwatchfaces.com/amazfit-x/updated)，where the URL is `https://amazfitwatchfaces.com/amazfit-x/updated`, extract the part `https://amazfitwatchfaces.com/` to the end, which is `amazfit-x/updated`, and use it as the parameter to fill in. Therefore, the route will be [`/amazfitwatchfaces/amazfit-x/updated`](https://rsshub.app/amazfitwatchfaces/amazfit-x/updated).\n\nIf you subscribe to [TOP for the last 6 months (Only new) - Xiaomi Smart Band 9](https://amazfitwatchfaces.com/mi-band/top?compatible=Smart_Band_9&topof=6months)，where the URL is `https://amazfitwatchfaces.com/mi-band/top?compatible=Smart_Band_9&topof=6months`, extract the part `https://amazfitwatchfaces.com/` to the end, which is `mi-band/top`, and use it as the parameter to fill in. Therefore, the route will be [`/amazfitwatchfaces/mi-band/top/compatible=Smart_Band_9&topof=6months`](https://rsshub.app/amazfitwatchfaces/mi-band/top/compatible=Smart_Band_9&topof=6months).\n\n:::\n\n<details>\n  <summary>More devices</summary>\n\n| Device Name                                                                                | Device Id       |\n| ------------------------------------------------------------------------------------------ | --------------- |\n| [Amazfit X](https://amazfitwatchfaces.com/amazfit-x/fresh)                                 | [amazfit-x](https://rsshub.app/amazfitwatchfaces/amazfit-x/fresh) |\n| [Amazfit Band](https://amazfitwatchfaces.com/amazfit-band/fresh)                           | [amazfit-band](https://rsshub.app/amazfitwatchfaces/amazfit-band/fresh) |\n| [Amazfit Bip](https://amazfitwatchfaces.com/bip/fresh)                                     | [bip](https://rsshub.app/amazfitwatchfaces/bip/fresh) |\n| [Amazfit Active](https://amazfitwatchfaces.com/active/fresh)                               | [active](https://rsshub.app/amazfitwatchfaces/active/fresh) |\n| [Amazfit Balance](https://amazfitwatchfaces.com/balance/fresh)                             | [balance](https://rsshub.app/amazfitwatchfaces/balance/fresh) |\n| [Amazfit Cheetah](https://amazfitwatchfaces.com/cheetah/fresh)                             | [cheetah](https://rsshub.app/amazfitwatchfaces/cheetah/fresh) |\n| [Amazfit Falcon](https://amazfitwatchfaces.com/falcon/fresh)                               | [falcon](https://rsshub.app/amazfitwatchfaces/falcon/fresh) |\n| [Amazfit GTR](https://amazfitwatchfaces.com/gtr/fresh)                                     | [gtr](https://rsshub.app/amazfitwatchfaces/gtr/fresh) |\n| [Amazfit GTS](https://amazfitwatchfaces.com/gts/fresh)                                     | [gts](https://rsshub.app/amazfitwatchfaces/gts/fresh) |\n| [Amazfit T-Rex](https://amazfitwatchfaces.com/t-rex/fresh)                                 | [t-rex](https://rsshub.app/amazfitwatchfaces/t-rex/fresh) |\n| [Amazfit Stratos](https://amazfitwatchfaces.com/pace/fresh)                                | [pace](https://rsshub.app/amazfitwatchfaces/pace/fresh) |\n| [Amazfit Verge Lite](https://amazfitwatchfaces.com/verge-lite/fresh)                       | [verge-lite](https://rsshub.app/amazfitwatchfaces/verge-lite/fresh) |\n| [Haylou Watches](https://amazfitwatchfaces.com/haylou/fresh)                               | [haylou](https://rsshub.app/amazfitwatchfaces/haylou/fresh) |\n| [Huawei Watches](https://amazfitwatchfaces.com/huawei-watch-gt/fresh)                      | [huawei-watch-gt](https://rsshub.app/amazfitwatchfaces/huawei-watch-gt/fresh) |\n| [Xiaomi Mi Band 4](https://amazfitwatchfaces.com/mi-band-4/fresh)                          | [mi-band-4](https://rsshub.app/amazfitwatchfaces/mi-band-4/fresh) |\n| [Xiaomi Mi Band 5](https://amazfitwatchfaces.com/mi-band-5/fresh)                          | [mi-band-5](https://rsshub.app/amazfitwatchfaces/mi-band-5/fresh) |\n| [Xiaomi Mi Band 6](https://amazfitwatchfaces.com/mi-band-6/fresh)                          | [mi-band-6](https://rsshub.app/amazfitwatchfaces/mi-band-6/fresh) |\n| [Xiaomi Mi Band 7](https://amazfitwatchfaces.com/mi-band-7/fresh)                          | [mi-band-7](https://rsshub.app/amazfitwatchfaces/mi-band-7/fresh) |\n| [Xiaomi Smart Band 8](https://amazfitwatchfaces.com/mi-band/fresh?compatible=Smart_Band_8) | [mi-band](https://rsshub.app/amazfitwatchfaces/mi-band/fresh/compatible=Smart_Band_8) |\n| [Xiaomi Smart Band 9](https://amazfitwatchfaces.com/mi-band/fresh?compatible=Smart_Band_9) | [mi-band](https://rsshub.app/amazfitwatchfaces/mi-band/fresh/compatible=Smart_Band_9) |\n\n</details>\n",
+        "categories": [
+          "program-update"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "amazfitwatchfaces.com/:device/:sort"
+            ]
+          },
+          {
+            "title": "Fresh watch faces for Amazfit X",
+            "source": [
+              "amazfitwatchfaces.com/amazfit-x/fresh"
+            ],
+            "target": "/amazfit-x/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Band",
+            "source": [
+              "amazfitwatchfaces.com/amazfit-band/fresh"
+            ],
+            "target": "/amazfit-band/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Bip",
+            "source": [
+              "amazfitwatchfaces.com/bip/fresh"
+            ],
+            "target": "/bip/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Active",
+            "source": [
+              "amazfitwatchfaces.com/active/fresh"
+            ],
+            "target": "/active/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Balance",
+            "source": [
+              "amazfitwatchfaces.com/balance/fresh"
+            ],
+            "target": "/balance/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Cheetah",
+            "source": [
+              "amazfitwatchfaces.com/cheetah/fresh"
+            ],
+            "target": "/cheetah/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Falcon",
+            "source": [
+              "amazfitwatchfaces.com/falcon/fresh"
+            ],
+            "target": "/falcon/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit GTR",
+            "source": [
+              "amazfitwatchfaces.com/gtr/fresh"
+            ],
+            "target": "/gtr/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit GTS",
+            "source": [
+              "amazfitwatchfaces.com/gts/fresh"
+            ],
+            "target": "/gts/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit T-Rex",
+            "source": [
+              "amazfitwatchfaces.com/t-rex/fresh"
+            ],
+            "target": "/t-rex/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Stratos",
+            "source": [
+              "amazfitwatchfaces.com/pace/fresh"
+            ],
+            "target": "/pace/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Amazfit Verge Lite",
+            "source": [
+              "amazfitwatchfaces.com/verge-lite/fresh"
+            ],
+            "target": "/verge-lite/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Haylou Watches",
+            "source": [
+              "amazfitwatchfaces.com/haylou/fresh"
+            ],
+            "target": "/haylou/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Huawei Watches",
+            "source": [
+              "amazfitwatchfaces.com/huawei-watch-gt/fresh"
+            ],
+            "target": "/huawei-watch-gt/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Xiaomi Mi Band 4",
+            "source": [
+              "amazfitwatchfaces.com/mi-band-4/fresh"
+            ],
+            "target": "/mi-band-4/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Xiaomi Mi Band 5",
+            "source": [
+              "amazfitwatchfaces.com/mi-band-5/fresh"
+            ],
+            "target": "/mi-band-5/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Xiaomi Mi Band 6",
+            "source": [
+              "amazfitwatchfaces.com/mi-band-6/fresh"
+            ],
+            "target": "/mi-band-6/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Xiaomi Mi Band 7",
+            "source": [
+              "amazfitwatchfaces.com/mi-band-7/fresh"
+            ],
+            "target": "/mi-band-7/fresh"
+          },
+          {
+            "title": "Fresh watch faces for Xiaomi Smart Band 8",
+            "source": [
+              "amazfitwatchfaces.com/mi-band/fresh"
+            ],
+            "target": "/mi-band/fresh/compatible=Smart_Band_8"
+          },
+          {
+            "title": "Fresh watch faces for Xiaomi Smart Band 9",
+            "source": [
+              "amazfitwatchfaces.com/mi-band/fresh"
+            ],
+            "target": "/mi-band/fresh/compatible=Smart_Band_9"
+          }
+        ],
+        "view": 0,
+        "location": "index.ts",
+        "module": () => import('@/routes/amazfitwatchfaces/index.ts')
+      }
+    },
+    "name": "Amazfitwatchfaces",
+    "url": "amazfitwatchfaces.com",
+    "categories": [
+      "program-update"
+    ],
+    "description": "amazfitwatchfaces.com is the world's largest collection of watch faces for Amazfit, Zepp, Bip, Pace, Stratos, Cor, Verge, Verge Lite, GTR, GTS, T-Rex, watches. Here you can find everything you need to customize & personalize your device! The website also has catalogs of watch faces for Xiaomi, Haylou, Honor and Huawei watches.",
+    "lang": "en"
+  },
   "amazon": {
     "routes": {
       "/awsblogs/:locale?": {
@@ -8874,6 +9168,28 @@ export default {
   },
   "anthropic": {
     "routes": {
+      "/engineering": {
+        "path": "/engineering",
+        "categories": [
+          "programming"
+        ],
+        "example": "/anthropic/engineering",
+        "radar": [
+          {
+            "source": [
+              "www.anthropic.com/engineering",
+              "www.anthropic.com"
+            ]
+          }
+        ],
+        "name": "Engineering",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.anthropic.com/engineering",
+        "location": "engineering.ts",
+        "module": () => import('@/routes/anthropic/engineering.ts')
+      },
       "/news": {
         "path": "/news",
         "categories": [
@@ -9296,6 +9612,292 @@ export default {
     },
     "name": "App Center",
     "url": "install.appcenter.ms",
+    "lang": "en"
+  },
+  "app-sales": {
+    "routes": {
+      "/:category?/:country?": {
+        "path": "/:category?/:country?",
+        "name": "Category",
+        "url": "app-sales.net",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "example": "/app-sales/highlights",
+        "parameters": {
+          "category": {
+            "description": "Category, `highlights` as Highlights by default",
+            "options": [
+              {
+                "label": "Highlights",
+                "value": "highlights"
+              },
+              {
+                "label": "Active Sales",
+                "value": "activesales"
+              },
+              {
+                "label": "Now Free",
+                "value": "nowfree"
+              }
+            ]
+          },
+          "country": {
+            "description": "Country ID, `us` as United States by default",
+            "options": [
+              {
+                "label": "United States",
+                "value": "us"
+              },
+              {
+                "label": "Austria",
+                "value": "at"
+              },
+              {
+                "label": "Australia",
+                "value": "au"
+              },
+              {
+                "label": "Brazil",
+                "value": "br"
+              },
+              {
+                "label": "Canada",
+                "value": "ca"
+              },
+              {
+                "label": "France",
+                "value": "fr"
+              },
+              {
+                "label": "Germany",
+                "value": "de"
+              },
+              {
+                "label": "India",
+                "value": "in"
+              },
+              {
+                "label": "Italy",
+                "value": "it"
+              },
+              {
+                "label": "Netherlands",
+                "value": "nl"
+              },
+              {
+                "label": "Poland",
+                "value": "pl"
+              },
+              {
+                "label": "Russia",
+                "value": "ru"
+              },
+              {
+                "label": "Spain",
+                "value": "es"
+              },
+              {
+                "label": "Sweden",
+                "value": "se"
+              },
+              {
+                "label": "Great Britain",
+                "value": "gb"
+              }
+            ]
+          }
+        },
+        "description": ":::tip\nTo subscribe to [Highlights](https://www.app-sales.net/highlights/), where the source URL is `https://www.app-sales.net/highlights/`, extract the certain parts from this URL to be used as parameters, resulting in the route as [`/app-sales/highlights`](https://rsshub.app/app-sales/highlights).\n:::\n\n| Highlights | Active Sales | Now Free |\n| ---------- | ------------ | -------- |\n| highlights | activesales  | nowfree  |\n\n<details>\n  <summary>More countries</summary>\n\n| Currency | Country       | ID  |\n| -------- | ------------- | --- |\n| USD      | United States | us  |\n| EUR      | Austria       | at  |\n| AUD      | Australia     | au  |\n| BRL      | Brazil        | br  |\n| CAD      | Canada        | ca  |\n| EUR      | France        | fr  |\n| EUR      | Germany       | de  |\n| INR      | India         | in  |\n| EUR      | Italy         | it  |\n| EUR      | Netherlands   | nl  |\n| PLN      | Poland        | pl  |\n| RUB      | Russia        | ru  |\n| EUR      | Spain         | es  |\n| SEK      | Sweden        | se  |\n| GBP      | Great Britain | gb  |\n\n</details>\n",
+        "categories": [
+          "program-update"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "app-sales.net/:category"
+            ]
+          },
+          {
+            "title": "Highlights",
+            "source": [
+              "app-sales.net/highlights"
+            ],
+            "target": "/highlights"
+          },
+          {
+            "title": "Active Sales",
+            "source": [
+              "app-sales.net/activesales"
+            ],
+            "target": "/activesales"
+          },
+          {
+            "title": "Now Free",
+            "source": [
+              "app-sales.net/nowfree"
+            ],
+            "target": "/nowfree"
+          }
+        ],
+        "view": 0,
+        "location": "index.ts",
+        "module": () => import('@/routes/app-sales/index.ts')
+      },
+      "/mostwanted/:time?/:country?": {
+        "path": "/mostwanted/:time?/:country?",
+        "name": "Watchlist Charts",
+        "url": "app-sales.net",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "example": "/app-sales/mostwanted",
+        "parameters": {
+          "time": {
+            "description": "Time, `24h` as Last 24h by default",
+            "options": [
+              {
+                "label": "Last 24h",
+                "value": "24h"
+              },
+              {
+                "label": "Last Week",
+                "value": "week"
+              },
+              {
+                "label": "All Time",
+                "value": "alltime"
+              }
+            ]
+          },
+          "country": {
+            "description": "Country ID, `us` as United States by default",
+            "options": [
+              {
+                "label": "United States",
+                "value": "us"
+              },
+              {
+                "label": "Austria",
+                "value": "at"
+              },
+              {
+                "label": "Australia",
+                "value": "au"
+              },
+              {
+                "label": "Brazil",
+                "value": "br"
+              },
+              {
+                "label": "Canada",
+                "value": "ca"
+              },
+              {
+                "label": "France",
+                "value": "fr"
+              },
+              {
+                "label": "Germany",
+                "value": "de"
+              },
+              {
+                "label": "India",
+                "value": "in"
+              },
+              {
+                "label": "Italy",
+                "value": "it"
+              },
+              {
+                "label": "Netherlands",
+                "value": "nl"
+              },
+              {
+                "label": "Poland",
+                "value": "pl"
+              },
+              {
+                "label": "Russia",
+                "value": "ru"
+              },
+              {
+                "label": "Spain",
+                "value": "es"
+              },
+              {
+                "label": "Sweden",
+                "value": "se"
+              },
+              {
+                "label": "Great Britain",
+                "value": "gb"
+              }
+            ]
+          }
+        },
+        "description": "\n| Last 24h | Last Week | All Time |\n| -------- | --------- | -------- |\n| 24h      | week      | alltime  |\n\n<details>\n  <summary>More countries</summary>\n\n| Currency | Country       | ID  |\n| -------- | ------------- | --- |\n| USD      | United States | us  |\n| EUR      | Austria       | at  |\n| AUD      | Australia     | au  |\n| BRL      | Brazil        | br  |\n| CAD      | Canada        | ca  |\n| EUR      | France        | fr  |\n| EUR      | Germany       | de  |\n| INR      | India         | in  |\n| EUR      | Italy         | it  |\n| EUR      | Netherlands   | nl  |\n| PLN      | Poland        | pl  |\n| RUB      | Russia        | ru  |\n| EUR      | Spain         | es  |\n| SEK      | Sweden        | se  |\n| GBP      | Great Britain | gb  |\n\n</details>\n",
+        "categories": [
+          "program-update"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "app-sales.net/mostwanted"
+            ],
+            "target": "/mostwanted"
+          },
+          {
+            "title": "Watchlist Charts - Last 24h",
+            "source": [
+              "app-sales.net/mostwanted"
+            ],
+            "target": "/mostwanted/24h"
+          },
+          {
+            "title": "Watchlist Charts - Last Week",
+            "source": [
+              "app-sales.net/mostwanted"
+            ],
+            "target": "/mostwanted/week"
+          },
+          {
+            "title": "Watchlist Charts - All Time",
+            "source": [
+              "app-sales.net/mostwanted"
+            ],
+            "target": "/mostwanted/alltime"
+          }
+        ],
+        "view": 0,
+        "location": "mostwanted.ts",
+        "module": () => import('@/routes/app-sales/mostwanted.ts')
+      }
+    },
+    "name": "AppSales",
+    "url": "app-sales.net",
+    "categories": [
+      "program-update"
+    ],
+    "description": "Most recent discounted and temporarily free Android apps and games on Google Play",
     "lang": "en"
   },
   "apple": {
@@ -11237,6 +11839,40 @@ export default {
     "description": "白鲸出海",
     "lang": "zh-CN"
   },
+  "bakamh": {
+    "routes": {
+      "/manga/:name": {
+        "path": "/manga/:name",
+        "categories": [
+          "anime"
+        ],
+        "example": "/bakamh/manga/最强家丁",
+        "parameters": {
+          "name": "漫画名称，漫画主页的地址栏中"
+        },
+        "radar": [
+          {
+            "source": [
+              "bakamh.com/manga/:name/"
+            ]
+          }
+        ],
+        "name": "漫画更新",
+        "maintainers": [
+          "yoyobase"
+        ],
+        "url": "bakamh.com",
+        "location": "manga.ts",
+        "module": () => import('@/routes/bakamh/manga.ts')
+      }
+    },
+    "name": "巴卡漫画",
+    "url": "bakamh.com",
+    "categories": [
+      "anime"
+    ],
+    "lang": "zh-CN"
+  },
   "bandcamp": {
     "routes": {
       "/live": {
@@ -11994,6 +12630,23 @@ export default {
         "description": "Provides a better reading experience (full text articles) over the official ones.\n\n    Support major channels, refer to [BBC RSS feeds](https://www.bbc.co.uk/news/10628494). Eg, `business` for `https://feeds.bbci.co.uk/news/business/rss.xml`.\n\n    -   Channel contains sub-directories, such as `https://feeds.bbci.co.uk/news/world/asia/rss.xml`, replace `/` with `-`, `/bbc/world-asia`.",
         "location": "index.ts",
         "module": () => import('@/routes/bbc/index.ts')
+      },
+      "/learningenglish/:channel?": {
+        "name": "Learning English",
+        "maintainers": [
+          "Blank0120"
+        ],
+        "categories": [
+          "study"
+        ],
+        "path": "/learningenglish/:channel?",
+        "example": "/bbc/learningenglish/take-away-english",
+        "parameters": {
+          "channel": "channel, default to `take-away-english`"
+        },
+        "description": "| 随身英语 | 地道英语 | 媒体英语 | 英语大破解 | 一分钟英语 |\n| -------- | -------- | -------- | -------- | -------- |\n| take-away-english | authentic-real-english | media-english | lingohack | english-in-a-minute |\n\n| 短语动词 | 今日短语 | 你问我答 | 白领英语 | 亲子英语故事 |\n| -------- | -------- | -------- | -------- | -------- |\n| phrasal-verbs | todays-phrase | q-and-a | english-at-work | storytellers |",
+        "location": "learningenglish.ts",
+        "module": () => import('@/routes/bbc/learningenglish.ts')
       }
     },
     "name": "BBC",
@@ -21230,6 +21883,111 @@ export default {
     "url": "daily-blog.chlinlearn.top",
     "lang": "zh-CN"
   },
+  "chnmuseum": {
+    "routes": {
+      "/zx/xingnew": {
+        "path": "/zx/xingnew",
+        "categories": [
+          "travel"
+        ],
+        "example": "/zx/xingnew",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "chnmuseum.cn/zx/xingnew"
+            ],
+            "target": "/zx/xingnew"
+          }
+        ],
+        "name": "资讯要闻",
+        "maintainers": [
+          "ShabbyWhineYear"
+        ],
+        "location": "xingnew.ts",
+        "module": () => import('@/routes/chnmuseum/xingnew.ts')
+      },
+      "/zx/xwzt": {
+        "path": "/zx/xwzt",
+        "categories": [
+          "travel"
+        ],
+        "example": "/zx/xwzt",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "chnmuseum.cn/zx/xwzt"
+            ],
+            "target": "/zx/xwzt"
+          }
+        ],
+        "name": "资讯专题",
+        "maintainers": [
+          "ShabbyWhineYear"
+        ],
+        "location": "xwzt.ts",
+        "module": () => import('@/routes/chnmuseum/xwzt.ts')
+      }
+    },
+    "name": "National Museum Of China",
+    "url": "www.chnmuseum.cn",
+    "description": "中国国家博物馆（National Museum of China）位于北京市中心天安门广场东侧，东长安街南侧，与人民大会堂东西相对称，是一座系统展示中华民族文化历史的综合性博物馆，也是世界上最大的博物馆之一。",
+    "zh": {
+      "name": "中国国家博物馆"
+    }
+  },
+  "chongbuluo": {
+    "routes": {
+      "/newthread": {
+        "path": "/newthread",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/chongbuluo/newthread",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.chongbuluo.com/"
+            ]
+          }
+        ],
+        "name": "最新发表",
+        "maintainers": [
+          "qiye45"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/chongbuluo/index.ts')
+      }
+    },
+    "name": "虫部落",
+    "url": "www.chongbuluo.com",
+    "lang": "zh-CN"
+  },
   "chongdiantou": {
     "routes": {
       "/": {
@@ -21504,6 +22262,45 @@ export default {
     },
     "name": "中国兴业银行",
     "url": "cib.com.cn",
+    "lang": "zh-CN"
+  },
+  "cih-index": {
+    "routes": {
+      "/report/list/:report?": {
+        "path": "/report/list/:report?",
+        "categories": [
+          "finance"
+        ],
+        "example": "/cih-index/report/list/p1-oaddtime-ddesc",
+        "parameters": {
+          "report": "报告 id，可在 URL 中找到，留空为 `p1-oaddtime-ddesc`"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "报告",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.cih-index.com/report/list/p1-oaddtime-ddesc",
+        "radar": [
+          {
+            "source": [
+              "www.cih-index.com/report/list/:report"
+            ]
+          }
+        ],
+        "location": "report.ts",
+        "module": () => import('@/routes/cih-index/report.ts')
+      }
+    },
+    "name": "中指研究院",
+    "url": "www.cih-index.com",
     "lang": "zh-CN"
   },
   "ciidbnu": {
@@ -23613,18 +24410,30 @@ export default {
     "routes": {
       "/:id?/:type?/:keyword?": {
         "path": "/:id?/:type?/:keyword?",
+        "url": "cool18.com",
+        "example": "cool18.com/bbs4",
+        "parameters": {
+          "id": "the name of the bbs",
+          "type": "the type of the post. Can be `home`, `gold` or `threadsearch`. Default: `home`",
+          "keyword": "the keyword to search.",
+          "pageSize": "the number of posts to fetch. If the type is not in search, you can type any words. Default: 10"
+        },
+        "categories": [
+          "bbs"
+        ],
         "radar": [
           {
             "source": [
-              "cool18.com/"
-            ]
+              "cool18.com/:id/"
+            ],
+            "target": "/:id/:type?/:keyword?"
           }
         ],
-        "name": "Unknown",
+        "name": "禁忌书屋",
         "maintainers": [
-          "nczitzk"
+          "nczitzk",
+          "Gabrlie"
         ],
-        "url": "cool18.com/",
         "location": "index.ts",
         "module": () => import('@/routes/cool18/index.ts')
       }
@@ -24530,6 +25339,14 @@ export default {
         "maintainers": [
           "admxj"
         ],
+        "radar": [
+          {
+            "source": [
+              "www.crac.org.cn/*"
+            ],
+            "target": "/exam"
+          }
+        ],
         "location": "exam.ts",
         "module": () => import('@/routes/crac/exam.ts')
       },
@@ -24555,12 +25372,22 @@ export default {
           "Misaka13514"
         ],
         "description": "| 新闻动态 | 通知公告 | 政策法规 | 常见问题 | 资料下载 | English | 业余中继台 | 科普专栏 |\n| -------- | -------- | -------- | -------- | -------- | ------- | ---------- | -------- |\n| 1        | 2        | 3        | 5        | 6        | 7       | 8          | 9        |",
+        "radar": [
+          {
+            "source": [
+              "www.crac.org.cn/News/*"
+            ]
+          }
+        ],
         "location": "index.ts",
         "module": () => import('@/routes/crac/index.ts')
       }
     },
     "name": "中国无线电协会业余无线电分会",
     "url": "www.crac.org.cn",
+    "categories": [
+      "government"
+    ],
     "lang": "zh-CN"
   },
   "creative-comic": {
@@ -30717,6 +31544,68 @@ export default {
     "url": "e-hentai.org",
     "lang": "en"
   },
+  "ea": {
+    "routes": {
+      "/apex-news/:lang?/:type?": {
+        "path": "/apex-news/:lang?/:type?",
+        "categories": [
+          "game"
+        ],
+        "example": "/ea/apex-news/zh-hant/game-updates",
+        "parameters": {
+          "lang": {
+            "description": "语言",
+            "options": [
+              {
+                "value": "zh-hant",
+                "label": "中文(繁体)"
+              },
+              {
+                "value": "en",
+                "label": "English"
+              }
+            ],
+            "default": "en"
+          },
+          "type": {
+            "description": "资讯类型（可选）",
+            "options": [
+              {
+                "value": "news-article",
+                "label": "最新消息"
+              },
+              {
+                "value": "game-updates",
+                "label": "游戏更新"
+              },
+              {
+                "value": "latest",
+                "label": "全部"
+              }
+            ],
+            "default": "latest"
+          }
+        },
+        "name": "APEX Legends 官网资讯",
+        "maintainers": [
+          "IceChestnut"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "view": 0,
+        "location": "apex-news.ts",
+        "module": () => import('@/routes/ea/apex-news.ts')
+      }
+    },
+    "name": "EA Games",
+    "url": "www.ea.com"
+  },
   "eagle": {
     "routes": {
       "/blog/:cate?/:language?": {
@@ -33815,7 +34704,7 @@ export default {
         "radar": [
           {
             "source": [
-              "flyert.com/"
+              "flyert.com.cn/"
             ]
           }
         ],
@@ -33894,7 +34783,7 @@ export default {
       }
     },
     "name": "飞客茶馆",
-    "url": "flyert.com",
+    "url": "flyert.com.cn",
     "description": "",
     "lang": "zh-CN"
   },
@@ -47525,29 +48414,57 @@ export default {
         "location": "character.ts",
         "module": () => import('@/routes/hpoi/character.ts')
       },
-      "/info/:type?": {
-        "path": "/info/:type?",
+      "/info/:type?/:catType?": {
+        "path": "/info/:type?/:catType?",
         "categories": [
           "anime"
         ],
-        "example": "/hpoi/info/all",
+        "example": "/hpoi/info/all/hobby|model",
         "parameters": {
           "type": {
-            "description": "分类",
+            "description": "情报类型",
             "options": [
               {
                 "value": "all",
                 "label": "全部"
               },
               {
+                "value": "confirm",
+                "label": "制作"
+              },
+              {
+                "value": "official_pic",
+                "label": "官图更新"
+              },
+              {
+                "value": "preorder",
+                "label": "开订"
+              },
+              {
+                "value": "delay",
+                "label": "延期"
+              },
+              {
+                "value": "release",
+                "label": "出荷"
+              },
+              {
+                "value": "reorder",
+                "label": "再版"
+              },
+              {
                 "value": "hobby",
-                "label": "手办"
+                "label": "手办(拟废弃, 无效果)"
               },
               {
                 "value": "model",
-                "label": "模型"
+                "label": "动漫模型(拟废弃, 无效果)"
               }
             ],
+            "default": "all"
+          },
+          "catType": {
+            "description": "手办分类过滤, 使用|分割, 支持的分类见下表",
             "default": "all"
           }
         },
@@ -47563,6 +48480,7 @@ export default {
         "maintainers": [
           "sanmmm DIYgod"
         ],
+        "description": "::: tip\n  情报类型中的*手办*、*模型*只是为了兼容, 实际效果等同于**全部**, 如果只需要**手办**类型的情报, 可以使用参数*catType*, e.g. /hpoi/info/all/hobby\n:::\n\n|  手办   | 动漫模型 | 真实模型 | 毛绒布偶 | doll娃娃 | GK/其他 |\n| ------ | ------- | ------- | ------- | ------- | ------ |\n| hobby  |  model  |  real   | moppet  |  doll   | gkdiy  |",
         "location": "info.ts",
         "module": () => import('@/routes/hpoi/info.ts')
       },
@@ -48456,6 +49374,52 @@ export default {
   },
   "huggingface": {
     "routes": {
+      "/blog-community/:sort?": {
+        "path": "/blog-community/:sort?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/huggingface/blog-community",
+        "parameters": {
+          "sort": {
+            "description": "Sort by trending or recent",
+            "default": "trending",
+            "options": [
+              {
+                "value": "trending",
+                "label": "Trending"
+              },
+              {
+                "value": "recent",
+                "label": "Recent"
+              }
+            ]
+          }
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "huggingface.co/blog/community",
+              "huggingface.co/"
+            ]
+          }
+        ],
+        "name": "Community Articles",
+        "maintainers": [
+          "yuguorui"
+        ],
+        "url": "huggingface.co/blog/community",
+        "location": "blog-community.ts",
+        "module": () => import('@/routes/huggingface/blog-community.ts')
+      },
       "/blog-zh": {
         "path": "/blog-zh",
         "categories": [
@@ -56475,6 +57439,49 @@ export default {
     },
     "name": "掘金",
     "url": "juejin.cn",
+    "lang": "zh-CN"
+  },
+  "jumeili": {
+    "routes": {
+      "/home/:column?": {
+        "path": "/home/:column?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/jumeili/home",
+        "parameters": {
+          "column": "内容栏, 默认为 `0`（最新）。其他可选：`-1`（头条）、`62073`（精选）、`13243`（年度大会）等。详细可以在开发者工具 Network 面板中找到，如：`https://www.jumeili.cn/ws/AjaxService.ashx?act=index_article&page=1&pageSize=20&column=0`最后的 `column=0` 即为`column` 参数"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "JUMEILI_COOKIE",
+              "optional": true,
+              "description": "用户登录后，可以从浏览器开发者工具 Network 面板中的 jumeili 页面请求获取 Cookie，如：`ASP.NET_SessionId=xxx;jmlweb4=xxx`全部复制并设置为环境变量"
+            }
+          ],
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.jumeili.cn/",
+              "jumeili.cn/"
+            ],
+            "target": "/home/:column?"
+          }
+        ],
+        "name": "首页资讯",
+        "maintainers": [
+          "kjasn"
+        ],
+        "description": ":::Warning\n未登录用户无法获取完整文章内容，只能看到预览内容。想要获取完整文章内容，需要设置`JUMEILI_COOKIE`环境变量。\n:::",
+        "location": "home.ts",
+        "module": () => import('@/routes/jumeili/home.ts')
+      }
+    },
+    "name": "聚美丽",
+    "url": "jumeili.cn",
     "lang": "zh-CN"
   },
   "jump": {
@@ -76161,8 +77168,12 @@ export default {
     "routes": {
       "/:site?/:category{.+}?": {
         "path": "/:site?/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "首页头条",
+        "maintainers": [
+          "nczitzk",
+          "pseudoyu"
+        ],
+        "example": "/people",
         "location": "index.ts",
         "module": () => import('@/routes/people/index.ts')
       },
@@ -81839,16 +82850,23 @@ export default {
             "target": "/:path"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
-        "url": "rfi.fr/*path",
+        "name": "Generic News",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "rfi.fr",
+        "example": "/rfi",
+        "description": "::: tip\n-   To subscribe to [English News](https://www.rfi.fr/en/), which URL is `https://www.rfi.fr/en`, you can get the route as [`/rfi/en`](https://rsshub.app/rfi/en).\n-   To subscribe to [English Europe News](https://www.rfi.fr/en/europe/), which URL is `https://www.rfi.fr/en/europe`, you can get the route as [`/rfi/en/europe`](https://rsshub.app/rfi/en/europe).\n-   To subscribe to topic [Paris Olympics 2024](https://www.rfi.fr/en/tag/paris-olympics-2024/), which URL is `https://www.rfi.fr/en/tag/paris-olympics-2024`, you can get the route as [`/rfi/en/tag/paris-olympics-2024`](https://rsshub.app/rfi/en/tag/paris-olympics-2024).\n:::\n\n::: warning\nThis route does not support podcasts, please use the Offical RSS feed instead.\n:::\n",
         "location": "news.ts",
         "module": () => import('@/routes/rfi/news.ts')
       }
     },
-    "name": "Radio France Internationale 法国国际广播电台",
+    "name": "Radio France Internationale",
     "url": "rfi.fr",
-    "lang": "fr"
+    "lang": "fr",
+    "zh": {
+      "name": "法国国际广播电台"
+    }
   },
   "right": {
     "routes": {
@@ -101429,7 +102447,7 @@ export default {
             ]
           }
         ],
-        "name": "News Flow",
+        "name": "News Feed",
         "maintainers": [
           "TonyRL"
         ],
@@ -102511,7 +103529,8 @@ export default {
         "path": "/xna",
         "categories": [
           "bbs",
-          "blog"
+          "blog",
+          "popular"
         ],
         "view": 0,
         "example": "/v2ex/xna",
@@ -109571,7 +110590,8 @@ export default {
           "requireConfig": [
             {
               "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
+              "optional": true
             }
           ],
           "requirePuppeteer": false,
@@ -109605,7 +110625,8 @@ export default {
       "/community/:handle": {
         "path": "/community/:handle",
         "categories": [
-          "social-media"
+          "social-media",
+          "popular"
         ],
         "example": "/youtube/community/@JFlaMusic",
         "parameters": {
@@ -109702,7 +110723,8 @@ export default {
           "requireConfig": [
             {
               "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
+              "optional": true
             }
           ],
           "requirePuppeteer": false,
@@ -109781,7 +110803,8 @@ export default {
           "requireConfig": [
             {
               "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)",
+              "optional": true
             }
           ],
           "requirePuppeteer": false,
@@ -110270,6 +111293,75 @@ export default {
     "name": "Zagg",
     "url": "zagg.com",
     "lang": "en"
+  },
+  "zaimanhua": {
+    "routes": {
+      "/comic/:id": {
+        "path": "/comic/:id",
+        "categories": [
+          "anime"
+        ],
+        "parameters": {
+          "id": "漫画ID"
+        },
+        "example": "/zaimanhua/comic/14488",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "manhua.zaimanhua.com/details",
+              "manhua.zaimanhua.com/details/:id"
+            ],
+            "target": "/comic/:id"
+          }
+        ],
+        "name": "漫画更新",
+        "maintainers": [
+          "kjasn"
+        ],
+        "location": "comic.ts",
+        "module": () => import('@/routes/zaimanhua/comic.ts')
+      },
+      "/update": {
+        "path": "/update",
+        "categories": [
+          "anime"
+        ],
+        "example": "/zaimanhua/update",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "manhua.zaimanhua.com/update"
+            ],
+            "target": "/update"
+          }
+        ],
+        "name": "最近更新",
+        "maintainers": [
+          "kjasn"
+        ],
+        "location": "update.ts",
+        "module": () => import('@/routes/zaimanhua/update.ts')
+      }
+    },
+    "name": "再漫画",
+    "url": "manhua.zaimanhua.com",
+    "lang": "zh-CN"
   },
   "zaker": {
     "routes": {
@@ -110973,7 +112065,12 @@ export default {
           }
         },
         "features": {
-          "requireConfig": false,
+          "requireConfig": [
+            {
+              "name": "ZHIHU_COOKIES",
+              "description": ""
+            }
+          ],
           "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
@@ -110985,6 +112082,7 @@ export default {
           "nczitzk",
           "pseudoyu"
         ],
+        "description": "::: warning\n  需要登录后的 Cookie 值，所以只能自建，详情见部署页面的配置模块。\n:::",
         "location": "hot.ts",
         "module": () => import('@/routes/zhihu/hot.ts')
       },
