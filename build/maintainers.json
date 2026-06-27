@@ -1547,6 +1547,9 @@
   "/cebbank/quotation/history/:type": [
     "linbuxiao"
   ],
+  "/cefco/research/news": [
+    "TonyRL"
+  ],
   "/ceph/blog/:topic?": [
     "pandada8"
   ],
@@ -3903,6 +3906,9 @@
   ],
   "/gov/npc/:caty": [
     "233yeee"
+  ],
+  "/gov/nppa/:path{.+}": [
+    "y2361547758"
   ],
   "/gov/nrta/dsj/:category?": [
     "nczitzk"
@@ -6881,6 +6887,9 @@
     "Maecenas",
     "nczitzk",
     "dvorak0"
+  ],
+  "/pawchive/:service/:id": [
+    "TonyRL"
   ],
   "/pconline/focus/:category?": [
     "CH563"

@@ -510,6 +510,7 @@ export type RoutePath =
   | `/ce/district/:category?`
   | `/cebbank/quotation/all`
   | `/cebbank/quotation/history/:type`
+  | `/cefco/research/news`
   | `/ceph/blog/:topic?`
   | `/cfachina/servicesupport/analygarden/:program?`
   | `/cffex/announcement`
@@ -1262,6 +1263,7 @@ export type RoutePath =
   | `/gov/nmpa/:path{.+}`
   | `/gov/nopss/:path{.+}?`
   | `/gov/npc/:caty`
+  | `/gov/nppa/:path{.+}`
   | `/gov/nrta/dsj/:category?`
   | `/gov/nrta/news/:category?`
   | `/gov/nsfc/:path{.+}?`
@@ -2225,6 +2227,7 @@ export type RoutePath =
   | `/paulgraham/`
   | `/paulgraham/articles`
   | `/paulgraham/essays`
+  | `/pawchive/:service/:id`
   | `/pconline/focus/:category?`
   | `/pencilnews/`
   | `/penguin-random-house/articles`
