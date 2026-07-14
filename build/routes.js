@@ -16771,62 +16771,6 @@ export default {
     },
     "lang": "de"
   },
-  "lnmuseum": {
-    "routes": {
-      "/information": {
-        "path": "/information",
-        "categories": [
-          "travel"
-        ],
-        "example": "/lnmuseum/information",
-        "params": {},
-        "name": "Information",
-        "maintainers": [
-          "magazian"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.lnmuseum.com.cn"
-            ],
-            "target": "/information"
-          }
-        ],
-        "location": "information.ts",
-        "module": () => import('@/routes/lnmuseum/information.ts')
-      },
-      "/exhibition/temporary/:type?": {
-        "path": "/exhibition/temporary/:type?",
-        "categories": [
-          "travel"
-        ],
-        "example": "/lnmuseum/exhibition/temporary/now",
-        "params": {
-          "type": "Temporary Exhibition type, supported values: now （正在展出）、past（展览回顾）。Default: All temporary exhibitions (now and past)."
-        },
-        "name": "Temporary Exhibition",
-        "maintainers": [
-          "magazian"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.lnmuseum.com.cn"
-            ],
-            "target": "/exhibition/temporary"
-          }
-        ],
-        "location": "temporary.tsx",
-        "module": () => import('@/routes/lnmuseum/temporary.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Liaoning Provincial Museum",
-    "url": "www.lnmuseum.com.cn",
-    "zh": {
-      "name": "辽宁省博物馆"
-    }
-  },
   "loltw": {
     "routes": {
       "/news/:category?": {
@@ -42788,10 +42732,10 @@ export default {
         "categories": [
           "travel"
         ],
-        "example": "/chnmuseum/zl/lszl/zdzt",
+        "example": "/chnmuseum/zl/lszl/zdztzl",
         "parameters": {
-          "type": "Exhibition type, supported values: zhanlanyugao（正在展出）、jbcl（基本陈列）、ztcl（专题展览）、lszl（临时展览）、gjzl（国家展览）、gbxz（国博巡展）. Default: All exhibitions.",
-          "subType": "subtype only works under type lszl（临时展览）, supported values: zdzt（重大主题）、lswh（历史文化）、yscx（艺术创新）、gjjl（国际交流）"
+          "type": "Exhibition type, supported values: zhanlanyugao（正在展出）、ztzl（主题展览）、jbcl（基本陈列）、ztcl（专题展览）、lszl（临时展览）、gbxz（国博巡展）. Default: All exhibitions.",
+          "subType": "subtype only works under type lszl（临时展览）, supported values: zdztzl（主题展览）、dfjpwwxl（精品文物展）、lswhxl（历史文化展）、kgfjxl（考古发现展）、kjcxz（科技创新展）、dywhxl（地域文化展）、jdmszpxl（经典美术展）、gjjlxl（国际交流展）"
         },
         "name": "Exhibitions",
         "maintainers": [
@@ -47394,85 +47338,6 @@ export default {
     "name": "中国传媒大学",
     "url": "yz.cuc.edu.cn",
     "lang": "zh-CN"
-  },
-  "cugb": {
-    "routes": {
-      "/jwc/:channel?": {
-        "path": "/jwc/:channel?",
-        "categories": [
-          "university"
-        ],
-        "example": "/cugb/jwc/xszq",
-        "parameters": {
-          "channel": "栏目，默认为 `xszq` 学生专区"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "jwc.cugb.edu.cn/:channel"
-            ],
-            "target": "/jwc/:channel"
-          }
-        ],
-        "name": "教务处",
-        "maintainers": [
-          "syncmeta"
-        ],
-        "location": "jwc.ts",
-        "module": () => import('@/routes/cugb/jwc.ts')
-      },
-      "/news/:channel?": {
-        "path": "/news/:channel?",
-        "categories": [
-          "university"
-        ],
-        "example": "/cugb/news/bdxw",
-        "parameters": {
-          "channel": "栏目，默认为 `bdxw` 北地新闻"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.cugb.edu.cn/:channel.jhtml"
-            ],
-            "target": "/news/:channel"
-          }
-        ],
-        "name": "校园新闻",
-        "maintainers": [
-          "syncmeta"
-        ],
-        "location": "news.ts",
-        "module": () => import('@/routes/cugb/news.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "China University of Geosciences (Beijing)",
-    "url": "cugb.edu.cn",
-    "categories": [
-      "university"
-    ],
-    "description": "",
-    "lang": "zh-CN",
-    "zh": {
-      "name": "中国地质大学（北京）"
-    }
   },
   "cuilingmag": {
     "routes": {
@@ -59357,7 +59222,7 @@ export default {
             "description": "Year, current year by default"
           }
         },
-        "description": "::: tip\nTo subscribe to [感染症発生動向調査週報](https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/), where the source URL is `https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/`, extract the certain parts from this URL to be used as parameters, resulting in the route as [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025).\n:::",
+        "description": "::: tip\nTo subscribe to [感染症発生動向調査週報](https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/), where the source URL is `https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/`, extract the certain parts from this URL to be used as parameters, resulting in the route as [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025).\n:::",
         "categories": [
           "government"
         ],
@@ -59373,7 +59238,7 @@ export default {
         "radar": [
           {
             "source": [
-              "id-info.jihs.go.jp/surveillance/idwr/idwr/:year"
+              "id-info.jihs.go.jp/surveillance/idwr/jp/idwr/:year"
             ]
           }
         ],
@@ -59391,7 +59256,7 @@ export default {
               "description": "年份，默认为当前年份，可在对应页 URL 中找到"
             }
           },
-          "description": "::: tip\n若订阅 [传染病发生动向调查周报](https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/)，网址为 `https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/`，请截取 `https://id-info.jihs.go.jp/surveillance/idwr/idwr/` 到末尾 `/` 的部分 `2025` 作为 `year` 参数填入，此时目标路由为 [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025)。\n:::"
+          "description": "::: tip\n若订阅 [传染病发生动向调查周报](https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/)，网址为 `https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/`，请截取 `https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/` 到末尾 `/` 的部分 `2025` 作为 `year` 参数填入，此时目标路由为 [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025)。\n:::"
         },
         "location": "jihs/idwr.ts",
         "module": () => import('@/routes/go/jihs/idwr.ts')
@@ -60412,8 +60277,8 @@ export default {
   },
   "hackernews": {
     "routes": {
-      "/:section?/:type?/:value?": {
-        "path": "/:section?/:type?/:value?",
+      "/:section?/:type?/:user?": {
+        "path": "/:section?/:type?/:user?",
         "categories": [
           "programming"
         ],
@@ -60421,13 +60286,13 @@ export default {
         "example": "/hackernews/threads/comments_list/dang",
         "parameters": {
           "section": {
-            "description": "Content section, default to `index`. Common sections: `index`, `newest`, `ask`, `show`, `jobs`, `over`, `threads`, `submitted`. Any valid HN section (e.g. `best`, `front`, `active`) is also accepted"
+            "description": "Content section, default to `index`"
           },
           "type": {
-            "description": "Content format, default to `sources`. `sources` links to original articles, `comments` fetches full comment threads, `comments_list` shows parent story with single comment"
+            "description": "Link type, default to `sources`"
           },
-          "value": {
-            "description": "For `threads`/`submitted` sections, set user ID. For `over` section, set minimum points threshold (default 100). For other sections, appended as `?id=<value>` (e.g. `value=dang` → `?id=dang`)"
+          "user": {
+            "description": "Set user, only valid in `threads` and `submitted` sections"
           }
         },
         "features": {
@@ -60446,12 +60311,12 @@ export default {
             ]
           }
         ],
-        "name": "Stories",
+        "name": "User",
         "maintainers": [
           "nczitzk",
           "xie-dongping"
         ],
-        "description": "Subscribe to Hacker News content by section, user, or minimum points\n\nExamples:\n\n| HN100              | User submitted                       | User threads                       | Comments list                            |\n| ------------------ | ------------------------------------ | ---------------------------------- | ---------------------------------------- |\n| `/hackernews/over` | `/hackernews/submitted/sources/dang` | `/hackernews/threads/sources/dang` | `/hackernews/threads/comments_list/dang` |",
+        "description": "Subscribe to the content of a specific user",
         "location": "index.ts",
         "module": () => import('@/routes/hackernews/index.ts')
       }
@@ -62074,61 +61939,6 @@ export default {
     "name": "黑龙江中医药大学",
     "url": "yjsy.hljucm.net",
     "lang": "zh-CN"
-  },
-  "hnmuseum": {
-    "routes": {
-      "/current-exhibitions/:type?": {
-        "path": "/current-exhibitions/:type?",
-        "categories": [
-          "travel"
-        ],
-        "example": "/hnmuseum/current-exhibitions/special",
-        "parameters": {
-          "type": "Exhibition type, supported values: special（临时展览 special+temporary）. Default: All exhibitions."
-        },
-        "name": "Current Exhibitions",
-        "maintainers": [
-          "magazian"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.hnmuseum.com/zh-hans/content/当前展览－基本陈列"
-            ],
-            "target": "/current-exhibitions"
-          }
-        ],
-        "location": "exhibitions.tsx",
-        "module": () => import('@/routes/hnmuseum/exhibitions.tsx')
-      },
-      "/hnmnews": {
-        "path": "/hnmnews",
-        "categories": [
-          "travel"
-        ],
-        "example": "/hnmuseum/hnmnews",
-        "name": "HNM News",
-        "maintainers": [
-          "magazian"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.hnmuseum.com/zh-hans/xiangbo_dongtai_news"
-            ],
-            "target": "/hnmnews"
-          }
-        ],
-        "location": "hnmnews.ts",
-        "module": () => import('@/routes/hnmuseum/hnmnews.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Hunan Museum",
-    "url": "www.hnmuseum.com/zh-hans",
-    "zh": {
-      "name": "湖南省博物馆"
-    }
   },
   "hnrb": {
     "routes": {
@@ -110415,8 +110225,8 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
+          "requirePuppeteer": true,
+          "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -110476,7 +110286,7 @@ export default {
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
-          "antiCrawler": true,
+          "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -141732,6 +141542,47 @@ export default {
         "location": "daily.ts",
         "module": () => import('@/routes/zhihu/daily.ts')
       },
+      "/posts/:usertype/:id": {
+        "path": "/posts/:usertype/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/zhihu/posts/people/frederchen",
+        "parameters": {
+          "usertype": "作者 id，可在用户主页 URL 中找到",
+          "id": "用户类型usertype，参考用户主页的URL。目前有两种，见下表"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "ZHIHU_COOKIES",
+              "description": "",
+              "optional": true
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.zhihu.com/:usertype/:id/posts",
+              "www.zhihu.com/:usertype/:id"
+            ]
+          }
+        ],
+        "name": "用户文章",
+        "maintainers": [
+          "whtsky",
+          "Colin-XKL"
+        ],
+        "description": "| 普通用户 | 机构用户 |\n| -------- | -------- |\n| people   | org      |",
+        "location": "posts.ts",
+        "module": () => import('@/routes/zhihu/posts.ts')
+      },
       "/weekly": {
         "path": "/weekly",
         "categories": [
@@ -141975,47 +141826,6 @@ export default {
         "url": "daily.zhihu.com/*",
         "location": "daily-section.ts",
         "module": () => import('@/routes/zhihu/daily-section.ts')
-      },
-      "/posts/:usertype/:id": {
-        "path": "/posts/:usertype/:id",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/zhihu/posts/people/frederchen",
-        "parameters": {
-          "usertype": "作者 id，可在用户主页 URL 中找到",
-          "id": "用户类型usertype，参考用户主页的URL。目前有两种，见下表"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "ZHIHU_COOKIES",
-              "description": "",
-              "optional": true
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.zhihu.com/:usertype/:id/posts",
-              "www.zhihu.com/:usertype/:id"
-            ]
-          }
-        ],
-        "name": "用户文章",
-        "maintainers": [
-          "whtsky",
-          "Colin-XKL"
-        ],
-        "description": "| 普通用户 | 机构用户 |\n| -------- | -------- |\n| people   | org      |",
-        "location": "posts.ts",
-        "module": () => import('@/routes/zhihu/posts.ts')
       },
       "/question/:questionId/:sortBy?": {
         "path": "/question/:questionId/:sortBy?",

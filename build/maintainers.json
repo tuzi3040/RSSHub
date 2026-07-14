@@ -1220,12 +1220,6 @@
   "/lmu/jobs": [
     "StarDxxx"
   ],
-  "/lnmuseum/information": [
-    "magazian"
-  ],
-  "/lnmuseum/exhibition/temporary/:type?": [
-    "magazian"
-  ],
   "/loltw/news/:category?": [
     "hoilc"
   ],
@@ -3139,12 +3133,6 @@
   "/cuc/yz": [
     "niuyi1017"
   ],
-  "/cugb/jwc/:channel?": [
-    "syncmeta"
-  ],
-  "/cugb/news/:channel?": [
-    "syncmeta"
-  ],
   "/cuilingmag/:category?": [
     "nczitzk"
   ],
@@ -4167,7 +4155,7 @@
   "/gzhu/yjs": [
     "shengmaosu"
   ],
-  "/hackernews/:section?/:type?/:value?": [
+  "/hackernews/:section?/:type?/:user?": [
     "nczitzk",
     "xie-dongping"
   ],
@@ -4308,12 +4296,6 @@
   ],
   "/hljucm/yjsy/:category?": [
     "nczitzk"
-  ],
-  "/hnmuseum/current-exhibitions/:type?": [
-    "magazian"
-  ],
-  "/hnmuseum/hnmnews": [
-    "magazian"
   ],
   "/hnrb/:id?": [
     "nczitzk"
@@ -10132,6 +10114,10 @@
     "DHPO",
     "pseudoyu"
   ],
+  "/zhihu/posts/:usertype/:id": [
+    "whtsky",
+    "Colin-XKL"
+  ],
   "/zhihu/weekly": [
     "LogicJake"
   ],
@@ -10153,10 +10139,6 @@
   ],
   "/zhihu/daily/section/:sectionId": [
     "ccbikai"
-  ],
-  "/zhihu/posts/:usertype/:id": [
-    "whtsky",
-    "Colin-XKL"
   ],
   "/zhihu/question/:questionId/:sortBy?": [],
   "/zhihu/timeline": [

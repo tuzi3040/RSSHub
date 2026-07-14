@@ -4793,27 +4793,6 @@
       }
     ]
   },
-  "lnmuseum.com.cn": {
-    "_name": "Liaoning Provincial Museum",
-    "www": [
-      {
-        "title": "Information",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/"
-        ],
-        "target": "/lnmuseum/information"
-      },
-      {
-        "title": "Temporary Exhibition",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/"
-        ],
-        "target": "/lnmuseum/exhibition/temporary"
-      }
-    ]
-  },
   "lxixsxa.com": {
     "_name": "LiSA",
     "www": [
@@ -17623,29 +17602,6 @@
       }
     ]
   },
-  "cugb.edu.cn": {
-    "_name": "China University of Geosciences (Beijing)",
-    "jwc": [
-      {
-        "title": "教务处",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/:channel"
-        ],
-        "target": "/cugb/jwc/:channel"
-      }
-    ],
-    "www": [
-      {
-        "title": "校园新闻",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/:channel.jhtml"
-        ],
-        "target": "/cugb/news/:channel"
-      }
-    ]
-  },
   "cuilingmag.com": {
     "_name": "萃嶺网",
     ".": [
@@ -21550,7 +21506,7 @@
         "title": "感染症発生動向調査週報",
         "docs": "https://docs.rsshub.app/routes/government",
         "source": [
-          "/surveillance/idwr/idwr/:year"
+          "/surveillance/idwr/jp/idwr/:year"
         ],
         "target": "/goparams=>{const year=params.year;return`/go/jihs/idwr${year?`/${year}`:\"\"}`}"
       }
@@ -21859,13 +21815,13 @@
     "_name": "Hacker News",
     "news": [
       {
-        "title": "Stories",
+        "title": "User",
         "docs": "https://docs.rsshub.app/routes/programming",
         "source": [
           "/:section",
           "/"
         ],
-        "target": "/hackernews/:section?/:type?/:value?"
+        "target": "/hackernews/:section?/:type?/:user?"
       }
     ]
   },
@@ -22353,27 +22309,6 @@
           "/"
         ],
         "target": "/hlju/news/:category"
-      }
-    ]
-  },
-  "hnmuseum.com": {
-    "_name": "Hunan Museum",
-    "www": [
-      {
-        "title": "Current Exhibitions",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/zh-hans/content/%E5%BD%93%E5%89%8D%E5%B1%95%E8%A7%88%EF%BC%8D%E5%9F%BA%E6%9C%AC%E9%99%88%E5%88%97"
-        ],
-        "target": "/hnmuseum/current-exhibitions"
-      },
-      {
-        "title": "HNM News",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/zh-hans/xiangbo_dongtai_news"
-        ],
-        "target": "/hnmuseum/hnmnews"
       }
     ]
   },
@@ -51016,6 +50951,15 @@
         "target": "/zhihu/collection/:id"
       },
       {
+        "title": "用户文章",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:usertype/:id/posts",
+          "/:usertype/:id"
+        ],
+        "target": "/zhihu/posts/:usertype/:id"
+      },
+      {
         "title": "知乎书店 - 知乎周刊",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
@@ -51046,15 +50990,6 @@
           "/people/:id/answers"
         ],
         "target": "/zhihu/people/answers/:id"
-      },
-      {
-        "title": "用户文章",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/:usertype/:id/posts",
-          "/:usertype/:id"
-        ],
-        "target": "/zhihu/posts/:usertype/:id"
       },
       {
         "title": "问题",
