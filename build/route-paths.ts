@@ -694,6 +694,8 @@ export type RoutePath =
   | `/ctinews/topic/:topic?`
   | `/cts/:category`
   | `/cuc/yz`
+  | `/cugb/jwc/:channel?`
+  | `/cugb/news/:channel?`
   | `/cuilingmag/:category?`
   | `/cupl/jwc`
   | `/curiouscat/user/:id`
@@ -1346,7 +1348,7 @@ export type RoutePath =
   | `/gxmzu/yjszsgg`
   | `/gzdaily/app/:column?`
   | `/gzhu/yjs`
-  | `/hackernews/:section?/:type?/:user?`
+  | `/hackernews/:section?/:type?/:value?`
   | `/hackertalk/`
   | `/hacking8/:category?`
   | `/hacking8/search/:keyword?`
@@ -1406,6 +1408,8 @@ export type RoutePath =
   | `/hkushop/vinyl/:cat?`
   | `/hlju/news/:category?`
   | `/hljucm/yjsy/:category?`
+  | `/hnmuseum/current-exhibitions/:type?`
+  | `/hnmuseum/hnmnews`
   | `/hnrb/:id?`
   | `/hnu/careers`
   | `/home-assistant/hacs/repositories`
@@ -1792,6 +1796,8 @@ export type RoutePath =
   | `/lkong/forum/:id?/:digest?`
   | `/lkong/thread/:id`
   | `/lmu/jobs`
+  | `/lnmuseum/exhibition/temporary/:type?`
+  | `/lnmuseum/information`
   | `/locals/content/:community/:option1?/:option2?`
   | `/lofter/collection/:collectionID`
   | `/lofter/tag/:name?/:type?`
@@ -2052,6 +2058,7 @@ export type RoutePath =
   | `/njglyy/ygbjypx`
   | `/njit/jwc/:type?`
   | `/njit/tzgg`
+  | `/njmuseum/exhibitionIndex/:type?`
   | `/njnu/ceai/:type`
   | `/njnu/jwc/:type`
   | `/nju/admission`
@@ -2724,6 +2731,8 @@ export type RoutePath =
   | `/swpu/dxy/:code`
   | `/swpu/is/:code`
   | `/swpu/scs/:code`
+  | `/sxhm/announcement`
+  | `/sxhm/temporary`
   | `/sycl/:feed?`
   | `/syosetu/:ncode`
   | `/syosetu/dev`
@@ -3268,6 +3277,7 @@ export type RoutePath =
   | `/zimuxia/:category?`
   | `/zimuxia/portfolio/:id`
   | `/zjgtjy/:type?`
+  | `/zjmuseum/exhibition/:type?`
   | `/zjol/paper/:id?`
   | `/zju/career/:type`
   | `/zju/cse/:category?`
