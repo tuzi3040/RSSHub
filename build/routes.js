@@ -137,10 +137,19 @@ export default {
           "requireConfig": false,
           "requirePuppeteer": false,
           "antiCrawler": false,
+          "supportRadar": true,
           "supportBT": false,
           "supportPodcast": true,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "music.163.com/djradio"
+            ],
+            "target": "/music/djradio/:id"
+          }
+        ],
         "name": "电台节目",
         "maintainers": [
           "magic-akari"
@@ -152,6 +161,18 @@ export default {
         "path": "/music/user/events/:id",
         "categories": [
           "multimedia"
+        ],
+        "example": "/163/music/user/events/585804522",
+        "parameters": {
+          "id": "用户 uid, 可在用户主页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "music.163.com/user/event"
+            ],
+            "target": "/music/user/events/:id"
+          }
         ],
         "name": "用户动态",
         "maintainers": [
@@ -173,10 +194,19 @@ export default {
           "requireConfig": false,
           "requirePuppeteer": false,
           "antiCrawler": false,
+          "supportRadar": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "music.163.com/user/home"
+            ],
+            "target": "/music/user/playlist/:id"
+          }
+        ],
         "name": "用户歌单",
         "maintainers": [
           "DIYgod"
@@ -228,10 +258,19 @@ export default {
           "requireConfig": false,
           "requirePuppeteer": false,
           "antiCrawler": false,
+          "supportRadar": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "music.163.com/artist"
+            ],
+            "target": "/music/artist/songs/:id"
+          }
+        ],
         "name": "歌手歌曲",
         "maintainers": [
           "ZhongMingKun"
@@ -252,10 +291,19 @@ export default {
           "requireConfig": false,
           "requirePuppeteer": false,
           "antiCrawler": false,
+          "supportRadar": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "music.163.com/artist/album"
+            ],
+            "target": "/music/artist/:id"
+          }
+        ],
         "name": "歌手专辑",
         "maintainers": [
           "metowolf"
@@ -282,10 +330,19 @@ export default {
           ],
           "requirePuppeteer": false,
           "antiCrawler": true,
+          "supportRadar": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "music.163.com/playlist"
+            ],
+            "target": "/music/playlist/:id"
+          }
+        ],
         "name": "歌单歌曲",
         "maintainers": [
           "DIYgod"
@@ -2241,6 +2298,58 @@ export default {
     "url": "app.follow.is",
     "lang": "en"
   },
+  "forwardfuture": {
+    "routes": {
+      "/daily": {
+        "name": "Daily Newsletter",
+        "categories": [
+          "other"
+        ],
+        "path": "/daily",
+        "example": "/forwardfuture/daily",
+        "radar": [
+          {
+            "source": [
+              "forwardfuture.com/newsletter/daily",
+              "forwardfuture.com/"
+            ]
+          }
+        ],
+        "maintainers": [
+          "ovo-Tim"
+        ],
+        "description": "Daily AI newsletter from Forward Future.",
+        "location": "daily.ts",
+        "module": () => import('@/routes/forwardfuture/daily.ts')
+      },
+      "/originals": {
+        "name": "Originals",
+        "categories": [
+          "other"
+        ],
+        "path": "/originals",
+        "example": "/forwardfuture/originals",
+        "radar": [
+          {
+            "source": [
+              "forwardfuture.com/originals",
+              "forwardfuture.com/"
+            ]
+          }
+        ],
+        "maintainers": [
+          "ovo-Tim"
+        ],
+        "description": "Original essays, columns, and analysis on AI from Forward Future contributors.",
+        "location": "originals.ts",
+        "module": () => import('@/routes/forwardfuture/originals.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Forward Future",
+    "url": "forwardfuture.com",
+    "lang": "en"
+  },
   "freebuf": {
     "routes": {
       "/articles/:type": {
@@ -3116,6 +3225,36 @@ export default {
     ],
     "description": "全面的找书、学习资源导航平台，它整合了电子书和科研文档的搜索功能，方便用户进行学习资料的检索和分享，为用户提供一站式的读书学习体验。",
     "lang": "zh-CN"
+  },
+  "immich": {
+    "routes": {
+      "/cursed-knowledge": {
+        "path": "/cursed-knowledge",
+        "categories": [
+          "blog"
+        ],
+        "example": "/immich/cursed-knowledge",
+        "radar": [
+          {
+            "source": [
+              "immich.app/cursed-knowledge",
+              "immich.app"
+            ],
+            "target": "/cursed-knowledge"
+          }
+        ],
+        "name": "Cursed Knowledge",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "cursed-knowledge.ts",
+        "module": () => import('@/routes/immich/cursed-knowledge.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Immich",
+    "url": "immich.app",
+    "lang": "en-us"
   },
   "isct": {
     "routes": {
@@ -4914,8 +5053,19 @@ export default {
     "routes": {
       "/imap/:email/:folder{.+}?": {
         "path": "/imap/:email/:folder{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "other"
+        ],
+        "example": "/mail/imap/rss@rsshub.app",
+        "parameters": {
+          "email": "Email account",
+          "folder": "Inbox name, `INBOX` by default"
+        },
+        "description": "Only support IMAP protocol, email password and other settings refer to [Route-specific Configurations](https://docs.rsshub.app/deploy/config#route-specific-configurations)",
+        "name": "Inbox",
+        "maintainers": [
+          "kt286"
+        ],
         "location": "imap.ts",
         "module": () => import('@/routes/mail/imap.ts')
       }
@@ -6720,7 +6870,9 @@ export default {
           }
         ],
         "name": "类别",
-        "maintainers": [],
+        "maintainers": [
+          "Fatpandac"
+        ],
         "description": "参数可以从链接中拿到，如：\n\n`https://www.abmedia.io/category/technology-development` 对应 `/abmedia/technology-development`",
         "location": "category.ts",
         "module": () => import('@/routes/abmedia/category.ts')
@@ -6748,7 +6900,9 @@ export default {
           }
         ],
         "name": "首页最新新闻",
-        "maintainers": [],
+        "maintainers": [
+          "Fatpandac"
+        ],
         "url": "www.abmedia.io/",
         "location": "index.ts",
         "module": () => import('@/routes/abmedia/index.ts')
@@ -7308,7 +7462,7 @@ export default {
         ],
         "name": "New Releases",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "url": "bellroy.com/collection/new-releases",
         "location": "new-releases.ts",
@@ -7583,68 +7737,14 @@ export default {
     "url": "bse.cn",
     "lang": "zh-CN"
   },
-  "byteclicks": {
-    "routes": {
-      "/": {
-        "path": "/",
-        "radar": [
-          {
-            "source": [
-              "byteclicks.com/"
-            ],
-            "target": ""
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "url": "byteclicks.com/",
-        "location": "index.ts",
-        "module": () => import('@/routes/byteclicks/index.ts')
-      },
-      "/tag/:tag": {
-        "path": "/tag/:tag",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/byteclicks/tag/人工智能",
-        "parameters": {
-          "tag": "标签，可在URL中找到"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "byteclicks.com/tag/:tag"
-            ]
-          }
-        ],
-        "name": "标签",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "url": "byteclicks.com/",
-        "location": "tag.ts",
-        "module": () => import('@/routes/byteclicks/tag.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "字节点击",
-    "url": "byteclicks.com",
-    "lang": "zh-CN"
-  },
   "cbnweek": {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "finance"
+        ],
+        "example": "/cbnweek",
         "radar": [
           {
             "source": [
@@ -7653,7 +7753,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "首页",
         "maintainers": [
           "nczitzk"
         ],
@@ -7995,6 +8095,13 @@ export default {
     "routes": {
       "/user/:id": {
         "path": "/user/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/curiouscat/user/username",
+        "parameters": {
+          "id": "username that is in the URL"
+        },
         "radar": [
           {
             "source": [
@@ -8002,7 +8109,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "User",
         "maintainers": [
           "lucasew"
         ],
@@ -8399,7 +8506,9 @@ export default {
           "supportScihub": false
         },
         "name": "Notifications",
-        "maintainers": [],
+        "maintainers": [
+          "dzx-dzx"
+        ],
         "description": "::: warning\nIf you opt to enable `fulltext` feature, consider adding `limit` parameter to your query to avoid sending too many request.\n:::",
         "location": "notifications.ts",
         "module": () => import('@/routes/discourse/notifications.ts')
@@ -9524,26 +9633,29 @@ export default {
         "location": "jobs.ts",
         "module": () => import('@/routes/gocn/jobs.ts')
       },
-      "/": {
-        "path": [
-          "/",
-          "/news"
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "AtlanCI",
-          "CcccFz"
-        ],
-        "url": "gocn.vip/",
-        "location": "news.ts",
-        "module": () => import('@/routes/gocn/news.ts')
-      },
       "/news": {
-        "path": [
-          "/",
-          "/news"
+        "path": "/news",
+        "categories": [
+          "programming"
         ],
-        "name": "Unknown",
+        "example": "/gocn/news",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "gocn.vip/"
+            ]
+          }
+        ],
+        "name": "最新动态",
         "maintainers": [
           "AtlanCI",
           "CcccFz"
@@ -9593,6 +9705,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/hackertalk",
         "radar": [
           {
             "source": [
@@ -9601,7 +9717,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新帖子",
         "maintainers": [
           "hyoban"
         ],
@@ -9681,8 +9797,8 @@ export default {
         ],
         "url": "hakkatv.org.tw/news",
         "description": "| 客家焦點 | 政經要聞  | 民生醫療 | 地方風采 | 國際萬象      |\n| -------- | --------- | -------- | -------- | ------------- |\n| hakka    | political | medical  | local    | international |",
-        "location": "type.ts",
-        "module": () => import('@/routes/hakkatv/type.ts')
+        "location": "news.ts",
+        "module": () => import('@/routes/hakkatv/news.ts')
       }
     },
     "apiRoutes": {},
@@ -10180,6 +10296,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "blog"
+        ],
+        "example": "/jiaoliudao",
         "radar": [
           {
             "source": [
@@ -10188,7 +10308,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新文章",
         "maintainers": [
           "TonyRL"
         ],
@@ -10708,6 +10828,14 @@ export default {
     "routes": {
       "/channel/:id": {
         "path": "/channel/:id",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/lifeweek/channel/9",
+        "parameters": {
+          "id": "栏目 ID"
+        },
+        "description": "提取文章全文，获得更好的阅读体验。支持所有频道，频道名称见 [杂志栏目](https://www.lifeweek.com.cn/classify?type=2)。例如 [调查栏目](https://www.lifeweek.com.cn/column/9) URL 最后的数字为栏目 ID\n\n| 调查 | 热点 | 人物 | 社会 | 经济 | 文化 |\n| ---- | ---- | ---- | ---- | ---- | ---- |\n| 9    | 6    | 10   | 2    | 3    | 4    |",
         "radar": [
           {
             "source": [
@@ -10716,13 +10844,23 @@ export default {
             "target": "/channel/:channel"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "栏目",
+        "maintainers": [
+          "changren-wcr"
+        ],
         "location": "channel.ts",
         "module": () => import('@/routes/lifeweek/channel.ts')
       },
       "/tag/:id": {
         "path": "/tag/:id",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/lifeweek/tag/122",
+        "parameters": {
+          "id": "标签 ID"
+        },
+        "description": "提取文章全文，获得更好的阅读体验。支持所有标签，标签名称见 [全部标签](https://www.lifeweek.com.cn/classify?type=1)。例如 [社会调查标签](https://www.lifeweek.com.cn/articleList/122) URL 最后的数字为标签 ID\n\n| 社会调查 | 社会 | 经济 | 理财 | 热点 |\n| -------- | ---- | ---- | ---- | ---- |\n| 122      | 21   | 73   | 74   | 123  |",
         "radar": [
           {
             "source": [
@@ -10731,8 +10869,10 @@ export default {
             "target": "/tag/:tag"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "标签",
+        "maintainers": [
+          "changren-wcr"
+        ],
         "location": "tag.ts",
         "module": () => import('@/routes/lifeweek/tag.ts')
       }
@@ -11328,8 +11468,25 @@ export default {
     "routes": {
       "/exhibitions/:state?": {
         "path": "/exhibitions/:state?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "travel"
+        ],
+        "example": "/metmuseum/exhibitions",
+        "parameters": {
+          "state": "展览进行的状态：`current` 对应展览当前正在进行，`past` 对应过去的展览，`upcoming` 对应即将举办的展览，默认为 `current`"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Exhibitions",
+        "maintainers": [
+          "chazeon"
+        ],
         "location": "exhibitions.ts",
         "module": () => import('@/routes/metmuseum/exhibitions.ts')
       }
@@ -11984,7 +12141,7 @@ export default {
         "name": "Nogizaka46 Blog 乃木坂 46 博客",
         "maintainers": [
           "Kasper4649",
-          "akashigakki"
+          "AkashiGakki"
         ],
         "url": "blog.nogizaka46.com/s/n46/diary/MEMBER",
         "description": "Member ID\n\n| Member ID | Name                  |\n| --------- | --------------------- |\n| 55401     | 岡本 姫奈             |\n| 55400     | 川﨑 桜               |\n| 55397     | 池田 瑛紗             |\n| 55396     | 五百城 茉央           |\n| 55395     | 中西 アルノ           |\n| 55394     | 奥田 いろは           |\n| 55393     | 冨里 奈央             |\n| 55392     | 小川 彩               |\n| 55391     | 菅原 咲月             |\n| 55390     | 一ノ瀬 美空           |\n| 55389     | 井上 和               |\n| 55387     | 弓木 奈於             |\n| 55386     | 松尾 美佑             |\n| 55385     | 林 瑠奈               |\n| 55384     | 佐藤 璃果             |\n| 55383     | 黒見 明香             |\n| 48014     | 清宮 レイ             |\n| 48012     | 北川 悠理             |\n| 48010     | 金川 紗耶             |\n| 48019     | 矢久保 美緒           |\n| 48018     | 早川 聖来             |\n| 48009     | 掛橋 沙耶香           |\n| 48008     | 賀喜 遥香             |\n| 48017     | 筒井 あやめ           |\n| 48015     | 田村 真佑             |\n| 48013     | 柴田 柚菜             |\n| 48006     | 遠藤 さくら           |\n| 36760     | 与田 祐希             |\n| 36759     | 吉田 綾乃クリスティー |\n| 36758     | 山下 美月             |\n| 36757     | 向井 葉月             |\n| 36756     | 中村 麗乃             |\n| 36755     | 佐藤 楓               |\n| 36754     | 阪口 珠美             |\n| 36753     | 久保 史緒里           |\n| 36752     | 大園 桃子             |\n| 36751     | 梅澤 美波             |\n| 36750     | 岩本 蓮加             |\n| 36749     | 伊藤 理々杏           |\n| 264       | 齋藤 飛鳥             |",
@@ -12296,6 +12453,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "picture"
+        ],
+        "example": "/rarehistoricalphotos",
         "radar": [
           {
             "source": [
@@ -12304,7 +12465,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Home",
         "maintainers": [
           "TonyRL"
         ],
@@ -12431,7 +12592,11 @@ export default {
     "routes": {
       "/": {
         "path": "/",
-        "name": "Unknown",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/sec-in",
+        "name": "最新文章",
         "maintainers": [
           "p7e4"
         ],
@@ -12706,7 +12871,9 @@ export default {
           "supportScihub": false
         },
         "name": "Viz of the day",
-        "maintainers": [],
+        "maintainers": [
+          "KaiyoungYu"
+        ],
         "location": "viz-of-the-day.ts",
         "module": () => import('@/routes/tableau/viz-of-the-day.ts')
       }
@@ -13160,6 +13327,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "other"
+        ],
+        "example": "/v2rayshare",
         "radar": [
           {
             "source": [
@@ -13168,7 +13339,8 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "免费节点",
+        "description": "获取来自 V2rayShare 的免费节点，可以通过链接复制或下载",
         "maintainers": [
           "77taibai"
         ],
@@ -14241,7 +14413,9 @@ export default {
           }
         ],
         "name": "全国今日生猪价格",
-        "maintainers": [],
+        "maintainers": [
+          "importcjj"
+        ],
         "url": "zhujia.zhuwang.cc/",
         "location": "index.ts",
         "module": () => import('@/routes/zhuwang/index.ts')
@@ -14256,10 +14430,18 @@ export default {
     "routes": {
       "/:type?": {
         "path": "/:type?",
-        "name": "Unknown",
+        "categories": [
+          "government"
+        ],
+        "example": "/zjgtjy/all",
+        "parameters": {
+          "type": "分类名"
+        },
+        "name": "公告信息",
         "maintainers": [
           "Fatpandac"
         ],
+        "description": "| 全部公告 | 挂牌公告 | 拍卖公告 | 补充公告 |\n| :------: | :------: | :------: | :------: |\n|    all   |   gpgg   |   pmgg   |   bcgg   |",
         "location": "index.ts",
         "module": () => import('@/routes/zjgtjy/index.ts')
       }
@@ -15133,21 +15315,6 @@ export default {
     "url": "x.com",
     "description": "Specify options (in the format of query string) in parameter `routeParams` to control some extra features for Tweets\n\n| Key                               | Description                                                                                                                          | Accepts                | Defaults to                               |\n| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------------------------------------- |\n| `readable`                        | Enable readable layout                                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |\n| `authorNameBold`                  | Display author name in bold                                                                                                          | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInTitle`               | Show author name in title                                                                                                            | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showAuthorAsTitleOnly`           | Show only author name as title                                                                                                       | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorInDesc`                | Show author name in description (RSS body)                                                                                           | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |\n| `showQuotedAuthorAvatarInDesc`    | Show avatar of quoted Tweet's author in description (RSS body) (Not recommended if your RSS reader extracts images from description) | `0`/`1`/`true`/`false` | `false`                                   |\n| `showAuthorAvatarInDesc`          | Show avatar of author in description (RSS body) (Not recommended if your RSS reader extracts images from description)                | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForRetweetAndReply`     | Use \"🔁\" instead of \"RT\", \"↩️\" & \"💬\" instead of \"Re\"                                                                                | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForRetweetAndReply`    | Use \" RT \" instead of \"\", \" Re \" instead of \"\"                                                                                       | `0`/`1`/`true`/`false` | `true`                                    |\n| `showRetweetTextInTitle`          | Show quote comments in title (if `false`, only the retweeted tweet will be shown in the title)                                       | `0`/`1`/`true`/`false` | `true`                                    |\n| `addLinkForPics`                  | Add clickable links for Tweet pictures                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |\n| `showTimestampInDescription`      | Show timestamp in description                                                                                                        | `0`/`1`/`true`/`false` | `false`                                   |\n| `showQuotedInTitle`               | Show quoted tweet in title                                                                                                           | `0`/`1`/`true`/`false` | `false`                                   |\n| `widthOfPics`                     | Width of Tweet pictures                                                                                                              | Unspecified/Integer    | Unspecified                               |\n| `heightOfPics`                    | Height of Tweet pictures                                                                                                             | Unspecified/Integer    | Unspecified                               |\n| `sizeOfAuthorAvatar`              | Size of author's avatar                                                                                                              | Integer                | `48`                                      |\n| `sizeOfQuotedAuthorAvatar`        | Size of quoted tweet's author's avatar                                                                                               | Integer                | `24`                                      |\n| `includeReplies`                  | Include replies, only available in `/twitter/user`                                                                                   | `0`/`1`/`true`/`false` | `false`                                   |\n| `includeRts`                      | Include retweets, only available in `/twitter/user`                                                                                  | `0`/`1`/`true`/`false` | `true`                                    |\n| `forceWebApi`                     | Force using Web API even if Developer API is configured, only available in `/twitter/user` and `/twitter/keyword`                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `count`                           | `count` parameter passed to Twitter API, only available in `/twitter/user`                                                           | Unspecified/Integer    | Unspecified                               |\n| `onlyMedia`                       | Only get tweets with a media                                                                                                         | `0`/`1`/`true`/`false` | `false`                                   |\n| `mediaNumber `                    | Number the medias                                                                                                                    | `0`/`1`/`true`/`false` | `false`                                   |\n| `showEmojiForSubscriberOnly`      | Use \"🔒\" as prefix for subscriber-only posts                                                                                         | `0`/`1`/`true`/`false` | `false`                                   |\n| `showSymbolForSubscriberOnly`     | Use \"\\[Subscribers Only]\" as prefix for subscriber-only posts                                                                        | `0`/`1`/`true`/`false` | `true`                                    |\n| `showFullPrefixForSubscriberOnly` | Use \"🔒 \\[Subscribers Only]\" as prefix for subscriber-only posts                                                                     | `0`/`1`/`true`/`false` | `false`                                   |\n\nSpecify different option values than default values to improve readability. The URL\n\n```\nhttps://rsshub.app/twitter/user/durov/readable=1&authorNameBold=1&showAuthorInTitle=1&showAuthorInDesc=1&showQuotedAuthorAvatarInDesc=1&showAuthorAvatarInDesc=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&addLinkForPics=1&showTimestampInDescription=1&showQuotedInTitle=1&heightOfPics=150\n```\n\ngenerates\n\n<img loading=\"lazy\" src=\"/img/readable-twitter.png\" alt=\"Readable Twitter RSS of Durov\" />\n\nCurrently supports two authentication methods:\n\n- Using `TWITTER_AUTH_TOKEN` (recommended): Configure a comma-separated list of `auth_token` cookies of logged-in Twitter Web. RSSHub will use this information to directly access Twitter's web API to obtain data.\n\n~~- Using `TWITTER_USERNAME` `TWITTER_PASSWORD` and `TWITTER_AUTHENTICATION_SECRET`: Configure a comma-separated list of Twitter username and password. RSSHub will use this information to log in to Twitter and obtain data using the mobile API. Please note that if you have not logged in with the current IP address before, it is easy to trigger Twitter's risk control mechanism.~~ This no longer works since mobile client attestation has been implemented in October 2025.\n\n- Using `TWITTER_CONSUMER_KEY` and `TWITTER_CONSUMER_SECRET`: Configure a comma-separated list of Twitter API keys and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API to obtain data.\n- OPTIONAL: Using `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_SECRET`: Configure a comma-separated list of Twitter API access tokens and secrets. RSSHub will use this information to access Twitter's Pay-Per-Use developer API with user authentication to obtain data. If not provided, RSSHub will only use app authentication, which may only access to public information.",
     "lang": "en"
-  },
-  "aicaijing": {
-    "routes": {
-      "/:category?/:id?": {
-        "path": "/:category?/:id?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.tsx",
-        "module": () => import('@/routes/aicaijing/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "AI 财经社",
-    "url": "www.aicaijing.com",
-    "lang": "zh-CN"
   },
   "app-center": {
     "routes": {
@@ -16771,6 +16938,62 @@ export default {
     },
     "lang": "de"
   },
+  "lnmuseum": {
+    "routes": {
+      "/information": {
+        "path": "/information",
+        "categories": [
+          "travel"
+        ],
+        "example": "/lnmuseum/information",
+        "params": {},
+        "name": "Information",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.lnmuseum.com.cn"
+            ],
+            "target": "/information"
+          }
+        ],
+        "location": "information.ts",
+        "module": () => import('@/routes/lnmuseum/information.ts')
+      },
+      "/exhibition/temporary/:type?": {
+        "path": "/exhibition/temporary/:type?",
+        "categories": [
+          "travel"
+        ],
+        "example": "/lnmuseum/exhibition/temporary/now",
+        "params": {
+          "type": "Temporary Exhibition type, supported values: now （正在展出）、past（展览回顾）。Default: All temporary exhibitions (now and past)."
+        },
+        "name": "Temporary Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.lnmuseum.com.cn"
+            ],
+            "target": "/exhibition/temporary"
+          }
+        ],
+        "location": "temporary.tsx",
+        "module": () => import('@/routes/lnmuseum/temporary.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Liaoning Provincial Museum",
+    "url": "www.lnmuseum.com.cn",
+    "zh": {
+      "name": "辽宁省博物馆"
+    }
+  },
   "loltw": {
     "routes": {
       "/news/:category?": {
@@ -17355,23 +17578,6 @@ export default {
     "url": "npmjs.com",
     "lang": "en"
   },
-  "oceanengine": {
-    "routes": {
-      "/index/:keyword/:channel?": {
-        "path": "/index/:keyword/:channel?",
-        "name": "Unknown",
-        "maintainers": [
-          "Jkker"
-        ],
-        "location": "arithmetic-index.tsx",
-        "module": () => import('@/routes/oceanengine/arithmetic-index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "巨量算数 - 算数指数",
-    "url": "trendinsight.oceanengine.com",
-    "lang": "zh-CN"
-  },
   "orcid": {
     "routes": {
       "/:id": {
@@ -17402,54 +17608,6 @@ export default {
     "apiRoutes": {},
     "name": "ORCID",
     "url": "orcid.org",
-    "lang": "en"
-  },
-  "pawchive": {
-    "routes": {
-      "/:service/:id": {
-        "path": "/:service/:id",
-        "categories": [
-          "anime"
-        ],
-        "example": "/pawchive/fanbox/22445",
-        "parameters": {
-          "service": "service, either `patreon` or `fanbox`",
-          "id": "User id, can be found in URL"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false,
-          "nsfw": true
-        },
-        "radar": [
-          {
-            "source": [
-              "pawchive.st/"
-            ],
-            "target": ""
-          },
-          {
-            "source": [
-              "pawchive.st/:service/user/:id"
-            ],
-            "target": "/:service/:id"
-          }
-        ],
-        "name": "Posts",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "index.tsx",
-        "module": () => import('@/routes/pawchive/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Pawchive",
-    "url": "pawchive.st",
     "lang": "en"
   },
   "pixabay": {
@@ -17551,6 +17709,40 @@ export default {
     "name": "Rattibha",
     "url": "rattibha.com",
     "lang": "en"
+  },
+  "scmuseum": {
+    "routes": {
+      "/exhibition/:type?": {
+        "path": "/exhibition/:type?",
+        "categories": [
+          "travel"
+        ],
+        "example": "/scmuseum/exhibition/temp",
+        "parameters": {
+          "type": "Exhibition type, supported values: base (常设展览) or temp (临时展览), default is all exhibitions."
+        },
+        "name": "Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.scmuseum.cn/Visit/Exhibition"
+            ],
+            "target": "/exhibition"
+          }
+        ],
+        "location": "exhibition.tsx",
+        "module": () => import('@/routes/scmuseum/exhibition.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Sichuan Museum",
+    "url": "www.scmuseum.cn",
+    "zh": {
+      "name": "四川博物院"
+    }
   },
   "sctv": {
     "routes": {
@@ -18459,6 +18651,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "picture"
+        ],
+        "example": "/wallpaperhub",
         "radar": [
           {
             "source": [
@@ -18468,7 +18664,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Wallpapers",
         "maintainers": [
           "nczitzk"
         ],
@@ -18792,7 +18988,9 @@ export default {
           }
         ],
         "name": "News & Biography",
-        "maintainers": [],
+        "maintainers": [
+          "Kiotlin"
+        ],
         "url": "www.yoasobi-music.jp/",
         "location": "info.tsx",
         "module": () => import('@/routes/yoasobi-music/info.tsx')
@@ -19052,121 +19250,102 @@ export default {
     "lang": "en",
     "description": ""
   },
-  "4gamers": {
+  "aicaijing": {
     "routes": {
-      "/": {
-        "path": [
-          "/",
-          "/category/:category"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.4gamers.com.tw/news",
-              "www.4gamers.com.tw/"
-            ],
-            "target": ""
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "url": "www.4gamers.com.tw/news",
-        "location": "category.ts",
-        "module": () => import('@/routes/4gamers/category.ts')
-      },
-      "/category/:category": {
-        "path": [
-          "/",
-          "/category/:category"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.4gamers.com.tw/news",
-              "www.4gamers.com.tw/"
-            ],
-            "target": ""
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "url": "www.4gamers.com.tw/news",
-        "location": "category.ts",
-        "module": () => import('@/routes/4gamers/category.ts')
-      },
-      "/tag/:tag": {
-        "path": "/tag/:tag",
+      "/latest": {
+        "path": "/latest",
         "categories": [
-          "game"
+          "finance"
         ],
-        "example": "/4gamers/tag/限時免費",
-        "parameters": {
-          "tag": "标签名，可在标签 URL 中找到"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
+        "example": "/aicaijing/latest",
         "radar": [
           {
             "source": [
-              "www.4gamers.com.tw/news/tag/:tag"
-            ]
+              "www.aicaijing.com/"
+            ],
+            "target": "/latest"
           }
         ],
-        "name": "标签",
+        "name": "最新文章",
         "maintainers": [
-          "hoilc"
+          "nczitzk"
         ],
-        "url": "www.4gamers.com.tw/news",
-        "location": "tag.ts",
-        "module": () => import('@/routes/4gamers/tag.ts')
+        "location": "index.tsx",
+        "module": () => import('@/routes/aicaijing/index.tsx')
       },
-      "/topic/:topic": {
-        "path": "/topic/:topic",
+      "/cover": {
+        "path": "/cover",
         "categories": [
-          "game"
+          "finance"
         ],
-        "example": "/4gamers/topic/gentlemen-topic",
-        "parameters": {
-          "topic": "主题，可在首页上方页面内找到"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
+        "example": "/aicaijing/cover",
         "radar": [
           {
             "source": [
-              "www.4gamers.com.tw/news/option-cfg/:topic"
-            ]
+              "www.aicaijing.com/"
+            ],
+            "target": "/cover"
           }
         ],
-        "name": "主題",
+        "name": "封面文章",
         "maintainers": [
-          "bestpika"
+          "nczitzk"
         ],
-        "url": "www.4gamers.com.tw/news",
-        "location": "topic.ts",
-        "module": () => import('@/routes/4gamers/topic.ts')
+        "location": "cover.ts",
+        "module": () => import('@/routes/aicaijing/cover.ts')
+      },
+      "/information/:id?": {
+        "path": "/information/:id?",
+        "categories": [
+          "finance"
+        ],
+        "example": "/aicaijing/information/14",
+        "parameters": {
+          "id": "栏目 id，可在对应栏目页 URL 中找到，默认为 14，即热点最新"
+        },
+        "description": "| 栏目 id | 栏目        |\n| ------- | ----------- |\n| 14      | 热点 - 最新 |\n| 5       | 热点 - 科技 |\n| 9       | 热点 - 消费 |\n| 7       | 热点 - 出行 |\n| 13      | 热点 - 文娱 |\n| 10      | 热点 - 教育 |\n| 25      | 热点 - 地产 |\n| 11      | 热点 - 更多 |\n| 28      | 深度 - 出行 |\n| 29      | 深度 - 科技 |\n| 31      | 深度 - 消费 |\n| 33      | 深度 - 教育 |\n| 34      | 深度 - 更多 |\n| 8       | 深度 - 地产 |\n| 6       | 深度 - 文娱 |",
+        "radar": [
+          {
+            "source": [
+              "www.aicaijing.com/information/:id",
+              "www.aicaijing.com/"
+            ],
+            "target": "/information/:id?"
+          }
+        ],
+        "name": "热点 & 深度",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "information.ts",
+        "module": () => import('@/routes/aicaijing/information.ts')
+      },
+      "/recommend": {
+        "path": "/recommend",
+        "categories": [
+          "finance"
+        ],
+        "example": "/aicaijing/recommend",
+        "radar": [
+          {
+            "source": [
+              "www.aicaijing.com/"
+            ],
+            "target": "/recommend"
+          }
+        ],
+        "name": "推荐资讯",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "recommend.ts",
+        "module": () => import('@/routes/aicaijing/recommend.ts')
       }
     },
     "apiRoutes": {},
-    "name": "4Gamers",
-    "url": "www.4gamers.com.tw",
-    "lang": "zh-TW"
+    "name": "AI 财经社",
+    "url": "www.aicaijing.com",
+    "lang": "zh-CN"
   },
   "artstation": {
     "routes": {
@@ -19302,8 +19481,8 @@ export default {
   },
   "daily": {
     "routes": {
-      "/discussed/:period?/:innerSharedContent?/:dateSort?": {
-        "path": "/discussed/:period?/:innerSharedContent?/:dateSort?",
+      "/discussed/:period?/:dateSort?": {
+        "path": "/discussed/:period?/:dateSort?",
         "example": "/daily/discussed/30",
         "view": 0,
         "radar": [
@@ -19319,20 +19498,6 @@ export default {
         ],
         "url": "app.daily.dev/discussed",
         "parameters": {
-          "innerSharedContent": {
-            "description": "Where to Fetch inner Shared Posts instead of original",
-            "default": "false",
-            "options": [
-              {
-                "value": "false",
-                "label": "False"
-              },
-              {
-                "value": "true",
-                "label": "True"
-              }
-            ]
-          },
           "dateSort": {
             "description": "Sort posts by publication date instead of popularity",
             "default": "true",
@@ -19369,8 +19534,8 @@ export default {
         "location": "discussed.ts",
         "module": () => import('@/routes/daily/discussed.ts')
       },
-      "/popular/:innerSharedContent?/:dateSort?": {
-        "path": "/popular/:innerSharedContent?/:dateSort?",
+      "/popular/:dateSort?": {
+        "path": "/popular/:dateSort?",
         "example": "/daily/popular",
         "view": 0,
         "radar": [
@@ -19381,20 +19546,6 @@ export default {
           }
         ],
         "parameters": {
-          "innerSharedContent": {
-            "description": "Where to Fetch inner Shared Posts instead of original",
-            "default": "false",
-            "options": [
-              {
-                "value": "false",
-                "label": "False"
-              },
-              {
-                "value": "true",
-                "label": "True"
-              }
-            ]
-          },
           "dateSort": {
             "description": "Sort posts by publication date instead of popularity",
             "default": "true",
@@ -19418,25 +19569,11 @@ export default {
         "location": "popular.ts",
         "module": () => import('@/routes/daily/popular.ts')
       },
-      "/source/:sourceId/:innerSharedContent?": {
-        "path": "/source/:sourceId/:innerSharedContent?",
+      "/source/:sourceId": {
+        "path": "/source/:sourceId",
         "example": "/daily/source/hn",
         "parameters": {
-          "sourceId": "The source id",
-          "innerSharedContent": {
-            "description": "Where to Fetch inner Shared Posts instead of original",
-            "default": "false",
-            "options": [
-              {
-                "value": "false",
-                "label": "False"
-              },
-              {
-                "value": "true",
-                "label": "True"
-              }
-            ]
-          }
+          "sourceId": "The source id"
         },
         "radar": [
           {
@@ -19453,26 +19590,10 @@ export default {
         "location": "source.ts",
         "module": () => import('@/routes/daily/source.ts')
       },
-      "/squads/:squads/:innerSharedContent?": {
-        "path": "/squads/:squads/:innerSharedContent?",
+      "/squads/:squads": {
+        "path": "/squads/:squads",
         "example": "/daily/squads/watercooler",
         "view": 0,
-        "parameters": {
-          "innerSharedContent": {
-            "description": "Where to Fetch inner Shared Posts instead of original",
-            "default": "false",
-            "options": [
-              {
-                "value": "false",
-                "label": "False"
-              },
-              {
-                "value": "true",
-                "label": "True"
-              }
-            ]
-          }
-        },
         "radar": [
           {
             "source": [
@@ -19488,8 +19609,8 @@ export default {
         "location": "squads.ts",
         "module": () => import('@/routes/daily/squads.ts')
       },
-      "/upvoted/:period?/:innerSharedContent?/:dateSort?": {
-        "path": "/upvoted/:period?/:innerSharedContent?/:dateSort?",
+      "/upvoted/:period?/:dateSort?": {
+        "path": "/upvoted/:period?/:dateSort?",
         "example": "/daily/upvoted/7",
         "view": 0,
         "radar": [
@@ -19500,20 +19621,6 @@ export default {
           }
         ],
         "parameters": {
-          "innerSharedContent": {
-            "description": "Where to Fetch inner Shared Posts instead of original",
-            "default": "false",
-            "options": [
-              {
-                "value": "false",
-                "label": "False"
-              },
-              {
-                "value": "true",
-                "label": "True"
-              }
-            ]
-          },
           "dateSort": {
             "description": "Sort posts by publication date instead of popularity",
             "default": "true",
@@ -19555,8 +19662,8 @@ export default {
         "location": "upvoted.ts",
         "module": () => import('@/routes/daily/upvoted.ts')
       },
-      "/user/:userId/:innerSharedContent?": {
-        "path": "/user/:userId/:innerSharedContent?",
+      "/user/:userId": {
+        "path": "/user/:userId",
         "example": "/daily/user/kramer",
         "radar": [
           {
@@ -19566,22 +19673,6 @@ export default {
             ]
           }
         ],
-        "parameters": {
-          "innerSharedContent": {
-            "description": "Where to Fetch inner Shared Posts instead of original",
-            "default": "false",
-            "options": [
-              {
-                "value": "false",
-                "label": "False"
-              },
-              {
-                "value": "true",
-                "label": "True"
-              }
-            ]
-          }
-        },
         "name": "User Posts",
         "maintainers": [
           "TonyRL"
@@ -19841,6 +19932,7 @@ export default {
               "optional": true
             }
           ],
+          "requirePuppeteer": true,
           "nsfw": true
         },
         "location": "index.ts",
@@ -20255,6 +20347,13 @@ export default {
     "routes": {
       "/channel/:id?": {
         "path": "/channel/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/hk01/channel/391",
+        "parameters": {
+          "id": "子栏目 id, 可在 URL 中找到"
+        },
         "radar": [
           {
             "source": [
@@ -20263,8 +20362,12 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "子栏目",
+        "maintainers": [
+          "hoilc",
+          "Fatpandac",
+          "nczitzk"
+        ],
         "location": "channel.ts",
         "module": () => import('@/routes/hk01/channel.ts')
       },
@@ -20303,6 +20406,13 @@ export default {
       },
       "/issue/:id?": {
         "path": "/issue/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/hk01/issue/649",
+        "parameters": {
+          "id": "专题 id, 可在 URL 中找到"
+        },
         "radar": [
           {
             "source": [
@@ -20311,8 +20421,12 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "专题",
+        "maintainers": [
+          "hoilc",
+          "Fatpandac",
+          "nczitzk"
+        ],
         "location": "issue.ts",
         "module": () => import('@/routes/hk01/issue.ts')
       },
@@ -20349,6 +20463,13 @@ export default {
       },
       "/tag/:id?": {
         "path": "/tag/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/hk01/tag/2787",
+        "parameters": {
+          "id": "标签 id, 可在 URL 中找到"
+        },
         "radar": [
           {
             "source": [
@@ -20357,13 +20478,24 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "标签",
+        "maintainers": [
+          "hoilc",
+          "Fatpandac",
+          "nczitzk"
+        ],
         "location": "tag.ts",
         "module": () => import('@/routes/hk01/tag.ts')
       },
       "/zone/:id?": {
         "path": "/zone/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/hk01/zone/11",
+        "parameters": {
+          "id": "栏目 id, 可在 URL 中找到"
+        },
         "radar": [
           {
             "source": [
@@ -20372,8 +20504,12 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "栏目",
+        "maintainers": [
+          "hoilc",
+          "Fatpandac",
+          "nczitzk"
+        ],
         "location": "zone.ts",
         "module": () => import('@/routes/hk01/zone.ts')
       }
@@ -21207,6 +21343,13 @@ export default {
     "routes": {
       "/thread/:id": {
         "path": "/thread/:id",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/lkong/thread/3100275",
+        "parameters": {
+          "id": "帖子 id, 可在帖子的URL里找到"
+        },
         "radar": [
           {
             "source": [
@@ -21215,7 +21358,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "帖子",
         "maintainers": [
           "nczitzk",
           "ma6254"
@@ -21225,6 +21368,14 @@ export default {
       },
       "/forum/:id?/:digest?": {
         "path": "/forum/:id?/:digest?",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/lkong/forum/60",
+        "parameters": {
+          "id": "分区 id, 可在分区的URL里找到",
+          "digest": "默认获取全部主题，任意值则只获取精华主题"
+        },
         "radar": [
           {
             "source": [
@@ -21233,7 +21384,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "分区",
         "maintainers": [
           "nczitzk",
           "ma6254"
@@ -21820,6 +21971,56 @@ export default {
       "multimedia"
     ],
     "lang": "ja"
+  },
+  "oceanengine": {
+    "routes": {
+      "/index/:keyword": {
+        "path": "/index/:keyword",
+        "categories": [
+          "other"
+        ],
+        "example": "/oceanengine/index/教材",
+        "parameters": {
+          "keyword": "热点关键词"
+        },
+        "description": "爬取巨量算数近 6 个月的抖音指数，解密后提取指数波峰当日的热门搜索关键词，生成为 RSS。可用于追踪新闻热点事件。",
+        "features": {
+          "requirePuppeteer": true,
+          "antiCrawler": true
+        },
+        "name": "抖音指数波峰",
+        "maintainers": [
+          "Jkker"
+        ],
+        "location": "arithmetic-index.tsx",
+        "module": () => import('@/routes/oceanengine/arithmetic-index.tsx')
+      },
+      "/index/:keyword/toutiao": {
+        "path": "/index/:keyword/toutiao",
+        "categories": [
+          "other"
+        ],
+        "example": "/oceanengine/index/教材/toutiao",
+        "parameters": {
+          "keyword": "热点关键词"
+        },
+        "description": "爬取巨量算数近 6 个月的头条指数，解密后提取指数波峰当日的热门搜索关键词，生成为 RSS。可用于追踪新闻热点事件。",
+        "features": {
+          "requirePuppeteer": true,
+          "antiCrawler": true
+        },
+        "name": "头条指数波峰",
+        "maintainers": [
+          "Jkker"
+        ],
+        "location": "arithmetic-index-toutiao.ts",
+        "module": () => import('@/routes/oceanengine/arithmetic-index-toutiao.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "巨量算数 - 算数指数",
+    "url": "trendinsight.oceanengine.com",
+    "lang": "zh-CN"
   },
   "otobanana": {
     "routes": {
@@ -22816,6 +23017,10 @@ export default {
       },
       "/": {
         "path": "/",
+        "categories": [
+          "anime"
+        ],
+        "example": "/vcb-s",
         "radar": [
           {
             "source": [
@@ -22824,7 +23029,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新文章",
         "maintainers": [
           "cxfksword"
         ],
@@ -22976,6 +23181,126 @@ export default {
     "apiRoutes": {},
     "name": "Zuvio",
     "url": "irs.zuvio.com.tw",
+    "lang": "zh-TW"
+  },
+  "4gamers": {
+    "routes": {
+      "/category/:category": {
+        "path": "/category/:category",
+        "categories": [
+          "game"
+        ],
+        "example": "/4gamers/category/352",
+        "parameters": {
+          "category": "分类 ID，可从分类 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.4gamers.com.tw/news/category/:category/:categoryName"
+            ],
+            "target": "/category/:category"
+          }
+        ],
+        "name": "分类",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.4gamers.com.tw/news",
+        "location": "category.ts",
+        "module": () => import('@/routes/4gamers/category.ts')
+      },
+      "/tag/:tag": {
+        "path": "/tag/:tag",
+        "categories": [
+          "game"
+        ],
+        "example": "/4gamers/tag/限時免費",
+        "parameters": {
+          "tag": "标签名，可在标签 URL 中找到"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.4gamers.com.tw/news/tag/:tag"
+            ]
+          }
+        ],
+        "name": "标签",
+        "maintainers": [
+          "hoilc"
+        ],
+        "url": "www.4gamers.com.tw/news",
+        "location": "tag.ts",
+        "module": () => import('@/routes/4gamers/tag.ts')
+      },
+      "/topic/:topic": {
+        "path": "/topic/:topic",
+        "categories": [
+          "game"
+        ],
+        "example": "/4gamers/topic/gentlemen-topic",
+        "parameters": {
+          "topic": "主题，可在首页上方页面内找到"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.4gamers.com.tw/news/option-cfg/:topic"
+            ]
+          }
+        ],
+        "name": "主題",
+        "maintainers": [
+          "bestpika"
+        ],
+        "url": "www.4gamers.com.tw/news",
+        "location": "topic.ts",
+        "module": () => import('@/routes/4gamers/topic.ts')
+      },
+      "/": {
+        "path": "/",
+        "categories": [
+          "game"
+        ],
+        "example": "/4gamers",
+        "radar": [
+          {
+            "source": [
+              "www.4gamers.com.tw/news",
+              "www.4gamers.com.tw/"
+            ],
+            "target": "/"
+          }
+        ],
+        "name": "最新消息",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.4gamers.com.tw/news",
+        "location": "index.ts",
+        "module": () => import('@/routes/4gamers/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "4Gamers",
+    "url": "www.4gamers.com.tw",
     "lang": "zh-TW"
   },
   "douyin": {
@@ -24579,6 +24904,7 @@ export default {
         "categories": [
           "multimedia"
         ],
+        "example": "/141jav/popular/30",
         "name": "通用",
         "maintainers": [
           "cgkings",
@@ -24609,6 +24935,7 @@ export default {
         "categories": [
           "multimedia"
         ],
+        "example": "/141ppv/popular/30",
         "name": "通用",
         "maintainers": [
           "cgkings",
@@ -24995,7 +25322,7 @@ export default {
         ],
         "name": "录取结果",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "url": "offer.1point3acres.com/",
         "description": "::: tip 三个 id 获取方式\n\n1. 打开 <https://offer.1point3acres.com>\n2. 打开控制台\n3. 切换到 Network 面板\n4. 点击 搜索 按钮\n5. 点击 results?ps=15\\&pg=1 POST 请求\n6. 找到 Request Payload 请求参数，例如 `filters: {planyr: \"13\", planmajor: \"1\", outname_w: \"ACADIAU\"}` ，则三个 id 分别为: 13,1,ACADIAU\n\n:::",
@@ -25084,7 +25411,7 @@ export default {
           "bbs"
         ],
         "maintainers": [
-          "EthanWng97",
+          "IvanWng97",
           "DIYgod",
           "nczitzk"
         ],
@@ -26325,10 +26652,19 @@ export default {
     "routes": {
       "/:fid/:sort?": {
         "path": "/:fid/:sort?",
-        "name": "Unknown",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/2cycd/43/dateline",
+        "parameters": {
+          "fid": "板块",
+          "sort": "排序"
+        },
+        "name": "板块",
         "maintainers": [
           "shelken"
         ],
+        "description": "板块（更多板块请自行 [查看](http://www.2cycd.com)）\n\n| 音乐下载（默认） | 动漫下载 | 游戏下载 |\n| ---------------- | -------- | -------- |\n| 43               | 53       | 42       |\n\n排序\n\n| 发布时间排序（默认） | 回复／查看 | 查看  |\n| -------------------- | ---------- | ----- |\n| dateline             | replies    | views |",
         "location": "index.ts",
         "module": () => import('@/routes/2cycd/index.ts')
       }
@@ -26435,6 +26771,11 @@ export default {
     "routes": {
       "/games/:name/:type?": {
         "path": "/games/:name/:type?",
+        "example": "/3dmgame/games/detroitbecomehuman/news",
+        "parameters": {
+          "name": "游戏名字，可以在专题页的 url 中找到",
+          "type": "资讯类型，见下表，默认为 `news`"
+        },
         "radar": [
           {
             "source": [
@@ -26452,6 +26793,7 @@ export default {
           "HenryQW",
           "lyqluis"
         ],
+        "description": "| 新闻 | 攻略 | 资源     |\n| ---- | ---- | -------- |\n| news | gl   | resource |",
         "location": "game.ts",
         "module": () => import('@/routes/3dmgame/game.ts')
       },
@@ -26494,6 +26836,37 @@ export default {
     "name": "3DMGame",
     "url": "3dmgame.com",
     "lang": "zh-CN"
+  },
+  "3gmuseum": {
+    "routes": {
+      "/tempexhibition": {
+        "path": "/tempexhibition",
+        "categories": [
+          "travel"
+        ],
+        "example": "/3gmuseum/tempexhibition",
+        "name": "Temporary Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.3gmuseum.cn/web/column/col5009287.html"
+            ],
+            "target": "/tempexhibition"
+          }
+        ],
+        "location": "exhibition.tsx",
+        "module": () => import('@/routes/3gmuseum/exhibition.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Chongqing China Three Gorges Museum",
+    "url": "www.3gmuseum.cn",
+    "zh": {
+      "name": "重庆中国三峡博物馆"
+    }
   },
   "3kns": {
     "routes": {
@@ -26747,6 +27120,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "study"
+        ],
+        "example": "/50forum",
         "radar": [
           {
             "source": [
@@ -26761,7 +27138,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "专家文章",
         "maintainers": [
           "sddiky"
         ],
@@ -27077,6 +27454,10 @@ export default {
       },
       "/news/:site?/:id?/:keyword?": {
         "path": "/news/:site?/:id?/:keyword?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/6park/news",
         "radar": [
           {
             "source": [
@@ -27092,11 +27473,11 @@ export default {
           "cscnk52"
         ],
         "parameters": {
-          "site": "分站，可选newspark、local，默认为 newspark",
-          "id": "栏目 id，可选，默认为空",
-          "keyword": "关键词，可选，默认为空"
+          "site": "分站，见下表，默认为 newspark",
+          "id": "栏目 id",
+          "keyword": "关键字"
         },
-        "description": "::: tip 提示\n若订阅 [时政](https://www.6parknews.com/newspark/index.php?type=1)，其网址为 <https://www.6parknews.com/newspark/index.php?type=1>，其中 `newspark` 为分站，`1` 为栏目 id。\n若订阅 [美国](https://local.6parknews.com/index.php?type_id=1)，其网址为 <https://local.6parknews.com/index.php?type_id=1>，其中 `local` 为分站，`1` 为栏目 id。\n:::",
+        "description": "分站\n\n| newspark | local |\n| -------- | ----- |\n\n::: tip 提示\n若订阅 [时政](https://www.6parknews.com/newspark/index.php?type=1)，其网址为 <https://www.6parknews.com/newspark/index.php?type=1>，其中 `newspark` 为分站，`1` 为栏目 id。\n若订阅 [美国](https://local.6parknews.com/index.php?type_id=1)，其网址为 <https://local.6parknews.com/index.php?type_id=1>，其中 `local` 为分站，`1` 为栏目 id。\n:::",
         "location": "news.ts",
         "module": () => import('@/routes/6park/news.ts')
       }
@@ -27517,21 +27898,6 @@ export default {
     "url": "7mmtv.tv",
     "lang": "zh-CN"
   },
-  "8world": {
-    "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/8world/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "8 视界",
-    "url": "8world.com",
-    "lang": "zh-CN"
-  },
   "91porn": {
     "routes": {
       "/author/:uid/:lang?": {
@@ -27854,7 +28220,9 @@ export default {
           }
         ],
         "name": "话题",
-        "maintainers": [],
+        "maintainers": [
+          "nczitzk"
+        ],
         "url": "aamacau.com/",
         "description": "| 即時報道     | 每週專題    | 藝文爛鬼樓 | 論盡紙本 | 新聞事件 | 特別企劃 |\n| ------------ | ----------- | ---------- | -------- | -------- | -------- |\n| breakingnews | weeklytopic | culture    | press    | case     | special  |\n\n::: tip\n除了直接订阅分类全部文章（如 [每週專題](https://aamacau.com/topics/weeklytopic) 的对应路由为 [/aamacau/weeklytopic](https://rsshub.app/aamacau/weeklytopic)），你也可以订阅特定的专题，如 [【9-12】2021 澳門立法會選舉](https://aamacau.com/topics/【9-12】2021澳門立法會選舉) 的对应路由为 [/【9-12】2021 澳門立法會選舉](https://rsshub.app/aamacau/【9-12】2021澳門立法會選舉)。\n\n分类中的专题也可以单独订阅，如 [新聞事件](https://aamacau.com/topics/case) 中的 [「武漢肺炎」新聞檔案](https://aamacau.com/topics/case/「武漢肺炎」新聞檔案) 对应路由为 [/case/「武漢肺炎」新聞檔案](https://rsshub.app/aamacau/case/「武漢肺炎」新聞檔案)。\n\n同理，其他分类同上例子也可以订阅特定的单独专题。\n:::",
         "location": "index.ts",
@@ -27904,6 +28272,10 @@ export default {
     "routes": {
       "/nsfw": {
         "path": "/nsfw",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/abskoop/nsfw",
         "radar": [
           {
             "source": [
@@ -27925,6 +28297,10 @@ export default {
       },
       "/": {
         "path": "/",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/abskoop",
         "radar": [
           {
             "source": [
@@ -28337,6 +28713,16 @@ export default {
     "routes": {
       "/journal/:id": {
         "path": "/journal/:id",
+        "categories": [
+          "journal"
+        ],
+        "example": "/acs/journal/jacsat",
+        "parameters": {
+          "id": "Journal id, can be found in URL"
+        },
+        "features": {
+          "supportScihub": true
+        },
         "radar": [
           {
             "source": [
@@ -28345,10 +28731,11 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "Journal",
         "maintainers": [
           "nczitzk"
         ],
+        "description": "::: tip\nSee [Browse Content](https://pubs.acs.org)\n:::",
         "location": "journal.tsx",
         "module": () => import('@/routes/acs/journal.tsx')
       }
@@ -30223,7 +30610,9 @@ export default {
           "supportScihub": false
         },
         "name": "频道、专栏、用户",
-        "maintainers": [],
+        "maintainers": [
+          "bigfei"
+        ],
         "description": "| type    | 说明 |\n| ------- | ---- |\n| channel | 频道 |\n| blog    | 专栏 |\n| u       | 用户 |",
         "location": "index.ts",
         "module": () => import('@/routes/aijishu/index.ts')
@@ -30423,26 +30812,17 @@ export default {
         "location": "thinktank.ts",
         "module": () => import('@/routes/aisixiang/thinktank.ts')
       },
-      "/ranking/:id?/:period?": {
-        "path": [
-          "/ranking/:id?/:period?",
-          "/toplist/:id?/:period?"
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "HenryQW",
-          "nczitzk"
-        ],
-        "description": "| 文章点击排行 | 最近更新文章 | 文章推荐排行 |\n| ------------ | ------------ | ------------ |\n| 1            | 10           | 11           |",
-        "location": "toplist.ts",
-        "module": () => import('@/routes/aisixiang/toplist.ts')
-      },
       "/toplist/:id?/:period?": {
-        "path": [
-          "/ranking/:id?/:period?",
-          "/toplist/:id?/:period?"
+        "path": "/toplist/:id?/:period?",
+        "categories": [
+          "reading"
         ],
-        "name": "Unknown",
+        "example": "/aisixiang/toplist/1/7",
+        "parameters": {
+          "id": "类型",
+          "period": "范围, 仅适用于点击排行榜, 可选一天(1)，一周(7)，一月(30)，所有(-1)，默认为一天"
+        },
+        "name": "排行",
         "maintainers": [
           "HenryQW",
           "nczitzk"
@@ -30838,23 +31218,6 @@ export default {
     "url": "developer.aliyun.com",
     "lang": "zh-CN"
   },
-  "aljazeera": {
-    "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "location": "index.tsx",
-        "module": () => import('@/routes/aljazeera/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Aljazeera",
-    "url": "aljazeera.com",
-    "lang": "en"
-  },
   "ally": {
     "routes": {
       "/rail/:category?/:topic?": {
@@ -31079,7 +31442,7 @@ export default {
         "radar": [
           {
             "source": [
-              "www.alwayscontrol.com.cn/zh-CN/news/list"
+              "www.alwayscontrol.com.cn/zh-CN/about/news"
             ],
             "target": "/news"
           }
@@ -31393,7 +31756,15 @@ export default {
     "routes": {
       "/awsblogs/:locale?": {
         "path": "/awsblogs/:locale?",
-        "name": "Unknown",
+        "categories": [
+          "blog"
+        ],
+        "example": "/amazon/awsblogs",
+        "parameters": {
+          "locale": "Blog posts in a specified language, only the following options are supported. Default `zh_CN`"
+        },
+        "description": "| zh\\_CN  | en\\_US  | fr\\_FR | de\\_DE | ja\\_JP   | ko\\_KR | pt\\_BR     | es\\_ES  | ru\\_RU  | id\\_ID     | tr\\_TR  |\n| ------- | ------- | ------ | ------ | -------- | ------ | ---------- | ------- | ------- | ---------- | ------- |\n| Chinese | English | French | German | Japanese | Korean | Portuguese | Spanish | Russian | Indonesian | Turkish |",
+        "name": "AWS Blogs",
         "maintainers": [
           "HankChow"
         ],
@@ -31417,7 +31788,7 @@ export default {
         },
         "name": "Kindle Software Updates",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "location": "kindle-software-updates.tsx",
         "module": () => import('@/routes/amazon/kindle-software-updates.tsx')
@@ -32619,8 +32990,19 @@ export default {
     "routes": {
       "/:region/:type?": {
         "path": "/:region/:type?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "other"
+        ],
+        "example": "/aqara/en/news",
+        "parameters": {
+          "region": "地区 id，可在对应新闻页 URL 中找到，默认为 en，即 Global",
+          "type": "类型，见下表，默认为 news，即新闻"
+        },
+        "description": "| 中国 / 大陆 | 대한민국 | Europe | United States | Russia | Global |\n| ----------- | -------- | ------ | ------------- | ------ | ------ |\n| cn          | kr       | eu     | us            | ru     | en     |\n\n| 新闻 | 博客 |\n| ---- | ---- |\n| news | blog |",
+        "name": "新闻、博客",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "region.ts",
         "module": () => import('@/routes/aqara/region.ts')
       },
@@ -32651,15 +33033,31 @@ export default {
       },
       "/cn/news": {
         "path": "/cn/news",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "other"
+        ],
+        "example": "/aqara/cn/news",
+        "name": "新闻",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "news.ts",
         "module": () => import('@/routes/aqara/news.ts')
       },
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "other"
+        ],
+        "example": "/aqara/en/category/press-release",
+        "parameters": {
+          "path": "路径，默认为首页"
+        },
+        "description": "路径处填写对应页面 URL 中 `https://aqara.com/` 后的字段，形如 `:region/category/:id` 或 `:region/tag/:id`。\n\n| 参数   | 说明                                                     |\n| ------ | -------------------------------------------------------- |\n| region | 地区 id，可在对应分类页 URL 中找到，默认为 en，即 Global |\n| id     | 分类 id 或标签 id，可在对应分类页或标签页 URL 中找到     |",
+        "name": "分类、标签",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "post.tsx",
         "module": () => import('@/routes/aqara/post.tsx')
       }
@@ -32698,7 +33096,7 @@ export default {
         ],
         "name": "New Arrivals",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "description": "Country\n\n| United States | Canada | United Kingdom |\n| ------------- | ------ | -------------- |\n| us            | ca     | gb             |\n\ngender\n\n| male | female |\n| ---- | ------ |\n| mens | womens |\n\n::: tip\nParameter `country` can be found within the url of `Arcteryx` website.\n:::",
         "location": "new-arrivals.ts",
@@ -32731,7 +33129,7 @@ export default {
         ],
         "name": "Outlet",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "description": "Country\n\n| United States | Canada | United Kingdom |\n| ------------- | ------ | -------------- |\n| us            | ca     | gb             |\n\ngender\n\n| male | female |\n| ---- | ------ |\n| mens | womens |\n\n::: tip\nParameter `country` can be found within the url of `Arcteryx` website.\n:::",
         "location": "outlet.ts",
@@ -32762,7 +33160,7 @@ export default {
         ],
         "name": "Regear New Arrivals",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "url": "regear.arcteryx.com/shop/new-arrivals",
         "location": "regear-new-arrivals.tsx",
@@ -33483,33 +33881,6 @@ export default {
     "url": "asianfanfics.com",
     "lang": "en"
   },
-  "asiantolick": {
-    "routes": {
-      "/:category{.+}?": {
-        "path": "/:category{.+}?",
-        "radar": [
-          {
-            "source": [
-              "asiantolick.com/"
-            ],
-            "target": ""
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [],
-        "url": "asiantolick.com/",
-        "features": {
-          "nsfw": true
-        },
-        "location": "index.ts",
-        "module": () => import('@/routes/asiantolick/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Asian to lick",
-    "url": "asiantolick.com",
-    "lang": "zh-CN"
-  },
   "asus": {
     "routes": {
       "/bios/:model/:lang?": {
@@ -33882,10 +34253,20 @@ export default {
   },
   "bad": {
     "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/bad",
+        "parameters": {
+          "path": "路径，默认为首页热门"
+        },
+        "description": "若订阅 [每日热点 - 最新](https://bad.news/tag/每日热点/sort-new)，网址为 `https://bad.news/tag/每日热点/sort-new`。截取 `https://bad.news` 到末尾的部分 `/tag/每日热点/sort-new` 作为参数，此时路由为 [`/bad/tag/每日热点/sort-new`](https://rsshub.app/bad/tag/每日热点/sort-new)。\n\n若订阅子分类 [大陆资讯 - 热门](https://bad.news/tag/大陆资讯/sort-hot)，网址为 `https://bad.news/tag/大陆资讯/sort-hot`。截取 `https://bad.news` 到末尾的部分 `/tag/大陆资讯/sort-hot` 作为参数，路由为 [`/bad/tag/大陆资讯/sort-hot`](https://rsshub.app/bad/tag/大陆资讯/sort-hot)。",
+        "name": "通用",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "index.ts",
         "module": () => import('@/routes/bad/index.ts')
       }
@@ -35594,10 +35975,23 @@ export default {
   },
   "bast": {
     "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/bast/col/col31266",
+        "parameters": {
+          "path": "路径，默认为通知公告"
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "name": "通用",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "路径处填写对应页面 URL 中 `https://www.bast.net.cn/` 后的字段。下面是两个例子。\n\n若订阅 [通知公告](https://www.bast.net.cn/col/col31266) 则将对应页面 URL <https://www.bast.net.cn/col/col31266> 中 `https://www.bast.net.cn/` 后的字段 `col/col31266` 作为路径填入。此时路由为 [`/bast/col/col31266`](https://rsshub.app/bast/col/col31266)\n\n若订阅 [学术动态](https://www.bast.net.cn/col/col31530) 则将对应页面 URL <https://www.bast.net.cn/col/col31530> 中 `https://www.bast.net.cn/` 后的字段 `col/col31530` 作为路径填入。此时路由为 [`/bast/col/col31530`](https://rsshub.app/bast/col/col31530)\n\n如果路由符合 `/col/colXXXXX` 的格式，可以由 [`/bast/col/col31266`](https://rsshub.app/bast/col/col31266) 精简为 [`/bast/31266`](https://rsshub.app/bast/31266)",
         "location": "index.ts",
         "module": () => import('@/routes/bast/index.ts')
       }
@@ -36020,31 +36414,6 @@ export default {
     "url": "binance.com",
     "lang": "en"
   },
-  "biodiscover": {
-    "routes": {
-      "/:channel?": {
-        "path": "/:channel?",
-        "radar": [
-          {
-            "source": [
-              "www.biodiscover.com/:channel"
-            ],
-            "target": "/:channel"
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "aidistan"
-        ],
-        "location": "index.ts",
-        "module": () => import('@/routes/biodiscover/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "biodiscover.com 生物探索",
-    "url": "www.biodiscover.com",
-    "lang": "zh-CN"
-  },
   "bioone": {
     "routes": {
       "/featured": {
@@ -36118,10 +36487,23 @@ export default {
   },
   "biquge": {
     "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:url{.+}": {
+        "path": "/:url{.+}",
+        "categories": [
+          "reading"
+        ],
+        "example": "/biquge/http://www.biqu5200.net/0_7/",
+        "parameters": {
+          "url": "小说 Url，即对应小说详情页的 Url，可在地址栏中找到"
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "name": "小说",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n\n#### 使用方法\n\n如订阅 [《大主宰》](http://www.biqu5200.net/0_7/)，此时在 [biqu5200.net](http://www.biqu5200.net) 中查询得到对应小说详情页 URL 为 `http://www.biqu5200.net/0_7/`。此时，路由为 [`/biquge/http://www.biqu5200.net/0_7/`](https://rsshub.app/biquge/http://www.biqu5200.net/0_7/)\n\n又如同样订阅 [《大主宰》](https://www.shuquge.com/txt/70/index.html)，此时在 [shuquge.com](https://www.shuquge.com) 中查询得到对应小说详情页 URL 为 `https://www.shuquge.com/txt/70/index.html`。此时，把末尾的 `index.html` 去掉，路由为 [`/biquge/https://www.shuquge.com/txt/70/`](https://rsshub.app/biquge/https://www.shuquge.com/txt/70/)\n\n#### 关于章节数\n\n路由默认返回最新 **1** 个章节，如有需要一次性获取多个章节，可在路由后指定 `limit` 参数。如上面的例子：订阅 [《大主宰》](http://www.biqu5200.net/0_7/) 并获取最新的 **10** 个章节。此时，路由为 [`/biquge/http://www.biqu5200.net/0_7/?limit=10`](https://rsshub.app/biquge/http://www.biqu5200.net/0_7/?limit=10)\n\n需要注意的是，单次获取的所有章节更新时间统一设定为最新章节的更新时间。也就是说，获取最新的 **10** 个章节时，除了最新 **1** 个章节的更新时间是准确的（和网站一致的），其他 **9** 个章节的更新时间是不准确的。\n\n另外，若设置获取章节数目过多，可能会触发网站反爬，导致路由不可用。\n:::\n\n::: warning\n上方列举的网址可能部分不可用，这取决于该网站的维护者是否持续运营网站。请选择可以正常访问的网址，获取更新的前提是该网站可以正常访问。\n:::",
         "location": "index.ts",
         "module": () => import('@/routes/biquge/index.ts')
       }
@@ -37152,8 +37534,18 @@ export default {
       },
       "/fdy/:path{.+}?": {
         "path": "/fdy/:path{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/bnu/fdy/tzgg/dwjs",
+        "parameters": {
+          "path": "路径，默认为 `tzgg`"
+        },
+        "name": "党委学生工作部辅导员发展中心",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "description": "路径处填写对应页面 URL 中 `https://fdy.bnu.edu.cn/` 和 `/index.htm` 之间的字段。下面是一个例子。\n\n若订阅 [通知公告 > 队伍建设](https://fdy.bnu.edu.cn/tzgg/dwjs/index.htm) 则将对应页面 URL <https://fdy.bnu.edu.cn/tzgg/dwjs/index.htm> 中 `https://fdy.bnu.edu.cn/` 和 `/index.htm` 之间的字段 `tzgg/dwjs` 作为路径填入。此时路由为 [`/bnu/fdy/tzgg/dwjs`](https://rsshub.app/bnu/fdy/tzgg/dwjs)",
         "location": "fdy.ts",
         "module": () => import('@/routes/bnu/fdy.ts')
       },
@@ -37203,6 +37595,13 @@ export default {
       },
       "/lib/:category?": {
         "path": "/lib/:category?",
+        "categories": [
+          "university"
+        ],
+        "example": "/bnu/lib/zydt",
+        "parameters": {
+          "category": "分类，见下表，默认为 `zydt`"
+        },
         "radar": [
           {
             "source": [
@@ -37211,10 +37610,11 @@ export default {
             "target": "/lib/:category"
           }
         ],
-        "name": "Unknown",
+        "name": "图书馆通知",
         "maintainers": [
           "TonyRL"
         ],
+        "description": "| 资源动态 | 新闻动态 | 系列讲座 |\n| -------- | -------- | -------- |\n| zydt     | xwdt     | xljz1    |",
         "location": "lib.ts",
         "module": () => import('@/routes/bnu/lib.ts')
       },
@@ -38240,10 +38640,13 @@ export default {
   },
   "bwsg": {
     "routes": {
-      "*": {
+      "/:path{.+}?": {
         "name": "Angebote",
         "example": "/bwsg/_vermarktungsart=miete&_objektart=wohnung&_zimmer=2,3&_wohnflaeche=45,70&_plz=1210,1220",
-        "path": "*",
+        "path": "/:path{.+}?",
+        "parameters": {
+          "path": "Query parameters of the search, without the leading `?`, see the description below"
+        },
         "maintainers": [
           "sk22"
         ],
@@ -38294,10 +38697,67 @@ export default {
     "url": "byau.edu.cn",
     "lang": "zh-CN"
   },
+  "byteclicks": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/byteclicks",
+        "radar": [
+          {
+            "source": [
+              "byteclicks.com/"
+            ]
+          }
+        ],
+        "name": "首页",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "byteclicks.com/",
+        "location": "index.ts",
+        "module": () => import('@/routes/byteclicks/index.ts')
+      },
+      "/tag/:tag": {
+        "path": "/tag/:tag",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/byteclicks/tag/人工智能",
+        "parameters": {
+          "tag": "标签，可在URL中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "byteclicks.com/tag/:tag"
+            ]
+          }
+        ],
+        "name": "标签",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "byteclicks.com/",
+        "location": "tag.ts",
+        "module": () => import('@/routes/byteclicks/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "字节点击",
+    "url": "byteclicks.com",
+    "lang": "zh-CN"
+  },
   "bytes": {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "programming"
+        ],
+        "example": "/bytes",
         "radar": [
           {
             "source": [
@@ -38307,10 +38767,11 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Your weekly dose of JS",
         "maintainers": [
           "meixger"
         ],
+        "description": "Staying informed on the JavaScript ecosystem has never been so entertaining. Delivered every Monday and Thursday, for free.",
         "url": "bytes.dev/archives",
         "location": "bytes.ts",
         "module": () => import('@/routes/bytes/bytes.ts')
@@ -38403,7 +38864,15 @@ export default {
     "routes": {
       "/:category?": {
         "path": "/:category?",
-        "name": "Unknown",
+        "categories": [
+          "other"
+        ],
+        "example": "/caam/1",
+        "parameters": {
+          "category": "分类，见下表，默认为首页"
+        },
+        "description": "| [首页](http://www.caam.org.cn/chn/1/cate_1/list_1.html) | [行业要闻](http://www.caam.org.cn/chn/1/cate_2/list_1.html) | [协会活动](http://www.caam.org.cn/chn/1/cate_3/list_1.html) | [会员专区](http://www.caam.org.cn/chn/1/cate_4/list_1.html) | [协会概况](http://www.caam.org.cn/chn/1/cate_5/list_1.html) | [协会概况 - 会员单位](http://www.caam.org.cn/chn/1/cate_6/list_1.html) |\n| ------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------- |\n| 1                                                       | 2                                                           | 3                                                           | 4                                                           | 5                                                           | 6                                                                      |\n\n| [协会概况 - 协会简介](http://www.caam.org.cn/chn/1/cate_7/list_1.html) | [协会概况 - 协会章程](http://www.caam.org.cn/chn/1/cate_8/list_1.html) | [协会概况 - 组织机构](http://www.caam.org.cn/chn/1/cate_9/list_1.html) | [协会概况 - 主要职责](http://www.caam.org.cn/chn/1/cate_10/list_1.html) | [协会概况 - 协会荣誉](http://www.caam.org.cn/chn/1/cate_11/list_1.html) | [协会概况 - 分支机构](http://www.caam.org.cn/chn/1/cate_12/list_1.html) |\n| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |\n| 7                                                                      | 8                                                                      | 9                                                                      | 10                                                                      | 11                                                                      | 12                                                                      |\n\n| [协会概况 - 分支机构 - 机构介绍](http://www.caam.org.cn/chn/1/cate_13/list_1.html) | [协会概况 - 分支机构 - 管理办法](http://www.caam.org.cn/chn/1/cate_14/list_1.html) | [协会概况 - 分支机构 - 业务范围](http://www.caam.org.cn/chn/1/cate_15/list_1.html) | [协会工作](http://www.caam.org.cn/chn/1/cate_16/list_1.html) | [协会工作 - 协会动态](http://www.caam.org.cn/chn/1/cate_17/list_1.html) | [协会工作 - 分支机构动态](http://www.caam.org.cn/chn/1/cate_18/list_1.html) |\n| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |\n| 13                                                                                 | 14                                                                                 | 15                                                                                 | 16                                                           | 17                                                                      | 18                                                                          |\n\n| [协会工作 - 重点工作](http://www.caam.org.cn/chn/1/cate_19/list_1.html) | [协会工作 - 法规标准](http://www.caam.org.cn/chn/1/cate_20/list_1.html) | [协会工作 - 信用服务](http://www.caam.org.cn/chn/1/cate_21/list_1.html) | [协会工作 - 会员服务](http://www.caam.org.cn/chn/1/cate_22/list_1.html) | [协会工作 - 政策研究](http://www.caam.org.cn/chn/1/cate_23/list_1.html) | [协会工作 - 协调合作](http://www.caam.org.cn/chn/1/cate_24/list_1.html) |\n| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |\n| 19                                                                      | 20                                                                      | 21                                                                      | 22                                                                      | 23                                                                      | 24                                                                      |\n\n| [协会工作 - 展会信息](http://www.caam.org.cn/chn/1/cate_25/list_1.html) | [协会工作 - 国际合作](http://www.caam.org.cn/chn/1/cate_26/list_1.html) | [协会工作 - 会员动态](http://www.caam.org.cn/chn/1/cate_27/list_1.html) | [协会工作 - 行业培训](http://www.caam.org.cn/chn/1/cate_28/list_1.html) | [统计数据](http://www.caam.org.cn/chn/1/cate_29/list_1.html) | [统计数据 - 产销](http://www.caam.org.cn/chn/1/cate_30/list_1.html) |\n| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------- |\n| 25                                                                      | 26                                                                      | 27                                                                      | 28                                                                      | 29                                                           | 30                                                                  |\n\n| [统计数据 - 产销 - 汽车](http://www.caam.org.cn/chn/1/cate_31/list_1.html) | [统计数据 - 产销 - 摩托车](http://www.caam.org.cn/chn/1/cate_32/list_1.html) | [统计数据 - 产销 - 零部件](http://www.caam.org.cn/chn/1/cate_33/list_1.html) | [统计数据 - 进出口](http://www.caam.org.cn/chn/1/cate_34/list_1.html) | [统计数据 - 进出口 - 汽车](http://www.caam.org.cn/chn/1/cate_35/list_1.html) | [统计数据 - 进出口 - 摩托车](http://www.caam.org.cn/chn/1/cate_36/list_1.html) |\n| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |\n| 31                                                                         | 32                                                                           | 33                                                                           | 34                                                                    | 35                                                                           | 36                                                                             |\n\n| [统计数据 - 进出口 - 零部件](http://www.caam.org.cn/chn/1/cate_37/list_1.html) | [统计数据 - 数据分析](http://www.caam.org.cn/chn/1/cate_38/list_1.html) | [统计数据 - 数据分析 - 国内数据](http://www.caam.org.cn/chn/1/cate_39/list_1.html) | [统计数据 - 数据分析 - 国外数据](http://www.caam.org.cn/chn/1/cate_40/list_1.html) | [统计数据 - 亚洲](http://www.caam.org.cn/chn/1/cate_41/list_1.html) | [统计数据 - 亚洲 - 日本](http://www.caam.org.cn/chn/1/cate_42/list_1.html) |\n| ------------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- |\n| 37                                                                             | 38                                                                      | 39                                                                                 | 40                                                                                 | 41                                                                  | 42                                                                         |\n\n| [统计数据 - 亚洲 - 泰国](http://www.caam.org.cn/chn/1/cate_43/list_1.html) | [统计数据 - 亚洲 - 印度](http://www.caam.org.cn/chn/1/cate_44/list_1.html) | [统计数据 - 亚洲 - 印尼](http://www.caam.org.cn/chn/1/cate_45/list_1.html) | [统计数据 - 亚洲 - 韩国](http://www.caam.org.cn/chn/1/cate_46/list_1.html) | [统计数据 - 亚洲 - 巴基斯坦](http://www.caam.org.cn/chn/1/cate_47/list_1.html) | [统计数据 - 亚洲 - 其他](http://www.caam.org.cn/chn/1/cate_48/list_1.html) |\n| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |\n| 43                                                                         | 44                                                                         | 45                                                                         | 46                                                                         | 47                                                                             | 48                                                                         |\n\n| [统计数据 - 欧洲](http://www.caam.org.cn/chn/1/cate_49/list_1.html) | [统计数据 - 欧洲 - 总汇](http://www.caam.org.cn/chn/1/cate_50/list_1.html) | [统计数据 - 欧洲 - 德国](http://www.caam.org.cn/chn/1/cate_51/list_1.html) | [统计数据 - 欧洲 - 英国](http://www.caam.org.cn/chn/1/cate_52/list_1.html) | [统计数据 - 欧洲 - 法国](http://www.caam.org.cn/chn/1/cate_53/list_1.html) | [统计数据 - 欧洲 - 意大利](http://www.caam.org.cn/chn/1/cate_54/list_1.html) |\n| ------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |\n| 49                                                                  | 50                                                                         | 51                                                                         | 52                                                                         | 53                                                                         | 54                                                                           |\n\n| [统计数据 - 欧洲 - 西班牙](http://www.caam.org.cn/chn/1/cate_55/list_1.html) | [统计数据 - 大洋洲](http://www.caam.org.cn/chn/1/cate_56/list_1.html) | [统计数据 - 大洋洲 - 澳大利亚](http://www.caam.org.cn/chn/1/cate_57/list_1.html) | [统计数据 - 大洋洲 - 新西兰](http://www.caam.org.cn/chn/1/cate_58/list_1.html) | [统计数据 - 北美洲](http://www.caam.org.cn/chn/1/cate_59/list_1.html) | [统计数据 - 北美洲 - 总汇](http://www.caam.org.cn/chn/1/cate_60/list_1.html) |\n| ---------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |\n| 55                                                                           | 56                                                                    | 57                                                                               | 58                                                                             | 59                                                                    | 60                                                                           |\n\n| [统计数据 - 北美洲 - 美国](http://www.caam.org.cn/chn/1/cate_61/list_1.html) | [统计数据 - 南美洲](http://www.caam.org.cn/chn/1/cate_62/list_1.html) | [统计数据 - 南美洲 - 阿根廷](http://www.caam.org.cn/chn/1/cate_63/list_1.html) | [统计数据 - 南美洲 - 巴西](http://www.caam.org.cn/chn/1/cate_64/list_1.html) | [统计数据 - 南美洲 - 其他](http://www.caam.org.cn/chn/1/cate_65/list_1.html) | [统计数据 - 非洲](http://www.caam.org.cn/chn/1/cate_66/list_1.html) |\n| ---------------------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------- |\n| 61                                                                           | 62                                                                    | 63                                                                             | 64                                                                           | 65                                                                           | 66                                                                  |\n\n| [文件公告](http://www.caam.org.cn/chn/1/cate_67/list_1.html) | [文件公告 - 协会文件](http://www.caam.org.cn/chn/1/cate_68/list_1.html) | [文件公告 - 公示公告](http://www.caam.org.cn/chn/1/cate_69/list_1.html) | [文件公告 - 会议通知](http://www.caam.org.cn/chn/1/cate_70/list_1.html) | [文件公告 - 分支机构文件](http://www.caam.org.cn/chn/1/cate_71/list_1.html) | [专题子站](http://www.caam.org.cn/chn/1/cate_72/list_1.html) |\n| ------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------ |\n| 67                                                           | 68                                                                      | 69                                                                      | 70                                                                      | 71                                                                          | 72                                                           |\n\n| [专题子站 - 网站专题](http://www.caam.org.cn/chn/1/cate_73/list_1.html) | [专题子站 - 分支机构网站](http://www.caam.org.cn/chn/1/cate_74/list_1.html) | [专题子站 - 子网站](http://www.caam.org.cn/chn/1/cate_75/list_1.html) | [信息资料](http://www.caam.org.cn/chn/1/cate_76/list_1.html) | [信息资料 - 信息资料](http://www.caam.org.cn/chn/1/cate_77/list_1.html) | [信息资料 - 当前最热](http://www.caam.org.cn/chn/1/cate_78/list_1.html) |\n| ----------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |\n| 73                                                                      | 74                                                                          | 75                                                                    | 76                                                           | 77                                                                      | 78                                                                      |\n\n| [行业动态](http://www.caam.org.cn/chn/1/cate_79/list_1.html) | [行业动态 - 政府资讯](http://www.caam.org.cn/chn/1/cate_80/list_1.html) | [行业动态 - 企业新闻](http://www.caam.org.cn/chn/1/cate_81/list_1.html) | [行业动态 - 行业动态](http://www.caam.org.cn/chn/1/cate_82/list_1.html) | [行业动态 - 车市动态](http://www.caam.org.cn/chn/1/cate_83/list_1.html) | [行业动态 - 国内召回](http://www.caam.org.cn/chn/1/cate_84/list_1.html) |\n| ------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |\n| 79                                                           | 80                                                                      | 81                                                                      | 82                                                                      | 83                                                                      | 84                                                                      |\n\n| [行业动态 - 国外召回](http://www.caam.org.cn/chn/1/cate_85/list_1.html) | [行业动态 - 汽车新技术](http://www.caam.org.cn/chn/1/cate_86/list_1.html) | [行业动态 - 市场环境](http://www.caam.org.cn/chn/1/cate_87/list_1.html) | [行业动态 - 国际动态](http://www.caam.org.cn/chn/1/cate_88/list_1.html) | [行业动态 - 国际动态 - 新闻](http://www.caam.org.cn/chn/1/cate_89/list_1.html) | [行业动态 - 国际动态 - 企业](http://www.caam.org.cn/chn/1/cate_90/list_1.html) |\n| ----------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |\n| 85                                                                      | 86                                                                        | 87                                                                      | 88                                                                      | 89                                                                             | 90                                                                             |\n\n| [行业动态 - 产品资讯](http://www.caam.org.cn/chn/1/cate_91/list_1.html) | [行业动态 - 相关行业](http://www.caam.org.cn/chn/1/cate_92/list_1.html) | [行业政策](http://www.caam.org.cn/chn/1/cate_93/list_1.html) | [行业政策 - 最新政策](http://www.caam.org.cn/chn/1/cate_95/list_1.html) | [行业政策 - 政策解读](http://www.caam.org.cn/chn/1/cate_96/list_1.html) | [行业政策 - 国家政策](http://www.caam.org.cn/chn/1/cate_97/list_1.html) |\n| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |\n| 91                                                                      | 92                                                                      | 93                                                           | 95                                                                      | 96                                                                      | 97                                                                      |\n\n| [行业政策 - 国家政策 - 产业政策](http://www.caam.org.cn/chn/1/cate_98/list_1.html) | [行业政策 - 国家政策 - 新能源汽车](http://www.caam.org.cn/chn/1/cate_99/list_1.html) | [行业政策 - 国家政策 - 节能环保](http://www.caam.org.cn/chn/1/cate_100/list_1.html) | [行业政策 - 国家政策 - 税收](http://www.caam.org.cn/chn/1/cate_101/list_1.html) | [行业政策 - 国家政策 - 进出口](http://www.caam.org.cn/chn/1/cate_102/list_1.html) | [行业政策 - 国家政策 - 其他](http://www.caam.org.cn/chn/1/cate_103/list_1.html) |\n| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |\n| 98                                                                                 | 99                                                                                   | 100                                                                                 | 101                                                                             | 102                                                                               | 103                                                                             |\n\n| [行业政策 - 地方政策](http://www.caam.org.cn/chn/1/cate_104/list_1.html) | [行业政策 - 相关政策](http://www.caam.org.cn/chn/1/cate_105/list_1.html) | [行业政策 - 国外政策](http://www.caam.org.cn/chn/1/cate_106/list_1.html) | [行业政策 - 政策报道](http://www.caam.org.cn/chn/1/cate_107/list_1.html) | [标准法规](http://www.caam.org.cn/chn/1/cate_108/list_1.html) | [标准法规 - 标准政策](http://www.caam.org.cn/chn/1/cate_109/list_1.html) |\n| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------- | ------------------------------------------------------------------------ |\n| 104                                                                      | 105                                                                      | 106                                                                      | 107                                                                      | 108                                                           | 109                                                                      |\n\n| [标准法规 - 国家标准](http://www.caam.org.cn/chn/1/cate_110/list_1.html) | [标准法规 - 行业标准](http://www.caam.org.cn/chn/1/cate_111/list_1.html) | [标准法规 - 标准动态](http://www.caam.org.cn/chn/1/cate_112/list_1.html) | [标准法规 - 国际标准](http://www.caam.org.cn/chn/1/cate_113/list_1.html) | [标准法规 - 标准资料](http://www.caam.org.cn/chn/1/cate_114/list_1.html) | [基础资料](http://www.caam.org.cn/chn/1/cate_115/list_1.html) |\n| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------- |\n| 110                                                                      | 111                                                                      | 112                                                                      | 113                                                                      | 114                                                                      | 115                                                           |\n\n| [信息资料 - 公众资料](http://www.caam.org.cn/chn/1/cate_116/list_1.html) | [信息资料 - 成品油](http://www.caam.org.cn/chn/1/cate_117/list_1.html) | [信息资料 - 成品油 - 国内市场](http://www.caam.org.cn/chn/1/cate_118/list_1.html) | [信息资料 - 成品油 - 国际市场](http://www.caam.org.cn/chn/1/cate_119/list_1.html) | [信息资料 - 保有量](http://www.caam.org.cn/chn/1/cate_120/list_1.html) | [信息资料 - 公路交通](http://www.caam.org.cn/chn/1/cate_121/list_1.html) |\n| ------------------------------------------------------------------------ | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |\n| 116                                                                      | 117                                                                    | 118                                                                               | 119                                                                               | 120                                                                    | 121                                                                      |\n\n| [信息资料 - 公路交通 - 公路客运量](http://www.caam.org.cn/chn/1/cate_122/list_1.html) | [信息资料 - 公路交通 - 旅客周转量](http://www.caam.org.cn/chn/1/cate_123/list_1.html) | [信息资料 - 公路交通 - 公路货运量](http://www.caam.org.cn/chn/1/cate_124/list_1.html) | [信息资料 - 经济环境](http://www.caam.org.cn/chn/1/cate_125/list_1.html) | [公告查询](http://www.caam.org.cn/chn/1/cate_126/list_1.html) | [公告查询 - 公告批文](http://www.caam.org.cn/chn/1/cate_127/list_1.html) |\n| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------- | ------------------------------------------------------------------------ |\n| 122                                                                                   | 123                                                                                   | 124                                                                                   | 125                                                                      | 126                                                           | 127                                                                      |\n\n| [公告查询 - 公示公告](http://www.caam.org.cn/chn/1/cate_128/list_1.html) | [公告查询 - 节能与新能源](http://www.caam.org.cn/chn/1/cate_129/list_1.html) | [公告查询 - 公告动态](http://www.caam.org.cn/chn/1/cate_130/list_1.html) | [人物访谈](http://www.caam.org.cn/chn/1/cate_131/list_1.html) | [人物访谈 - 访谈列表](http://www.caam.org.cn/chn/1/cate_132/list_1.html) | [视频新闻](http://www.caam.org.cn/chn/1/cate_133/list_1.html) |\n| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------- |\n| 128                                                                      | 129                                                                          | 130                                                                      | 131                                                           | 132                                                                      | 133                                                           |\n\n| [视频新闻 - 热门视频](http://www.caam.org.cn/chn/1/cate_134/list_1.html) | [视频新闻 - 推荐视频](http://www.caam.org.cn/chn/1/cate_135/list_1.html) | [视频新闻 - 视频列表](http://www.caam.org.cn/chn/1/cate_136/list_1.html) | [统计数据 - 欧洲 - 俄罗斯](http://www.caam.org.cn/chn/1/cate_137/list_1.html) | [统计数据 - 欧洲 - 爱尔兰](http://www.caam.org.cn/chn/1/cate_138/list_1.html) | [统计数据 - 欧洲 - 丹麦](http://www.caam.org.cn/chn/1/cate_139/list_1.html) |\n| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------- |\n| 134                                                                      | 135                                                                      | 136                                                                      | 137                                                                           | 138                                                                           | 139                                                                         |\n\n| [统计数据 - 欧洲 - 其他](http://www.caam.org.cn/chn/1/cate_140/list_1.html) | [统计数据 - 大洋洲 - 其他](http://www.caam.org.cn/chn/1/cate_141/list_1.html) | [统计数据 - 北美洲 - 加拿大](http://www.caam.org.cn/chn/1/cate_142/list_1.html) | [统计数据 - 北美洲 - 其他](http://www.caam.org.cn/chn/1/cate_144/list_1.html) | [统计数据 - 北美洲 - 墨西哥](http://www.caam.org.cn/chn/1/cate_143/list_1.html) | [统计数据 - 非洲 - 南非](http://www.caam.org.cn/chn/1/cate_145/list_1.html) |\n| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |\n| 140                                                                         | 141                                                                           | 142                                                                             | 144                                                                           | 143                                                                             | 145                                                                         |\n\n| [统计数据 - 非洲 - 其他](http://www.caam.org.cn/chn/1/cate_146/list_1.html) | [协会概况 - 分支机构 - 机构名单](http://www.caam.org.cn/chn/1/cate_147/list_1.html) | [首页 - 轮播](http://www.caam.org.cn/chn/1/cate_148/list_1.html) | [标准法规 - 标准政策 - 轮播](http://www.caam.org.cn/chn/1/cate_149/list_1.html) | [信息资料 - 信息资料 - 轮播](http://www.caam.org.cn/chn/1/cate_150/list_1.html) | [行业动态 - 行业资讯 - 轮播](http://www.caam.org.cn/chn/1/cate_151/list_1.html) |\n| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |\n| 146                                                                         | 147                                                                                 | 148                                                              | 149                                                                             | 150                                                                             | 151                                                                             |\n\n| [行业政策 - 行业政策 - 轮播](http://www.caam.org.cn/chn/1/cate_152/list_1.html) | [协会工作 - 协会工作 - 轮播图](http://www.caam.org.cn/chn/1/cate_153/list_1.html) | [统计数据 - 数据统计 - 轮播图](http://www.caam.org.cn/chn/1/cate_154/list_1.html) | [Home](http://www.caam.org.cn/chn/1/cate_155/list_1.html) | [Home - Focus News](http://www.caam.org.cn/chn/1/cate_156/list_1.html) | [Home - Overview](http://www.caam.org.cn/chn/1/cate_157/list_1.html) |\n| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |\n| 152                                                                             | 153                                                                               | 154                                                                               | 155                                                       | 156                                                                    | 157                                                                  |\n\n| [Home - News](http://www.caam.org.cn/chn/1/cate_158/list_1.html) | [Home - Member sign](http://www.caam.org.cn/chn/1/cate_161/list_1.html) | [车桥分会](http://www.caam.org.cn/chn/1/cate_162/list_1.html) | [上市公司委员会](http://www.caam.org.cn/chn/1/cate_183/list_1.html) | [上市公司委员会 - 单位动态](http://www.caam.org.cn/chn/1/cate_184/list_1.html) | [上市公司委员会 - 临时公告](http://www.caam.org.cn/chn/1/cate_185/list_1.html) |\n| ---------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |\n| 158                                                              | 161                                                                     | 162                                                           | 183                                                                 | 184                                                                            | 185                                                                            |",
+        "name": "分类",
         "maintainers": [
           "nczitzk"
         ],
@@ -38658,6 +39127,64 @@ export default {
     "description": "Government of Canada news by department",
     "lang": "en"
   },
+  "capitalmuseum": {
+    "routes": {
+      "/exhibition/:type?": {
+        "path": "/exhibition/:type?",
+        "categories": [
+          "travel"
+        ],
+        "example": "/capitalmuseum/exhibition",
+        "parameters": {
+          "type": "Exhibition type, supported values: new(最新展览), review(展览回顾), default: All exhibitions."
+        },
+        "name": "Exhibitions",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.capitalmuseum.org.cn/exhibition"
+            ],
+            "target": "/exhibition"
+          }
+        ],
+        "location": "exhibition.tsx",
+        "module": () => import('@/routes/capitalmuseum/exhibition.tsx')
+      },
+      "/news/:type?": {
+        "path": "/news/:type?",
+        "categories": [
+          "travel"
+        ],
+        "example": "/capitalmuseum/news/notice",
+        "parameters": {
+          "type": "News type, supported values: news（新闻资讯）, notice（通知公告）. Default: All news."
+        },
+        "name": "News",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.capitalmuseum.org.cn/news"
+            ],
+            "target": "/news"
+          }
+        ],
+        "location": "news.ts",
+        "module": () => import('@/routes/capitalmuseum/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Capital Museum",
+    "url": "www.capitalmuseum.org.cn/",
+    "zh": {
+      "name": "首都博物馆"
+    }
+  },
   "cartoonmad": {
     "routes": {
       "/comic/:id": {
@@ -38733,8 +39260,18 @@ export default {
       },
       "/genetics/:path{.+}": {
         "path": "/genetics/:path{.+}",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/cas/genetics/jixs/yg",
+        "parameters": {
+          "path": "路径，可在 URL 找到"
+        },
+        "name": "遗传与发育生物学研究所",
+        "maintainers": [
+          "panyq357"
+        ],
+        "description": "| 路径                   | 栏目       |\n| :--------------------- | :--------- |\n| jixs/yg                | 学术预告   |\n| dtxw/kyjz              | 科研进展   |\n| edu/zsxx/ssszs\\_187556 | 硕士生招生 |\n| edu/zsxx/bsszs\\_187557 | 博士生招生 |\n| dqyd/djgz/dwyw         | 党委要闻   |",
         "location": "genetics/index.ts",
         "module": () => import('@/routes/cas/genetics/index.ts')
       },
@@ -38802,8 +39339,18 @@ export default {
       },
       "/is/:path{.+}": {
         "path": "/is/:path{.+}",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/cas/is/xwdt2016/tzgg2016",
+        "parameters": {
+          "path": "路径，可在 URL 找到"
+        },
+        "name": "软件研究所",
+        "maintainers": [
+          "Misaka13514"
+        ],
+        "description": "| 通知公告          | 科技动态          | 科普动态          |\n| ----------------- | ----------------- | ----------------- |\n| xwdt2016/tzgg2016 | xwdt2016/kjdt2016 | kxcb2016/kpdt2016 |",
         "location": "is/index.ts",
         "module": () => import('@/routes/cas/is/index.ts')
       },
@@ -39178,10 +39725,20 @@ export default {
   },
   "cbaigui": {
     "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/cbaigui",
+        "parameters": {
+          "path": "路径，默认为首页"
+        },
+        "name": "通用",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "若订阅 [标签：妖](https://www.cbaigui.com/post-tag/妖)，网址为 `https://www.cbaigui.com/post-tag/妖`。截取 `https://www.cbaigui.com` 到末尾的部分 `/post-tag/妖` 作为参数，此时路由为 [`/cbaigui/post-tag/妖`](https://rsshub.app/cbaigui/post-tag/妖)。\n\n若订阅 [分类：埃及](https://www.cbaigui.com/post-category/世界/非洲/埃及)，网址为 `https://www.cbaigui.com/post-category/世界/非洲/埃及`。截取 `https://www.cbaigui.com` 到末尾的部分 `/post-category/世界/非洲/埃及` 作为参数，此时路由为 [`/cbaigui/post-category/世界/非洲/埃及`](https://rsshub.app/cbaigui/post-category/世界/非洲/埃及)。\n\n若订阅 [词条：白泽图](https://www.cbaigui.com/post-category/词条/白泽图)，网址为 `https://www.cbaigui.com/post-category/词条/白泽图`。截取 `https://www.cbaigui.com` 到末尾的部分 `/post-category/词条/白泽图` 作为参数，此时路由为 [`/cbaigui/post-category/词条/白泽图`](https://rsshub.app/cbaigui/post-category/词条/白泽图)。",
         "location": "index.ts",
         "module": () => import('@/routes/cbaigui/index.ts')
       }
@@ -40975,7 +41532,6 @@ export default {
           "other"
         ],
         "example": "/cebbank/quotation/all",
-        "parameters": {},
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -40993,7 +41549,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "外汇牌价 - 总览",
         "maintainers": [
           "linbuxiao"
         ],
@@ -41187,8 +41743,25 @@ export default {
     "routes": {
       "/:id{.+}?": {
         "path": "/:id{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "finance"
+        ],
+        "example": "/cfmmc/main/noticeannouncement/cfmmcnotice",
+        "parameters": {
+          "id": "栏目 id，见下表，默认为中国期货监控公告"
+        },
+        "radar": [
+          {
+            "source": [
+              "cfmmc.com/:id"
+            ]
+          }
+        ],
+        "name": "栏目",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "#### 党的建设\n\n| 栏目     | id                                     |\n| -------- | -------------------------------------- |\n| 党建动态 | main/partybuilding/partybuildingtrends |\n| 基层风采 | main/partybuilding/basestyle           |\n| 学习园地 | main/partybuilding/learninggarden      |\n\n#### 通知公告\n\n| 栏目             | id                                  |\n| ---------------- | ----------------------------------- |\n| 中国期货监控公告 | main/noticeannouncement/cfmmcnotice |\n| 证监会公告       | main/noticeannouncement/csrcnotice  |\n| 上期所公告       | main/noticeannouncement/shfenotice  |\n| 郑商所公告       | main/noticeannouncement/czcenotice  |\n| 大商所公告       | main/noticeannouncement/dcenotice   |\n| 中金所公告       | main/noticeannouncement/cffexnotice |\n| 广期所公告       | main/noticeannouncement/gfexnotice  |\n\n#### 焦点新闻\n\n| 栏目     | id                               |\n| -------- | -------------------------------- |\n| 财经要闻 | main/focusnews/financialnews     |\n| 专题聚焦 | main/focusnews/thematicfocus     |\n| 金融动态 | main/focusnews/financialdynamics |\n\n#### 保障基金\n\n| 栏目     | id                                    |\n| -------- | ------------------------------------- |\n| 基金概况 | main/securityfund/fundoverview        |\n| 政策法规 | main/securityfund/policiesregulations |\n| 公告信息 | main/securityfund/noticeinformation   |\n\n#### 政策法规\n\n| 栏目                 | id                                            |\n| -------------------- | --------------------------------------------- |\n| 国家法律法规         | main/policiesregulations/lawsregulations      |\n| 部门规章及规范性文件 | main/policiesregulations/regulationsnormative |\n| 行业法规政策         | main/policiesregulations/industrypolicies     |\n| 中国期货监控相关规则 | main/policiesregulations/cfmmcrules           |",
         "location": "index.ts",
         "module": () => import('@/routes/cfmmc/index.ts')
       }
@@ -41239,6 +41812,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/chaincatcher",
         "radar": [
           {
             "source": [
@@ -41247,7 +41824,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "首页",
         "maintainers": [
           "TonyRL"
         ],
@@ -42150,6 +42727,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "other"
+        ],
+        "example": "/chinafactcheck",
         "radar": [
           {
             "source": [
@@ -42158,7 +42739,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新文章列表",
         "maintainers": [
           "kdanfly"
         ],
@@ -42242,6 +42823,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/chinanews",
         "radar": [
           {
             "source": [
@@ -42250,7 +42835,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新",
         "maintainers": [
           "yuxinliu-alex"
         ],
@@ -42475,6 +43060,37 @@ export default {
     ],
     "description": ""
   },
+  "chinasilkmuseum": {
+    "routes": {
+      "/zz": {
+        "path": "/zz",
+        "categories": [
+          "travel"
+        ],
+        "example": "/chinasilkmuseum/zz",
+        "name": "Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.chinasilkmuseum.com/zz/list_17.aspx"
+            ],
+            "target": "/zz"
+          }
+        ],
+        "location": "zz.tsx",
+        "module": () => import('@/routes/chinasilkmuseum/zz.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "China National Silk Museum",
+    "url": "www.chinasilkmuseum.com",
+    "zh": {
+      "name": "中国丝绸博物馆"
+    }
+  },
   "chinathinktanks": {
     "routes": {
       "/:id": {
@@ -42596,8 +43212,18 @@ export default {
     "routes": {
       "/:id{.+}?": {
         "path": "/:id{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "new-media"
+        ],
+        "example": "/chinawriter",
+        "parameters": {
+          "id": "栏目 id，见下表，默认为首页"
+        },
+        "description": "| 服务   | 文学奖项 |\n| ------ | -------- |\n| 403937 | 403973   |\n\n| 新闻   | 访谈   | 艺术   |\n| ------ | ------ | ------ |\n| 403990 | 403997 | 404002 |\n\n| 理论评论 | 文史   | 科幻   | 书汇   | 新作品 |\n| -------- | ------ | ------ | ------ | ------ |\n| 404029   | 404057 | 404078 | 404058 | 404015 |\n\n| 世界文坛 | 民族文艺 | 网络文学 | 儿童文学 |\n| -------- | -------- | -------- | -------- |\n| 404085   | 404086   | 404022   | 404059   |\n\n<details>\n  <summary>更多栏目</summary>\n\n#### 会员\n\n| 新发展会员名单 | 讣告          |\n| -------------- | ------------- |\n| 403978/403979  | 403978/403981 |\n\n#### 文学奖项\n\n| 其他文学奖项  |\n| ------------- |\n| 403973/419349 |\n\n#### 新闻\n\n| 时政新闻      | 中国作协      | 主席          | 党组书记      | 各地文讯      |\n| ------------- | ------------- | ------------- | ------------- | ------------- |\n| 403990/403991 | 403990/403993 | 403990/441519 | 403990/441520 | 403990/403994 |\n\n#### 艺术\n\n| 新闻          | 影视          | 舞台          | 人物          | 展览          | 书画          |\n| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |\n| 404002/404003 | 404002/419388 | 404002/419389 | 404002/404005 | 404002/419390 | 404002/419391 |\n\n#### 理论评论\n\n| 重要理论文章  | 理论热点      | 文学评论      | 创作谈        | 争鸣          | 综述          | 《中国当代文学研究》 |\n| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------------- |\n| 404029/419350 | 404029/419351 | 404029/404030 | 404029/404032 | 404029/404033 | 404029/404034 | 404087/404988/425775 |\n\n#### 文史\n\n| 文坛轶事      | 文史漫谈      | 重温经典      | 版本研究      | 名人手迹      | 茅盾文学奖获奖作家研究 |\n| ------------- | ------------- | ------------- | ------------- | ------------- | ---------------------- |\n| 404057/404063 | 404057/442005 | 404057/419384 | 404057/419387 | 404057/419382 | 404087/404988/429369   |\n\n#### 科幻\n\n| 动态          | 评论          | 作家印象      | 作品          | 科声幻影      |\n| ------------- | ------------- | ------------- | ------------- | ------------- |\n| 404078/404079 | 404078/404080 | 404078/404081 | 404078/404083 | 404078/404084 |\n\n#### 书汇\n\n| 书摘          | 图书排行      |\n| ------------- | ------------- |\n| 404058/404067 | 404058/404069 |\n\n#### 新作品\n\n| 小说          | 诗歌          | 散文          | 纪实          | 其他          |\n| ------------- | ------------- | ------------- | ------------- | ------------- |\n| 404015/404017 | 404015/404020 | 404015/404018 | 404015/404019 | 404015/419926 |\n\n| 平台推荐      | 本周之星      | 2018 年 5 月 18 日前原创作品 |\n| ------------- | ------------- | ---------------------------- |\n| 404015/419789 | 404015/431511 | 404009                       |\n\n| 《人民文学》         | 《诗刊》             | 《民族文学》         | 《收获》             | 《十月》             |\n| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |\n| 404015/416204/418925 | 404015/416204/418926 | 404015/416204/418928 | 404015/416204/418958 | 404015/416204/418956 |\n\n| 《小说选刊》         | 《北京文学》         | 《上海文学》         | 《天津文学》         | 《草原》             |\n| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |\n| 404015/416204/418929 | 404015/416204/418954 | 404015/416204/418962 | 404015/416204/419004 | 404015/416204/418989 |\n\n| 《黄河》             | 《江南》             | 《钟山》             | 《广州文艺》         | 《湖南文学》         |\n| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |\n| 404015/416204/426204 | 404015/416204/418957 | 404015/416204/418984 | 404015/416204/419881 | 404015/416204/419156 |\n\n| 《山西文学》         | 《花城》             | 《青年作家》         | 《雨花》             | 《红豆》             |\n| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |\n| 404015/416204/419827 | 404015/416204/418960 | 404015/416204/418967 | 404015/416204/419885 | 404015/416204/418993 |\n\n| 《长江文艺》         | 《中国作家》         | 《青年文学》         | 《美文》             | 《芙蓉》             |\n| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |\n| 404015/416204/418961 | 404015/416204/418927 | 404015/416204/418979 | 404015/416204/418985 | 404015/416204/418986 |\n\n| 《长城》             | 《福建文学》         | 《啄木鸟》           | 《芳草》             | 《小说月报》         |\n| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |\n| 404015/416204/418987 | 404015/416204/419003 | 404015/416204/435225 | 404015/416204/424311 | 404015/416204/418963 |\n\n#### 世界文坛\n\n| 视点          | 译介          | 作家印象      | 文学评论      | 影像艺术      | 作品推介      |\n| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |\n| 404085/404090 | 404085/431803 | 404085/404091 | 404085/404092 | 404085/404093 | 404085/404095 |\n\n#### 民族文艺\n\n| 动态          | 品评          | 作家印象      | 作品          | 影像          |\n| ------------- | ------------- | ------------- | ------------- | ------------- |\n| 404086/404098 | 404086/404101 | 404086/404099 | 404086/404100 | 404086/404102 |\n\n#### 网络文学\n\n| 动态          | 观察          | 访谈          | 中国网络小说排行榜 |\n| ------------- | ------------- | ------------- | ------------------ |\n| 404022/404023 | 404022/404027 | 404022/404024 | 404022/404028      |\n\n#### 儿童文学\n\n| 视点          | 文学评论      | 作家印象      | 作品推介      | 动漫艺术      |\n| ------------- | ------------- | ------------- | ------------- | ------------- |\n| 404059/404071 | 404059/404072 | 404059/404073 | 404059/404075 | 404059/404076 |\n\n</details>",
+        "name": "栏目",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "index.ts",
         "module": () => import('@/routes/chinawriter/index.ts')
       }
@@ -42732,10 +43358,10 @@ export default {
         "categories": [
           "travel"
         ],
-        "example": "/chnmuseum/zl/lszl/zdztzl",
+        "example": "/chnmuseum/zl/lszl/zdzt",
         "parameters": {
-          "type": "Exhibition type, supported values: zhanlanyugao（正在展出）、ztzl（主题展览）、jbcl（基本陈列）、ztcl（专题展览）、lszl（临时展览）、gbxz（国博巡展）. Default: All exhibitions.",
-          "subType": "subtype only works under type lszl（临时展览）, supported values: zdztzl（主题展览）、dfjpwwxl（精品文物展）、lswhxl（历史文化展）、kgfjxl（考古发现展）、kjcxz（科技创新展）、dywhxl（地域文化展）、jdmszpxl（经典美术展）、gjjlxl（国际交流展）"
+          "type": "Exhibition type, supported values: zhanlanyugao（正在展出）、jbcl（基本陈列）、ztcl（专题展览）、lszl（临时展览）、gjzl（国家展览）、gbxz（国博巡展）. Default: All exhibitions.",
+          "subType": "subtype only works under type lszl（临时展览）, supported values: zdzt（重大主题）、lswh（历史文化）、yscx（艺术创新）、gjjl（国际交流）"
         },
         "name": "Exhibitions",
         "maintainers": [
@@ -43960,7 +44586,7 @@ export default {
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
-          "antiCrawler": false,
+          "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -43983,8 +44609,18 @@ export default {
     "routes": {
       "/:cate{.+}?": {
         "path": "/:cate{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "government"
+        ],
+        "example": "/cmde/xwdt/zxyw",
+        "parameters": {
+          "cate": "路径，默认为最新要闻"
+        },
+        "name": "通用",
+        "maintainers": [
+          "run-ze"
+        ],
+        "description": "路径处填写对应页面 URL 中 `https://www.cmde.org.cn/` 与 `/index.html` 之间的字段，下面是一个例子。\n\n若订阅 [最新要闻](https://www.cmde.org.cn/xwdt/zxyw/index.html) 则将对应页面 URL <https://www.cmde.org.cn/xwdt/zxyw/index.html> 中 `https://www.cmde.org.cn/` 和 `/index.html` 之间的字段 `xwdt/zxyw` 作为路径填入。此时路由为 [`/cmde/xwdt/zxyw`](https://rsshub.app/cmde/xwdt/zxyw)",
         "location": "index.ts",
         "module": () => import('@/routes/cmde/index.ts')
       }
@@ -44325,6 +44961,10 @@ export default {
       },
       "/reports": {
         "path": "/reports",
+        "categories": [
+          "programming"
+        ],
+        "example": "/cncf/reports",
         "radar": [
           {
             "source": [
@@ -44332,8 +44972,10 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Reports",
+        "maintainers": [
+          "Fatpandac"
+        ],
         "url": "cncf.io/reports",
         "location": "reports.ts",
         "module": () => import('@/routes/cncf/reports.ts')
@@ -44346,8 +44988,25 @@ export default {
   },
   "cneb": {
     "routes": {
-      "/yjxx/*": {
-        "path": "/yjxx/*",
+      "/yjxx/:level?/:province?/:city?": {
+        "path": "/yjxx/:level?/:province?/:city?",
+        "categories": [
+          "forecast"
+        ],
+        "example": "/cneb/yjxx",
+        "parameters": {
+          "level": "灾害级别，见下表，默认为全部",
+          "province": "省份，默认为空，即全国",
+          "city": "城市，默认为空，即全省"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "radar": [
           {
             "source": [
@@ -44357,9 +45016,13 @@ export default {
             "target": "/yjxx"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "预警信息",
+        "maintainers": [
+          "muzea",
+          "nczitzk"
+        ],
         "url": "cneb.gov.cn/yjxx",
+        "description": "灾害级别\n\n| 全部 | 红色 | 橙色 | 黄色 | 蓝色 |\n| ---- | ---- | ---- | ---- | ---- |\n|      | 红色 | 橙色 | 黄色 | 蓝色 |\n\n::: tip\n若订阅全国的全部预警信息，此时路由为 [`/cneb/yjxx`](https://rsshub.app/cneb/yjxx)。\n\n若订阅全国的 **红色** 预警信息，此时路由为 [`/cneb/yjxx/红色`](https://rsshub.app/cneb/yjxx/红色)。\n\n若订阅 **北京市** 的全部预警信息，此时路由为 [`/cneb/yjxx/北京市`](https://rsshub.app/cneb/yjxx/北京市)。\n\n若订阅 **北京市** 的 **蓝色** 预警信息，此时路由为 [`/cneb/yjxx/北京市/蓝色`](https://rsshub.app/cneb/yjxx/北京市/蓝色)。\n\n若订阅 **广东省** 的 **橙色** 预警信息，此时路由为 [`/cneb/yjxx/广东省/橙色`](https://rsshub.app/cneb/yjxx/广东省/橙色)。\n\n若订阅 **广东省广州市** 的全部预警信息，此时路由为 [`/cneb/yjxx/广东省/广州市`](https://rsshub.app/cneb/yjxx/广东省/广州市)。\n\n若订阅 **广东省广州市** 的 **黄色** 预警信息，此时路由为 [`/cneb/yjxx/广东省/广州市/黄色`](https://rsshub.app/cneb/yjxx/广东省/广州市/黄色)。\n:::",
         "location": "yjxx.ts",
         "module": () => import('@/routes/cneb/yjxx.ts')
       },
@@ -44523,21 +45186,6 @@ export default {
       "new-media"
     ],
     "description": "",
-    "lang": "zh-CN"
-  },
-  "cnjxol": {
-    "routes": {
-      "/:category?/:id?": {
-        "path": "/:category?/:id?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.tsx",
-        "module": () => import('@/routes/cnjxol/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "南湖清风",
-    "url": "cnjxol.com",
     "lang": "zh-CN"
   },
   "cnki": {
@@ -45365,7 +46013,9 @@ export default {
           }
         ],
         "name": "Recent actions",
-        "maintainers": [],
+        "maintainers": [
+          "ftiasch"
+        ],
         "url": "codeforces.com/recent-actions",
         "location": "recent-actions.ts",
         "module": () => import('@/routes/codeforces/recent-actions.ts')
@@ -45379,10 +46029,10 @@ export default {
   "cognition": {
     "name": "cognition",
     "routes": {
-      "/blog/:category?": {
-        "path": "/blog/:category?",
+      "/blog": {
+        "path": "/blog",
         "name": "Blog",
-        "url": "cognition.ai/blog",
+        "url": "cognition.com/blog",
         "maintainers": [
           "Loongphy",
           "ttttmr"
@@ -45403,16 +46053,11 @@ export default {
         "radar": [
           {
             "source": [
-              "cognition.ai/blog/1",
-              "cognition.ai/blog/:category/1"
-            ],
-            "target": "/blog/:category?"
+              "cognition.com/blog"
+            ]
           }
         ],
         "view": 0,
-        "parameters": {
-          "category": "Category name, e.g., Research, Tutorials"
-        },
         "location": "blog.ts",
         "module": () => import('@/routes/cognition/blog.ts')
       }
@@ -45677,6 +46322,12 @@ export default {
           {
             "source": [
               "comic-walker.com/detail/:id"
+            ],
+            "target": "/manga/:id"
+          },
+          {
+            "source": [
+              "comic-walker.com/detail/:id/episodes/:episodeId"
             ],
             "target": "/manga/:id"
           }
@@ -46644,7 +47295,9 @@ export default {
           }
         ],
         "name": "News",
-        "maintainers": [],
+        "maintainers": [
+          "TonyRL"
+        ],
         "url": "cpuid.com/news.html",
         "location": "news.ts",
         "module": () => import('@/routes/cpuid/news.ts')
@@ -46916,36 +47569,241 @@ export default {
   },
   "cs": {
     "routes": {
-      "/news/zzkx": {
-        "path": [
-          "/news/zzkx",
-          "/zzkx"
-        ],
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "zzkx.ts",
-        "module": () => import('@/routes/cs/zzkx.ts')
-      },
-      "/zzkx": {
-        "path": [
-          "/news/zzkx",
-          "/zzkx"
-        ],
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "zzkx.ts",
-        "module": () => import('@/routes/cs/zzkx.ts')
-      },
       "/:category{.+}?": {
         "path": "/:category{.+}?",
+        "categories": [
+          "finance"
+        ],
+        "example": "/cs",
         "name": "栏目",
         "parameters": {
-          "category": "分类，见下表，默认为首页"
+          "category": "分类，见下表，默认为要闻"
         },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "title": "要闻",
+            "source": [
+              "cs.com.cn/xwzx/"
+            ],
+            "target": "/xwzx"
+          },
+          {
+            "title": "公司",
+            "source": [
+              "cs.com.cn/ssgs/"
+            ],
+            "target": "/ssgs"
+          },
+          {
+            "title": "市场",
+            "source": [
+              "cs.com.cn/gppd/"
+            ],
+            "target": "/gppd"
+          },
+          {
+            "title": "基金",
+            "source": [
+              "cs.com.cn/tzjj/"
+            ],
+            "target": "/tzjj"
+          },
+          {
+            "title": "科创",
+            "source": [
+              "cs.com.cn/5g/"
+            ],
+            "target": "/5g"
+          },
+          {
+            "title": "产经",
+            "source": [
+              "cs.com.cn/cj2020/"
+            ],
+            "target": "/cj2020"
+          },
+          {
+            "title": "期货",
+            "source": [
+              "cs.com.cn/zzqh2020/"
+            ],
+            "target": "/zzqh2020"
+          },
+          {
+            "title": "海外",
+            "source": [
+              "cs.com.cn/hw2020/"
+            ],
+            "target": "/hw2020"
+          },
+          {
+            "title": "财经要闻",
+            "source": [
+              "cs.com.cn/xwzx/hg/"
+            ],
+            "target": "/xwzx/hg"
+          },
+          {
+            "title": "观点评论",
+            "source": [
+              "cs.com.cn/xwzx/jr/"
+            ],
+            "target": "/xwzx/jr"
+          },
+          {
+            "title": "民生消费",
+            "source": [
+              "cs.com.cn/xwzx/msxf/"
+            ],
+            "target": "/xwzx/msxf"
+          },
+          {
+            "title": "公司要闻",
+            "source": [
+              "cs.com.cn/ssgs/gsxw/"
+            ],
+            "target": "/ssgs/gsxw"
+          },
+          {
+            "title": "公司深度",
+            "source": [
+              "cs.com.cn/ssgs/gssd/"
+            ],
+            "target": "/ssgs/gssd"
+          },
+          {
+            "title": "公司巡礼",
+            "source": [
+              "cs.com.cn/ssgs/gsxl/"
+            ],
+            "target": "/ssgs/gsxl"
+          },
+          {
+            "title": "A股市场",
+            "source": [
+              "cs.com.cn/gppd/gsyj/"
+            ],
+            "target": "/gppd/gsyj"
+          },
+          {
+            "title": "港股资讯",
+            "source": [
+              "cs.com.cn/gppd/ggzx/"
+            ],
+            "target": "/gppd/ggzx"
+          },
+          {
+            "title": "债市研究",
+            "source": [
+              "cs.com.cn/gppd/zqxw/"
+            ],
+            "target": "/gppd/zqxw"
+          },
+          {
+            "title": "海外报道",
+            "source": [
+              "cs.com.cn/gppd/hwbd/"
+            ],
+            "target": "/gppd/hwbd"
+          },
+          {
+            "title": "期货报道",
+            "source": [
+              "cs.com.cn/gppd/qhbd/"
+            ],
+            "target": "/gppd/qhbd"
+          },
+          {
+            "title": "基金动态",
+            "source": [
+              "cs.com.cn/tzjj/jjdt/"
+            ],
+            "target": "/tzjj/jjdt"
+          },
+          {
+            "title": "基金视点",
+            "source": [
+              "cs.com.cn/tzjj/jjks/"
+            ],
+            "target": "/tzjj/jjks"
+          },
+          {
+            "title": "基金持仓",
+            "source": [
+              "cs.com.cn/tzjj/jjcs/"
+            ],
+            "target": "/tzjj/jjcs"
+          },
+          {
+            "title": "私募基金",
+            "source": [
+              "cs.com.cn/tzjj/smjj/"
+            ],
+            "target": "/tzjj/smjj"
+          },
+          {
+            "title": "基民学苑",
+            "source": [
+              "cs.com.cn/tzjj/tjdh/"
+            ],
+            "target": "/tzjj/tjdh"
+          },
+          {
+            "title": "券商",
+            "source": [
+              "cs.com.cn/qs/"
+            ],
+            "target": "/qs"
+          },
+          {
+            "title": "银行",
+            "source": [
+              "cs.com.cn/yh/"
+            ],
+            "target": "/yh"
+          },
+          {
+            "title": "保险",
+            "source": [
+              "cs.com.cn/bx/"
+            ],
+            "target": "/bx"
+          },
+          {
+            "title": "中证快讯 7x24",
+            "source": [
+              "cs.com.cn/sylm/jsbd/"
+            ],
+            "target": "/sylm/jsbd"
+          },
+          {
+            "title": "IPO鉴真",
+            "source": [
+              "cs.com.cn/yc/ipojz/"
+            ],
+            "target": "/yc/ipojz"
+          },
+          {
+            "title": "公司能见度",
+            "source": [
+              "cs.com.cn/yc/gsnjd/"
+            ],
+            "target": "/yc/gsnjd"
+          }
+        ],
         "maintainers": [
           "nczitzk"
         ],
         "description": "| 要闻 | 公司 | 市场 | 基金 |\n| ---- | ---- | ---- | ---- |\n| xwzx | ssgs | gppd | tzjj |\n\n| 科创 | 产经   | 期货     | 海外   |\n| ---- | ------ | -------- | ------ |\n| 5g   | cj2020 | zzqh2020 | hw2020 |\n\n<details>\n<summary>更多栏目</summary>\n\n#### 要闻\n\n| 财经要闻 | 观点评论 | 民生消费  |\n| -------- | -------- | --------- |\n| xwzx/hg  | xwzx/jr  | xwzx/msxf |\n\n#### 公司\n\n| 公司要闻  | 公司深度  | 公司巡礼  |\n| --------- | --------- | --------- |\n| ssgs/gsxw | ssgs/gssd | ssgs/gsxl |\n\n#### 市场\n\n| A 股市场  | 港股资讯  | 债市研究  | 海外报道  | 期货报道  |\n| --------- | --------- | --------- | --------- | --------- |\n| gppd/gsyj | gppd/ggzx | gppd/zqxw | gppd/hwbd | gppd/qhbd |\n\n#### 基金\n\n| 基金动态  | 基金视点  | 基金持仓  | 私募基金  | 基民学苑  |\n| --------- | --------- | --------- | --------- | --------- |\n| tzjj/jjdt | tzjj/jjks | tzjj/jjcs | tzjj/smjj | tzjj/tjdh |\n\n#### 机构\n\n| 券商 | 银行 | 保险 |\n| ---- | ---- | ---- |\n| qs   | yh   | bx   |\n\n#### 其他\n\n| 中证快讯 7x24 | IPO 鉴真 | 公司能见度 |\n| ------------- | -------- | ---------- |\n| sylm/jsbd     | yc/ipojz | yc/gsnjd   |\n\n</details>",
+        "url": "www.cs.com.cn",
         "location": "index.ts",
         "module": () => import('@/routes/cs/index.ts')
       },
@@ -47177,6 +48035,64 @@ export default {
     "url": "career.csu.edu.cn",
     "lang": "zh-CN"
   },
+  "csust": {
+    "routes": {
+      "/tggs": {
+        "path": "/tggs",
+        "categories": [
+          "university"
+        ],
+        "example": "/csust/tggs",
+        "features": {
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.csust.edu.cn/tggs.htm",
+              "www.csust.edu.cn/"
+            ]
+          }
+        ],
+        "name": "通告公示",
+        "maintainers": [
+          "powerfullz"
+        ],
+        "url": "www.csust.edu.cn/tggs.htm",
+        "location": "tggs.ts",
+        "module": () => import('@/routes/csust/tggs.ts')
+      },
+      "/xkxs": {
+        "path": "/xkxs",
+        "categories": [
+          "university"
+        ],
+        "example": "/csust/xkxs",
+        "features": {
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.csust.edu.cn/xkxs.htm",
+              "www.csust.edu.cn/"
+            ]
+          }
+        ],
+        "name": "学科学术",
+        "maintainers": [
+          "powerfullz"
+        ],
+        "url": "www.csust.edu.cn/xkxs.htm",
+        "location": "xkxs.ts",
+        "module": () => import('@/routes/csust/xkxs.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "长沙理工大学",
+    "url": "www.csust.edu.cn",
+    "lang": "zh-CN"
+  },
   "ctbu": {
     "routes": {
       "/xxgg": {
@@ -47338,6 +48254,85 @@ export default {
     "name": "中国传媒大学",
     "url": "yz.cuc.edu.cn",
     "lang": "zh-CN"
+  },
+  "cugb": {
+    "routes": {
+      "/jwc/:channel?": {
+        "path": "/jwc/:channel?",
+        "categories": [
+          "university"
+        ],
+        "example": "/cugb/jwc/xszq",
+        "parameters": {
+          "channel": "栏目，默认为 `xszq` 学生专区"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "jwc.cugb.edu.cn/:channel"
+            ],
+            "target": "/jwc/:channel"
+          }
+        ],
+        "name": "教务处",
+        "maintainers": [
+          "syncmeta"
+        ],
+        "location": "jwc.ts",
+        "module": () => import('@/routes/cugb/jwc.ts')
+      },
+      "/news/:channel?": {
+        "path": "/news/:channel?",
+        "categories": [
+          "university"
+        ],
+        "example": "/cugb/news/bdxw",
+        "parameters": {
+          "channel": "栏目，默认为 `bdxw` 北地新闻"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.cugb.edu.cn/:channel.jhtml"
+            ],
+            "target": "/news/:channel"
+          }
+        ],
+        "name": "校园新闻",
+        "maintainers": [
+          "syncmeta"
+        ],
+        "location": "news.ts",
+        "module": () => import('@/routes/cugb/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "China University of Geosciences (Beijing)",
+    "url": "cugb.edu.cn",
+    "categories": [
+      "university"
+    ],
+    "description": "",
+    "lang": "zh-CN",
+    "zh": {
+      "name": "中国地质大学（北京）"
+    }
   },
   "cuilingmag": {
     "routes": {
@@ -48008,7 +49003,9 @@ export default {
           }
         ],
         "name": "分类",
-        "maintainers": [],
+        "maintainers": [
+          "gl0zzy"
+        ],
         "description": "| 微软应用 | 安卓应用 | 教程资源 | 其他资源 |\n| -------- | -------- | -------- | -------- |\n| windows  | android  | tutorial | other    |",
         "location": "index.ts",
         "module": () => import('@/routes/dayanzai/index.ts')
@@ -48452,6 +49449,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/deadline",
         "radar": [
           {
             "source": [
@@ -48460,7 +49461,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Latest Article",
         "maintainers": [
           "TonyRL"
         ],
@@ -49543,10 +50544,28 @@ export default {
   },
   "dgjyw": {
     "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:category{.+}?": {
+        "path": "/:category{.+}?",
+        "categories": [
+          "study"
+        ],
+        "example": "/dgjyw/tz",
+        "parameters": {
+          "category": "分类，见下表，默认为通知"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.dgjyw.com/:category.htm"
+            ],
+            "target": "/:category"
+          }
+        ],
+        "name": "分类",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 通知 | 动态 | 公示 |\n| ---- | ---- | ---- |\n| tz   | dt   | gs   |\n\n::: tip\n分类字段处填写的是对应东莞教研网网址中介于 `https://www.dgjyw.com/` 和 `.htm` 中间的一段。\n\n如 [通知](https://www.dgjyw.com/tz.htm) 的网址为 `https://www.dgjyw.com/tz.htm`，其中间字段为 `tz`，所以可得路由为 [`/dgjyw/tz`](https://rsshub.app/dgjyw/tz)；\n\n同理，[教育科研 - 科研文件](https://www.dgjyw.com/jyky/kywj.htm) 的网址为 `https://www.dgjyw.com/jyky/kywj.htm`，其中间字段为 `jyky/kywj`，所以可得路由为 [`/dgjyw/jyky/kywj`](https://rsshub.app/dgjyw/jyky/kywj)。\n:::",
         "location": "index.ts",
         "module": () => import('@/routes/dgjyw/index.ts')
       }
@@ -50366,7 +51385,7 @@ export default {
         ],
         "name": "News",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "location": "news.ts",
         "module": () => import('@/routes/digitalcameraworld/news.ts')
@@ -50435,10 +51454,21 @@ export default {
           "/:ver{[7x]}/:link{.+}",
           "/:link{.+}"
         ],
-        "name": "Unknown",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/discuz/x/https%3a%2f%2fwww.52pojie.cn%2fforum-16-1.html",
+        "parameters": {
+          "ver": "discuz version，see below table",
+          "cid": "Cookie id，require self hosted and set environment parameters, see Deploy - Configuration pages for detail",
+          "link": "link of subforum, require url encoded"
+        },
+        "name": "通用子版块",
         "maintainers": [
+          "junfengP",
           "pseudoyu"
         ],
+        "description": "| Discuz X Series | Discuz 7.x Series |\n| --------------- | ----------------- |\n| x               | 7                 |",
         "location": "discuz.ts",
         "module": () => import('@/routes/discuz/discuz.ts')
       },
@@ -50448,10 +51478,21 @@ export default {
           "/:ver{[7x]}/:link{.+}",
           "/:link{.+}"
         ],
-        "name": "Unknown",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/discuz/x/https%3a%2f%2fwww.52pojie.cn%2fforum-16-1.html",
+        "parameters": {
+          "ver": "discuz version，see below table",
+          "cid": "Cookie id，require self hosted and set environment parameters, see Deploy - Configuration pages for detail",
+          "link": "link of subforum, require url encoded"
+        },
+        "name": "通用子版块",
         "maintainers": [
+          "junfengP",
           "pseudoyu"
         ],
+        "description": "| Discuz X Series | Discuz 7.x Series |\n| --------------- | ----------------- |\n| x               | 7                 |",
         "location": "discuz.ts",
         "module": () => import('@/routes/discuz/discuz.ts')
       },
@@ -50461,10 +51502,21 @@ export default {
           "/:ver{[7x]}/:link{.+}",
           "/:link{.+}"
         ],
-        "name": "Unknown",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/discuz/x/https%3a%2f%2fwww.52pojie.cn%2fforum-16-1.html",
+        "parameters": {
+          "ver": "discuz version，see below table",
+          "cid": "Cookie id，require self hosted and set environment parameters, see Deploy - Configuration pages for detail",
+          "link": "link of subforum, require url encoded"
+        },
+        "name": "通用子版块",
         "maintainers": [
+          "junfengP",
           "pseudoyu"
         ],
+        "description": "| Discuz X Series | Discuz 7.x Series |\n| --------------- | ----------------- |\n| x               | 7                 |",
         "location": "discuz.ts",
         "module": () => import('@/routes/discuz/discuz.ts')
       }
@@ -50555,6 +51607,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "programming"
+        ],
+        "example": "/distill",
         "radar": [
           {
             "source": [
@@ -50563,7 +51619,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Latest",
         "maintainers": [
           "nczitzk"
         ],
@@ -51433,8 +52489,17 @@ export default {
       },
       "/explore/column/:id": {
         "path": "/explore/column/:id",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "social-media"
+        ],
+        "example": "/douban/explore/column/2",
+        "parameters": {
+          "id": "分栏目id"
+        },
+        "name": "浏览发现分栏目",
+        "maintainers": [
+          "LogicJake"
+        ],
         "location": "other/explore-column.ts",
         "module": () => import('@/routes/douban/other/explore-column.ts')
       },
@@ -52045,8 +53110,17 @@ export default {
           "/*/*",
           "/:0?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/dut",
+        "name": "通用",
+        "maintainers": [
+          "beautyyuyanli",
+          "nczitzk",
+          "ueiu"
+        ],
+        "description": "订阅 **单级** 栏目如 [大连理工大学新闻网](https://news.dlut.edu.cn) 的 [头条关注](https://news.dlut.edu.cn/ttgz.htm) 分类栏目，分为 3 步：\n\n1. 将 URL `https://news.dlut.edu.cn/ttgz.htm` 中 `https://` 与 `.dlut.edu.cn/` 中间的 `news` 作为 `site` 参数填入；\n2. 将 `https://news.dlut.edu.cn/` 与 `.htm` 间的 `ttgz` 作为 `category` 参数填入；\n3. 最终可获得 [`/dut/news/ttgz`](https://rsshub.app/dut/news/tzgg)。\n\n订阅 **多级** 栏目如 [大连理工大学新闻网](https://news.dlut.edu.cn) 的 [人才培养](https://news.dlut.edu.cn/xwjj01/rcpy.htm) 分类栏目，同样分为 3 步：\n\n1. 将 URL `https://news.dlut.edu.cn/xwjj01/rcpy.htm` 中 `https://` 与 `.dlut.edu.cn/` 中间的 `news` 作为 `site` 参数填入；\n2. 把 `https://news.dlut.edu.cn/` 与 `.htm` 间 `xwjj01/rcpy` 作为 `category` 参数填入；\n3. 最终可获得 [`/dut/news/xwjj01/rcpy`](https://rsshub.app/dut/news/xwjj01/rcpy)。\n\n::: tip 小提示\n大连理工大学大部分站点支持上述通用规则进行订阅。下方的大连理工大学相关路由基本适用于该规则，在其对应的表格中没有提及的分类栏目，可以使用上方的方法自行扩展。\n:::\n\n::: tip 小小提示\n你会发现 [大连理工大学新闻网](https://news.dlut.edu.cn) 的 [人才培养](https://news.dlut.edu.cn/xwjj01/rcpy.htm) 分类栏目在下方 **新闻网** 参数表格中 `category` 参数为 `rcpy`，并非上面例子中给出的 `xwjj01/rcpy`。这意味着开发者对路由 `/dut/news/xwjj01/rcpy` 指定了快捷方式 `/dut/news/rcpy`。两者的效果是一致的。\n:::",
         "location": "index.ts",
         "module": () => import('@/routes/dut/index.ts')
       },
@@ -52055,8 +53129,17 @@ export default {
           "/*/*",
           "/:0?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/dut",
+        "name": "通用",
+        "maintainers": [
+          "beautyyuyanli",
+          "nczitzk",
+          "ueiu"
+        ],
+        "description": "订阅 **单级** 栏目如 [大连理工大学新闻网](https://news.dlut.edu.cn) 的 [头条关注](https://news.dlut.edu.cn/ttgz.htm) 分类栏目，分为 3 步：\n\n1. 将 URL `https://news.dlut.edu.cn/ttgz.htm` 中 `https://` 与 `.dlut.edu.cn/` 中间的 `news` 作为 `site` 参数填入；\n2. 将 `https://news.dlut.edu.cn/` 与 `.htm` 间的 `ttgz` 作为 `category` 参数填入；\n3. 最终可获得 [`/dut/news/ttgz`](https://rsshub.app/dut/news/tzgg)。\n\n订阅 **多级** 栏目如 [大连理工大学新闻网](https://news.dlut.edu.cn) 的 [人才培养](https://news.dlut.edu.cn/xwjj01/rcpy.htm) 分类栏目，同样分为 3 步：\n\n1. 将 URL `https://news.dlut.edu.cn/xwjj01/rcpy.htm` 中 `https://` 与 `.dlut.edu.cn/` 中间的 `news` 作为 `site` 参数填入；\n2. 把 `https://news.dlut.edu.cn/` 与 `.htm` 间 `xwjj01/rcpy` 作为 `category` 参数填入；\n3. 最终可获得 [`/dut/news/xwjj01/rcpy`](https://rsshub.app/dut/news/xwjj01/rcpy)。\n\n::: tip 小提示\n大连理工大学大部分站点支持上述通用规则进行订阅。下方的大连理工大学相关路由基本适用于该规则，在其对应的表格中没有提及的分类栏目，可以使用上方的方法自行扩展。\n:::\n\n::: tip 小小提示\n你会发现 [大连理工大学新闻网](https://news.dlut.edu.cn) 的 [人才培养](https://news.dlut.edu.cn/xwjj01/rcpy.htm) 分类栏目在下方 **新闻网** 参数表格中 `category` 参数为 `rcpy`，并非上面例子中给出的 `xwjj01/rcpy`。这意味着开发者对路由 `/dut/news/xwjj01/rcpy` 指定了快捷方式 `/dut/news/rcpy`。两者的效果是一致的。\n:::",
         "location": "index.ts",
         "module": () => import('@/routes/dut/index.ts')
       }
@@ -52122,7 +53205,7 @@ export default {
         "radar": [
           {
             "source": [
-              "www.dykszx.com/"
+              "www.dykszx.cn/"
             ],
             "target": "/news/all"
           }
@@ -52131,7 +53214,7 @@ export default {
         "maintainers": [
           "zytomorrow"
         ],
-        "url": "www.dykszx.com",
+        "url": "www.dykszx.cn",
         "description": "| 新闻中心 | 公务员考试 | 事业单位 | （职）业资格、职称考试 |  其他 |\n| :------: | :--------: | :------: | :--------------------: | :---: |\n|    all   |     gwy    |   sydw   |          zyzc          | other |",
         "location": "news.ts",
         "module": () => import('@/routes/dykszx/news.ts')
@@ -52337,24 +53420,6 @@ export default {
     "name": "电影天堂",
     "url": "www.dydytt.net",
     "lang": "zh-CN"
-  },
-  "e-hentai": {
-    "routes": {
-      "/:what?/:id?/:needTorrents?/:needImages?": {
-        "path": "/:what?/:id?/:needTorrents?/:needImages?",
-        "name": "Unknown",
-        "maintainers": [],
-        "features": {
-          "nsfw": true
-        },
-        "location": "index.tsx",
-        "module": () => import('@/routes/e-hentai/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "E-Hentai",
-    "url": "e-hentai.org",
-    "lang": "en"
   },
   "eagle": {
     "routes": {
@@ -52926,7 +53991,7 @@ export default {
         "radar": [
           {
             "source": [
-              "cee.ecnu.edu.cn"
+              "ieeic.ecnu.edu.cn"
             ],
             "target": "/cee"
           }
@@ -53972,65 +55037,41 @@ export default {
   },
   "elsevier": {
     "routes": {
-      "/:journal/vol/:issue": {
-        "path": [
-          "/:journal/vol/:issue",
-          "/:journal/:issue"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.sciencedirect.com/journal/:journal/*"
-            ],
-            "target": "/:journal"
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "issue.ts",
-        "module": () => import('@/routes/elsevier/issue.ts')
-      },
       "/:journal/:issue": {
-        "path": [
-          "/:journal/vol/:issue",
-          "/:journal/:issue"
+        "path": "/:journal/:issue",
+        "categories": [
+          "journal"
         ],
+        "example": "/elsevier/signal-processing/192",
+        "parameters": {
+          "journal": "Journal Name, the part of the URL after `/journal/`",
+          "issue": "Release Number, the number in the URL after `/vol/` (If both Volume and Issue exist, must use the `Volume-Issue` form, e.g., `/elsevier/aace-clinical-case-reports/7-6`)"
+        },
         "radar": [
           {
             "source": [
-              "www.sciencedirect.com/journal/:journal/*"
+              "www.sciencedirect.com/journal/:journal/vol/:issue"
             ],
-            "target": "/:journal"
+            "target": "/:journal/:issue"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Special Issue",
+        "maintainers": [
+          "Derekmini",
+          "sunwolf-swb"
+        ],
         "location": "issue.ts",
         "module": () => import('@/routes/elsevier/issue.ts')
-      },
-      "/:journal/latest": {
-        "path": [
-          "/:journal/latest",
-          "/:journal"
-        ],
-        "radar": [
-          {
-            "source": [
-              "www.sciencedirect.com/journal/:journal/*"
-            ],
-            "target": "/:journal"
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "journal.ts",
-        "module": () => import('@/routes/elsevier/journal.ts')
       },
       "/:journal": {
-        "path": [
-          "/:journal/latest",
-          "/:journal"
+        "path": "/:journal",
+        "categories": [
+          "journal"
         ],
+        "example": "/elsevier/signal-processing",
+        "parameters": {
+          "journal": "Journal Name, the part of the URL after `/journal/`"
+        },
         "radar": [
           {
             "source": [
@@ -54039,8 +55080,11 @@ export default {
             "target": "/:journal"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Journal",
+        "maintainers": [
+          "Derekmini",
+          "sunwolf-swb"
+        ],
         "location": "journal.ts",
         "module": () => import('@/routes/elsevier/journal.ts')
       }
@@ -54054,7 +55098,15 @@ export default {
     "routes": {
       "/:country/:city?": {
         "path": "/:country/:city?",
-        "name": "Unknown",
+        "categories": [
+          "government"
+        ],
+        "example": "/embassy/us/chicago",
+        "parameters": {
+          "country": "国家短代码, 见支持国家列表",
+          "city": "城市, 对应国家列表下的`领事馆城市列表`，不填则为大使馆"
+        },
+        "name": "使领馆重要通知",
         "maintainers": [
           "HenryQW"
         ],
@@ -55365,6 +56417,13 @@ export default {
     "routes": {
       "/cdrh/:titleOnly?": {
         "path": "/cdrh/:titleOnly?",
+        "categories": [
+          "government"
+        ],
+        "example": "/fda/cdrh",
+        "parameters": {
+          "titleOnly": "Title only, empty by default which includes the full text, any other value shows the title only"
+        },
         "radar": [
           {
             "source": [
@@ -55374,8 +56433,10 @@ export default {
             "target": "/cdrh/:titleOnly"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "CDRHNew",
+        "maintainers": [
+          "nczitzk"
+        ],
         "url": "fda.gov/medical-devices/news-events-medical-devices/cdrhnew-news-and-updates",
         "location": "cdrh.ts",
         "module": () => import('@/routes/fda/cdrh.ts')
@@ -55564,8 +56625,18 @@ export default {
       },
       "/release/:platform?": {
         "path": "/release/:platform?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "program-update"
+        ],
+        "example": "/firefox/release/desktop",
+        "parameters": {
+          "platform": "the platform"
+        },
+        "description": "| Desktop | Android | Beta | Nightly | iOS |\n| ------- | ------- | ---- | ------- | --- |\n| desktop | android | beta | nightly | ios |",
+        "name": "New Release",
+        "maintainers": [
+          "fengkx"
+        ],
         "location": "release.ts",
         "module": () => import('@/routes/firefox/release.ts')
       }
@@ -55617,6 +56688,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/fishshell",
         "radar": [
           {
             "source": [
@@ -55625,7 +56700,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Release Notes",
         "maintainers": [
           "x2cf"
         ],
@@ -56421,7 +57496,9 @@ export default {
           "supportScihub": false
         },
         "name": "Channel",
-        "maintainers": [],
+        "maintainers": [
+          "mikkkee"
+        ],
         "description": "| Trading | Infrastructure | Tech and Data | Regulation |\n| ------- | -------------- | ------------- | ---------- |\n| trading | infrastructure | tech-and-data | regulation |",
         "location": "channel.ts",
         "module": () => import('@/routes/fx-markets/channel.ts')
@@ -56948,15 +58025,35 @@ export default {
     "routes": {
       "/:domain/:category?": {
         "path": "/:domain/:category?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "new-media"
+        ],
+        "example": "/gamme/news",
+        "parameters": {
+          "domain": "網站，`news` 為宅宅新聞，`sexynews` 為西斯新聞",
+          "category": "分類名，可在 URL 找到，預設為全部"
+        },
+        "name": "分類",
+        "maintainers": [
+          "TonyRL"
+        ],
         "location": "category.ts",
         "module": () => import('@/routes/gamme/category.ts')
       },
       "/:domain/tag/:tag": {
         "path": "/:domain/tag/:tag",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "new-media"
+        ],
+        "example": "/gamme/news/tag/歐派",
+        "parameters": {
+          "domain": "網站，`news` 為宅宅新聞，`sexynews` 為西斯新聞",
+          "tag": "標籤，可在 URL 找到"
+        },
+        "name": "標籤",
+        "maintainers": [
+          "TonyRL"
+        ],
         "location": "tag.ts",
         "module": () => import('@/routes/gamme/tag.ts')
       }
@@ -57053,6 +58150,61 @@ export default {
     "url": "pm.gc.ca",
     "lang": "en"
   },
+  "gdmuseum": {
+    "routes": {
+      "/exhibition/:type?": {
+        "path": "/exhibition/:type?",
+        "categories": [
+          "travel"
+        ],
+        "example": "/gdmuseum/exhibition/temp",
+        "parameters": {
+          "type": "Exhibition type, supported values: temp(临时展览), default: All exhibitions."
+        },
+        "name": "Current Exhibitions",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.gdmuseum.org.cn/col9/list"
+            ],
+            "target": "/exhibition"
+          }
+        ],
+        "location": "exhibition.tsx",
+        "module": () => import('@/routes/gdmuseum/exhibition.tsx')
+      },
+      "/information": {
+        "path": "/information",
+        "categories": [
+          "travel"
+        ],
+        "example": "/gdmuseum/information",
+        "name": "Information",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.gdmuseum.org.cn/cn/col51/list"
+            ],
+            "target": "/information"
+          }
+        ],
+        "location": "news.ts",
+        "module": () => import('@/routes/gdmuseum/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Guangdong Museum",
+    "url": "gdmuseum.org.cn",
+    "zh": {
+      "name": "广东省博物馆"
+    }
+  },
   "gdsrx": {
     "routes": {
       "/:id?": {
@@ -57073,7 +58225,9 @@ export default {
           "supportScihub": false
         },
         "name": "栏目",
-        "maintainers": [],
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| 栏目名称          | 栏目 id |\n| ----------------- | ------- |\n| 法规文库          | 10      |\n| 法规资讯          | 12      |\n| 专家供稿          | 13      |\n| 协会动态 会员动态 | 20      |\n| 协会动态          | 37      |\n| 协会通知公告      | 38      |\n| 会员动态          | 39      |",
         "location": "index.ts",
         "module": () => import('@/routes/gdsrx/index.ts')
@@ -57350,9 +58504,9 @@ export default {
   },
   "genossenschaften": {
     "routes": {
-      "*": {
+      "/:path{.+}?": {
         "name": "Immobiliensuche",
-        "path": "*",
+        "path": "/:path{.+}?",
         "maintainers": [
           "sk22"
         ],
@@ -57362,6 +58516,7 @@ export default {
         "description": "Note that all parameters are optional and many can be specified multiple times\n(e.g. `district=wien-1-innere-stadt&district=wien-2-leopoldstadt`).\n\nOnly returns the first page of search results, allowing you to keep track of\nnewly added apartments. If you're looking for an apartment, make sure to also\nlook through the other pages on the website.\n\n::: tip\nTo get your query URL, go to <https://genossenschaften.immo> and apply all\ndesired filters. If you want to filter by (all districts of a) federal state\n(e.g. `/immobilien/regionen/wien/`), please open the district selector and\nde- and re-select any district, so that the region in the URL gets replaced\nwith a number of `district` parameters. Once you've set up all desired\nfilters, copy the part of the URL after the `?`.\n:::",
         "example": "/genossenschaften/district=wien-1-innere-stadt&district=wien-2-leopoldstadt&district=wien-3-landstrasse&district=wien-4-wieden&district=wien-5-margareten&district=wien-6-mariahilf&district=wien-7-neubau&district=wien-8-josefstadt&district=wien-9-alsergrund&district=wien-10-favoriten&district=wien-11-simmering&district=wien-12-meidling&district=wien-13-hietzing&district=wien-14-penzing&district=wien-15-rudolfsheim-fuenfhaus&district=wien-16-ottakring&district=wien-17-hernals&district=wien-18-waehring&district=wien-19-doebling&district=wien-20-brigittenau&district=wien-21-floridsdorf&district=wien-22-donaustadt&district=wien-23-liesing&has_rent=on&has_rent_option=on&status=available&status=construction&cost=1000&room=2&size=50&has_property=off&has_rent=on&has_rent_option=on&status=available&status=construction&status=planned&type=residence&type=project",
         "parameters": {
+          "path": "Query parameters copied from the search URL, without the leading `?`, composed of the parameters below",
           "cost": "Miete bis (in €, number)",
           "district": "Bezirk (string, multiple)",
           "size": "Größe ab (in m², number)",
@@ -57395,10 +58550,13 @@ export default {
   },
   "gesiba": {
     "routes": {
-      "*": {
+      "/:path{.+}?": {
         "name": "Angebote",
         "example": "/gesiba/verfuegbar=alle&plz[]=1100&plz[]=1120&size-from=45&size-to=80&rooms-from=2&rooms-to=3&betreuung=0",
-        "path": "*",
+        "path": "/:path{.+}?",
+        "parameters": {
+          "path": "Search filter parameters, see the description below"
+        },
         "maintainers": [
           "sk22"
         ],
@@ -57419,6 +58577,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/getdr",
         "radar": [
           {
             "source": [
@@ -57427,7 +58589,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新詐騙情報",
         "maintainers": [
           "nczitzk"
         ],
@@ -57440,21 +58602,6 @@ export default {
     "name": "趨勢科技防詐達人",
     "url": "getdr.com",
     "lang": "zh-TW"
-  },
-  "getitfree": {
-    "routes": {
-      "/:filter{.+}?": {
-        "path": "/:filter{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/getitfree/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "正版中国",
-    "url": "getitfree.cn",
-    "lang": "zh-CN"
   },
   "gigazine": {
     "routes": {
@@ -58954,6 +60101,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "journal"
+        ],
+        "example": "/globallawreview",
         "radar": [
           {
             "source": [
@@ -58963,7 +60114,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "期刊",
         "maintainers": [
           "nczitzk"
         ],
@@ -59222,7 +60373,7 @@ export default {
             "description": "Year, current year by default"
           }
         },
-        "description": "::: tip\nTo subscribe to [感染症発生動向調査週報](https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/), where the source URL is `https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/`, extract the certain parts from this URL to be used as parameters, resulting in the route as [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025).\n:::",
+        "description": "::: tip\nTo subscribe to [感染症発生動向調査週報](https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/), where the source URL is `https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/`, extract the certain parts from this URL to be used as parameters, resulting in the route as [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025).\n:::",
         "categories": [
           "government"
         ],
@@ -59238,7 +60389,7 @@ export default {
         "radar": [
           {
             "source": [
-              "id-info.jihs.go.jp/surveillance/idwr/jp/idwr/:year"
+              "id-info.jihs.go.jp/surveillance/idwr/idwr/:year"
             ]
           }
         ],
@@ -59256,7 +60407,7 @@ export default {
               "description": "年份，默认为当前年份，可在对应页 URL 中找到"
             }
           },
-          "description": "::: tip\n若订阅 [传染病发生动向调查周报](https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/)，网址为 `https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/2025/`，请截取 `https://id-info.jihs.go.jp/surveillance/idwr/jp/idwr/` 到末尾 `/` 的部分 `2025` 作为 `year` 参数填入，此时目标路由为 [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025)。\n:::"
+          "description": "::: tip\n若订阅 [传染病发生动向调查周报](https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/)，网址为 `https://id-info.jihs.go.jp/surveillance/idwr/idwr/2025/`，请截取 `https://id-info.jihs.go.jp/surveillance/idwr/idwr/` 到末尾 `/` 的部分 `2025` 作为 `year` 参数填入，此时目标路由为 [`/go/jihs/idwr/2025`](https://rsshub.app/go/jihs/idwr/2025)。\n:::"
         },
         "location": "jihs/idwr.ts",
         "module": () => import('@/routes/go/jihs/idwr.ts')
@@ -59370,7 +60521,7 @@ export default {
         ],
         "name": "News",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "location": "news.ts",
         "module": () => import('@/routes/gq/news.ts')
@@ -59948,6 +61099,22 @@ export default {
       },
       "/topic/:id/:order?": {
         "path": "/topic/:id/:order?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/guancha/topic/110/1",
+        "parameters": {
+          "id": "话题 id，可在URL中找到，默认为全部，即为 `0`",
+          "order": "排序参数，见下表"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "radar": [
           {
             "source": [
@@ -59956,12 +61123,13 @@ export default {
             "target": "/:category?"
           }
         ],
-        "name": "Unknown",
+        "name": "风闻话题",
         "maintainers": [
           "occupy5",
           "nczitzk"
         ],
         "url": "guancha.cn/",
+        "description": "| 最新回复 | 最新发布 | 24 小时最热 | 3 天最热 | 7 天最热 | 3 个月最热 | 专栏文章 |\n| -------- | -------- | ----------- | -------- | -------- | ---------- | -------- |\n| 1        | 2        | 3           | 6        | 7        | 8          | 5        |\n\n::: tip\n仅在话题 id 为 0，即选择 全部 时，**3 个月最热**、**24 小时最热**、**3 天最热**、**7 天最热** 和 **专栏文章** 参数生效。\n:::",
         "location": "topic.ts",
         "module": () => import('@/routes/guancha/topic.ts')
       }
@@ -60116,6 +61284,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/guanhai",
         "radar": [
           {
             "source": [
@@ -60124,7 +61296,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "首页",
         "maintainers": [
           "TonyRL"
         ],
@@ -60203,6 +61375,108 @@ export default {
     "url": "guozaoke.com",
     "lang": "zh-CN"
   },
+  "gxmzu": {
+    "routes": {
+      "/aitzgg": {
+        "path": "/aitzgg",
+        "categories": [
+          "university"
+        ],
+        "example": "/gxmzu/aitzgg",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "ai.gxmzu.edu.cn/index/tzgg.htm",
+              "ai.gxmzu.edu.cn/"
+            ]
+          }
+        ],
+        "name": "人工智能学院通知公告",
+        "maintainers": [
+          "real-jiakai"
+        ],
+        "url": "ai.gxmzu.edu.cn/index/tzgg.htm",
+        "location": "ai.ts",
+        "module": () => import('@/routes/gxmzu/ai.ts')
+      },
+      "/libzxxx": {
+        "path": "/libzxxx",
+        "categories": [
+          "university"
+        ],
+        "example": "/gxmzu/libzxxx",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "library.gxmzu.edu.cn/news/news_list.jsp",
+              "library.gxmzu.edu.cn/"
+            ]
+          }
+        ],
+        "name": "图书馆最新消息",
+        "maintainers": [
+          "real-jiakai"
+        ],
+        "url": "library.gxmzu.edu.cn/news/news_list.jsp",
+        "description": "部分消息发布于微信公众号等站外页面，此类消息仅输出标题与原文链接。",
+        "location": "lib.ts",
+        "module": () => import('@/routes/gxmzu/lib.ts')
+      },
+      "/yjszsgg": {
+        "path": "/yjszsgg",
+        "categories": [
+          "university"
+        ],
+        "example": "/gxmzu/yjszsgg",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "yjs.gxmzu.edu.cn/tzgg/zsgg.htm",
+              "yjs.gxmzu.edu.cn/"
+            ]
+          }
+        ],
+        "name": "研究生院招生公告",
+        "maintainers": [
+          "real-jiakai"
+        ],
+        "url": "yjs.gxmzu.edu.cn/tzgg/zsgg.htm",
+        "location": "yjs.ts",
+        "module": () => import('@/routes/gxmzu/yjs.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "广西民族大学",
+    "url": "www.gxmzu.edu.cn",
+    "lang": "zh-CN"
+  },
   "gzdaily": {
     "routes": {
       "/app/:column?": {
@@ -60277,8 +61551,8 @@ export default {
   },
   "hackernews": {
     "routes": {
-      "/:section?/:type?/:user?": {
-        "path": "/:section?/:type?/:user?",
+      "/:section?/:type?/:value?": {
+        "path": "/:section?/:type?/:value?",
         "categories": [
           "programming"
         ],
@@ -60286,13 +61560,13 @@ export default {
         "example": "/hackernews/threads/comments_list/dang",
         "parameters": {
           "section": {
-            "description": "Content section, default to `index`"
+            "description": "Content section, default to `index`. Common sections: `index`, `newest`, `ask`, `show`, `jobs`, `over`, `threads`, `submitted`. Any valid HN section (e.g. `best`, `front`, `active`) is also accepted"
           },
           "type": {
-            "description": "Link type, default to `sources`"
+            "description": "Content format, default to `sources`. `sources` links to original articles, `comments` fetches full comment threads, `comments_list` shows parent story with single comment"
           },
-          "user": {
-            "description": "Set user, only valid in `threads` and `submitted` sections"
+          "value": {
+            "description": "For `threads`/`submitted` sections, set user ID. For `over` section, set minimum points threshold (default 100). For other sections, appended as `?id=<value>` (e.g. `value=dang` → `?id=dang`)"
           }
         },
         "features": {
@@ -60311,12 +61585,12 @@ export default {
             ]
           }
         ],
-        "name": "User",
+        "name": "Stories",
         "maintainers": [
           "nczitzk",
           "xie-dongping"
         ],
-        "description": "Subscribe to the content of a specific user",
+        "description": "Subscribe to Hacker News content by section, user, or minimum points\n\nExamples:\n\n| HN100              | User submitted                       | User threads                       | Comments list                            |\n| ------------------ | ------------------------------------ | ---------------------------------- | ---------------------------------------- |\n| `/hackernews/over` | `/hackernews/submitted/sources/dang` | `/hackernews/threads/sources/dang` | `/hackernews/threads/comments_list/dang` |",
         "location": "index.ts",
         "module": () => import('@/routes/hackernews/index.ts')
       }
@@ -60404,6 +61678,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "programming"
+        ],
+        "example": "/hackyournews",
         "radar": [
           {
             "source": [
@@ -60412,7 +61690,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Index",
         "maintainers": [
           "ftiasch"
         ],
@@ -61095,7 +62373,10 @@ export default {
           "supportScihub": false
         },
         "name": "Hinatazaka46 Blog 日向坂 46 博客",
-        "maintainers": [],
+        "maintainers": [
+          "yj-qin",
+          "AkashiGakki"
+        ],
         "description": "Member ID\n\n| Member ID | Name         |\n| --------- | ------------ |\n| 2000      | 四期生リレー |\n| 36        | 渡辺 莉奈    |\n| 35        | 山下 葉留花  |\n| 34        | 宮地 すみれ  |\n| 33        | 藤嶌 果歩    |\n| 32        | 平岡 海月    |\n| 31        | 平尾 帆夏    |\n| 30        | 竹内 希来里  |\n| 29        | 正源司 陽子  |\n| 28        | 清水 理央    |\n| 27        | 小西 夏菜実  |\n| 26        | 岸 帆夏      |\n| 25        | 石塚 瑶季    |\n| 24        | 山口 陽世    |\n| 23        | 森本 茉莉    |\n| 22        | 髙橋 未来虹  |\n| 21        | 上村 ひなの  |\n| 18        | 松田 好花    |\n| 17        | 濱岸 ひより  |\n| 16        | 丹生 明里    |\n| 15        | 富田 鈴花    |\n| 14        | 小坂 菜緒    |\n| 13        | 河田 陽菜    |\n| 12        | 金村 美玖    |\n| 11        | 東村 芽依    |\n| 10        | 高本 彩花    |\n| 9         | 高瀬 愛奈    |\n| 8         | 佐々木 美玲  |\n| 7         | 佐々木 久美  |\n| 6         | 齊藤 京子    |\n| 5         | 加藤 史帆    |\n| 4         | 影山 優佳    |\n| 2         | 潮 紗理菜    |",
         "location": "blog.ts",
         "module": () => import('@/routes/hinatazaka46/blog.ts')
@@ -61126,7 +62407,7 @@ export default {
         "name": "Hinatazaka46 News 日向坂 46 新闻",
         "maintainers": [
           "crispgm",
-          "akashigakki"
+          "AkashiGakki"
         ],
         "url": "hinatazaka46.com/s/official/news/list",
         "location": "news.ts",
@@ -61497,8 +62778,8 @@ export default {
         "radar": [
           {
             "source": [
-              "hitwh.edu.cn/1024/list.htm",
-              "hitwh.edu.cn/"
+              "today.hitwh.edu.cn/1024/list.htm",
+              "today.hitwh.edu.cn/"
             ]
           }
         ],
@@ -61506,7 +62787,7 @@ export default {
         "maintainers": [
           "raptazure"
         ],
-        "url": "hitwh.edu.cn/1024/list.htm",
+        "url": "today.hitwh.edu.cn/1024/list.htm",
         "location": "today.ts",
         "module": () => import('@/routes/hitwh/today.ts')
       }
@@ -61710,6 +62991,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/hkjunkcall",
         "radar": [
           {
             "source": [
@@ -61718,7 +63003,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "近期資訊",
         "maintainers": [
           "nczitzk"
         ],
@@ -61940,6 +63225,61 @@ export default {
     "url": "yjsy.hljucm.net",
     "lang": "zh-CN"
   },
+  "hnmuseum": {
+    "routes": {
+      "/current-exhibitions/:type?": {
+        "path": "/current-exhibitions/:type?",
+        "categories": [
+          "travel"
+        ],
+        "example": "/hnmuseum/current-exhibitions/special",
+        "parameters": {
+          "type": "Exhibition type, supported values: special（临时展览 special+temporary）. Default: All exhibitions."
+        },
+        "name": "Current Exhibitions",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.hnmuseum.com/zh-hans/content/当前展览－基本陈列"
+            ],
+            "target": "/current-exhibitions"
+          }
+        ],
+        "location": "exhibitions.tsx",
+        "module": () => import('@/routes/hnmuseum/exhibitions.tsx')
+      },
+      "/hnmnews": {
+        "path": "/hnmnews",
+        "categories": [
+          "travel"
+        ],
+        "example": "/hnmuseum/hnmnews",
+        "name": "HNM News",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.hnmuseum.com/zh-hans/xiangbo_dongtai_news"
+            ],
+            "target": "/hnmnews"
+          }
+        ],
+        "location": "hnmnews.ts",
+        "module": () => import('@/routes/hnmuseum/hnmnews.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Hunan Museum",
+    "url": "www.hnmuseum.com/zh-hans",
+    "zh": {
+      "name": "湖南省博物馆"
+    }
+  },
   "hnrb": {
     "routes": {
       "/:id?": {
@@ -61986,6 +63326,14 @@ export default {
     "routes": {
       "/chp/:category?/:language?": {
         "path": "/chp/:category?/:language?",
+        "categories": [
+          "government"
+        ],
+        "example": "/hongkong/chp",
+        "parameters": {
+          "category": "Category, see below, Important Topics by default",
+          "language": "Language, see below, zh_tw by default"
+        },
         "radar": [
           {
             "source": [
@@ -61993,11 +63341,12 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "Category",
         "maintainers": [
           "nczitzk"
         ],
         "url": "dh.gov.hk/",
+        "description": "Category\n\n| Important Topics | Press Releases     | Response Level | Periodicals & Publications | Health Notice |\n| ---------------- | ------------------ | -------------- | -------------------------- | ------------- |\n| important\\_ft    | press\\_data\\_index | ResponseLevel  | publication                | HealthAlert   |\n\nLanguage\n\n| English | 中文简体 | 中文繁體 |\n| ------- | -------- | -------- |\n| en      | zh\\_cn   | zh\\_tw   |",
         "location": "chp.ts",
         "module": () => import('@/routes/hongkong/chp.ts')
       },
@@ -62042,13 +63391,6 @@ export default {
   },
   "hostmonit": {
     "routes": {
-      "/cloudflareyesv6": {
-        "path": "/cloudflareyesv6",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "cloudflareyesv6.ts",
-        "module": () => import('@/routes/hostmonit/cloudflareyesv6.ts')
-      },
       "/cloudflareyes/:type?": {
         "path": "/cloudflareyes/:type?",
         "categories": [
@@ -62239,15 +63581,37 @@ export default {
       },
       "/gx/card/:column/:id?": {
         "path": "/gx/card/:column/:id?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/hrbeu/gx/card/xw/ztch",
+        "parameters": {
+          "column": "主栏，如 `新闻：xw`，由 `URL` 中获取；",
+          "id": "次栏，如 `要闻：yw`，如果次栏存在，则为必选，由 `URL` 中获取。"
+        },
+        "name": "工学新闻 - 卡片页面",
+        "maintainers": [
+          "Derekmini",
+          "XYenon"
+        ],
         "location": "gx/card.ts",
         "module": () => import('@/routes/hrbeu/gx/card.ts')
       },
       "/gx/list/:column/:id?": {
         "path": "/gx/list/:column/:id?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/hrbeu/gx/list/xw/yw",
+        "parameters": {
+          "column": "主栏，如 `新闻：xw`，由 `URL` 中获取；",
+          "id": "次栏，如 `要闻：yw`，如果次栏存在，则为必选，由 `URL` 中获取。"
+        },
+        "name": "工学新闻 - 列表页面",
+        "maintainers": [
+          "Derekmini",
+          "XYenon"
+        ],
         "location": "gx/list.ts",
         "module": () => import('@/routes/hrbeu/gx/list.ts')
       },
@@ -62394,7 +63758,9 @@ export default {
           }
         ],
         "name": "水声工程学院",
-        "maintainers": [],
+        "maintainers": [
+          "Derekmini"
+        ],
         "description": "| 新闻动态 | 通知公告 | 科学研究 / 科研动态 |\n| :------: | :------: | :-----------------: |\n|   xwdt   |   tzgg   |      kxyj-kydt      |",
         "location": "uae/news.ts",
         "module": () => import('@/routes/hrbeu/uae/news.ts')
@@ -64671,6 +66037,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "study"
+        ],
+        "example": "/ielts",
         "radar": [
           {
             "source": [
@@ -64679,7 +66049,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新消息",
         "maintainers": [
           "zenxds"
         ],
@@ -64845,10 +66215,20 @@ export default {
         "location": "feng.ts",
         "module": () => import('@/routes/ifeng/feng.ts')
       },
-      "/news/*": {
-        "path": "/news/*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/news/:path{.+}?": {
+        "path": "/news/:path{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/ifeng/news",
+        "parameters": {
+          "path": "路径，对应分类资讯页 URL 路径，默认为空"
+        },
+        "name": "资讯",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n路径处填写对应页面 URL 中 `https://news.ifeng.com/` 后的字段。下面是一个例子。\n\n若订阅 [大湾区\\_资讯\\_凤凰网](https://news.ifeng.com/shanklist/3-305565-) 则将对应页面 URL `https://news.ifeng.com/shanklist/3-305565-` 中 `https://news.ifeng.com/` 后的字段 `shanklist/3-305565-` 作为路径填入。此时路由为 [`/ifeng/news/shanklist/3-305565-`](https://rsshub.app/ifeng/news/shanklist/3-305565-)\n:::",
         "location": "news.tsx",
         "module": () => import('@/routes/ifeng/news.tsx')
       }
@@ -64880,7 +66260,7 @@ export default {
         },
         "name": "Download Hub",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "description": "::: warning\n\n1. Open <https://ifi-audio.com/download-hub> and the Network panel\n2. Select the device and the corresponding serial number in the website and click Search\n3. Find the last request named `https://ifi-audio.com/wp-admin/admin-ajax.php` in the Network panel, find out the val and id in the Payload panel, and fill in the url\n\n:::",
         "location": "download.ts",
@@ -65277,36 +66657,6 @@ export default {
     "url": "imiker.com",
     "lang": "zh-CN"
   },
-  "immich": {
-    "routes": {
-      "/cursed-knowledge": {
-        "path": "/cursed-knowledge",
-        "categories": [
-          "blog"
-        ],
-        "example": "/immich/cursed-knowledge",
-        "radar": [
-          {
-            "source": [
-              "immich.app/cursed-knowledge",
-              "immich.app"
-            ],
-            "target": "/cursed-knowledge"
-          }
-        ],
-        "name": "Cursed Knowledge",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "cursed-knowledge.ts",
-        "module": () => import('@/routes/immich/cursed-knowledge.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Immich",
-    "url": "immich.app",
-    "lang": "en-us"
-  },
   "imop": {
     "routes": {
       "/tianshu": {
@@ -65561,9 +66911,37 @@ export default {
         "location": "column.ts",
         "module": () => import('@/routes/indienova/column.ts')
       },
-      "/gamedb/recent": {
-        "path": "/gamedb/recent",
-        "name": "Unknown",
+      "/gamedb/recent/:platform?": {
+        "name": "GameDB 游戏库",
+        "path": "/gamedb/recent/:platform?",
+        "example": "/indienova/gamedb/recent",
+        "categories": [
+          "game"
+        ],
+        "parameters": {
+          "platform": {
+            "description": "平台，留空为 `all`",
+            "options": [
+              {
+                "value": "all",
+                "label": "全部"
+              },
+              {
+                "value": "ps4",
+                "label": "PS4"
+              },
+              {
+                "value": "xboxone",
+                "label": "XBOX One"
+              },
+              {
+                "value": "nintendo-switch",
+                "label": "Nintendo Switch"
+              }
+            ],
+            "default": "all"
+          }
+        },
         "maintainers": [
           "TonyRL"
         ],
@@ -65789,13 +67167,17 @@ export default {
       "/html_clip/:user/:tag": {
         "path": "/html_clip/:user/:tag",
         "example": "/inoreader/html_clip/1005137674/user-favorites",
+        "parameters": {
+          "user": "User id, can be found in the HTML clip URL",
+          "tag": "Tag name, can be found in the HTML clip URL"
+        },
         "categories": [
           "reading"
         ],
         "view": 0,
         "name": "HTML Clip",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "location": "index.ts",
         "module": () => import('@/routes/inoreader/index.ts')
@@ -65821,7 +67203,7 @@ export default {
         },
         "name": "RSS",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "location": "rss.ts",
         "module": () => import('@/routes/inoreader/rss.ts')
@@ -66393,8 +67775,21 @@ export default {
     "routes": {
       "/v/:category{.+}?": {
         "path": "/v/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/iqilu/v/sdws/sdxwlb",
+        "parameters": {
+          "category": "节目 id，可在对应节目页 URL 中找到，见下表，默认为 `sdws/sdxwlb`，即山东新闻联播"
+        },
+        "features": {
+          "supportPodcast": true
+        },
+        "name": "电视节目",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 节目名称         | 节目 id        |\n| ---------------- | -------------- |\n| 山东新闻联播     | sdws/sdxwlb    |\n| 闪电大视野       | ggpd/sddsy     |\n| 山东三农新闻联播 | nkpd/snxw      |\n| 每日新闻         | qlpd/mrxw      |\n| 新闻午班车       | ggpd/xwwbc     |\n| 戏宇宙           | sdws/xyz/      |\n| 中国礼 中国乐    | qlpd/zglzgy    |\n| 超级语文课       | sdws/cjywk     |\n| 文物里的山东     | yspd/wwldsd    |\n| 拉呱             | qlpd/l0        |\n| 生活帮           | shpd/shb       |\n| 快乐大赢家       | zypd/kldyj     |\n| 乡村季风         | nkpd/xcjf      |\n| 健康是 1         | ggpd/jks1      |\n| 此时此刻         | sdws/cishicike |",
         "location": "program.ts",
         "module": () => import('@/routes/iqilu/program.ts')
       }
@@ -66564,10 +67959,20 @@ export default {
         "location": "devlog.ts",
         "module": () => import('@/routes/itch/devlog.ts')
       },
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "game"
+        ],
+        "example": "/itch/games/new-and-popular/featured",
+        "parameters": {
+          "path": "Params"
+        },
+        "name": "Browse",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "The path is the field after `itch.io` in the URL of the corresponding page, e.g. the URL of [Top Rated Games tagged Singleplayer](https://itch.io/games/top-rated/tag-singleplayer) is `https://itch.io/games/top-rated/tag-singleplayer`, where the field after `itch.io` is `/games/top-rated/tag-singleplayer`.\n\nSo the route is [`/itch/games/top-rated/tag-singleplayer`](https://rsshub.app/itch/games/top-rated/tag-singleplayer).\n\n::: tip\nYou can browse all the tags [here](https://itch.io/tags).\n:::",
         "location": "index.ts",
         "module": () => import('@/routes/itch/index.ts')
       },
@@ -68275,6 +69680,76 @@ export default {
     "description": "",
     "lang": "ko"
   },
+  "jou": {
+    "routes": {
+      "/tzgg": {
+        "path": "/tzgg",
+        "categories": [
+          "university"
+        ],
+        "example": "/jou/tzgg",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.jou.edu.cn/index/tzgg.htm",
+              "www.jou.edu.cn/"
+            ]
+          }
+        ],
+        "name": "官网通知公告",
+        "maintainers": [
+          "real-jiakai"
+        ],
+        "url": "www.jou.edu.cn/index/tzgg.htm",
+        "location": "home.ts",
+        "module": () => import('@/routes/jou/home.ts')
+      },
+      "/yztzgg": {
+        "path": "/yztzgg",
+        "categories": [
+          "university"
+        ],
+        "example": "/jou/yztzgg",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "yz.jou.edu.cn/index/zxgg.htm",
+              "yz.jou.edu.cn/"
+            ]
+          }
+        ],
+        "name": "研招网通知公告",
+        "maintainers": [
+          "real-jiakai"
+        ],
+        "url": "yz.jou.edu.cn/index/zxgg.htm",
+        "location": "yz.ts",
+        "module": () => import('@/routes/jou/yz.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "江苏海洋大学",
+    "url": "www.jou.edu.cn",
+    "lang": "zh-CN"
+  },
   "jpmorganchase": {
     "routes": {
       "/": {
@@ -68516,6 +69991,13 @@ export default {
     "routes": {
       "/news/:type?": {
         "path": "/news/:type?",
+        "categories": [
+          "government"
+        ],
+        "example": "/jseea/news/zkyw",
+        "parameters": {
+          "type": "分类，默认为 `zkyw`，具体参数见下表"
+        },
         "radar": [
           {
             "source": [
@@ -68524,16 +70006,17 @@ export default {
             "target": "/news/:type"
           }
         ],
-        "name": "Unknown",
+        "name": "新闻中心",
         "maintainers": [
           "schen1024"
         ],
+        "description": "| 招考要闻 | 教育动态 | 招考信息 | 政策文件 | 院校动态 |\n| :------: | :------: | :------: | :------: | :------: |\n|   zkyw   |   jydt   |   zkxx   |   zcwj   |   yxdt   |",
         "location": "news.ts",
         "module": () => import('@/routes/jseea/news.ts')
       }
     },
     "apiRoutes": {},
-    "name": "Unknown",
+    "name": "江苏省教育考试院",
     "url": "jseea.cn",
     "lang": "zh-CN"
   },
@@ -68541,10 +70024,26 @@ export default {
     "routes": {
       "/cxzx/:types?": {
         "path": "/cxzx/:types?",
-        "name": "Unknown",
+        "categories": [
+          "university"
+        ],
+        "example": "/jsu/cxzx/xkjs",
+        "parameters": {
+          "types": "通知分类 默认为`xkjs`"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "创新中心",
         "maintainers": [
           "wenjia03"
         ],
+        "description": "| 通知公告 | 学科竞赛公告 | 创新项目公告 | 竞赛新闻 | 竞赛通知 |\n| -------- | ------------ | ------------ | -------- | -------- |\n| tzgg     | xkjs         | cxtz         | jsxw     | jstz     |",
         "location": "cxzx.ts",
         "module": () => import('@/routes/jsu/cxzx.ts')
       },
@@ -68854,8 +70353,19 @@ export default {
     "routes": {
       "/:region?/:category{.+}?": {
         "path": "/:region?/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "new-media"
+        ],
+        "example": "/kantarworldpanel/cn-en/news",
+        "parameters": {
+          "region": "Region id, see below, Chinese Mainland English by default",
+          "category": "Category, can be found in URL, News by default"
+        },
+        "name": "News Centre",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| Region      | id    |\n| ----------- | ----- |\n| China Eng   | cn-en |\n| China 中文  | cn    |\n| Indonesia   | id    |\n| Korea       | kr    |\n| Malaysia    | my    |\n| Philippines | ph    |\n| Taiwan      | tw    |\n| Thailand    | th    |\n| Vietnam     | vn    |\n\n<details>\n  <summary>More categories</summary>\n\n#### China Eng\n\n| News | Retail Snapshot | Publications         | In the media |\n| ---- | --------------- | -------------------- | ------------ |\n| news | publications    | publications/Reports | In-the-media |\n\n#### China 中文\n\n| 新闻发布 | 零售市场快报 | 市场报告                    | 媒体报道       |\n| -------- | ------------ | --------------------------- | -------------- |\n| news     | publications | publications/China-Insights | press-releases |\n\n#### Indonesia\n\n| News | Kantar Scoop                  | Video Series      | Podcast      | Ready, Steady, Shop!     | Asia Pulse      |\n| ---- | ----------------------------- | ----------------- | ------------ | ------------------------ | --------------- |\n| News | News/Kantar-Worldpanel-Series | News/video-series | News/podcast | News/asia-shopper-series | News/Asia-Pulse |\n\n#### Korea\n\n| News | Insight Reports | In the Media   |\n| ---- | --------------- | -------------- |\n| news | publications    | press-releases |\n\n#### Malaysia\n\n| News |\n| ---- |\n| news |\n\n#### Philippines\n\n| Latest Insights | In the Media | Events |\n| --------------- | ------------ | ------ |\n| Latest-Insights | In-the-Media | events |\n\n#### Taiwan\n\n| 聚焦台灣                 | WOW SPOT     | 市場報告     | 媒體報導       | 活動   |\n| ------------------------ | ------------ | ------------ | -------------- | ------ |\n| news/spotlight-on-taiwan | news/wowspot | publications | press-releases | events |\n\n#### Thailand\n\n| News |\n| ---- |\n| news |\n\n#### Vietnam\n\n| Insights | FMCG Monitor      | Ready, Steady, Shop!   | Asia Pulse      | IN THE MEDIA |\n| -------- | ----------------- | ---------------------- | --------------- | ------------ |\n| news     | news/FMCG-Monitor | news/ready-steady-shop | news/asia-pulse | In-the-media |\n\n</details>",
         "location": "index.tsx",
         "module": () => import('@/routes/kantarworldpanel/index.tsx')
       }
@@ -68991,18 +70501,22 @@ export default {
         "radar": [
           {
             "source": [
-              "www.kcna.kp/:lang",
-              "www.kcna.kp/:lang/category/articles/q/1ee9bdb7186944f765208f34ecfb5407.kcmsf",
-              "www.kcna.kp/:lang/category/articles.kcmsf"
+              "www.kcna.kp/:lang"
             ],
             "target": "/:lang"
+          },
+          {
+            "source": [
+              "www.kcna.kp/:lang/article/list/:category"
+            ],
+            "target": "/:lang/:category"
           }
         ],
         "name": "News",
         "maintainers": [
           "Rongronggg9"
         ],
-        "description": "| Language | 조선어 | English | 中国语 | Русский | Español | 日本語 |\n| -------- | ------ | ------- | ------ | ------- | ------- | ------ |\n| `:lang`  | `kp`   | `en`    | `cn`   | `ru`    | `es`    | `jp`   |\n\n| Category                                                         | `:category`                        |\n| ---------------------------------------------------------------- | ---------------------------------- |\n| WPK General Secretary **Kim Jong Un**'s Revolutionary Activities | `54c0ca4ca013a92cc9cf95bd4004c61a` |\n| Latest News (default)                                            | `1ee9bdb7186944f765208f34ecfb5407` |\n| Top News                                                         | `5394b80bdae203fadef02522cfb578c0` |\n| Home News                                                        | `b2b3bcc1b0a4406ab0c36e45d5db58db` |\n| Documents                                                        | `a8754921399857ebdbb97a98a1e741f5` |\n| World                                                            | `593143484cf15d48ce85c26139582395` |\n| Society-Life                                                     | `93102e5a735d03979bc58a3a7aefb75a` |\n| External                                                         | `0f98b4623a3ef82aeea78df45c423fd0` |\n| News Commentary                                                  | `12c03a49f7dbe829bceea8ac77088c21` |",
+        "description": "| Language | 조선어 | English | 中国语 | Русский | Español | 日本語 |\n| -------- | ------ | ------- | ------ | ------- | ------- | ------ |\n| `:lang`  | `kp`   | `en`    | `cn`   | `ru`    | `es`    | `jp`   |\n\n| Category                                                         | `:category`                        |\n| ---------------------------------------------------------------- | ---------------------------------- |\n| WPK General Secretary **Kim Jong Un**'s Revolutionary Activities | `b0721b9f23054ddc7fe56c2811a12715` |\n| Latest News (default)                                            | `a666dda1282180e0ee1b4427b0574ae7` |\n| Top News                                                         | `6a47505ba5268fd7749c0fe11e4b24b4` |\n| Home News                                                        | `2f7d854121ccbbfbe6feae9fdcc3556e` |\n| Documents                                                        | `1afa96195f9b303902490a126ab7285f` |\n| World                                                            | `ecc14533d88be93068af4178946b1b05` |\n| Social Life                                                      | `680e40b40899891bbe75a7072e3285e7` |\n| External                                                         | `e2f336db98b5e69c75e0da264e037e8d` |\n| Revolutionary Anecdote                                           | `503e9b606704f9b1c625fa5755928cd3` |\n| Always in Memory of People                                       | `7bc083f00425be6aadfb828fba1cb5a7` |",
         "location": "news.tsx",
         "module": () => import('@/routes/kcna/news.tsx')
       }
@@ -69016,7 +70530,11 @@ export default {
     "routes": {
       "/": {
         "path": "/",
-        "name": "Unknown",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/keepass",
+        "name": "News",
         "maintainers": [
           "TonyRL"
         ],
@@ -70286,6 +71804,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "other"
+        ],
+        "example": "/layoffs",
         "radar": [
           {
             "source": [
@@ -70420,6 +71942,10 @@ export default {
     "routes": {
       "/dailyquestion/solution/cn": {
         "path": "/dailyquestion/solution/cn",
+        "categories": [
+          "programming"
+        ],
+        "example": "/leetcode/dailyquestion/solution/cn",
         "radar": [
           {
             "source": [
@@ -70427,14 +71953,20 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "每日一题题解",
+        "maintainers": [
+          "woaidouya123"
+        ],
         "url": "leetcode.cn/",
         "location": "dailyquestion-solution-cn.ts",
         "module": () => import('@/routes/leetcode/dailyquestion-solution-cn.ts')
       },
       "/dailyquestion/solution/en": {
         "path": "/dailyquestion/solution/en",
+        "categories": [
+          "programming"
+        ],
+        "example": "/leetcode/dailyquestion/solution/en",
         "radar": [
           {
             "source": [
@@ -70442,14 +71974,20 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Daily Question Solution",
+        "maintainers": [
+          "woaidouya123"
+        ],
         "url": "leetcode.com/",
         "location": "dailyquestion-solution-en.ts",
         "module": () => import('@/routes/leetcode/dailyquestion-solution-en.ts')
       },
       "/dailyquestion/cn": {
         "path": "/dailyquestion/cn",
+        "categories": [
+          "programming"
+        ],
+        "example": "/leetcode/dailyquestion/cn",
         "radar": [
           {
             "source": [
@@ -70457,14 +71995,20 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "每日一题",
+        "maintainers": [
+          "IvanWng97"
+        ],
         "url": "leetcode.cn/",
         "location": "dailyquestion-cn.ts",
         "module": () => import('@/routes/leetcode/dailyquestion-cn.ts')
       },
       "/dailyquestion/en": {
         "path": "/dailyquestion/en",
+        "categories": [
+          "programming"
+        ],
+        "example": "/leetcode/dailyquestion/en",
         "radar": [
           {
             "source": [
@@ -70472,8 +72016,10 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Daily Question",
+        "maintainers": [
+          "IvanWng97"
+        ],
         "url": "leetcode.com/",
         "location": "dailyquestion-en.ts",
         "module": () => import('@/routes/leetcode/dailyquestion-en.ts')
@@ -70681,11 +72227,11 @@ export default {
         "maintainers": [
           "nczitzk"
         ],
-        "example": "/lhratings/research/1",
+        "example": "/lhratings/research/92",
         "parameters": {
-          "type": "分类，默认为 `1`，即宏观经济，可在对应分类页 URL 中找到"
+          "type": "分类，默认为 `92`，即宏观经济，可在对应分类页 URL 中找到"
         },
-        "description": "::: tip\n若订阅 [宏观经济](https://www.lhratings.com/research.html?type=1)，网址为 `https://www.lhratings.com/research.html?type=1`，请截取 `https://www.lhratings.com/research.html?type=` 到末尾的部分 `1` 作为 `type` 参数填入，此时目标路由为 [`/lhratings/research/1`](https://rsshub.app/lhratings/research/1)。\n:::\n\n| 宏观经济 | 债券市场 | 行业研究 | 评级理论与方法 | 国际债券市场与评级 | 评级表现 |\n| -------- | -------- | -------- | -------------- | ------------------ | -------- |\n| 1        | 2        | 3        | 4              | 5                  | 6        |",
+        "description": "::: tip\n若订阅 [宏观经济](https://www.lhratings.com/research.html?type=92)，网址为 `https://www.lhratings.com/research.html?type=92`，请截取 `https://www.lhratings.com/research.html?type=` 到末尾的部分 `92` 作为 `type` 参数填入，此时目标路由为 [`/lhratings/research/92`](https://rsshub.app/lhratings/research/92)。\n:::\n\n| 宏观经济 | 债券市场 | 行业研究 | 每日资讯 | 其他 |\n| -------- | -------- | -------- | -------- | ---- |\n| 92       | 93       | 94       | 95       | 96   |",
         "categories": [
           "finance"
         ],
@@ -70707,44 +72253,37 @@ export default {
           {
             "title": "宏观经济",
             "source": [
-              "www.lhratings.com/research.html?type=1"
+              "www.lhratings.com/research.html?type=92"
             ],
-            "target": "/research/1"
+            "target": "/research/92"
           },
           {
             "title": "债券市场",
             "source": [
-              "www.lhratings.com/research.html?type=2"
+              "www.lhratings.com/research.html?type=93"
             ],
-            "target": "/research/2"
+            "target": "/research/93"
           },
           {
             "title": "行业研究",
             "source": [
-              "www.lhratings.com/research.html?type=3"
+              "www.lhratings.com/research.html?type=94"
             ],
-            "target": "/research/3"
+            "target": "/research/94"
           },
           {
-            "title": "评级理论与方法",
+            "title": "每日资讯",
             "source": [
-              "www.lhratings.com/research.html?type=4"
+              "www.lhratings.com/research.html?type=95"
             ],
-            "target": "/research/4"
+            "target": "/research/95"
           },
           {
-            "title": "国际债券市场与评级",
+            "title": "其他",
             "source": [
-              "www.lhratings.com/research.html?type=5"
+              "www.lhratings.com/research.html?type=96"
             ],
-            "target": "/research/5"
-          },
-          {
-            "title": "评级表现",
-            "source": [
-              "www.lhratings.com/research.html?type=6"
-            ],
-            "target": "/research/6"
+            "target": "/research/96"
           }
         ],
         "view": 0,
@@ -70799,6 +72338,14 @@ export default {
     "routes": {
       "/:keywords/:security_key?": {
         "path": "/:keywords/:security_key?",
+        "categories": [
+          "anime"
+        ],
+        "example": "/lightnovel/歡迎來到實力至上主義的教室/3cfc2dc63f3575ee42e12823188ad1b5:1709125:0",
+        "parameters": {
+          "keywords": "关键字，可以模糊匹配，但最好精确匹配",
+          "security_key": "cookie,由于文章有防爬，所以必须携带cookie请求。route中的cookie优先级高于环境变量cookie，取token中的security_key值"
+        },
         "radar": [
           {
             "source": [
@@ -70807,7 +72354,7 @@ export default {
             "target": "/:keywords/:security_key"
           }
         ],
-        "name": "Unknown",
+        "name": "文章更新阅读",
         "maintainers": [
           "nightmare-mio"
         ],
@@ -70982,6 +72529,13 @@ export default {
     "routes": {
       "/category/:category": {
         "path": "/category/:category",
+        "categories": [
+          "reading"
+        ],
+        "example": "/literotica/category/anal-sex-stories",
+        "parameters": {
+          "category": "Category, can be found in URL"
+        },
         "radar": [
           {
             "source": [
@@ -70990,7 +72544,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "Category",
         "maintainers": [
           "nczitzk"
         ],
@@ -71036,28 +72590,6 @@ export default {
     "name": "Literotica",
     "url": "literotica.com",
     "lang": "en"
-  },
-  "liulinblog": {
-    "routes": {
-      "/itnews/:channel": {
-        "path": "/itnews/:channel",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "itnews.ts",
-        "module": () => import('@/routes/liulinblog/itnews.ts')
-      },
-      "/:params{.+}?": {
-        "path": "/:params{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/liulinblog/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "木木博客",
-    "url": "liulinblog.com",
-    "lang": "zh-CN"
   },
   "liveuamap": {
     "routes": {
@@ -71189,151 +72721,6 @@ export default {
     "apiRoutes": {},
     "name": "Lofter",
     "url": "www.lofter.com",
-    "lang": "zh-CN"
-  },
-  "logclub": {
-    "routes": {
-      "/:category{.+}?": {
-        "path": "/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/logclub/index.ts')
-      },
-      "/lc_report/:id?": {
-        "path": [
-          "/lc_report/:id?",
-          "/report/:id?"
-        ],
-        "categories": [
-          "new-media"
-        ],
-        "example": "/logclub/lc_report",
-        "parameters": {
-          "id": "报告 id，见下表，默认为罗戈研究出品"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "报告",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "description": "| 罗戈研究出品 | 物流报告       | 绿色双碳报告          |\n| ------------ | -------------- | --------------------- |\n| Report       | IndustryReport | GreenDualCarbonReport |",
-        "location": "report.ts",
-        "module": () => import('@/routes/logclub/report.ts')
-      },
-      "/report/:id?": {
-        "path": [
-          "/lc_report/:id?",
-          "/report/:id?"
-        ],
-        "categories": [
-          "new-media"
-        ],
-        "example": "/logclub/lc_report",
-        "parameters": {
-          "id": "报告 id，见下表，默认为罗戈研究出品"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "报告",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "description": "| 罗戈研究出品 | 物流报告       | 绿色双碳报告          |\n| ------------ | -------------- | --------------------- |\n| Report       | IndustryReport | GreenDualCarbonReport |",
-        "location": "report.ts",
-        "module": () => import('@/routes/logclub/report.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "罗戈网",
-    "url": "logclub.com",
-    "lang": "zh-CN"
-  },
-  "logonews": {
-    "routes": {
-      "/work/tags/:tag": {
-        "path": [
-          "/work/tags/:tag",
-          "/tag/:tag",
-          "*"
-        ],
-        "radar": [
-          {
-            "source": [
-              "logonews.cn/work/tags/:tag"
-            ]
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "url": "logonews.cn/",
-        "description": "如 [中国 - 标志情报局](https://www.logonews.cn/tag/china) 的 URL 为 `https://www.logonews.cn/tag/china`，可得路由为 [`/logonews/tag/china`](https://rsshub.app/logonews/tag/china)。",
-        "location": "index.tsx",
-        "module": () => import('@/routes/logonews/index.tsx')
-      },
-      "/tag/:tag": {
-        "path": [
-          "/work/tags/:tag",
-          "/tag/:tag",
-          "*"
-        ],
-        "radar": [
-          {
-            "source": [
-              "logonews.cn/work/tags/:tag"
-            ]
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "url": "logonews.cn/",
-        "description": "如 [中国 - 标志情报局](https://www.logonews.cn/tag/china) 的 URL 为 `https://www.logonews.cn/tag/china`，可得路由为 [`/logonews/tag/china`](https://rsshub.app/logonews/tag/china)。",
-        "location": "index.tsx",
-        "module": () => import('@/routes/logonews/index.tsx')
-      },
-      "*": {
-        "path": [
-          "/work/tags/:tag",
-          "/tag/:tag",
-          "*"
-        ],
-        "radar": [
-          {
-            "source": [
-              "logonews.cn/work/tags/:tag"
-            ]
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "url": "logonews.cn/",
-        "description": "如 [中国 - 标志情报局](https://www.logonews.cn/tag/china) 的 URL 为 `https://www.logonews.cn/tag/china`，可得路由为 [`/logonews/tag/china`](https://rsshub.app/logonews/tag/china)。",
-        "location": "index.tsx",
-        "module": () => import('@/routes/logonews/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "LogoNews 标志情报局",
-    "url": "logonews.cn",
     "lang": "zh-CN"
   },
   "logrocket": {
@@ -71684,6 +73071,162 @@ export default {
     ],
     "description": "",
     "lang": "zh-CN"
+  },
+  "ltn": {
+    "routes": {
+      "/def/:channel{.+}?": {
+        "path": "/def/:channel{.+}?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/ltn/def/breakingnewslist",
+        "parameters": {
+          "channel": {
+            "description": "Channel, see the table below",
+            "options": [
+              {
+                "value": "breakingnewslist",
+                "label": "軍情動態"
+              },
+              {
+                "value": "list/10",
+                "label": "國際軍情"
+              },
+              {
+                "value": "list/11",
+                "label": "台海軍情"
+              },
+              {
+                "value": "list/22",
+                "label": "軍情看板"
+              },
+              {
+                "value": "mitlist",
+                "label": "國防MIT"
+              },
+              {
+                "value": "list/12",
+                "label": "國機國造"
+              },
+              {
+                "value": "list/13",
+                "label": "國艦國造"
+              },
+              {
+                "value": "list/14",
+                "label": "潛艦國造"
+              },
+              {
+                "value": "list/23",
+                "label": "飛彈"
+              },
+              {
+                "value": "list/24",
+                "label": "戰甲車國造"
+              },
+              {
+                "value": "list/15",
+                "label": "國防產業"
+              },
+              {
+                "value": "list/25",
+                "label": "其他裝備"
+              },
+              {
+                "value": "pedialist",
+                "label": "軍武百科"
+              },
+              {
+                "value": "list/16",
+                "label": "圖解軍武"
+              },
+              {
+                "value": "list/17",
+                "label": "陸用裝備"
+              },
+              {
+                "value": "list/18",
+                "label": "海軍系統"
+              },
+              {
+                "value": "list/19",
+                "label": "空軍系統"
+              },
+              {
+                "value": "historylist",
+                "label": "國防祕辛"
+              },
+              {
+                "value": "stylelist",
+                "label": "軍風尚"
+              },
+              {
+                "value": "list/27",
+                "label": "將軍官邸故事"
+              },
+              {
+                "value": "list/28",
+                "label": "軍事風餐廳"
+              },
+              {
+                "value": "list/29",
+                "label": "軍風文創"
+              },
+              {
+                "value": "list/30",
+                "label": "軍風世界"
+              },
+              {
+                "value": "filelist",
+                "label": "軍武書摘"
+              },
+              {
+                "value": "forumlist",
+                "label": "自由講武堂"
+              },
+              {
+                "value": "list/20",
+                "label": "投書"
+              },
+              {
+                "value": "list/21",
+                "label": "論壇"
+              },
+              {
+                "value": "peoplelist",
+                "label": "軍情人物"
+              }
+            ],
+            "default": "breakingnewslist"
+          }
+        },
+        "radar": [
+          {
+            "source": [
+              "def.ltn.com.tw/:channel"
+            ],
+            "target": "/def/:channel"
+          },
+          {
+            "source": [
+              "def.ltn.com.tw/list/:id"
+            ],
+            "target": "/def/list/:id"
+          }
+        ],
+        "name": "自由軍武頻道",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "def.ltn.com.tw",
+        "location": "def.ts",
+        "module": () => import('@/routes/ltn/def.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "自由時報",
+    "url": "ltn.com.tw",
+    "lang": "zh-TW"
   },
   "luogu": {
     "routes": {
@@ -72059,21 +73602,6 @@ export default {
     "url": "m-78.jp",
     "lang": "ja"
   },
-  "m4": {
-    "routes": {
-      "/:id?/:category{.+}?": {
-        "path": "/:id?/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/m4/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "四月网",
-    "url": "news.m4.cn",
-    "lang": "zh-CN"
-  },
   "macfilos": {
     "routes": {
       "/blog": {
@@ -72174,7 +73702,7 @@ export default {
         },
         "name": "Latest Magazine",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "description": "For instance, when doing search at <https://magazinelib.com> and you get url `https://magazinelib.com/?s=new+yorker`, the query is `new+yorker`",
         "location": "latest-magazine.tsx",
@@ -72213,7 +73741,7 @@ export default {
         ],
         "name": "Magazine",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "url": "magnumphotos.com/",
         "location": "magazine.ts",
@@ -72735,6 +74263,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "reading"
+        ],
+        "example": "/medieval-china",
         "radar": [
           {
             "source": [
@@ -72743,7 +74275,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "首页",
         "maintainers": [
           "artefaritaKuniklo"
         ],
@@ -75117,21 +76649,6 @@ export default {
     "name": "Meta",
     "url": "www.meta.com"
   },
-  "metacritic": {
-    "routes": {
-      "/:type?/:sort?/:filter?": {
-        "path": "/:type?/:sort?/:filter?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.tsx",
-        "module": () => import('@/routes/metacritic/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Metacritic",
-    "url": "metacritic.com",
-    "lang": "en"
-  },
   "meteoblue": {
     "routes": {
       "/weathernews": {
@@ -76154,22 +77671,22 @@ export default {
         "radar": [
           {
             "source": [
-              "my-formosa.com/"
+              "m.my-formosa.com.tw/"
             ]
           }
         ],
-        "name": "首页",
+        "name": "首頁",
         "maintainers": [
           "dzx-dzx"
         ],
-        "url": "my-formosa.com",
+        "url": "m.my-formosa.com.tw",
         "location": "index.ts",
         "module": () => import('@/routes/my-formosa/index.ts')
       }
     },
     "apiRoutes": {},
     "name": "美麗島電子報",
-    "url": "my-formosa.com",
+    "url": "my-formosa.com.tw",
     "lang": "zh-TW"
   },
   "mycard520": {
@@ -76533,7 +78050,7 @@ export default {
         "maintainers": [
           "ladeng07"
         ],
-        "description": "| 最新动态 | 综合信息 | 招生工作 | 培养管理 | 国际交流 | 学科建设 | 学位管理 |\n| -------- | -------- | -------- | -------- | -------- | -------- | -------- |\n| zxdt     | 82       | 83       | 84       | 85       | 86       | 87       |",
+        "description": "| 最新动态 | 综合信息 | 招生工作 | 培养管理 | 国际交流 | 学科建设 | 学位管理 |\n| -------- | -------- | -------- | -------- | -------- | -------- | -------- |\n| zxdt     | 82       | 83       | 72       | 73       | xkjs     | xwgl     |",
         "url": "graduate.nankai.edu.cn",
         "location": "graduate-notice.ts",
         "module": () => import('@/routes/nankai/graduate-notice.ts')
@@ -76979,13 +78496,31 @@ export default {
           }
         ],
         "name": "Research Highlight",
-        "maintainers": [],
+        "maintainers": [
+          "y9c",
+          "TonyRL"
+        ],
         "description": "::: warning\nOnly some journals are supported.\n:::",
         "location": "highlight.ts",
         "module": () => import('@/routes/nature/highlight.ts')
       },
       "/news-and-comment/:journal?": {
         "path": "/news-and-comment/:journal?",
+        "categories": [
+          "journal"
+        ],
+        "example": "/nature/news-and-comment/ng",
+        "parameters": {
+          "journal": "short name for a journal"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": true
+        },
         "radar": [
           {
             "source": [
@@ -76996,11 +78531,12 @@ export default {
             "target": "/news"
           }
         ],
-        "name": "Unknown",
+        "name": "News & Comment",
         "maintainers": [
           "y9c",
           "TonyRL"
         ],
+        "description": "|   `:journal`  |   Full Name of the Journal  | Route                                                                                              |\n| :-----------: | :-------------------------: | -------------------------------------------------------------------------------------------------- |\n|      nbt      |     Nature Biotechnology    | [/nature/news-and-comment/nbt](https://rsshub.app/nature/news-and-comment/nbt)                     |\n|     neuro     |     Nature Neuroscience     | [/nature/news-and-comment/neuro](https://rsshub.app/nature/news-and-comment/neuro)                 |\n|       ng      |       Nature Genetics       | [/nature/news-and-comment/ng](https://rsshub.app/nature/news-and-comment/ng)                       |\n|       ni      |      Nature Immunology      | [/nature/news-and-comment/ni](https://rsshub.app/nature/news-and-comment/ni)                       |\n|     nmeth     |        Nature Method        | [/nature/news-and-comment/nmeth](https://rsshub.app/nature/news-and-comment/nmeth)                 |\n|     nchem     |       Nature Chemistry      | [/nature/news-and-comment/nchem](https://rsshub.app/nature/news-and-comment/nchem)                 |\n|      nmat     |       Nature Materials      | [/nature/news-and-comment/nmat](https://rsshub.app/nature/news-and-comment/nmat)                   |\n| natmachintell | Nature Machine Intelligence | [/nature/news-and-comment/natmachintell](https://rsshub.app/nature/news-and-comment/natmachintell) |\n\n- Using router (`/nature/research/` + \"short name for a journal\") to query latest research paper for a certain journal of Nature Publishing Group.\n- The journals from NPG are run by different group of people, and the website of may not be consitent for all the journals",
         "url": "nature.com/latest-news",
         "location": "news-and-comment.ts",
         "module": () => import('@/routes/nature/news-and-comment.ts')
@@ -77843,7 +79379,9 @@ export default {
           }
         ],
         "name": "学校通知",
-        "maintainers": [],
+        "maintainers": [
+          "vuhe"
+        ],
         "url": "ncwu.edu.cn/xxtz.htm",
         "location": "notice.ts",
         "module": () => import('@/routes/ncwu/notice.ts')
@@ -78167,17 +79705,37 @@ export default {
   },
   "nenu": {
     "routes": {
-      "/sohac/*": {
-        "path": "/sohac/*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/sohac/:path{.+}?": {
+        "path": "/sohac/:path{.+}?",
+        "categories": [
+          "university"
+        ],
+        "example": "/nenu/sohac",
+        "parameters": {
+          "path": "路径，默认为通知公告"
+        },
+        "name": "历史文化学院",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n若订阅 [通知公告](https://sohac.nenu.edu.cn/index/tzgg.htm)，网址为 `https://sohac.nenu.edu.cn/index/tzgg.htm`。截取 `https://sohac.nenu.edu.cn/` 到末尾 `.htm` 的部分 `index/tzgg` 作为参数，此时路由为 [`/nenu/sohac/index/tzgg`](https://rsshub.app/nenu/sohac/index/tzgg)。\n\n若订阅 [学院信息](https://sohac.nenu.edu.cn/index/xyxx.htm)，网址为 `https://sohac.nenu.edu.cn/index/xyxx.htm`。截取 `https://sohac.nenu.edu.cn/` 到末尾 `.htm` 的部分 `index/xyxx` 作为参数，此时路由为 [`/nenu/sohac/index/xyxx`](https://rsshub.app/nenu/sohac/index/xyxx)。\n:::",
         "location": "sohac.ts",
         "module": () => import('@/routes/nenu/sohac.ts')
       },
-      "/yjsy/*": {
-        "path": "/yjsy/*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/yjsy/:path{.+}?": {
+        "path": "/yjsy/:path{.+}?",
+        "categories": [
+          "university"
+        ],
+        "example": "/nenu/yjsy",
+        "parameters": {
+          "path": "路径，默认为通知公告"
+        },
+        "name": "研究生院",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n若订阅 [通知公告](https://yjsy.nenu.edu.cn/tzgg.htm)，网址为 `https://yjsy.nenu.edu.cn/tzgg.htm`。截取 `https://yjsy.nenu.edu.cn/` 到末尾 `.htm` 的部分 `tzgg` 作为参数，此时路由为 [`/nenu/yjsy/tzgg`](https://rsshub.app/nenu/yjsy/tzgg)。\n\n若订阅 [校内新闻](https://yjsy.nenu.edu.cn/xwdt/xnxw.htm)，网址为 `https://yjsy.nenu.edu.cn/xwdt/xnxw.htm`。截取 `https://yjsy.nenu.edu.cn/` 到末尾 `.htm` 的部分 `xwdt/xnxw` 作为参数，此时路由为 [`/nenu/yjsy/xwdt/xnxw`](https://rsshub.app/nenu/yjsy/xwdt/xnxw)。\n:::",
         "location": "yjsy.ts",
         "module": () => import('@/routes/nenu/yjsy.ts')
       }
@@ -78191,6 +79749,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/netflav",
         "radar": [
           {
             "source": [
@@ -78199,7 +79761,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Index",
         "maintainers": [
           "TonyRL"
         ],
@@ -78762,7 +80324,7 @@ export default {
         ],
         "name": "Articles",
         "maintainers": [
-          "EthanWng97",
+          "IvanWng97",
           "pseudoyu"
         ],
         "location": "news.ts",
@@ -79217,6 +80779,10 @@ export default {
       },
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/niaogebiji",
         "radar": [
           {
             "source": [
@@ -79226,7 +80792,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "首页",
         "maintainers": [
           "WenryXu"
         ],
@@ -79460,7 +81026,7 @@ export default {
           "supportPodcast": false,
           "supportScihub": false
         },
-        "name": "南京工程学院教务处",
+        "name": "教务处",
         "maintainers": [
           "zefengdaguo"
         ],
@@ -79490,7 +81056,7 @@ export default {
             ]
           }
         ],
-        "name": "南京工程学院通知公告",
+        "name": "通知公告",
         "maintainers": [
           "zefengdaguo"
         ],
@@ -79614,7 +81180,9 @@ export default {
           "supportScihub": false
         },
         "name": "本科生交换生系统",
-        "maintainers": [],
+        "maintainers": [
+          "cqjjjzr"
+        ],
         "description": "| 新闻通知 | 交换生项目 |\n| -------- | ---------- |\n| news     | proj       |",
         "location": "exchangesys.ts",
         "module": () => import('@/routes/nju/exchangesys.ts')
@@ -80213,6 +81781,77 @@ export default {
     "apiRoutes": {},
     "name": "南京理工大学",
     "url": "jwc.njust.edu.cn",
+    "lang": "zh-CN"
+  },
+  "njxzc": {
+    "routes": {
+      "/tzgg": {
+        "path": "/tzgg",
+        "categories": [
+          "university"
+        ],
+        "example": "/njxzc/tzgg",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.njxzc.edu.cn/89/list.htm",
+              "www.njxzc.edu.cn/"
+            ]
+          }
+        ],
+        "name": "官网通知公告",
+        "maintainers": [
+          "real-jiakai"
+        ],
+        "url": "www.njxzc.edu.cn/89/list.htm",
+        "location": "home.ts",
+        "module": () => import('@/routes/njxzc/home.ts')
+      },
+      "/libtzgg": {
+        "path": "/libtzgg",
+        "categories": [
+          "university"
+        ],
+        "example": "/njxzc/libtzgg",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "lib.njxzc.edu.cn/pxyhd/list.htm",
+              "lib.njxzc.edu.cn/"
+            ]
+          }
+        ],
+        "name": "图书馆通知公告",
+        "maintainers": [
+          "real-jiakai"
+        ],
+        "url": "lib.njxzc.edu.cn/pxyhd/list.htm",
+        "location": "lib.ts",
+        "module": () => import('@/routes/njxzc/lib.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "南京晓庄学院",
+    "url": "www.njxzc.edu.cn",
+    "description": "部分文章仅限校内 IP 访问，此类文章仅输出标题与原文链接",
     "lang": "zh-CN"
   },
   "nlc": {
@@ -81779,10 +83418,19 @@ export default {
     "routes": {
       "/cae/:type/:getDescription?": {
         "path": "/cae/:type/:getDescription?",
-        "name": "Unknown",
+        "categories": [
+          "university"
+        ],
+        "example": "/nuaa/cae/zhxw",
+        "parameters": {
+          "type": "分类名，见下表",
+          "getDescription": "是否获取全文"
+        },
+        "name": "自动化学院",
         "maintainers": [
           "Xm798"
         ],
+        "description": "| 综合新闻 | 党委行政 | 人事 / 合作 | 研究生培养 | 本科生培养 | 学生工作 | 通知公告 | 学术信息 | 答辩公告 |\n| -------- | -------- | ----------- | ---------- | ---------- | -------- | -------- | -------- | -------- |\n| zhxw     | dwxz     | rshz        | yjs        | bks        | xsgz     | tzgg     | xsxx     | dbgg     |",
         "location": "college/cae.ts",
         "module": () => import('@/routes/nuaa/college/cae.ts')
       },
@@ -82006,6 +83654,10 @@ export default {
       },
       "/lib": {
         "path": "/lib",
+        "categories": [
+          "university"
+        ],
+        "example": "/nuist/lib",
         "radar": [
           {
             "source": [
@@ -82014,7 +83666,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "图书馆",
         "maintainers": [
           "gylidian"
         ],
@@ -82111,10 +83763,21 @@ export default {
         "location": "xgc.ts",
         "module": () => import('@/routes/nuist/xgc.ts')
       },
-      "/yjs/*": {
-        "path": "/yjs/*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/yjs/:path{.+}?": {
+        "path": "/yjs/:path{.+}?",
+        "categories": [
+          "university"
+        ],
+        "example": "/nuist/yjs/index/tzgg",
+        "parameters": {
+          "path": "默认为通知公告"
+        },
+        "description": "路径字段处填写的是对应南京信息工程大学研究生院学科建设处分类页网址中介于 **<https://yjs.nuist.edu.cn/>** 和 **.htm** 中间的一段。\n\n如 [南京信息工程大学研究生院学科建设处工作动态](https://yjs.nuist.edu.cn/index/gzdt.htm) 的网址为 <https://yjs.nuist.edu.cn/index/gzdt.htm，其中介于> **<https://yjs.nuist.edu.cn/>** 和 **.htm** 中间的一段为 `index/gzdt`。可以得到路由为 [`/nuist/yjs/index/gzdt`](https://rsshub.app/nuist/yjs/index/gzdt)\n\n以下为部分分类：\n\n| 工作动态   | 通知公告   | 招生工作  | 培养与学位 | 学生工作   |\n| ---------- | ---------- | --------- | ---------- | ---------- |\n| index/gzdt | index/tzgg | zsgz/sszs | xwgz/xwtz  | xsgz1/xzfc |",
+        "name": "研究生院学科建设处",
+        "maintainers": [
+          "gylidian",
+          "nczitzk"
+        ],
         "location": "yjs.ts",
         "module": () => import('@/routes/nuist/yjs.ts')
       }
@@ -83083,10 +84746,13 @@ export default {
   },
   "oesw": {
     "routes": {
-      "*": {
+      "/:path{.+}?": {
         "name": "Immobilienangebot",
         "example": "/oesw/sofort-verfuegbar/objectType=1&financingType=2&region=1020",
-        "path": "*",
+        "path": "/:path{.+}?",
+        "parameters": {
+          "path": "Listing page (`immobiliensuche` by default), optionally followed by the query parameters, see the description below"
+        },
         "maintainers": [
           "sk22"
         ],
@@ -83427,7 +85093,11 @@ export default {
     "routes": {
       "/": {
         "path": "/",
-        "name": "Unknown",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/onehu",
+        "name": "首页",
         "maintainers": [
           "ruoshui9527"
         ],
@@ -83598,6 +85268,14 @@ export default {
     "routes": {
       "/releases/:brand/:model": {
         "path": "/releases/:brand/:model",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/openwrt/releases/xiaomi/xiaomi_redmi_router_ac2100",
+        "parameters": {
+          "brand": "Device Model, can be found in url of `Table of Hardware` -> `Device Page`",
+          "model": "Same as above"
+        },
         "radar": [
           {
             "source": [
@@ -83606,8 +85284,10 @@ export default {
             "target": "/releases/:model"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Releases",
+        "maintainers": [
+          "DIYgod"
+        ],
         "location": "releases.ts",
         "module": () => import('@/routes/openwrt/releases.ts')
       }
@@ -87197,7 +88877,9 @@ export default {
           "supportScihub": false
         },
         "name": "New Arrivals",
-        "maintainers": [],
+        "maintainers": [
+          "IvanWng97"
+        ],
         "description": "| Men's | Women's | Kids' & Baby | Packs & Gear |\n| ----- | ------- | ------------ | ------------ |\n| mens  | womens  | kids         | luggage      |",
         "location": "new-arrivals.tsx",
         "module": () => import('@/routes/patagonia/new-arrivals.tsx')
@@ -87364,6 +89046,54 @@ export default {
     "apiRoutes": {},
     "name": "Paul Graham",
     "url": "paulgraham.com",
+    "lang": "en"
+  },
+  "pawchive": {
+    "routes": {
+      "/:service/:id": {
+        "path": "/:service/:id",
+        "categories": [
+          "anime"
+        ],
+        "example": "/pawchive/fanbox/22445",
+        "parameters": {
+          "service": "service, either `patreon` or `fanbox`",
+          "id": "User id, can be found in URL"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "pawchive.pw/"
+            ],
+            "target": ""
+          },
+          {
+            "source": [
+              "pawchive.pw/:service/user/:id"
+            ],
+            "target": "/:service/:id"
+          }
+        ],
+        "name": "Posts",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "index.tsx",
+        "module": () => import('@/routes/pawchive/index.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Pawchive",
+    "url": "pawchive.pw",
     "lang": "en"
   },
   "pconline": {
@@ -87589,7 +89319,9 @@ export default {
           }
         ],
         "name": "习近平系列重要讲话",
-        "maintainers": [],
+        "maintainers": [
+          "LogicJake"
+        ],
         "url": "people.com.cn/",
         "location": "xjpjh.ts",
         "module": () => import('@/routes/people/xjpjh.ts')
@@ -87628,7 +89360,9 @@ export default {
           }
         ],
         "name": "新聞分類",
-        "maintainers": [],
+        "maintainers": [
+          "TonyRL"
+        ],
         "description": "| 分類     | ID  |\n| -------- | --- |\n| 社會關懷 | 159 |\n| 生態環保 | 113 |\n| 文化古蹟 | 143 |\n| 社區改造 | 160 |\n| 教育學習 | 161 |\n| 農業     | 163 |\n| 生活休閒 | 162 |\n| 媒體觀察 | 164 |\n| 運動科技 | 165 |\n| 政治經濟 | 166 |\n| 北台灣   | 223 |\n| 中台灣   | 224 |\n| 南台灣   | 225 |\n| 東台灣   | 226 |\n| 校園中心 | 167 |\n| 原住民族 | 227 |\n| 天然災害 | 168 |",
         "location": "topic.ts",
         "module": () => import('@/routes/peopo/topic.ts')
@@ -87660,7 +89394,7 @@ export default {
         "radar": [
           {
             "source": [
-              "www.perplexity.ai/hub"
+              "www.perplexity.ai/hub/blog"
             ],
             "target": "/blog"
           }
@@ -87843,6 +89577,10 @@ export default {
       },
       "/indexers/pianyuan/results/search/api": {
         "path": "/indexers/pianyuan/results/search/api",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/pianyuan/indexers/pianyuan/results/search/api?t=test&q=长津湖",
         "radar": [
           {
             "source": [
@@ -87851,11 +89589,12 @@ export default {
             "target": "/index"
           }
         ],
-        "name": "Unknown",
+        "name": "搜索",
         "maintainers": [
           "jerry1119"
         ],
         "url": "pianyuan.org/",
+        "description": "搜索路由模仿 jackett 的搜索 api, 以提供给 nastools 使用，填写在 nastools 配置 indexer 中",
         "location": "search.ts",
         "module": () => import('@/routes/pianyuan/search.ts')
       }
@@ -87995,52 +89734,6 @@ export default {
     "url": "tiktok.com",
     "lang": "en"
   },
-  "pikabu": {
-    "routes": {
-      "/:type/:name": {
-        "path": "/:type/:name",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "community.ts",
-        "module": () => import('@/routes/pikabu/community.ts')
-      },
-      "/user/:name": {
-        "path": "/user/:name",
-        "categories": [
-          "bbs"
-        ],
-        "example": "/pikabu/user/@bula.dragon",
-        "parameters": {
-          "name": "User name"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "pikabu.ru/:name"
-            ]
-          }
-        ],
-        "name": "User",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "user.ts",
-        "module": () => import('@/routes/pikabu/user.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Pikabu",
-    "url": "pikabu.ru",
-    "lang": "ru"
-  },
   "pincong": {
     "routes": {
       "/hot/:category?": {
@@ -88095,6 +89788,21 @@ export default {
       },
       "/topic/:topic": {
         "path": "/topic/:topic",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/pincong/topic/美国",
+        "parameters": {
+          "topic": "话题，可在官网获取"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "radar": [
           {
             "source": [
@@ -88102,7 +89810,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "话题",
         "maintainers": [
           "zphw"
         ],
@@ -88692,6 +90400,18 @@ export default {
     "routes": {
       "/:topicPath{.+}?": {
         "path": "/:topicPath{.+}?",
+        "categories": [
+          "journal"
+        ],
+        "example": "/pnas/latest",
+        "parameters": {
+          "topicPath": "Topic path, support **Featured Topics**, **Articles By Topic** and [**Collected Papers**](https://www.pnas.org/about/collected-papers), `latest` by default"
+        },
+        "features": {
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportScihub": true
+        },
         "radar": [
           {
             "source": [
@@ -88700,9 +90420,14 @@ export default {
             "target": "/:topicPath"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Journal",
+        "maintainers": [
+          "emdoe",
+          "HenryQW",
+          "y9c"
+        ],
         "url": "pnas.org/*topicPath",
+        "description": "::: tip\nSome topics require adding `topic/` to `topicPath` like [`/pnas/topic/app-math`](https://rsshub.app/pnas/topic/app-math) and some don't like [`/pnas/biophysics-and-computational-biology`](https://rsshub.app/pnas/biophysics-and-computational-biology)\n:::",
         "location": "index.tsx",
         "module": () => import('@/routes/pnas/index.tsx')
       }
@@ -89671,113 +91396,6 @@ export default {
     "url": "psyche.co",
     "lang": "en"
   },
-  "pts": {
-    "routes": {
-      "/live/:id": {
-        "path": "/live/:id",
-        "categories": [
-          "traditional-media"
-        ],
-        "example": "/pts/live/62e8e4bbb4de2cbd74468b2b",
-        "parameters": {
-          "id": "報導 id，可在对应整理報導页 URL 中找到"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "news.pts.org.tw/live/:id",
-              "news.pts.org.tw/"
-            ]
-          }
-        ],
-        "name": "整理報導",
-        "maintainers": [],
-        "location": "live.ts",
-        "module": () => import('@/routes/pts/live.ts')
-      },
-      "/curations": {
-        "path": "/curations",
-        "categories": [
-          "traditional-media"
-        ],
-        "example": "/pts/curations",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "news.pts.org.tw/curations",
-              "news.pts.org.tw/"
-            ]
-          }
-        ],
-        "name": "專題策展",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "url": "news.pts.org.tw/curations",
-        "location": "curations.ts",
-        "module": () => import('@/routes/pts/curations.ts')
-      },
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/pts/index.ts')
-      },
-      "/projects": {
-        "path": "/projects",
-        "categories": [
-          "traditional-media"
-        ],
-        "example": "/pts/projects",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "news.pts.org.tw/projects",
-              "news.pts.org.tw/"
-            ]
-          }
-        ],
-        "name": "數位敘事",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "url": "news.pts.org.tw/projects",
-        "location": "projects.ts",
-        "module": () => import('@/routes/pts/projects.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "公視新聞網",
-    "url": "news.pts.org.tw",
-    "lang": "zh-TW"
-  },
   "publico": {
     "routes": {
       "/ciencias/:subsection?": {
@@ -90119,10 +91737,19 @@ export default {
     "routes": {
       "/trending/:filters?": {
         "path": "/trending/:filters?",
-        "name": "Unknown",
+        "categories": [
+          "journal"
+        ],
+        "example": "/pubmed/trending",
+        "parameters": {
+          "filters": "Filters, can be found in URL"
+        },
+        "name": "Trending articles",
         "maintainers": [
+          "y9c",
           "nczitzk"
         ],
+        "description": "::: tip\nFor the parameter **filter**, the `filter` parameter in the URL should be split into a string by `,`, here is an example.\n\nIn `https://pubmed.ncbi.nlm.nih.gov/trending/?filter=simsearch1.fha&filter=pubt.clinicaltrial&filter=pubt.randomizedcontrolledtrial`, the filter parameters are `simsearch1.fha`, `pubt.clinicaltrial`, and `pubt.randomizedcontrolledtrial`. Therefore, the filter corresponding to the route should be filled with `simsearch1.fha,pubt.clinicaltrial,pubt.randomizedcontrolledtrial`, and the route is [`/pubmed/trending/simsearch1.fha,pubt.clinicaltrial,pubt.randomizedcontrolledtrial`](https://rsshub.app/pubmed/trending/simsearch1.fha,pubt.clinicaltrial,pubt.randomizedcontrolledtrial)\n:::",
         "location": "trending.tsx",
         "module": () => import('@/routes/pubmed/trending.tsx')
       }
@@ -90439,8 +92066,17 @@ export default {
     "routes": {
       "/news/:path{.+}?": {
         "path": "/news/:path{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "new-media"
+        ],
+        "example": "/qianp/news",
+        "parameters": {
+          "path": "路径，可在URL中找到，默认为 `news/recommend`"
+        },
+        "name": "知识库／资讯",
+        "maintainers": [
+          "TonyRL"
+        ],
         "location": "news.ts",
         "module": () => import('@/routes/qianp/news.ts')
       }
@@ -90769,8 +92405,18 @@ export default {
     "routes": {
       "/:path{.+}": {
         "path": "/:path{.+}",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "other"
+        ],
+        "example": "/qiyoujiage/shanghai",
+        "parameters": {
+          "path": "路径"
+        },
+        "description": "::: tip\n路径处填写对应页面 URL 中 `http://www.qiyoujiage.com/` 和 `.shtml` 之间的字段。下面是一个例子。\n\n若订阅 [福建漳州龙海今日油价](http://www.qiyoujiage.com/fujian/zhangzhou/longhai.shtml) 则将对应页面 URL <http://www.qiyoujiage.com/fujian/zhangzhou/longhai.shtml> 中 `http://www.qiyoujiage.com/` 和 `.shtml` 之间的字段 `fujian/zhangzhou/longhai` 作为路径填入。此时路由为 [`/qiyoujiage/fujian/zhangzhou/longhai`](https://rsshub.app/qiyoujiage/fujian/zhangzhou/longhai)\n:::",
+        "name": "今日油价查询",
+        "maintainers": [
+          "TonyRL"
+        ],
         "location": "price.ts",
         "module": () => import('@/routes/qiyoujiage/price.ts')
       }
@@ -91014,7 +92660,23 @@ export default {
       },
       "/notes/:lang?/topic/:topic": {
         "path": "/notes/:lang?/topic/:topic",
-        "name": "Unknown",
+        "categories": [
+          "anime"
+        ],
+        "example": "/qoo-app/notes/en/topic/QooAppGacha",
+        "parameters": {
+          "lang": "Language, see the table above, empty means `中文`",
+          "topic": "Hashtag name without `#`"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Hot Hashtags",
         "maintainers": [
           "TonyRL"
         ],
@@ -91373,26 +93035,13 @@ export default {
         "location": "user.ts",
         "module": () => import('@/routes/quicker/user.ts')
       },
-      "/update": {
-        "path": [
-          "/update",
-          "/versions"
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "Cesaryuan",
-          "nczitzk"
-        ],
-        "url": "getquicker.net/Help/Versions",
-        "location": "versions.ts",
-        "module": () => import('@/routes/quicker/versions.ts')
-      },
       "/versions": {
-        "path": [
-          "/update",
-          "/versions"
+        "path": "/versions",
+        "categories": [
+          "program-update"
         ],
-        "name": "Unknown",
+        "example": "/quicker/versions",
+        "name": "版本更新",
         "maintainers": [
           "Cesaryuan",
           "nczitzk"
@@ -91834,6 +93483,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "programming"
+        ],
+        "example": "/reactnewsletter",
         "radar": [
           {
             "source": [
@@ -91843,7 +93496,8 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "React Newsletter",
+        "description": "Stay up to date on the latest React news, tutorials, resources, and more. Delivered every Tuesday, for free.",
         "maintainers": [
           "meixger"
         ],
@@ -91927,6 +93581,17 @@ export default {
     "routes": {
       "/publications/:id": {
         "path": "/publications/:id",
+        "categories": [
+          "study"
+        ],
+        "example": "/researchgate/publications/Somsak-Panha",
+        "parameters": {
+          "id": "Username, can be found in URL"
+        },
+        "features": {
+          "requirePuppeteer": true,
+          "antiCrawler": true
+        },
         "radar": [
           {
             "source": [
@@ -91935,8 +93600,10 @@ export default {
             "target": "/publications/:username"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Publications",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "publications.ts",
         "module": () => import('@/routes/researchgate/publications.ts')
       }
@@ -92313,6 +93980,14 @@ export default {
     "routes": {
       "/:bookName/book-series/:bookId": {
         "path": "/:bookName/book-series/:bookId",
+        "categories": [
+          "journal"
+        ],
+        "example": "/routledge/A-Colour-Atlas/book-series/CRCACOLOATLA",
+        "parameters": {
+          "bookName": "Book name, can be found in URL",
+          "bookId": "Book ID, can be found in URL"
+        },
         "radar": [
           {
             "source": [
@@ -92320,7 +93995,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "Book Series",
         "maintainers": [
           "TonyRL"
         ],
@@ -92473,10 +94148,32 @@ export default {
       },
       "/transform/sitemap/:url/:routeParams?": {
         "path": "/transform/sitemap/:url/:routeParams?",
-        "name": "Unknown",
+        "categories": [
+          "other"
+        ],
+        "example": "/rsshub/transform/sitemap/https%3A%2F%2Fwww.sitemaps.org%2Fsitemap.xml",
+        "parameters": {
+          "url": "`encodeURIComponent`ed URL address",
+          "routeParams": "Transformation rules, requires URL encode"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "ALLOW_USER_SUPPLY_UNSAFE_DOMAIN",
+              "description": ""
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Transformation - Sitemap",
         "maintainers": [
           "flrngel"
         ],
+        "description": "Specify options (in the format of query string) in parameter `routeParams` parameter to extract data from Sitemap. (Follows Sitemap Protocol 0.9)\n\n| Key     | Meaning              | Accepted Values | Default                          |\n| ------- | -------------------- | --------------- | -------------------------------- |\n| `title` | The title of the RSS | `string`        | The first `<loc>` in the sitemap |",
         "location": "transform/sitemap.ts",
         "module": () => import('@/routes/rsshub/transform/sitemap.ts')
       }
@@ -92725,7 +94422,7 @@ export default {
         "maintainers": [
           "victor21813",
           "nczitzk",
-          "akashigakki"
+          "AkashiGakki"
         ],
         "description": "Member ID\n\n| Member ID | Name         |\n| --------- | ------------ |\n| 2000      | 三期生リレー |\n| 69        | 山下 瞳月    |\n| 68        | 村山 美羽    |\n| 67        | 村井 優      |\n| 66        | 向井 純葉    |\n| 65        | 的野 美青    |\n| 64        | 中嶋 優月    |\n| 63        | 谷口 愛季    |\n| 62        | 小島 凪紗    |\n| 61        | 小田倉 麗奈  |\n| 60        | 遠藤 理子    |\n| 59        | 石森 璃花    |\n| 58        | 守屋 麗奈    |\n| 57        | 増本 綺良    |\n| 56        | 幸阪 茉里乃  |\n| 55        | 大沼 晶保    |\n| 54        | 大園 玲      |\n| 53        | 遠藤 光莉    |\n| 51        | 山﨑 天      |\n| 50        | 森田 ひかる  |\n| 48        | 松田 里奈    |\n| 47        | 藤吉 夏鈴    |\n| 46        | 田村 保乃    |\n| 45        | 武元 唯衣    |\n| 44        | 関 有美子    |\n| 43        | 井上 梨名    |\n| 15        | 原田 葵      |\n| 14        | 土生 瑞穂    |\n| 11        | 菅井 友香    |\n| 08        | 齋藤 冬優花  |\n| 07        | 小林 由依    |\n| 06        | 小池 美波    |\n| 04        | 尾関 梨香    |\n| 03        | 上村 莉菜    |",
         "location": "blog.ts",
@@ -94334,7 +96031,7 @@ export default {
         ],
         "name": "Category",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "location": "rss.tsx",
         "module": () => import('@/routes/secretsanfrancisco/rss.tsx')
@@ -94472,6 +96169,14 @@ export default {
           "/:subforumid?",
           ""
         ],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/sehuatang/36/368",
+        "parameters": {
+          "subforumid": "版块 id 或板块名称（见下表）, 为空默认高清中文字幕",
+          "type": "类型 id, 可在分区类型过滤后的 URL 中找到"
+        },
         "name": "Forum",
         "maintainers": [
           "qiwihui",
@@ -94493,6 +96198,14 @@ export default {
           "/:subforumid?",
           ""
         ],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/sehuatang/36/368",
+        "parameters": {
+          "subforumid": "版块 id 或板块名称（见下表）, 为空默认高清中文字幕",
+          "type": "类型 id, 可在分区类型过滤后的 URL 中找到"
+        },
         "name": "Forum",
         "maintainers": [
           "qiwihui",
@@ -94514,6 +96227,14 @@ export default {
           "/:subforumid?",
           ""
         ],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/sehuatang/36/368",
+        "parameters": {
+          "subforumid": "版块 id 或板块名称（见下表）, 为空默认高清中文字幕",
+          "type": "类型 id, 可在分区类型过滤后的 URL 中找到"
+        },
         "name": "Forum",
         "maintainers": [
           "qiwihui",
@@ -94535,6 +96256,14 @@ export default {
           "/:subforumid?",
           ""
         ],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/sehuatang/36/368",
+        "parameters": {
+          "subforumid": "版块 id 或板块名称（见下表）, 为空默认高清中文字幕",
+          "type": "类型 id, 可在分区类型过滤后的 URL 中找到"
+        },
         "name": "Forum",
         "maintainers": [
           "qiwihui",
@@ -94556,6 +96285,14 @@ export default {
           "/:subforumid?",
           ""
         ],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/sehuatang/36/368",
+        "parameters": {
+          "subforumid": "版块 id 或板块名称（见下表）, 为空默认高清中文字幕",
+          "type": "类型 id, 可在分区类型过滤后的 URL 中找到"
+        },
         "name": "Forum",
         "maintainers": [
           "qiwihui",
@@ -95929,6 +97666,13 @@ export default {
       },
       "/jwb/:type?": {
         "path": "/jwb/:type?",
+        "categories": [
+          "university"
+        ],
+        "example": "/shu/jwb/notice",
+        "parameters": {
+          "type": "消息类型,默认为`notice`"
+        },
         "radar": [
           {
             "source": [
@@ -96046,6 +97790,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/shuiguopai",
         "radar": [
           {
             "source": [
@@ -96054,7 +97802,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "首页",
         "maintainers": [
           "nczitzk"
         ],
@@ -96312,30 +98060,6 @@ export default {
     "name": "簡訊設計",
     "url": "blog.simpleinfo.cc",
     "lang": "zh-TW"
-  },
-  "sinchew": {
-    "routes": {
-      "*": {
-        "path": "*",
-        "radar": [
-          {
-            "source": [
-              "sinchew.com.my/"
-            ],
-            "target": ""
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [],
-        "url": "sinchew.com.my/",
-        "location": "index.tsx",
-        "module": () => import('@/routes/sinchew/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "星洲网",
-    "url": "sinchew.com.my",
-    "lang": "zh-CN"
   },
   "sis001": {
     "routes": {
@@ -97180,7 +98904,7 @@ export default {
         ],
         "name": "New Arrivals(USA)",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "url": "snowpeak.com/collections/new-arrivals",
         "location": "us-new-arrivals.tsx",
@@ -97446,7 +99170,7 @@ export default {
         ],
         "name": "Software Downloads",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "description": "::: tip\nOpen `https://www.sony.com/electronics/support` and search for the corresponding product, such as `Sony A7M4`, the website corresponding to which is `https://www.sony.com/electronics/support/e-mount-body-ilce-7-series/ilce-7m4/downloads`, where `productType` is `e-mount-body-ilce-7-series` and `productId` is `ilce-7m4`.\n:::",
         "location": "downloads.ts",
@@ -98642,6 +100366,13 @@ export default {
     "routes": {
       "/jwc/:listId": {
         "path": "/jwc/:listId",
+        "categories": [
+          "university"
+        ],
+        "example": "/sspu/jwc/897",
+        "parameters": {
+          "listId": "专栏 ID，见下表"
+        },
         "radar": [
           {
             "source": [
@@ -98649,15 +100380,23 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "教务处",
         "maintainers": [
           "TonyRL"
         ],
+        "description": "| 学生专栏 | 教师专栏 |\n| -------- | -------- |\n| 897      | 898      |",
         "location": "jwc.ts",
         "module": () => import('@/routes/sspu/jwc.ts')
       },
       "/pe/:id?": {
         "path": "/pe/:id?",
+        "categories": [
+          "university"
+        ],
+        "example": "/sspu/pe",
+        "parameters": {
+          "id": "栏目 id，见下表，默认为通知公告"
+        },
         "radar": [
           {
             "source": [
@@ -98666,10 +100405,11 @@ export default {
             "target": "/pe/:id"
           }
         ],
-        "name": "Unknown",
+        "name": "体育部",
         "maintainers": [
           "nczitzk"
         ],
+        "description": "| 通知公告 | 体育新闻 | 场馆管理 | 相关下载 |\n| -------- | -------- | -------- | -------- |\n| 342      | 343      | 324      | 325      |\n\n<details>\n  <summary>更多栏目</summary>\n\n#### [部门概况](https://pe2016.sspu.edu.cn/318/list.htm)\n\n| [部门简介](https://pe2016.sspu.edu.cn/327/list.htm) | [师资介绍](https://pe2016.sspu.edu.cn/328/list.htm) | [机构设置](https://pe2016.sspu.edu.cn/329/list.htm) | [团队建设](https://pe2016.sspu.edu.cn/330/list.htm) |\n| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |\n| 327                                                 | 328                                                 | 329                                                 | 330                                                 |\n\n#### [教育教学](https://pe2016.sspu.edu.cn/319/list.htm)\n\n| [课程介绍](https://pe2016.sspu.edu.cn/331/list.htm) | [教学管理](https://pe2016.sspu.edu.cn/332/list.htm) | [教学成果](https://pe2016.sspu.edu.cn/333/list.htm) |\n| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |\n| 331                                                 | 332                                                 | 333                                                 |\n\n#### [学科研究](https://pe2016.sspu.edu.cn/320/list.htm)\n\n| [学术交流](https://pe2016.sspu.edu.cn/334/list.htm) | [科研工作](https://pe2016.sspu.edu.cn/335/list.htm) |\n| --------------------------------------------------- | --------------------------------------------------- |\n| 334                                                 | 335                                                 |\n\n#### [运动竞赛](https://pe2016.sspu.edu.cn/321/list.htm)\n\n| [竞赛管理](https://pe2016.sspu.edu.cn/336/list.htm) | [竞赛成绩](https://pe2016.sspu.edu.cn/337/list.htm) | [特色项目](https://pe2016.sspu.edu.cn/338/list.htm) |\n| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |\n| 336                                                 | 337                                                 | 338                                                 |\n\n#### [群体活动](https://pe2016.sspu.edu.cn/322/list.htm)\n\n| [阳光体育](https://pe2016.sspu.edu.cn/345/list.htm) | [体育社团](https://pe2016.sspu.edu.cn/346/list.htm) |\n| --------------------------------------------------- | --------------------------------------------------- |\n| 345                                                 | 346                                                 |\n\n#### [党群工作](https://pe2016.sspu.edu.cn/323/list.htm)\n\n| [党务公开](https://pe2016.sspu.edu.cn/339/list.htm) | [精神文明](https://pe2016.sspu.edu.cn/340/list.htm) | [教工之家](https://pe2016.sspu.edu.cn/341/list.htm) |\n| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |\n| 339                                                 | 340                                                 | 341                                                 |\n\n</details>",
         "location": "pe.ts",
         "module": () => import('@/routes/sspu/pe.ts')
       }
@@ -99612,25 +101352,14 @@ export default {
     "url": "storyfm.cn",
     "lang": "zh-CN"
   },
-  "subhd": {
-    "routes": {
-      "/:type?/:category?": {
-        "path": "/:type?/:category?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/subhd/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Sub HD",
-    "url": "subhd.tv",
-    "lang": "zh-CN"
-  },
   "supchina": {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/supchina",
         "radar": [
           {
             "source": [
@@ -99640,7 +101369,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Feed",
         "maintainers": [
           "nczitzk"
         ],
@@ -100513,7 +102242,11 @@ export default {
           }
         ],
         "name": "数据科学与计算机学院动态",
-        "maintainers": [],
+        "maintainers": [
+          "MegrezZhu",
+          "Neutrino3316",
+          "nczitzk"
+        ],
         "url": "cse.sysu.edu.cn/",
         "location": "cse.ts",
         "module": () => import('@/routes/sysu/cse.ts')
@@ -100609,6 +102342,37 @@ export default {
     "name": "园岭小学",
     "url": "ylxx.szftedu.cn",
     "lang": "zh-CN"
+  },
+  "szmuseum": {
+    "routes": {
+      "/temporary": {
+        "path": "/temporary",
+        "categories": [
+          "travel"
+        ],
+        "example": "/szmuseum/temporary",
+        "name": "Special Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.szmuseum.com/Exhibition/Temporary"
+            ],
+            "target": "/temporary"
+          }
+        ],
+        "location": "temporary.tsx",
+        "module": () => import('@/routes/szmuseum/temporary.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Suzhou Museum",
+    "url": "www.szmuseum.com",
+    "zh": {
+      "name": "苏州博物馆"
+    }
   },
   "szse": {
     "routes": {
@@ -101477,7 +103241,7 @@ export default {
         ],
         "name": "News",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "url": "techcrunch.com/",
         "location": "news.ts",
@@ -101923,7 +103687,15 @@ export default {
       },
       "/news/coronavirus/data/:province?/:city?": {
         "path": "/news/coronavirus/data/:province?/:city?",
-        "name": "Unknown",
+        "categories": [
+          "other"
+        ],
+        "example": "/tencent/news/coronavirus/data/湖北/武汉",
+        "parameters": {
+          "province": "省/直辖市名，缺省则返回国内数据",
+          "city": "城市名，缺省则返回全省数据。直辖市请使用区/县名。"
+        },
+        "name": "新型冠状病毒肺炎疫情实时追踪 - 省市疫情数据",
         "maintainers": [
           "CaoMeiYouRen"
         ],
@@ -101932,6 +103704,10 @@ export default {
       },
       "/news/coronavirus/total": {
         "path": "/news/coronavirus/total",
+        "categories": [
+          "other"
+        ],
+        "example": "/tencent/news/coronavirus/total",
         "radar": [
           {
             "source": [
@@ -101939,7 +103715,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "新型冠状病毒肺炎疫情实时追踪 - 中国本土数据统计",
         "maintainers": [
           "CaoMeiYouRen"
         ],
@@ -102195,7 +103971,7 @@ export default {
         ],
         "name": "News",
         "maintainers": [
-          "EthanWng97",
+          "IvanWng97",
           "pseudoyu"
         ],
         "description": "| Popular      | Latest | Politics | Technology | Business |\n| ------------ | ------ | -------- | ---------- | -------- |\n| most-popular | latest | politics | technology | business |\n\nMore categories (except photo) can be found within the navigation bar at <https://www.theatlantic.com>",
@@ -102434,7 +104210,7 @@ export default {
         ],
         "name": "Category",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "location": "rss.tsx",
         "module": () => import('@/routes/thegadgetflow/rss.tsx')
@@ -102513,21 +104289,6 @@ export default {
     "name": "The Hindu",
     "url": "thehindu.com",
     "lang": "en"
-  },
-  "thenewslens": {
-    "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/thenewslens/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "The News Lens 關鍵評論",
-    "url": "thenewslens.com",
-    "lang": "zh-TW"
   },
   "theverge": {
     "routes": {
@@ -102960,6 +104721,14 @@ export default {
       },
       "/wuhan/:channelId?": {
         "path": "/wuhan/:channelId?",
+        "categories": [
+          "forecast"
+        ],
+        "example": "/tingshuitz/wuhan",
+        "parameters": {
+          "channelId": "分类，见下表，默认为 68"
+        },
+        "description": "| channelId | 分类       |\n| --------- | ---------- |\n| 68        | 计划性停水 |\n| 69        | 突发性停水 |",
         "radar": [
           {
             "source": [
@@ -102969,8 +104738,10 @@ export default {
             "target": "/wuhan"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "武汉市",
+        "maintainers": [
+          "MoonBegonia"
+        ],
         "url": "whwater.com/IWater.shtml",
         "location": "wuhan.ts",
         "module": () => import('@/routes/tingshuitz/wuhan.ts')
@@ -103268,6 +105039,58 @@ export default {
     "url": "tisi.org",
     "lang": "zh-CN"
   },
+  "tjbwg": {
+    "routes": {
+      "/exhibition": {
+        "path": "/exhibition",
+        "categories": [
+          "travel"
+        ],
+        "example": "/tjbwg/exhibition",
+        "radar": [
+          {
+            "source": [
+              "www.tjbwg.cn/cn/ExhibitionList.aspx"
+            ],
+            "target": "/exhibition"
+          }
+        ],
+        "name": "Temporary Exhibition",
+        "maintainers": [
+          "magazian"
+        ],
+        "location": "exhibition.tsx",
+        "module": () => import('@/routes/tjbwg/exhibition.tsx')
+      },
+      "/news": {
+        "path": "/news",
+        "categories": [
+          "travel"
+        ],
+        "example": "/tjbwg/news",
+        "name": "News",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.tjbwg.cn/cn/NewsList.aspx"
+            ],
+            "target": "/news"
+          }
+        ],
+        "location": "news.ts",
+        "module": () => import('@/routes/tjbwg/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Tianjin Museum",
+    "url": "www.tjbwg.cn",
+    "zh": {
+      "name": "天津博物馆"
+    }
+  },
   "tju": {
     "routes": {
       "/cic/:type?": {
@@ -103440,7 +105263,9 @@ export default {
           }
         ],
         "name": "Latest",
-        "maintainers": [],
+        "maintainers": [
+          "fuergaosi233"
+        ],
         "location": "bulletin.ts",
         "module": () => import('@/routes/tokeninsight/bulletin.ts')
       },
@@ -103470,7 +105295,9 @@ export default {
           }
         ],
         "name": "Research",
-        "maintainers": [],
+        "maintainers": [
+          "fuergaosi233"
+        ],
         "description": "Language:\n\n| Chinese | English |\n| ------- | ------- |\n| zh      | en      |",
         "location": "report.ts",
         "module": () => import('@/routes/tokeninsight/report.ts')
@@ -103513,21 +105340,6 @@ export default {
     "name": "東立出版社",
     "url": "tongli.com.tw",
     "lang": "zh-TW"
-  },
-  "toodaylab": {
-    "routes": {
-      "/:params{.+}?": {
-        "path": "/:params{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts",
-        "module": () => import('@/routes/toodaylab/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "理想生活实验室",
-    "url": "toodaylab.com",
-    "lang": "zh-CN"
   },
   "topys": {
     "routes": {
@@ -103665,8 +105477,18 @@ export default {
     "routes": {
       "/blog/:category{.+}?": {
         "path": "/blog/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "program-update"
+        ],
+        "example": "/tradingview/blog/en",
+        "parameters": {
+          "category": "Language, see below, `en` as English by default"
+        },
+        "name": "Blog",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "#### Language\n\n| Id | Language            |\n| -- | ------------------- |\n| en | English             |\n| ru | Русский             |\n| ja | 日本語              |\n| es | Español             |\n| tr | Türkçe              |\n| ko | 한국어              |\n| it | Italiano            |\n| pt | Português do Brasil |\n| de | Deutsch             |\n| fr | Français            |\n| pl | Polski              |\n| id | Bahasa Indonesia    |\n| my | Bahasa Malaysia     |\n| tw | 繁體                |\n| cn | 简体                |\n| vi | Tiếng Việt          |\n| th | ภาษาไทย             |\n| sv | Svenska             |\n| ar | العربية             |\n| il | Hebrew              |\n\n#### Category\n\n| Category                                                                                       | ID                            |\n| ---------------------------------------------------------------------------------------------- | ----------------------------- |\n| [Alerts](https://www.tradingview.com/blog/en/category/alerts/)                                 | category/alerts               |\n| [Bitcoin and Crypto](https://www.tradingview.com/blog/en/category/bitcoin-charts/)             | category/bitcoin-charts       |\n| [Business Updates](https://www.tradingview.com/blog/en/category/business-updates/)             | category/business-updates     |\n| [Charting](https://www.tradingview.com/blog/en/category/charts/)                               | category/charts               |\n| [Charting Library](https://www.tradingview.com/blog/en/category/charting-library/)             | category/charting-library     |\n| [Data Feeds and Exchanges](https://www.tradingview.com/blog/en/category/data-feeds-exchanges/) | category/data-feeds-exchanges |\n| [Desktop](https://www.tradingview.com/blog/en/category/desktop/)                               | category/desktop              |\n| [Market Analysis](https://www.tradingview.com/blog/en/category/market-analysis/)               | category/market-analysis      |\n| [Mobile](https://www.tradingview.com/blog/en/category/mobile/)                                 | category/mobile               |\n| [Pine Script®](https://www.tradingview.com/blog/en/category/pine/)                             | category/pine                 |\n| [Screener](https://www.tradingview.com/blog/en/category/stock-screener/)                       | category/stock-screener       |\n| [Social](https://www.tradingview.com/blog/en/category/social/)                                 | category/social               |\n| [Trading and Brokerage](https://www.tradingview.com/blog/en/category/trading/)                 | category/trading              |\n| [Widgets](https://www.tradingview.com/blog/en/category/widgets/)                               | category/widgets              |",
         "location": "blog.ts",
         "module": () => import('@/routes/tradingview/blog.ts')
       },
@@ -103702,6 +105524,13 @@ export default {
       },
       "/pine/:version?": {
         "path": "/pine/:version?",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/tradingview/pine",
+        "parameters": {
+          "version": "Version, see below, `v5` by default"
+        },
         "radar": [
           {
             "source": [
@@ -103710,8 +105539,11 @@ export default {
             "target": "/pine/:version"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "Pine Script™ Release notes",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| v5 | v4 |\n| -- | -- |",
         "location": "pine.ts",
         "module": () => import('@/routes/tradingview/pine.ts')
       }
@@ -103725,6 +105557,16 @@ export default {
     "routes": {
       "/:channel?": {
         "path": "/:channel?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/transcriptforest/all-the-hacks",
+        "parameters": {
+          "channel": "Channel, see below, all by default"
+        },
+        "features": {
+          "supportPodcast": true
+        },
         "radar": [
           {
             "source": [
@@ -103733,11 +105575,12 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Channel",
         "maintainers": [
           "nczitzk"
         ],
         "url": "www.transcriptforest.com/en/channel",
+        "description": "| Channel                                                                                                                                        | ID                                                                                                                                     |\n| ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |\n| [All](https://www.transcriptforest.com/en)                                                                                                     |                                                                                                                                        |\n| [a16z podcast](https://www.transcriptforest.com/en/channel/a16z-podcast)                                                                       | [a16z-podcast](https://rsshub.app/transcriptforest/a16z-podcast)                                                                       |\n| [Aarthi and Sriram's Good Time Show](https://www.transcriptforest.com/en/channel/aarthi-and-srirams-good-time-show)                            | [aarthi-and-srirams-good-time-show](https://rsshub.app/transcriptforest/aarthi-and-srirams-good-time-show)                             |\n| [Acquired](https://www.transcriptforest.com/en/channel/acquired)                                                                               | [acquired](https://rsshub.app/transcriptforest/acquired)                                                                               |\n| [All-In with Chamath, Jason, Sacks & Friedberg](https://www.transcriptforest.com/en/channel/all-in-with-chamath-jason-sacks-friedberg)         | [all-in-with-chamath-jason-sacks-friedberg](https://rsshub.app/transcriptforest/all-in-with-chamath-jason-sacks-friedberg)             |\n| [All the Hacks](https://www.transcriptforest.com/en/channel/all-the-hacks)                                                                     | [all-the-hacks](https://rsshub.app/transcriptforest/all-the-hacks)                                                                     |\n| [Breaking Points](https://www.transcriptforest.com/en/channel/breaking-points)                                                                 | [breaking-points](https://rsshub.app/transcriptforest/breaking-points)                                                                 |\n| [Cartoon Avatars](https://www.transcriptforest.com/en/channel/cartoon-avatars)                                                                 | [cartoon-avatars](https://rsshub.app/transcriptforest/cartoon-avatars)                                                                 |\n| [Conversations With Coleman](https://www.transcriptforest.com/en/channel/conversations-with-coleman)                                           | [conversations-with-coleman](https://rsshub.app/transcriptforest/conversations-with-coleman)                                           |\n| [CSPI Podcast](https://www.transcriptforest.com/en/channel/cspi-podcast)                                                                       | [cspi-podcast](https://rsshub.app/transcriptforest/cspi-podcast)                                                                       |\n| [Culpable](https://www.transcriptforest.com/en/channel/culpable)                                                                               | [culpable](https://rsshub.app/transcriptforest/culpable)                                                                               |\n| [Dateline NBC](https://www.transcriptforest.com/en/channel/dateline-nbc)                                                                       | [dateline-nbc](https://rsshub.app/transcriptforest/dateline-nbc)                                                                       |\n| [Execs](https://www.transcriptforest.com/en/channel/execs)                                                                                     | [execs](https://rsshub.app/transcriptforest/execs)                                                                                     |\n| [Exponent](https://www.transcriptforest.com/en/channel/exponent)                                                                               | [exponent](https://rsshub.app/transcriptforest/exponent)                                                                               |\n| [Freakonomics](https://www.transcriptforest.com/en/channel/freakonomics)                                                                       | [freakonomics](https://rsshub.app/transcriptforest/freakonomics)                                                                       |\n| [Future of StoryTelling](https://www.transcriptforest.com/en/channel/future-of-storytelling)                                                   | [future-of-storytelling](https://rsshub.app/transcriptforest/future-of-storytelling)                                                   |\n| [Gamecraft](https://www.transcriptforest.com/en/channel/gamecraft)                                                                             | [gamecraft](https://rsshub.app/transcriptforest/gamecraft)                                                                             |\n| [Get WIRED](https://www.transcriptforest.com/en/channel/get-wired)                                                                             | [get-wired](https://rsshub.app/transcriptforest/get-wired)                                                                             |\n| [Greymatter](https://www.transcriptforest.com/en/channel/greymatter)                                                                           | [greymatter](https://rsshub.app/transcriptforest/greymatter)                                                                           |\n| [How I built this](https://www.transcriptforest.com/en/channel/how-I-built-this)                                                               | [how-I-built-this](https://rsshub.app/transcriptforest/how-I-built-this)                                                               |\n| [Huberman Lab](https://www.transcriptforest.com/en/channel/huberman-lab)                                                                       | [huberman-lab](https://rsshub.app/transcriptforest/huberman-lab)                                                                       |\n| [ICYMI](https://www.transcriptforest.com/en/channel/icymi)                                                                                     | [icymi](https://rsshub.app/transcriptforest/icymi)                                                                                     |\n| [In Machines We Trust](https://www.transcriptforest.com/en/channel/in-machines-we-trust)                                                       | [in-machines-we-trust](https://rsshub.app/transcriptforest/in-machines-we-trust)                                                       |\n| [Invest Like the Best with Patrick O'Shaughnessy](https://www.transcriptforest.com/en/channel/invest-like-the-best-with-patrick-o-shaughnessy) | [invest-like-the-best-with-patrick-o-shaughnessy](https://rsshub.app/transcriptforest/invest-like-the-best-with-patrick-o-shaughnessy) |\n| [Joe Rogan Experience Review podcast](https://www.transcriptforest.com/en/channel/joe-rogan-experience-review-podcast)                         | [joe-rogan-experience-review-podcast](https://rsshub.app/transcriptforest/joe-rogan-experience-review-podcast)                         |\n| [Land of Giants](https://www.transcriptforest.com/en/channel/land-of-giants)                                                                   | [land-of-giants](https://rsshub.app/transcriptforest/land-of-giants)                                                                   |\n| [Lenny's Podcast: Product \\| Growth \\| Career](https://www.transcriptforest.com/en/channel/lenny-podcast-product-growth-career)                | [lenny-podcast-product-growth-career](https://rsshub.app/transcriptforest/lenny-podcast-product-growth-career)                         |\n| [Lex Fridman Podcast](https://www.transcriptforest.com/en/channel/lex-fridman-podcast)                                                         | [lex-fridman-podcast](https://rsshub.app/transcriptforest/lex-fridman-podcast)                                                         |\n| [Making Sense with Sam Harris](https://www.transcriptforest.com/en/channel/making-sense-with-sam-harris)                                       | [making-sense-with-sam-harris](https://rsshub.app/transcriptforest/making-sense-with-sam-harris)                                       |\n| [Masters of Scale](https://www.transcriptforest.com/en/channel/masters-of-scale)                                                               | [masters-of-scale](https://rsshub.app/transcriptforest/masters-of-scale)                                                               |\n| [Modern Wisdom](https://www.transcriptforest.com/en/channel/modern-wisdom)                                                                     | [modern-wisdom](https://rsshub.app/transcriptforest/modern-wisdom)                                                                     |\n| [Moment of Zen](https://www.transcriptforest.com/en/channel/moment-of-zen)                                                                     | [moment-of-zen](https://rsshub.app/transcriptforest/moment-of-zen)                                                                     |\n| [Morbid](https://www.transcriptforest.com/en/channel/morbid)                                                                                   | [morbid](https://rsshub.app/transcriptforest/morbid)                                                                                   |\n| [My First Million](https://www.transcriptforest.com/en/channel/my-first-million)                                                               | [my-first-million](https://rsshub.app/transcriptforest/my-first-million)                                                               |\n| [Naval](https://www.transcriptforest.com/en/channel/naval)                                                                                     | [naval](https://rsshub.app/transcriptforest/naval)                                                                                     |\n| [Newcomer Podcast](https://www.transcriptforest.com/en/channel/newcomer-podcast)                                                               | [newcomer-podcast](https://rsshub.app/transcriptforest/newcomer-podcast)                                                               |\n| [Not investment advice](https://www.transcriptforest.com/en/channel/not-investment-advice)                                                     | [not-investment-advice](https://rsshub.app/transcriptforest/not-investment-advice)                                                     |\n| [Odd Lots](https://www.transcriptforest.com/en/channel/odd-lots)                                                                               | [odd-lots](https://rsshub.app/transcriptforest/odd-lots)                                                                               |\n| [On with Kara Swisher](https://www.transcriptforest.com/en/channel/on-with-kara-swisher)                                                       | [on-with-kara-swisher](https://rsshub.app/transcriptforest/on-with-kara-swisher)                                                       |\n| [Proof: A True Crime Podcast](https://www.transcriptforest.com/en/channel/proof-a-true-crime-podcast)                                          | [proof-a-true-crime-podcast](https://rsshub.app/transcriptforest/proof-a-true-crime-podcast)                                           |\n| [Reply All](https://www.transcriptforest.com/en/channel/reply-all)                                                                             | [reply-all](https://rsshub.app/transcriptforest/reply-all)                                                                             |\n| [Revisionist History](https://www.transcriptforest.com/en/channel/revisionist-history)                                                         | [revisionist-history](https://rsshub.app/transcriptforest/revisionist-history)                                                         |\n| [Serial](https://www.transcriptforest.com/en/channel/serial-podcast)                                                                           | [serial-podcast](https://rsshub.app/transcriptforest/serial-podcast)                                                                   |\n| [Slow Burn](https://www.transcriptforest.com/en/channel/slow-burn)                                                                             | [slow-burn](https://rsshub.app/transcriptforest/slow-burn)                                                                             |\n| [StrictlyVC Download](https://www.transcriptforest.com/en/channel/strictlyvc-download)                                                         | [strictlyvc-download](https://rsshub.app/transcriptforest/strictlyvc-download)                                                         |\n| [Stuff You Should Know:](https://www.transcriptforest.com/en/channel/stuff-you-should-know)                                                    | [stuff-you-should-know](https://rsshub.app/transcriptforest/stuff-you-should-know)                                                     |\n| [Subversive w/Alex Kaschuta](https://www.transcriptforest.com/en/channel/subversive-w-alex-kaschuta)                                           | [subversive-w-alex-kaschuta](https://rsshub.app/transcriptforest/subversive-w-alex-kaschuta)                                           |\n| [TED Radio Hour](https://www.transcriptforest.com/en/channel/ted-radio-hour)                                                                   | [ted-radio-hour](https://rsshub.app/transcriptforest/ted-radio-hour)                                                                   |\n| [The Bootstrapped Founder](https://www.transcriptforest.com/en/channel/the-bootstrapped-founder)                                               | [the-bootstrapped-founder](https://rsshub.app/transcriptforest/the-bootstrapped-founder)                                               |\n| [The Boyscast with Ryan Long](https://www.transcriptforest.com/en/channel/the-boyscast-with-ryan-long)                                         | [the-boyscast-with-ryan-long](https://rsshub.app/transcriptforest/the-boyscast-with-ryan-long)                                         |",
         "location": "index.ts",
         "module": () => import('@/routes/transcriptforest/index.ts')
       }
@@ -103850,6 +105693,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/tribalfootball",
         "radar": [
           {
             "source": [
@@ -103858,7 +105705,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Latest News",
         "maintainers": [
           "Rongronggg9"
         ],
@@ -104254,6 +106101,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "university"
+        ],
+        "example": "/tynu",
         "radar": [
           {
             "source": [
@@ -104264,7 +106115,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "通知公告",
         "maintainers": [
           "2PoL"
         ],
@@ -105196,7 +107047,9 @@ export default {
           }
         ],
         "name": "最新研报",
-        "maintainers": [],
+        "maintainers": [
+          "Fatpandac"
+        ],
         "url": "www.ulapia.com/",
         "location": "research.ts",
         "module": () => import('@/routes/ulapia/research.ts')
@@ -105446,6 +107299,10 @@ export default {
       },
       "/": {
         "path": "/",
+        "categories": [
+          "other"
+        ],
+        "example": "/uraaka-joshi",
         "radar": [
           {
             "source": [
@@ -105454,7 +107311,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Homepage",
         "maintainers": [
           "SettingDust",
           "Halcao"
@@ -105931,7 +107788,9 @@ export default {
           "supportScihub": false
         },
         "name": "教务处",
-        "maintainers": [],
+        "maintainers": [
+          "Fatpandac"
+        ],
         "description": "| 类型 | 教务动态 | 公告在线 | 选课通知 |\n| ---- | -------- | -------- | -------- |\n|      | jwdt     | ggzx     | xktz     |",
         "location": "jwch.ts",
         "module": () => import('@/routes/usts/jwch.ts')
@@ -105986,6 +107845,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "blog"
+        ],
+        "example": "/v1tx",
         "radar": [
           {
             "source": [
@@ -105994,7 +107857,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "最新文章",
         "maintainers": [
           "TonyRL"
         ],
@@ -106136,15 +107999,12 @@ export default {
   },
   "verfghbw": {
     "routes": {
-      "/press/:keyword?": {
-        "path": "/press/:keyword?",
+      "/press": {
+        "path": "/press",
         "categories": [
           "government"
         ],
         "example": "/verfghbw/press",
-        "parameters": {
-          "keyword": "Keyword"
-        },
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -106156,7 +108016,7 @@ export default {
         "radar": [
           {
             "source": [
-              "verfgh.baden-wuerttemberg.de/de/presse-und-service/pressemitteilungen/"
+              "verfgh.baden-wuerttemberg.de/presse-und-service/pressemitteilungen/"
             ],
             "target": "/press"
           }
@@ -106165,7 +108025,7 @@ export default {
         "maintainers": [
           "quinn-dev"
         ],
-        "url": "verfgh.baden-wuerttemberg.de/de/presse-und-service/pressemitteilungen/",
+        "url": "verfgh.baden-wuerttemberg.de/presse-und-service/pressemitteilungen/",
         "location": "press.ts",
         "module": () => import('@/routes/verfghbw/press.ts')
       }
@@ -107077,7 +108937,9 @@ export default {
           "supportScihub": false
         },
         "name": "Download",
-        "maintainers": [],
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "download.ts",
         "module": () => import('@/routes/wdc/download.ts')
       }
@@ -107534,10 +109396,20 @@ export default {
   },
   "web3caff": {
     "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/web3caff/zh/archives/category/news_zh",
+        "parameters": {
+          "path": "路径，默认为首页"
+        },
+        "name": "发现",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "路径处填写对应页面 URL 中 `https://web3caff.com/` 后的字段。下面是一个例子。\n\n若订阅 [叙事 - Web3Caff](https://web3caff.com/zh/archives/category/news_zh) 则将对应页面 URL <https://web3caff.com/zh/archives/category/news_zh> 中 `https://web3caff.com/` 后的字段 `zh/archives/category/news_zh` 作为路径填入。此时路由为 [`/web3caff/zh/archives/category/news_zh`](https://rsshub.app/web3caff/zh/archives/category/news_zh)",
         "location": "index.ts",
         "module": () => import('@/routes/web3caff/index.ts')
       }
@@ -107613,10 +109485,26 @@ export default {
       },
       "/:category?": {
         "path": "/:category?",
-        "name": "Unknown",
+        "categories": [
+          "reading"
+        ],
+        "example": "/wenku8/lastupdate",
+        "parameters": {
+          "category": "首页分类，见下表，默认为今日更新"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "WENKU8_COOKIE",
+              "description": "登陆轻小说文库后的 cookie"
+            }
+          ]
+        },
+        "name": "首页分类",
         "maintainers": [
           "Fatpandac"
         ],
+        "description": "|  今日更新  | 完结全本 | 新书一览 | 动画化作品 | 热门轻小说 |  轻小说列表 |\n| :--------: | :------: | :------: | :--------: | :--------: | :---------: |\n| lastupdate | fullflag | postdate |    anime   |  allvisit  | articlelist |",
         "location": "index.ts",
         "module": () => import('@/routes/wenku8/index.ts')
       },
@@ -107941,8 +109829,18 @@ export default {
       },
       "/hyxt/:category{.+}?": {
         "path": "/hyxt/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/whu/hyxt",
+        "parameters": {
+          "category": "分类，见下表，默认为 `tzgg`， 即 **通知公告**"
+        },
+        "name": "弘毅学堂",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 新闻动态 | 通知公告 | 学子风采 | 学术论坛 |\n| -------- | -------- | -------- | -------- |\n| xwdt     | tzgg     | xzfc     | xslt     |\n\n<details>\n  <summary>更多分类</summary>\n\n#### 学堂简报\n\n| 学堂简报 |\n| -------- |\n| xtjb     |\n\n#### 人才培养\n\n| 人才培养 | 招生工作  | 培养方案  | 科研训练  | 毕业去向  | 学习资源  |\n| -------- | --------- | --------- | --------- | --------- | --------- |\n| rcpy     | rcpy/zsgz | rcpy/pyfa | rcpy/kyxl | rcpy/byqx | rcpy/xxzy |\n\n#### 学生工作\n\n| 学生工作 | 党团建设  | 学术交流  | 书院生活  | 奖助体系  | 事务服务  |\n| -------- | --------- | --------- | --------- | --------- | --------- |\n| xsgz     | xsgz/dtjs | xsgz/xsjl | xsgz/sysh | xsgz/jztx | xsgz/swfw |\n\n#### 国际合作\n\n| 国际合作 | 国际交流  | 交流分享  |\n| -------- | --------- | --------- |\n| gjhz     | gjhz/gjjl | gjhz/jlfx |\n\n#### 校友风采\n\n| 校友风采 |\n| -------- |\n| xyfc     |\n\n</details>\n\n此外 route 后可以加上 `?limit=n` 的查询参数，表示只获取前 n 条内容；如果不指定默认为 30。",
         "location": "hyxt.ts",
         "module": () => import('@/routes/whu/hyxt.ts')
       },
@@ -107953,10 +109851,13 @@ export default {
         ],
         "example": "/whu/news",
         "parameters": {
-          "category": "新闻栏目，可选"
+          "category": "分类，见下表，默认为 `wdzx/wdyw`， 即 **武大要闻**"
         },
         "name": "新闻网",
-        "maintainers": [],
+        "maintainers": [
+          "SChen1024",
+          "nczitzk"
+        ],
         "description": "category 参数可选，范围如下:\n\n| 新闻栏目 | 武大资讯         | 学术动态    | 珞珈影像         | 武大视频         |\n| -------- | ---------------- | ----------- | ---------------- | ---------------- |\n| 参数     | 0 或 `wdzx/wdyw` | 1 或 `kydt` | 2 或 `stkj/ljyx` | 3 或 `stkj/wdsp` |\n\n此外 route 后可以加上 `?limit=n` 的查询参数，表示只获取前 n 条新闻；如果不指定默认为 10。",
         "location": "news.ts",
         "module": () => import('@/routes/whu/news.ts')
@@ -108028,10 +109929,13 @@ export default {
   },
   "wiensued": {
     "routes": {
-      "*": {
+      "/:path{.+}?": {
         "name": "Objekte",
         "example": "/wiensued/city=Wien&search=&space-from=30&space-to=100&room-from=2&room-to=4&rent=1&property=1&state[]=inplanung&state[]=inbau&state[]=sofort&state[]=bestand",
-        "path": "*",
+        "path": "/:path{.+}?",
+        "parameters": {
+          "path": "Query parameters and/or the path leading up to the listing, see the description below"
+        },
         "maintainers": [
           "sk22"
         ],
@@ -108337,8 +110241,18 @@ export default {
     "routes": {
       "/publish/:category{.+}?": {
         "path": "/publish/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "other"
+        ],
+        "example": "/wmc-bj/publish/CRA-Reanalysis/2m-Temperature/6-hour/index.html",
+        "parameters": {
+          "category": "Category, can be found in URL, `CRA-Reanalysis/2m-Temperature/6-hour/index.html` by default"
+        },
+        "name": "Publish",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n`category` is the text after `publish/` in the URL.\n\neg. The URL for [Monitoring\\_CMA-RA\\_2m-Temperature\\_6-hour](http://www.wmc-bj.net/publish/CRA-Reanalysis/2m-Temperature/6-hour/index.html) is <http://www.wmc-bj.net/publish/CRA-Reanalysis/2m-Temperature/6-hour/index.html>. The `category` for route can be represented as [`/wmc-bj/publish/CRA-Reanalysis/2m-Temperature/6-hour/index.html`](https://rsshub.app/wmc-bj/publish/CRA-Reanalysis/2m-Temperature/6-hour/index.html).\n:::",
         "location": "publish.tsx",
         "module": () => import('@/routes/wmc-bj/publish.tsx')
       }
@@ -108465,6 +110379,13 @@ export default {
     "routes": {
       "/:path{.+}?": {
         "path": "/:path{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/worldjournal",
+        "parameters": {
+          "path": "URL 中 `/wj/` 後的路徑，預設為 `cate/breaking`"
+        },
         "radar": [
           {
             "source": [
@@ -108473,8 +110394,10 @@ export default {
             "target": "/:path"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "新聞",
+        "maintainers": [
+          "TonyRL"
+        ],
         "url": "worldjournal.com/wj/*path",
         "location": "index.ts",
         "module": () => import('@/routes/worldjournal/index.ts')
@@ -108743,7 +110666,15 @@ export default {
     "routes": {
       "/news/:type?": {
         "path": "/news/:type?",
-        "name": "Unknown",
+        "categories": [
+          "university"
+        ],
+        "example": "/wzu/news/0",
+        "parameters": {
+          "type": "分类，见下表 默认为`0`"
+        },
+        "description": "| 温大新闻 | 媒体温大 | 学术温大 | 通知公告 | 招标信息 | 学术公告 |\n| :------: | :------: | :------: | :------: | :------: | :------: |\n|     0    |     1    |     2    |     3    |     4    |     5    |",
+        "name": "新闻",
         "maintainers": [
           "Chandler-Lu"
         ],
@@ -109186,12 +111117,17 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "发现",
+        "example": "/xiaoyuzhou",
+        "categories": [
+          "multimedia"
+        ],
         "maintainers": [
           "prnake",
           "Maecenas"
         ],
         "url": "xiaoyuzhoufm.com/",
+        "description": "::: warning\n小宇宙的 api 需要验证 `x-jike-device-id`、`x-jike-access-token` 和 `x-jike-refresh-token` 。必要时需要自行配置，具体见部署文档。\n:::",
         "location": "pickup.ts",
         "module": () => import('@/routes/xiaoyuzhou/pickup.ts')
       },
@@ -109492,8 +111428,17 @@ export default {
       },
       "/dyyy/:path{.+}": {
         "path": "/dyyy/:path{.+}",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/xjtu/dyyy/index/xsxx",
+        "parameters": {
+          "path": "栏目路径，支持多级，不包括末尾的`.htm`"
+        },
+        "name": "第一附属医院新闻",
+        "maintainers": [
+          "TonyRL"
+        ],
         "location": "dyyy/index.ts",
         "module": () => import('@/routes/xjtu/dyyy/index.ts')
       },
@@ -109593,8 +111538,17 @@ export default {
       },
       "/international/:subpath{.+}": {
         "path": "/international/:subpath{.+}",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/xjtu/international/hzjl",
+        "parameters": {
+          "subpath": "栏目路径，支持多级，不包括末尾的`.htm`"
+        },
+        "name": "国际处通知",
+        "maintainers": [
+          "guitaoliu"
+        ],
         "location": "international.ts",
         "module": () => import('@/routes/xjtu/international.ts')
       },
@@ -109798,8 +111752,34 @@ export default {
       },
       "/news/:category{.+}?": {
         "path": "/news/:category{.+}?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/xmnn/news/xmxw",
+        "parameters": {
+          "category": "分类 id，见下表，默认为厦门新闻"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.xmnn.cn/:category"
+            ],
+            "target": "/news/:category"
+          }
+        ],
+        "name": "新闻",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 分类名       | 分类 id |\n| ------------ | ------- |\n| 厦门新闻发布 | xmxwfb  |\n| 厦门新闻     | xmxw    |\n| 本网快报     | bwkb    |\n| 厦门网眼     | xmwy    |\n| 福建新闻     | fjxw    |\n| 国内新闻     | gnxw    |\n| 国际新闻     | gjxw    |\n| 台海新闻     | thxw    |\n| 社会新闻     | shxw    |",
         "location": "news.ts",
         "module": () => import('@/routes/xmnn/news.ts')
       }
@@ -109851,15 +111831,35 @@ export default {
     "routes": {
       "/jwc/bkjw/:category?": {
         "path": "/jwc/bkjw/:category?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/xmut/jwc/bkjw/jxyx",
+        "parameters": {
+          "category": "分类如下表"
+        },
+        "name": "本科生教务处",
+        "maintainers": [
+          "icecliffs"
+        ],
+        "description": "| 教学运行 | 综合事务 | 学务管理 | 实践教学 | 教研教改 |\n| :------: | :------: | :------: | :------: | :------: |\n|   jxyx   |   zhsw   |   xwgl   |   sjjx   |   jyjg   |",
         "location": "jwc/bkjw.ts",
         "module": () => import('@/routes/xmut/jwc/bkjw.ts')
       },
       "/jwc/yjjw/:category?": {
         "path": "/jwc/yjjw/:category?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "university"
+        ],
+        "example": "/xmut/jwc/yjjw/tzgg",
+        "parameters": {
+          "category": "分类如下表"
+        },
+        "name": "研究生处",
+        "maintainers": [
+          "icecliffs"
+        ],
+        "description": "| 通知公告 | 新闻动态 | 学术研究 | 工作简讯 |\n| :------: | :------: | :------: | :------: |\n|   tzgg   |   xwdt   |   xstj   |   yjsjw  |",
         "location": "jwc/yjs.ts",
         "module": () => import('@/routes/xmut/jwc/yjs.ts')
       }
@@ -110225,8 +112225,8 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -110272,7 +112272,9 @@ export default {
           }
         ],
         "name": "股票评论",
-        "maintainers": [],
+        "maintainers": [
+          "zytomorrow"
+        ],
         "location": "stock-comments.tsx",
         "module": () => import('@/routes/xueqiu/stock-comments.tsx')
       },
@@ -110286,7 +112288,7 @@ export default {
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
-          "antiCrawler": false,
+          "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -110570,31 +112572,6 @@ export default {
     "url": "xyc.edu.cn",
     "lang": "zh-CN"
   },
-  "xyzrank": {
-    "routes": {
-      "/:category?": {
-        "path": "/:category?",
-        "radar": [
-          {
-            "source": [
-              "xyzrank.com/"
-            ],
-            "target": ""
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [],
-        "url": "xyzrank.com/",
-        "location": "index.tsx",
-        "module": () => import('@/routes/xyzrank/index.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "中文播客榜",
-    "url": "xyzrank.com",
-    "description": "::: tip\n可以通过指定 `limit` 参数确定榜单排名下限，默认为 250。\n\n若只查看榜单前 50，可在订阅 URL 后加入 `?limit=50`。\n\n即，以 [热门节目](https://xyzrank.com/#/) 为例，路由为[`/xyzrank?limit=50`](https://rsshub.app/xyzrank?limit=50)。\n:::",
-    "lang": "zh-CN"
-  },
   "yamap": {
     "routes": {
       "/": {
@@ -110701,10 +112678,20 @@ export default {
   },
   "yangtzeu": {
     "routes": {
-      "/dongke/*": {
-        "path": "/dongke/*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/dongke/:path{.+}?": {
+        "path": "/dongke/:path{.+}?",
+        "categories": [
+          "university"
+        ],
+        "example": "/yangtzeu/dongke/yqzl/tzgg",
+        "parameters": {
+          "path": "路径，默认为学院新闻"
+        },
+        "description": "路径处填写网址中 `https://dongke.yangtzeu.edu.cn` 到末尾 `.htm` 之间的部分，默认为学院新闻。\n\n如订阅 [院情总览 - 通知公告](https://dongke.yangtzeu.edu.cn/yqzl/tzgg.htm)，网址为 `https://dongke.yangtzeu.edu.cn/yqzl/tzgg.htm`，截取 `/yqzl/tzgg` 作为参数，此时路由为 [`/yangtzeu/dongke/yqzl/tzgg`](https://rsshub.app/yangtzeu/dongke/yqzl/tzgg)。\n\n若订阅子分类 [学生工作](https://dongke.yangtzeu.edu.cn/xsgz.htm)，网址为 `https://dongke.yangtzeu.edu.cn/xsgz.htm`。截取 `https://dongke.yangtzeu.edu.cn` 到末尾 `.htm` 的部分 `/xsgz` 作为参数，此时路由为 [`/yangtzeu/dongke/xsgz`](https://rsshub.app/yangtzeu/dongke/xsgz)。",
+        "name": "动物科学学院",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "dongke.ts",
         "module": () => import('@/routes/yangtzeu/dongke.ts')
       }
@@ -111777,7 +113764,7 @@ export default {
         },
         "name": "New Arrivals",
         "maintainers": [
-          "EthanWng97"
+          "IvanWng97"
         ],
         "description": "For instance, in `https://www.zagg.com/en_us/new-arrivals?brand=164&cat=3038%2C3041`, the query is `brand=164&cat=3038%2C3041`",
         "location": "new-arrivals.tsx",
@@ -112076,6 +114063,13 @@ export default {
       },
       "/luxiang/:category?": {
         "path": "/luxiang/:category?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/zhibo8/luxiang/nba",
+        "parameters": {
+          "category": "分类，见下表，默认为 `nba`"
+        },
         "radar": [
           {
             "source": [
@@ -112084,7 +114078,8 @@ export default {
             "target": "/luxiang/:category"
           }
         ],
-        "name": "Unknown",
+        "name": "录像",
+        "description": "| NBA | 足球  |\n| --- | ----- |\n| nba | zuqiu |",
         "maintainers": [
           "TonyRL"
         ],
@@ -112629,6 +114624,32 @@ export default {
         "location": "list.ts",
         "module": () => import('@/routes/zju/list.ts')
       },
+      "/math/:type": {
+        "path": "/math/:type",
+        "categories": [
+          "university"
+        ],
+        "example": "/zju/math/0",
+        "parameters": {
+          "type": "分类，见下表"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "数学科学学院",
+        "description": "| 重要通知 | 本科生 | 研究生 | 科研 | 教学 | 人事 | 公示 |\n| -------- | ------ | ------ | ---- | ---- | ---- | ---- |\n| 0        | 1      | 2      | 3    | 4    | 5    | 6    |",
+        "maintainers": [
+          "Alex222222222222"
+        ],
+        "url": "www.math.zju.edu.cn",
+        "location": "math/index.ts",
+        "module": () => import('@/routes/zju/math/index.ts')
+      },
       "/physics/:type": {
         "path": "/physics/:type",
         "categories": [
@@ -113077,10 +115098,24 @@ export default {
   },
   "zyshow": {
     "routes": {
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/zyshow/chongchongchong",
+        "parameters": {
+          "path": "综艺 id，综艺详情对应页 URL 中找到"
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "name": "综艺",
+        "maintainers": [
+          "pharaoh2012",
+          "nczitzk"
+        ],
+        "description": "地区，见下表，默认为空，即台湾\n\n| 台湾 | 韩国 | 大陆 |\n| ---- | ---- | ---- |\n|      | kr   | dl   |",
         "location": "index.tsx",
         "module": () => import('@/routes/zyshow/index.tsx')
       }
@@ -114552,6 +116587,47 @@ export default {
     ],
     "lang": "zh-CN"
   },
+  "8world": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/8world/realtime",
+        "parameters": {
+          "category": "分类 id，见下表，默认为即时 REALTIME"
+        },
+        "description": "| 分类                   | id             |\n| ---------------------- | -------------- |\n| 即时 REALTIME          | realtime       |\n| 新加坡 SINGAPORE       | singapore      |\n| 东南亚 SOUTH-EAST ASIA | southeast-asia |\n| 中港台 GREATER CHINA   | greater-china  |\n| 国际 WORLD             | world          |\n| 财经 FINANCE           | finance        |\n| 体育 SPORTS            | sports         |\n| 社团 COMMUNITY         | community      |",
+        "name": "分类",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/8world/index.ts')
+      },
+      "/topic/:id": {
+        "path": "/topic/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/8world/topic/xianggang-3",
+        "parameters": {
+          "id": "标签 id，可在对应标签页中找到"
+        },
+        "name": "标签",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "topic.ts",
+        "module": () => import('@/routes/8world/topic.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "8 视界",
+    "url": "8world.com",
+    "lang": "zh-CN"
+  },
   "95mm": {
     "routes": {
       "/category/:category": {
@@ -114665,8 +116741,19 @@ export default {
     "routes": {
       "/:subsite/:tag?": {
         "path": "/:subsite/:tag?",
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "new-media"
+        ],
+        "example": "/9to5/mac/aapl",
+        "parameters": {
+          "subsite": "Subsite name",
+          "tag": "Tag name inside the url of the tag page"
+        },
+        "name": "Sub-site",
+        "maintainers": [
+          "HenryQW"
+        ],
+        "description": "Supported sub-sites：\n\n| 9To5Mac | 9To5Google | 9To5Toys |\n| ------- | ---------- | -------- |\n| Mac     | Google     | Toys     |",
         "location": "subsite.ts",
         "module": () => import('@/routes/9to5/subsite.ts')
       }
@@ -114886,6 +116973,129 @@ export default {
     "url": "www.aiea.org",
     "lang": "en"
   },
+  "aljazeera": {
+    "routes": {
+      "/:language?/:category{.+}?": {
+        "path": "/:language?/:category{.+}?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/aljazeera/english/news",
+        "parameters": {
+          "language": "Language, see below, arabic by default, as Arabic",
+          "category": "Category, can be found in URL, homepage by default"
+        },
+        "description": "Language\n\n| Arabic | Chinese | English |\n| ------ | ------- | ------- |\n| arabic | chinese | english |\n\n::: tip\nIf you subscribe to [Al Jazeera English - Economy](https://www.aljazeera.com/economy), whose language is `english` and whose path is `economy`, you can get the route as [`/aljazeera/english/economy`](https://rsshub.app/aljazeera/english/economy)\n\nIf you subscribe to [Al Jazeera Chinese - Political](https://chinese.aljazeera.net/news/political) with language `chinese` and path `news/political`, you can get the route as [`/aljazeera/chinese/news/political`](https://rsshub.app/aljazeera/chinese/news/political)\n:::",
+        "radar": [
+          {
+            "source": [
+              "www.aljazeera.com/:category",
+              "www.aljazeera.com/"
+            ],
+            "target": "/english/:category"
+          },
+          {
+            "source": [
+              "www.aljazeera.net/:category",
+              "www.aljazeera.net/"
+            ],
+            "target": "/arabic/:category"
+          },
+          {
+            "source": [
+              "chinese.aljazeera.net/:category",
+              "chinese.aljazeera.net/"
+            ],
+            "target": "/chinese/:category"
+          }
+        ],
+        "name": "News",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "index.tsx",
+        "module": () => import('@/routes/aljazeera/index.tsx')
+      },
+      "/:language?/rss": {
+        "path": "/:language?/rss",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/aljazeera/english/rss",
+        "parameters": {
+          "language": "Language, see below, arabic by default, as Arabic"
+        },
+        "description": "Language\n\n| Arabic | Chinese | English |\n| ------ | ------- | ------- |\n| arabic | chinese | english |\n\n::: tip\nThere is no RSS source for Al Jazeera Chinese, returning homepage content by default\n:::",
+        "radar": [
+          {
+            "source": [
+              "www.aljazeera.com/xml/rss/all.xml",
+              "www.aljazeera.com/"
+            ],
+            "target": "/english/rss"
+          },
+          {
+            "source": [
+              "www.aljazeera.net/rss",
+              "www.aljazeera.net/"
+            ],
+            "target": "/arabic/rss"
+          }
+        ],
+        "name": "Official RSS",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "rss.ts",
+        "module": () => import('@/routes/aljazeera/rss.ts')
+      },
+      "/:language?/tag/:id": {
+        "path": "/:language?/tag/:id",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/aljazeera/english/tag/science-and-technology",
+        "parameters": {
+          "language": "Language, see below, arabic by default, as Arabic",
+          "id": "Tag id, can be found in URL"
+        },
+        "description": "Language\n\n| Arabic | Chinese | English |\n| ------ | ------- | ------- |\n| arabic | chinese | english |\n\n::: tip\nIf you subscribe to [Al Jazeera English - Science and Technology](https://www.aljazeera.com/tag/science-and-technology), whose language is `english` and whose path is `science-and-technology`, you can get the route as [`/aljazeera/english/tag/science-and-technology`](https://rsshub.app/aljazeera/english/tag/science-and-technology)\n:::",
+        "radar": [
+          {
+            "source": [
+              "www.aljazeera.com/tag/:id",
+              "www.aljazeera.com/"
+            ],
+            "target": "/english/tag/:id"
+          },
+          {
+            "source": [
+              "www.aljazeera.net/tag/:id",
+              "www.aljazeera.net/"
+            ],
+            "target": "/arabic/tag/:id"
+          },
+          {
+            "source": [
+              "chinese.aljazeera.net/tag/:id",
+              "chinese.aljazeera.net/"
+            ],
+            "target": "/chinese/tag/:id"
+          }
+        ],
+        "name": "Tag",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "tag.ts",
+        "module": () => import('@/routes/aljazeera/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Aljazeera",
+    "url": "aljazeera.com",
+    "lang": "en"
+  },
   "apnews": {
     "routes": {
       "/sitemap/:route": {
@@ -115085,6 +117295,153 @@ export default {
     "name": "AP News",
     "url": "apnews.com",
     "lang": "en"
+  },
+  "asiantolick": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "picture"
+        ],
+        "example": "/asiantolick",
+        "radar": [
+          {
+            "source": [
+              "asiantolick.com/"
+            ],
+            "target": "/"
+          }
+        ],
+        "name": "Top rated",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "asiantolick.com/",
+        "features": {
+          "nsfw": true
+        },
+        "location": "index.ts",
+        "module": () => import('@/routes/asiantolick/index.ts')
+      },
+      "/category/:id": {
+        "path": "/category/:id",
+        "categories": [
+          "picture"
+        ],
+        "example": "/asiantolick/category/90",
+        "parameters": {
+          "id": "Category id, can be found in URL"
+        },
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "asiantolick.com/category-:id"
+            ],
+            "target": "/category/:id"
+          }
+        ],
+        "name": "Category",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "asiantolick.com/",
+        "description": "| Category   | id   |\n| ---------- | ---- |\n| Lolita     | 90   |\n| Hot Sister | 91   |\n| Cosplay    | 1030 |\n| Sexy       | 93   |\n| Others     | 94   |\n| Thailand   | 99   |\n| Magazine   | 100  |\n| Hard Sexy  | 103  |",
+        "location": "category.ts",
+        "module": () => import('@/routes/asiantolick/category.ts')
+      },
+      "/page/:id": {
+        "path": "/page/:id",
+        "categories": [
+          "picture"
+        ],
+        "example": "/asiantolick/page/news",
+        "parameters": {
+          "id": "Page id"
+        },
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "asiantolick.com/page/:id"
+            ],
+            "target": "/page/:id"
+          }
+        ],
+        "name": "Page",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "asiantolick.com/",
+        "location": "page.ts",
+        "module": () => import('@/routes/asiantolick/page.ts')
+      },
+      "/search/:keyword": {
+        "path": "/search/:keyword",
+        "categories": [
+          "picture"
+        ],
+        "example": "/asiantolick/search/lolita",
+        "parameters": {
+          "keyword": "Keyword"
+        },
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "asiantolick.com/search/:keyword"
+            ],
+            "target": "/search/:keyword"
+          }
+        ],
+        "name": "Search",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "asiantolick.com/",
+        "location": "search.ts",
+        "module": () => import('@/routes/asiantolick/search.ts')
+      },
+      "/tag/:id": {
+        "path": "/tag/:id",
+        "categories": [
+          "picture"
+        ],
+        "example": "/asiantolick/tag/1045",
+        "parameters": {
+          "id": "Tag id, can be found in URL"
+        },
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "asiantolick.com/tag-:id"
+            ],
+            "target": "/tag/:id"
+          }
+        ],
+        "name": "Tag",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "asiantolick.com/",
+        "description": "| Aidol | Anal | Babe | Big Boobs | Big Pussy |\n| ----- | ---- | ---- | --------- | --------- |\n| 2310  | 2233 | 1385 | 1106      | 1722      |\n\n| Bikini | Blonde | blowjob | Close Up | Creamy Pussy |\n| ------ | ------ | ------- | -------- | ------------ |\n| 1206   | 2244   | 2167    | 2267     | 1117         |\n\n| cum  | Cute Girl | Dildo | Ebony | Feet |\n| ---- | --------- | ----- | ----- | ---- |\n| 2163 | 1090      | 1082  | 2245  | 1323 |\n\n| fetish | fingers | Fox Tail | Glasses | Hairy Pussy |\n| ------ | ------- | -------- | ------- | ----------- |\n| 2219   | 2197    | 1540     | 1268    | 1099        |\n\n| Interracial | Lesbian | licked | Loli | Maid |\n| ----------- | ------- | ------ | ---- | ---- |\n| 2284        | 1080    | 2208   | 1045 | 1072 |\n\n| Masturbate | Milf | non-nude | Nude | Nurse |\n| ---------- | ---- | -------- | ---- | ----- |\n| 1081       | 1705 | 2307     | 1393 | 1552  |\n\n| Office | oiled | Outdoor | Pink Pussy | Pink Tits |\n| ------ | ----- | ------- | ---------- | --------- |\n| 1724   | 2176  | 2250    | 1161       | 1498      |\n\n| Public | School Girl | Short Hair | skirt | Small Girl |\n| ------ | ----------- | ---------- | ----- | ---------- |\n| 1277   | 1046        | 1160       | 2159  | 1103       |\n\n| Socks | sucking | Tattoo | Teen | Tiny Tits |\n| ----- | ------- | ------ | ---- | --------- |\n| 2256  | 2199    | 1593   | 1036 | 2251      |\n\n| Underwear | Uniform | wet  | Young |\n| --------- | ------- | ---- | ----- |\n| 1324      | 1084    | 2179 | 1098  |",
+        "location": "tag.ts",
+        "module": () => import('@/routes/asiantolick/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Asian to lick",
+    "url": "asiantolick.com",
+    "lang": "zh-CN"
   },
   "bangumi.tv": {
     "routes": {
@@ -116240,7 +118597,7 @@ export default {
           "requireConfig": [
             {
               "name": "BILIBILI_COOKIE_*",
-              "description": "BILIBILI_COOKIE_{uid}: 用于用户关注动态系列路由，对应 uid 的 b 站用户登录后的 Cookie 值，`{uid}` 替换为 uid，如 `BILIBILI_COOKIE_2267573`，获取方式：\n    1.  打开 [https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=8](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=8)\n    2.  打开控制台，切换到 Network 面板，刷新\n    3.  点击 dynamic_new 请求，找到 Cookie\n    4.  视频和专栏，UP 主粉丝及关注只要求 `SESSDATA` 字段，动态需复制整段 Cookie"
+              "description": "BILIBILI_COOKIE_{uid}: 用于用户关注动态系列路由，对应 uid 的 b 站用户登录后的 Cookie 值，`{uid}` 替换为 uid，如 `BILIBILI_COOKIE_2267573`，获取方式：\n    1.  打开 [https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=8](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=8)\n    2.  打开控制台，切换到 Network 面板，刷新\n    3.  点击 dynamic_new 请求，找到 Cookie\n    4.  复制整段 Cookie，删掉其中的 `bili_ticket` 和 `bili_ticket_expires` 字段来延长有效期"
             }
           ],
           "requirePuppeteer": false,
@@ -116906,7 +119263,9 @@ export default {
       "/user/video-all/:uid/:embed?": {
         "path": "/user/video-all/:uid/:embed?",
         "name": "用户所有视频",
-        "maintainers": [],
+        "maintainers": [
+          "CcccFz"
+        ],
         "example": "/bilibili/user/video-all/2267573",
         "parameters": {
           "uid": "用户 id, 可在 UP 主主页中找到",
@@ -117261,7 +119620,9 @@ export default {
           "supportScihub": false
         },
         "name": "Exhibitions",
-        "maintainers": [],
+        "maintainers": [
+          "chazeon"
+        ],
         "location": "exhibitions.ts",
         "module": () => import('@/routes/brooklynmuseum/exhibitions.ts')
       }
@@ -117411,7 +119772,9 @@ export default {
           "supportScihub": false
         },
         "name": "用户博客",
-        "maintainers": [],
+        "maintainers": [
+          "Maecenas"
+        ],
         "description": "通过提取文章全文，以提供比官方源更佳的阅读体验.",
         "location": "blog.ts",
         "module": () => import('@/routes/caixin/blog.ts')
@@ -118261,6 +120624,70 @@ export default {
     ],
     "lang": "zh-TW"
   },
+  "cnjxol": {
+    "routes": {
+      "/jxrb/:id?": {
+        "path": "/jxrb/:id?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/cnjxol/jxrb",
+        "parameters": {
+          "id": "编号，见下表，默认为全部"
+        },
+        "radar": [
+          {
+            "source": [
+              "cnjxol.com/"
+            ],
+            "target": "/jxrb/:id"
+          }
+        ],
+        "description": "| 版                   | 编号 |\n| -------------------- | ---- |\n| 全部                 |      |\n| 第 01 版：要闻       | 01   |\n| 第 02 版：要闻       | 02   |\n| 第 03 版：要闻       | 03   |\n| 第 04 版：嘉一度     | 04   |\n| 第 05 版：聚焦       | 05   |\n| 第 06 版：党报热线   | 06   |\n| 第 07 版：天下       | 07   |\n| 第 08 版：聚焦       | 08   |\n| 第 09 版：南湖新闻   | 09   |\n| 第 10 版：综合       | 10   |\n| 第 11 版：梅花洲     | 11   |\n| 第 12 版：南湖纵横   | 12   |\n| 第 13 版：秀洲新闻   | 13   |\n| 第 14 版：综合       | 14   |\n| 第 15 版：秀・观察   | 15   |\n| 第 16 版：走进高新区 | 16   |",
+        "features": {
+          "antiCrawler": true
+        },
+        "name": "嘉兴日报",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "index.tsx",
+        "module": () => import('@/routes/cnjxol/index.tsx')
+      },
+      "/nhwb/:id?": {
+        "path": "/nhwb/:id?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/cnjxol/nhwb",
+        "parameters": {
+          "id": "编号，见下表，默认为全部"
+        },
+        "radar": [
+          {
+            "source": [
+              "cnjxol.com/"
+            ],
+            "target": "/nhwb/:id"
+          }
+        ],
+        "description": "| 版                                   | 编号 |\n| ------------------------------------ | ---- |\n| 全部                                 |      |\n| 第 01 版：要闻                       | 01   |\n| 第 02 版：品质嘉兴・红船旁的美丽城镇 | 02   |\n| 第 03 版：嘉兴新闻                   | 03   |\n| 第 04 版：嘉兴新闻                   | 04   |\n| 第 05 版：今日聚焦                   | 05   |\n| 第 06 版：嘉兴新闻                   | 06   |\n| 第 07 版：热线新闻                   | 07   |\n| 第 08 版：财经新闻                   | 08   |\n| 第 09 版：热线新闻                   | 09   |\n| 第 10 版：公益广告                   | 10   |\n| 第 11 版：消费周刊                   | 11   |\n| 第 12 版：悦读坊                     | 12   |",
+        "features": {
+          "antiCrawler": true
+        },
+        "name": "南湖晚报",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "nhwb.ts",
+        "module": () => import('@/routes/cnjxol/nhwb.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "南湖清风",
+    "url": "cnjxol.com",
+    "lang": "zh-CN"
+  },
   "coindesk": {
     "routes": {
       "/consensus-magazine": {
@@ -118645,76 +121072,6 @@ export default {
     ],
     "lang": "en"
   },
-  "csust": {
-    "routes": {
-      "/tggs": {
-        "path": "/tggs",
-        "categories": [
-          "university"
-        ],
-        "example": "/csust/tggs",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.csust.edu.cn/tggs.htm",
-              "www.csust.edu.cn/"
-            ]
-          }
-        ],
-        "name": "通告公示",
-        "maintainers": [
-          "powerfullz"
-        ],
-        "url": "www.csust.edu.cn/tggs.htm",
-        "location": "tggs.ts",
-        "module": () => import('@/routes/csust/tggs.ts')
-      },
-      "/xkxs": {
-        "path": "/xkxs",
-        "categories": [
-          "university"
-        ],
-        "example": "/csust/xkxs",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.csust.edu.cn/xkxs.htm",
-              "www.csust.edu.cn/"
-            ]
-          }
-        ],
-        "name": "学科学术",
-        "maintainers": [
-          "powerfullz"
-        ],
-        "url": "www.csust.edu.cn/xkxs.htm",
-        "location": "xkxs.ts",
-        "module": () => import('@/routes/csust/xkxs.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "长沙理工大学",
-    "url": "www.csust.edu.cn",
-    "lang": "zh-CN"
-  },
   "cw": {
     "routes": {
       "/author/:channel": {
@@ -118863,38 +121220,29 @@ export default {
         ],
         "name": "作者",
         "maintainers": [
+          "xyqfer",
           "nczitzk"
         ],
         "location": "author.ts",
         "module": () => import('@/routes/cyzone/author.ts')
       },
-      "/channel/:id?": {
-        "path": [
-          "/channel/:id?",
-          "/:id?"
-        ],
-        "radar": [
-          {
-            "source": [
-              "cyzone.cn/channel/:id",
-              "cyzone.cn/"
-            ],
-            "target": "/:id"
-          }
-        ],
-        "name": "Unknown",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "description": "| 最新 | 快鲤鱼 | 创投 | 科创板 | 汽车 |\n| ---- | ------ | ---- | ------ | ---- |\n| news | 5      | 14   | 13     | 8    |\n\n| 海外 | 消费 | 科技 | 医疗 | 文娱 |\n| ---- | ---- | ---- | ---- | ---- |\n| 10   | 9    | 7    | 27   | 11   |\n\n| 城市 | 政策 | 特写 | 干货 | 科技股 |\n| ---- | ---- | ---- | ---- | ------ |\n| 16   | 15   | 6    | 12   | 33     |",
-        "location": "index.ts",
-        "module": () => import('@/routes/cyzone/index.ts')
-      },
       "/:id?": {
-        "path": [
-          "/channel/:id?",
-          "/:id?"
+        "path": "/:id?",
+        "categories": [
+          "new-media"
         ],
+        "example": "/cyzone",
+        "parameters": {
+          "id": "频道 id，可在对应频道页 URL 中找到，默认为 news，即最新资讯"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "radar": [
           {
             "source": [
@@ -118904,7 +121252,7 @@ export default {
             "target": "/:id"
           }
         ],
-        "name": "Unknown",
+        "name": "资讯",
         "maintainers": [
           "nczitzk"
         ],
@@ -118939,6 +121287,7 @@ export default {
         ],
         "name": "标签",
         "maintainers": [
+          "LogicJake",
           "nczitzk"
         ],
         "location": "label.ts",
@@ -119173,10 +121522,20 @@ export default {
         "location": "new.ts",
         "module": () => import('@/routes/dlsite/new.ts')
       },
-      "*": {
-        "path": "*",
-        "name": "Unknown",
-        "maintainers": [],
+      "/:path{.+}?": {
+        "path": "/:path{.+}?",
+        "categories": [
+          "anime"
+        ],
+        "example": "/dlsite/home/new",
+        "parameters": {
+          "path": "Path, `/home/new` by default, as Release Calendar"
+        },
+        "description": "::: tip\nTo subscribe to this route, you can first visit the site and specify filters, and then fill in the field after `https://www.dlsite.com/` in the URL of the corresponding page at the path of the route. Here are 2 examples.\n\nIf you subscribe to [Voice / ASMR works Release date - New to Old](https://www.dlsite.com/home/works/type/=/work_type_category/audio/order/release_d), at the URL of the corresponding page `https://www.dlsite.com/home/works/type/=/work_type_category/audio/order/release_d` and after `https://www.dlsite.com/` is `home/works/type/=/work_type_category/audio/order/release_d`, which can be seen as the path. In this case the route is [`/dlsite/home/works/type/=/work_type_category/audio/order/release_d`](https://rsshub.app/dlsite/home/works/type/=/work_type_category/audio/order/release_d)\n\nIf you subscribe to [Discounted works Latest Discounts - Newest to Oldest](https://www.dlsite.com/home/works/discount/=/order/cstart_d), at the URL of the corresponding page `https://www.dlsite.com/home/works/discount/=/order/cstart_d` and after `https://www.dlsite.com/` is `home/works/discount/=/order/cstart_d`, which can be seen as the path. In this case the route is [`/dlsite/home/works/discount/=/order/cstart_d`](https://rsshub.app/dlsite/home/works/discount/=/order/cstart_d)\n:::",
+        "name": "General",
+        "maintainers": [
+          "nczitzk"
+        ],
         "features": {
           "nsfw": true
         },
@@ -119662,6 +122021,107 @@ export default {
     "name": "丁香园",
     "url": "dxy.cn",
     "lang": "zh-CN"
+  },
+  "e-hentai": {
+    "routes": {
+      "/category/:category?/:needTorrents?/:needImages?": {
+        "path": "/category/:category?/:needTorrents?/:needImages?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/e-hentai/category/manga",
+        "parameters": {
+          "category": "分类，可在对应分类页中找到，默认为首页",
+          "needTorrents": "需要输出种子文件，填写 true/yes 表示需要，默认需要",
+          "needImages": "需要显示大图，填写 true/yes 表示需要，默认需要"
+        },
+        "name": "分类",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n参数 **需要输出种子文件** 设置为 `true` `yes` `t` `y` 等值后，RSS 会携带种子文件的路径，以供支持 RSS 的下载工具订阅下载。\n\n同理，参数 **需要显示大图** 启用后，RSS 会携带每项内容中的大图，而不只提供缩略图。\n\n当然，选择 **需要输出种子文件**、**需要显示大图** 后获取内容时间需要更久，同时若指定获取数量过多，可能会出现获取超时错误。此时，可以在路由末尾处加上 `?limit=限制获取数目` 来限制获取条目数量，或直接修改全局的超时参数 `REQUEST_TIMEOUT`（详见文档中的 [其他应用配置](https://docs.rsshub.app/install/#pei-zhi-qi-ta-ying-yong-pei-zhi)）。\n\n以下是一个例子：\n\n选择浏览 [Manga 分类](https://e-hentai.org/manga)，并指定 **不携带种子文件**，**只显示大图**，并只 **输出 5 个**。由于 [Manga 分类](https://e-hentai.org/manga) 的 URL `https://e-hentai.org/manga` 中对应分类字段为 `manga`，所以对应路由为 [`/e-hentai/category/manga/no/yes?limit=5`](https://rsshub.app/e-hentai/category/manga/no/yes?limit=5)\n:::\n\n| Doujinshi | Manga | Artist CG | Game CG | Western |\n| --------- | ----- | --------- | ------- | ------- |\n| doujinshi | manga | artistcg  | gamecg  | western |\n\n| Non-H | Image Set | Cosplay | Asian Porn | Misc | Popular |\n| ----- | --------- | ------- | ---------- | ---- | ------- |\n| non-h | imageset  | cosplay | asianporn  | misc | popular |",
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "e-hentai.org/:category",
+              "e-hentai.org/"
+            ],
+            "target": "/category/:category"
+          }
+        ],
+        "location": "index.tsx",
+        "module": () => import('@/routes/e-hentai/index.tsx')
+      },
+      "/search/:keyword?/:needTorrents?/:needImages?": {
+        "path": "/search/:keyword?/:needTorrents?/:needImages?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/e-hentai/search/f_search=haha",
+        "parameters": {
+          "keyword": "关键字，可以在搜索结果页的 URL 中找到，默认为首页",
+          "needTorrents": "需要输出种子文件，填写 true/yes 表示需要，默认需要",
+          "needImages": "需要显示大图，填写 true/yes 表示需要，默认需要"
+        },
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "e-hentai.org/:keyword",
+              "e-hentai.org/"
+            ],
+            "target": "/search/:keyword"
+          }
+        ],
+        "name": "搜索",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n参数 **需要输出种子文件**、**需要显示大图** 的说明同上，以下是一个例子：\n\n选择浏览 [f\\_search=cosplay 搜索结果](https://e-hentai.org/?f_search=cosplay)，并指定 **携带种子文件**，且 **显示大图**。由于 [f\\_search=cosplay 搜索结果](https://e-hentai.org/?f_search=cosplay) 的 URL `https://e-hentai.org/?f_search=cosplay` 中对应关键字字段为 `?` 后的 `f_search=cosplay`，所以对应路由为 [`/e-hentai/search/f_search=cosplay/y/y`](https://rsshub.app/e-hentai/search/f_search=cosplay/y/y)\n:::",
+        "location": "search.ts",
+        "module": () => import('@/routes/e-hentai/search.ts')
+      },
+      "/tag/:tag?/:needTorrents?/:needImages?": {
+        "path": "/tag/:tag?/:needTorrents?/:needImages?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/e-hentai/tag/language:chinese",
+        "parameters": {
+          "tag": "标签，可在对应标签页中找到，默认为首页",
+          "needTorrents": "需要输出种子文件，填写 true/yes 表示需要，默认需要",
+          "needImages": "需要显示大图，填写 true/yes 表示需要，默认需要"
+        },
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "e-hentai.org/tag/:tag",
+              "e-hentai.org/"
+            ],
+            "target": "/tag/:tag"
+          }
+        ],
+        "name": "标签",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "::: tip\n参数 **需要输出种子文件**、**需要显示大图** 的说明同上，以下是一个例子：\n\n选择浏览 [language:chinese 标签](https://e-hentai.org/tag/language:chinese)，并指定 **携带种子文件**，**不显示大图**。由于 [language:chinese 标签](https://e-hentai.org/tag/language:chinese) 的 URL `https://e-hentai.org/tag/language:chinese` 中对应标签字段为 `language:chinese`，所以对应路由为 [`/e-hentai/tag/language:chinese/true/false`](https://rsshub.app/e-hentai/tag/language:chinese/true/false)\n:::",
+        "location": "tag.ts",
+        "module": () => import('@/routes/e-hentai/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "E-Hentai",
+    "url": "e-hentai.org",
+    "lang": "en"
   },
   "ehentai": {
     "routes": {
@@ -121028,7 +123488,9 @@ export default {
           }
         ],
         "name": "实时快讯",
-        "maintainers": [],
+        "maintainers": [
+          "TonyRL"
+        ],
         "url": "gelonghui.com/live",
         "location": "live.tsx",
         "module": () => import('@/routes/gelonghui/live.tsx')
@@ -121222,6 +123684,92 @@ export default {
     "apiRoutes": {},
     "name": "格隆汇",
     "url": "gelonghui.com",
+    "lang": "zh-CN"
+  },
+  "getitfree": {
+    "routes": {
+      "/category/:id{.+}?": {
+        "path": "/category/:id{.+}?",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/getitfree/category/pc",
+        "parameters": {
+          "id": "分类，见下表，可在对应分类页中找到，默认为所有类别"
+        },
+        "radar": [
+          {
+            "source": [
+              "getitfree.cn/category/:id"
+            ],
+            "target": "/category/:id"
+          }
+        ],
+        "name": "分类",
+        "maintainers": [
+          "sanmmm",
+          "nczitzk"
+        ],
+        "url": "getitfree.cn",
+        "description": "::: tip\n可以叠加使用得到分类结果并集，如 [`/getitfree/category/pc,android`](https://rsshub.app/getitfree/category/pc,android)\n\n亦可与标签组合使用，如 [`/getitfree/category/pc/tag/ai`](https://rsshub.app/getitfree/category/pc/tag/ai)\n:::\n\n| 所有类别 | Android | iOS | Mac | PC | UWP | 公告         | 永久免费 | 限时免费 | 正版折扣 |\n| -------- | ------- | --- | --- | -- | --- | ------------ | -------- | -------- | -------- |\n|          | android | ios | mac | pc | uwp | notification | free     | giveaway | discount |",
+        "location": "index.ts",
+        "module": () => import('@/routes/getitfree/index.ts')
+      },
+      "/search/:keyword": {
+        "path": "/search/:keyword",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/getitfree/search/windows",
+        "parameters": {
+          "keyword": "关键字"
+        },
+        "radar": [
+          {
+            "source": [
+              "getitfree.cn/"
+            ]
+          }
+        ],
+        "name": "搜索",
+        "maintainers": [
+          "sanmmm",
+          "nczitzk"
+        ],
+        "url": "getitfree.cn",
+        "location": "search.ts",
+        "module": () => import('@/routes/getitfree/search.ts')
+      },
+      "/tag/:id{.+}?": {
+        "path": "/tag/:id{.+}?",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/getitfree/tag/ai",
+        "parameters": {
+          "id": "标签，见下表，可在对应标签页中找到，默认为所有标签"
+        },
+        "radar": [
+          {
+            "source": [
+              "getitfree.cn/tag/:id"
+            ],
+            "target": "/tag/:id"
+          }
+        ],
+        "name": "标签",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "getitfree.cn",
+        "description": "::: tip\n可以叠加使用得到标签结果并集，如 [`/getitfree/tag/ai,office`](https://rsshub.app/getitfree/tag/ai,office)\n:::\n\n| AI | Android | DVD | GIF | iCloud |\n| -- | ------- | --- | --- | ------ |\n\n| ICON | iOS | iPhone | Leawo | Mac |\n| ---- | --- | ------ | ----- | --- |\n\n| Markdown | OCR | Office | Office 办公 | PDF |\n| -------- | --- | ------ | ----------- | --- |\n\n| PDF 转换 | Windows | 下载 | 书签管理 | 健康 |\n| -------- | ------- | ---- | -------- | ---- |\n\n| 全平台 | 办公软件 | 加密保护 | 卸载 / 清理 / 优化 | 卸载清理 |\n| ------ | -------- | -------- | ------------------ | -------- |\n\n| 图像处理 | 图片 / 编辑 / 管理 | 壁纸 | 备份 / 恢复 / 加密 | 备份恢复 |\n| -------- | ------------------ | ---- | ------------------ | -------- |\n\n| 字体 | 学习 | 密码管理 | 导航 | 开始菜单 |\n| ---- | ---- | -------- | ---- | -------- |\n\n| 录屏截图 | 影音 / 刻录 / 转换 | 投屏镜像 | 提醒 | 摄影 |\n| -------- | ------------------ | -------- | ---- | ---- |\n\n| 播放器 | 收藏夹 | 效率工具 | 数据传输 | 数据恢复 |\n| ------ | ------ | -------- | -------- | -------- |\n\n| 数据擦除 | 文件管理 | 文档 / 转换 / 压缩 | 文档扫描 | 日历 |\n| -------- | -------- | ------------------ | -------- | ---- |\n\n| 杀毒防护 | 查重 | 正版特惠 | 水印 | 清理优化 |\n| -------- | ---- | -------- | ---- | -------- |\n\n| 滤镜 | 硬件外设 | 硬盘 / 分区 / 驱动 | 硬盘检测 | 稍后阅读 |\n| ---- | -------- | ------------------ | -------- | -------- |\n\n| 笔记 | 系统工具 | 素材 | 网络 / 安全 / 传输 | 网络安全 |\n| ---- | -------- | ---- | ------------------ | -------- |\n\n| 色彩 | 视频剪辑 | 视频转换 | 记账 | 设计 |\n| ---- | -------- | -------- | ---- | ---- |\n\n| 软件卸载 | 远程控制 | 音乐 | 音频 | 驱动 |\n| -------- | -------- | ---- | ---- | ---- |",
+        "location": "tag.ts",
+        "module": () => import('@/routes/getitfree/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "正版中国",
+    "url": "getitfree.cn",
     "lang": "zh-CN"
   },
   "gov/ah": {
@@ -121944,6 +124492,10 @@ export default {
     "routes": {
       "/gzw/:category{.+}?": {
         "path": "/gzw/:category{.+}?",
+        "categories": [
+          "government"
+        ],
+        "example": "/gov/chongqing/gzw",
         "parameters": {
           "category": "分类，见下表，默认为通知公告"
         },
@@ -124162,6 +126714,13 @@ export default {
     "routes": {
       "/wjdt/:category?": {
         "path": "/wjdt/:category?",
+        "categories": [
+          "government"
+        ],
+        "example": "/gov/mfa/wjdt/fyrbt",
+        "parameters": {
+          "category": "分类，见下表，默认为领导人活动"
+        },
         "name": "外交动态",
         "maintainers": [
           "nicolaszf",
@@ -127721,6 +130280,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/grubstreet",
         "radar": [
           {
             "source": [
@@ -127729,7 +130292,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "Posts",
         "maintainers": [
           "loganrockmore"
         ],
@@ -127800,107 +130363,6 @@ export default {
     "url": "guokr.com",
     "lang": "zh-CN"
   },
-  "gxmzu": {
-    "routes": {
-      "/libzxxx": {
-        "path": "/libzxxx",
-        "categories": [
-          "university"
-        ],
-        "example": "/gxmzu/libzxxx",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "library.gxmzu.edu.cn/news/news_list.jsp",
-              "library.gxmzu.edu.cn/"
-            ]
-          }
-        ],
-        "name": "图书馆最新消息",
-        "maintainers": [
-          "real-jiakai"
-        ],
-        "url": "library.gxmzu.edu.cn/news/news_list.jsp",
-        "location": "lib.ts",
-        "module": () => import('@/routes/gxmzu/lib.ts')
-      },
-      "/aitzgg": {
-        "path": "/aitzgg",
-        "categories": [
-          "university"
-        ],
-        "example": "/gxmzu/aitzgg",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "ai.gxmzu.edu.cn/index/tzgg.htm",
-              "ai.gxmzu.edu.cn/"
-            ]
-          }
-        ],
-        "name": "人工智能学院通知公告",
-        "maintainers": [
-          "real-jiakai"
-        ],
-        "url": "ai.gxmzu.edu.cn/index/tzgg.htm",
-        "location": "ai.ts",
-        "module": () => import('@/routes/gxmzu/ai.ts')
-      },
-      "/yjszsgg": {
-        "path": "/yjszsgg",
-        "categories": [
-          "university"
-        ],
-        "example": "/gxmzu/yjszsgg",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "yjs.gxmzu.edu.cn/tzgg/zsgg.htm",
-              "yjs.gxmzu.edu.cn/"
-            ]
-          }
-        ],
-        "name": "研究生院招生公告",
-        "maintainers": [
-          "real-jiakai"
-        ],
-        "url": "yjs.gxmzu.edu.cn/tzgg/zsgg.htm",
-        "location": "yjs.ts",
-        "module": () => import('@/routes/gxmzu/yjs.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "广西民族大学",
-    "url": "ai.gxmzu.edu.cn",
-    "lang": "zh-CN"
-  },
   "hafu": {
     "routes": {
       "/news/:type?": {
@@ -127921,7 +130383,9 @@ export default {
           "supportScihub": false
         },
         "name": "河南财政金融学院",
-        "maintainers": [],
+        "maintainers": [
+          "deep1nlife"
+        ],
         "description": "| 校内公告通知 | 教务处公告通知 | 招生就业处公告通知 |\n| ------------ | -------------- | ------------------ |\n| ggtz         | jwc            | zsjyc              |",
         "location": "news.ts",
         "module": () => import('@/routes/hafu/news.ts')
@@ -128494,7 +130958,9 @@ export default {
           }
         ],
         "name": "公共管理与法学学院",
-        "maintainers": [],
+        "maintainers": [
+          "lcandy2"
+        ],
         "url": "xky.hunau.edu.cn/",
         "description": "| 分类 | 通知公告 | 学院新闻 | 其他分类通知... |\n| ---- | -------- | -------- | --------------- |\n| 参数 | tzgg     | xyxw     | 对应 URL        |",
         "location": "gfxy/index.ts",
@@ -128567,7 +131033,9 @@ export default {
           }
         ],
         "name": "教务处",
-        "maintainers": [],
+        "maintainers": [
+          "lcandy2"
+        ],
         "url": "xky.hunau.edu.cn/",
         "description": "| 分类 | 通知公告 | 教务动态 | 其他教务通知... |\n| ---- | -------- | -------- | --------------- |\n| 参数 | tzgg     | jwds     | 对应 URL        |",
         "location": "jwc.ts",
@@ -128602,7 +131070,9 @@ export default {
           }
         ],
         "name": "信息与智能科学学院",
-        "maintainers": [],
+        "maintainers": [
+          "lcandy2"
+        ],
         "url": "xky.hunau.edu.cn/",
         "description": "| 分类 | 通知公告   | 学院新闻 | 其他分类通知... |\n| ---- | ---------- | -------- | --------------- |\n| 参数 | tzgg\\_8472 | xyxw     | 对应 URL        |",
         "location": "xky/index.ts",
@@ -129141,6 +131611,10 @@ export default {
     "routes": {
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/iiilab",
         "radar": [
           {
             "source": [
@@ -129149,7 +131623,7 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "发现",
         "maintainers": [
           "Joey"
         ],
@@ -129227,6 +131701,7 @@ export default {
         "example": "/jandan",
         "name": "Feed",
         "maintainers": [
+          "lonelykid",
           "nczitzk",
           "bigfei",
           "pseudoyu"
@@ -129256,6 +131731,10 @@ export default {
         "example": "/jandan/top",
         "name": "Section",
         "maintainers": [
+          "kobemtl",
+          "Xuanwo",
+          "xyqfer",
+          "9uanhuo",
           "nczitzk",
           "pseudoyu"
         ],
@@ -129278,6 +131757,10 @@ export default {
               {
                 "label": "随手拍",
                 "value": "ooxx"
+              },
+              {
+                "label": "女装",
+                "value": "beauty"
               },
               {
                 "label": "无聊图",
@@ -129457,6 +131940,15 @@ export default {
       },
       "/lists/:id/:filter?/:sort?": {
         "path": "/lists/:id/:filter?/:sort?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javdb/lists/2GPgB",
+        "parameters": {
+          "id": "编号，可在清单页 URL 中找到",
+          "filter": "过滤，见下表，默认为 `全部`，需要占位时可设置为 `none`",
+          "sort": "排序，见下表，默认为 `加入时间排序`"
+        },
         "radar": [
           {
             "source": [
@@ -129465,11 +131957,12 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
+        "name": "清单",
         "maintainers": [
           "dddepg"
         ],
         "url": "javdb.com/",
+        "description": "过滤\n\n| 全部 | 占位 | 可播放   | 單體作品 | 含磁链   | 含字幕 | 預覽圖  |\n| ---- | ---- | -------- | -------- | -------- | ------ | ------- |\n|      | none | playable | single   | download | cnsub  | preview |\n\n排序\n\n| 加入时间排序 | 发布时间排序 |\n| ------------ | ------------ |\n| 0            | 1            |",
         "features": {
           "nsfw": true
         },
@@ -129743,8 +132236,18 @@ export default {
           "/videos/bestrated/:language?/:mode?",
           "/bestrated/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/bestrated/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, Last Month by default, as `1`"
+        },
+        "name": "Best Rated Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| Last Month | All Time |\n| ---------- | -------- |\n| 1          | 2        |",
         "features": {
           "nsfw": true
@@ -129757,8 +132260,18 @@ export default {
           "/videos/bestrated/:language?/:mode?",
           "/bestrated/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/bestrated/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, Last Month by default, as `1`"
+        },
+        "name": "Best Rated Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| Last Month | All Time |\n| ---------- | -------- |\n| 1          | 2        |",
         "features": {
           "nsfw": true
@@ -129798,8 +132311,19 @@ export default {
           "/videos/genre/:genre?/:language?/:mode?",
           "/genre/:genre?/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/genre/amjq/en",
+        "parameters": {
+          "genre": "Category, Acme · Orgasm by default, as `amjq`",
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, videos with comments (by date) by default, as `1`"
+        },
+        "name": "Videos by categories",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| videos with comments (by date) | everything (by date) |\n| ------------------------------ | -------------------- |\n| 1                              | 2                    |\n\n::: tip\nSee [Categories](https://www.javlibrary.com/en/genres.php) to view all categories.\n:::",
         "features": {
           "nsfw": true
@@ -129812,8 +132336,19 @@ export default {
           "/videos/genre/:genre?/:language?/:mode?",
           "/genre/:genre?/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/genre/amjq/en",
+        "parameters": {
+          "genre": "Category, Acme · Orgasm by default, as `amjq`",
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, videos with comments (by date) by default, as `1`"
+        },
+        "name": "Videos by categories",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| videos with comments (by date) | everything (by date) |\n| ------------------------------ | -------------------- |\n| 1                              | 2                    |\n\n::: tip\nSee [Categories](https://www.javlibrary.com/en/genres.php) to view all categories.\n:::",
         "features": {
           "nsfw": true
@@ -129842,7 +132377,9 @@ export default {
           "nsfw": true
         },
         "name": "Videos by makers",
-        "maintainers": [],
+        "maintainers": [
+          "Huzhixin00"
+        ],
         "description": "| videos with comments (by date) | everything (by date) |\n| ------------------------------ | -------------------- |\n| 1                              | 2                    |",
         "location": "maker.ts",
         "module": () => import('@/routes/javlibrary/maker.ts')
@@ -129852,8 +132389,18 @@ export default {
           "/videos/mostwanted/:language?/:mode?",
           "/mostwanted/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/mostwanted/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, Last Month by default, as `1`"
+        },
+        "name": "Most Wanted Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| Last Month | All Time |\n| ---------- | -------- |\n| 1          | 2        |",
         "features": {
           "nsfw": true
@@ -129866,8 +132413,18 @@ export default {
           "/videos/mostwanted/:language?/:mode?",
           "/mostwanted/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/mostwanted/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, Last Month by default, as `1`"
+        },
+        "name": "Most Wanted Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| Last Month | All Time |\n| ---------- | -------- |\n| 1          | 2        |",
         "features": {
           "nsfw": true
@@ -129880,8 +132437,17 @@ export default {
           "/videos/newentries/:language?",
           "/newentries/:language?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/newentries/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`"
+        },
+        "name": "Recently Inserted Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "features": {
           "nsfw": true
         },
@@ -129893,8 +132459,17 @@ export default {
           "/videos/newentries/:language?",
           "/newentries/:language?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/newentries/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`"
+        },
+        "name": "Recently Inserted Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "features": {
           "nsfw": true
         },
@@ -129906,8 +132481,18 @@ export default {
           "/videos/newrelease/:language?/:mode?",
           "/newrelease/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/newrelease/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, videos with comments (by date) by default, as `1`"
+        },
+        "name": "New Releases",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| videos with comments (by date) | everything (by date) |\n| ------------------------------ | -------------------- |\n| 1                              | 2                    |",
         "features": {
           "nsfw": true
@@ -129920,8 +132505,18 @@ export default {
           "/videos/newrelease/:language?/:mode?",
           "/newrelease/:language?/:mode?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/newrelease/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`",
+          "mode": "Mode, see below, videos with comments (by date) by default, as `1`"
+        },
+        "name": "New Releases",
+        "maintainers": [
+          "nczitzk"
+        ],
         "description": "| videos with comments (by date) | everything (by date) |\n| ------------------------------ | -------------------- |\n| 1                              | 2                    |",
         "features": {
           "nsfw": true
@@ -129962,8 +132557,17 @@ export default {
           "/videos/update/:language?",
           "/update/:language?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/update/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`"
+        },
+        "name": "Recently Discussed Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "features": {
           "nsfw": true
         },
@@ -129975,8 +132579,17 @@ export default {
           "/videos/update/:language?",
           "/update/:language?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/update/en",
+        "parameters": {
+          "language": "Language, see below, Japanese by default, as `ja`"
+        },
+        "name": "Recently Discussed Videos",
+        "maintainers": [
+          "nczitzk"
+        ],
         "features": {
           "nsfw": true
         },
@@ -129988,8 +132601,21 @@ export default {
           "/users/:id/:type/:language?",
           "/:type/:id/:language?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/userwatched/mangudai/en",
+        "parameters": {
+          "type": "Type, see below",
+          "id": "User id, can be found in URL",
+          "language": "Language, see below, Japanese by default, as `ja`"
+        },
+        "name": "Videos by user",
+        "maintainers": [
+          "nczitzk",
+          "DIYgod",
+          "junfengP"
+        ],
         "description": "| Wanted     | Watched     | Owned     |\n| ---------- | ----------- | --------- |\n| userwanted | userwatched | userowned |",
         "features": {
           "nsfw": true
@@ -130002,8 +132628,21 @@ export default {
           "/users/:id/:type/:language?",
           "/:type/:id/:language?"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/javlibrary/userwatched/mangudai/en",
+        "parameters": {
+          "type": "Type, see below",
+          "id": "User id, can be found in URL",
+          "language": "Language, see below, Japanese by default, as `ja`"
+        },
+        "name": "Videos by user",
+        "maintainers": [
+          "nczitzk",
+          "DIYgod",
+          "junfengP"
+        ],
         "description": "| Wanted     | Watched     | Owned     |\n| ---------- | ----------- | --------- |\n| userwanted | userwatched | userowned |",
         "features": {
           "nsfw": true
@@ -130049,21 +132688,6 @@ export default {
   },
   "jiemian": {
     "routes": {
-      "/account/main/1": {
-        "path": "/account/main/1",
-        "parameters": {
-          "id": "分类 id，见下表，可在对应分类页 URL 中找到"
-        },
-        "name": "界面号",
-        "example": "/jiemian/account/main/1",
-        "maintainers": [
-          "nczitzk",
-          "pseudoyu"
-        ],
-        "description": "| [财经号](https://www.jiemian.com/account/main/1.html) | [城市号](https://www.jiemian.com/account/main/2.html) | [媒体号](https://www.jiemian.com/account/main/3.html) |\n| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |\n| 1                                                     | 2                                                     | 3                                                     |",
-        "location": "account.ts",
-        "module": () => import('@/routes/jiemian/account.ts')
-      },
       "/lists/:id": {
         "path": "/lists/:id",
         "parameters": {
@@ -130080,22 +132704,8 @@ export default {
         "location": "lists.ts",
         "module": () => import('@/routes/jiemian/lists.ts')
       },
-      "/special/1192": {
-        "path": "/special/1192",
-        "parameters": {
-          "id": "分类 id，见下表，可在对应分类页 URL 中找到"
-        },
-        "name": "专题",
-        "example": "/jiemian/special/1192",
-        "maintainers": [
-          "nczitzk",
-          "pseudoyu"
-        ],
-        "location": "special.ts",
-        "module": () => import('@/routes/jiemian/special.ts')
-      },
-      "/video/lists/258_1": {
-        "path": "/video/lists/258_1",
+      "/video/lists/:id": {
+        "path": "/video/lists/:id",
         "parameters": {
           "id": "分类 id，见下表，可在对应分类页 URL 中找到"
         },
@@ -130105,12 +132715,12 @@ export default {
           "nczitzk",
           "pseudoyu"
         ],
-        "description": "| [界面 Vnews](https://www.jiemian.com/video/lists/258_1.html) | [直播](https://www.jiemian.com/videoLive/lists_1.html) | [箭厂](https://www.jiemian.com/video/lists/195_1.html) | [面谈](https://www.jiemian.com/video/lists/111_1.html) | [品牌创酷](https://www.jiemian.com/video/lists/226_1.html) | [番 茄社](https://www.jiemian.com/video/lists/567_1.html) |\n| ------------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ---------------------------------------------------------- | --------------------------------------------------------- |\n| 258\\_1                                                       | videoLive/lists\\_1                                     | 195\\_1                                                 | 111\\_1                                                 | 226\\_1                                                     | 567\\_1                                                    |\n\n| [商业微史记](https://www.jiemian.com/video/lists/882_1.html) |\n| ------------------------------------------------------------ |\n| 882\\_1                                                       |",
+        "description": "| [界面 Vnews](https://www.jiemian.com/video/lists/258_1.html) | [直播](https://www.jiemian.com/videoLive/lists_1.html) | [箭厂](https://www.jiemian.com/video/lists/195_1.html) | [面谈](https://www.jiemian.com/video/lists/111_1.html) | [品牌创酷](https://www.jiemian.com/video/lists/226_1.html) | [番 茄社](https://www.jiemian.com/video/lists/567_1.html) |\n| ------------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ---------------------------------------------------------- | --------------------------------------------------------- |\n| 258\\_1                                                       | videoLive                                              | 195\\_1                                                 | 111\\_1                                                 | 226\\_1                                                     | 567\\_1                                                    |\n\n| [商业微史记](https://www.jiemian.com/video/lists/882_1.html) |\n| ------------------------------------------------------------ |\n| 882\\_1                                                       |",
         "location": "video.ts",
         "module": () => import('@/routes/jiemian/video.ts')
       },
-      "/pro/lists/12": {
-        "path": "/pro/lists/12",
+      "/pro/lists/:id": {
+        "path": "/pro/lists/:id",
         "parameters": {
           "id": "分类 id，见下表，可在对应分类页 URL 中找到"
         },
@@ -130123,6 +132733,35 @@ export default {
         "description": "| [投资早晚报](https://www.jiemian.com/pro/lists/12.html) | [宏观晚 6 点](https://www.jiemian.com/pro/lists/20.html) | [打新早报](https://www.jiemian.com/pro/lists/21.html) | [盘前机会前瞻](https://www.jiemian.com/pro/lists/13.html) | [公告快评](https://www.jiemian.com/pro/lists/14.html) | [盘中必读](https://www.jiemian.com/pro/lists/15.html) |\n| ------------------------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |\n| 12                                                      | 20                                                       | 21                                                    | 13                                                        | 14                                                    | 15                                                    |\n\n| [金股挖掘](https://www.jiemian.com/pro/lists/16.html) | [调研早知道](https://www.jiemian.com/pro/lists/17.html) | [研报新知](https://www.jiemian.com/pro/lists/18.html) | [大势侦察](https://www.jiemian.com/pro/lists/1.html) | [市场风向标](https://www.jiemian.com/pro/lists/19.html) |\n| ----------------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------- |\n| 16                                                    | 17                                                      | 18                                                    | 1                                                    | 19                                                      |",
         "location": "vip.ts",
         "module": () => import('@/routes/jiemian/vip.ts')
+      },
+      "/account/main/:id": {
+        "path": "/account/main/:id",
+        "parameters": {
+          "id": "分类 id，见下表，可在对应分类页 URL 中找到"
+        },
+        "name": "界面号",
+        "example": "/jiemian/account/main/1",
+        "maintainers": [
+          "nczitzk",
+          "pseudoyu"
+        ],
+        "description": "| [财经号](https://www.jiemian.com/account/main/1.html) | [城市号](https://www.jiemian.com/account/main/2.html) | [媒体号](https://www.jiemian.com/account/main/3.html) |\n| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |\n| 1                                                     | 2                                                     | 3                                                     |",
+        "location": "account.ts",
+        "module": () => import('@/routes/jiemian/account.ts')
+      },
+      "/special/:id": {
+        "path": "/special/:id",
+        "parameters": {
+          "id": "分类 id，可在对应分类页 URL 中找到"
+        },
+        "name": "专题",
+        "example": "/jiemian/special/1192",
+        "maintainers": [
+          "nczitzk",
+          "pseudoyu"
+        ],
+        "location": "special.ts",
+        "module": () => import('@/routes/jiemian/special.ts')
       }
     },
     "apiRoutes": {},
@@ -130370,76 +133009,6 @@ export default {
       "programming"
     ],
     "lang": "en"
-  },
-  "jou": {
-    "routes": {
-      "/tzgg": {
-        "path": "/tzgg",
-        "categories": [
-          "university"
-        ],
-        "example": "/jou/tzgg",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.jou.edu.cn/index/tzgg.htm",
-              "www.jou.edu.cn/"
-            ]
-          }
-        ],
-        "name": "官网通知公告",
-        "maintainers": [
-          "real-jiakai"
-        ],
-        "url": "www.jou.edu.cn/index/tzgg.htm",
-        "location": "home.ts",
-        "module": () => import('@/routes/jou/home.ts')
-      },
-      "/yztzgg": {
-        "path": "/yztzgg",
-        "categories": [
-          "university"
-        ],
-        "example": "/jou/yztzgg",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "yz.jou.edu.cn/index/zxgg.htm",
-              "yz.jou.edu.cn/"
-            ]
-          }
-        ],
-        "name": "研招网通知公告",
-        "maintainers": [
-          "real-jiakai"
-        ],
-        "url": "yz.jou.edu.cn/index/zxgg.htm",
-        "location": "yz.ts",
-        "module": () => import('@/routes/jou/yz.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "江苏海洋大学",
-    "url": "www.jou.edu.cn",
-    "lang": "zh-CN"
   },
   "juejin": {
     "routes": {
@@ -131004,8 +133573,38 @@ export default {
   },
   "leiphone": {
     "routes": {
-      "/:do?/:keyword?": {
-        "path": "/:do?/:keyword?",
+      "/category/:catname": {
+        "path": "/category/:catname",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/leiphone/category/industrynews",
+        "parameters": {
+          "catname": "网站顶部分类栏目"
+        },
+        "description": "- 主栏目\n\n| 业界         | 人工智能 | 智能驾驶       | 数智化          | 金融科技 | 医疗科技 | 芯片  | 政企安全   | 智慧城市  | 行业云        | 工业互联网         | AIoT |\n| ------------ | -------- | -------------- | --------------- | -------- | -------- | ----- | ---------- | --------- | ------------- | ------------------ | ---- |\n| industrynews | ai       | transportation | digitalindustry | fintech  | aihealth | chips | gbsecurity | smartcity | industrycloud | IndustrialInternet | iot  |\n\n- 子栏目\n\n- 人工智能\n\n| 学术     | 开发者   |\n| -------- | -------- |\n| academic | yanxishe |\n\n- 数智化\n\n| 零售数智化 | 金融数智化 | 工业数智化 | 医疗数智化 | 城市数智化  |\n| ---------- | ---------- | ---------- | ---------- | ----------- |\n| redigital  | findigital | mandigital | medigital  | citydigital |\n\n- 金融科技\n\n| 科技巨头 | 银行 AI | 金融云       | 风控与安全   |\n| -------- | ------- | ------------ | ------------ |\n| BigTech  | bank    | FinanceCloud | DataSecurity |\n\n- 医疗科技\n\n| 医疗 AI  | 投融资 | 医疗器械 | 互联网医疗       | 生物医药     | 健康险       |\n| -------- | ------ | -------- | ---------------- | ------------ | ------------ |\n| healthai | touzi  | qixie    | hulianwangyiliao | shengwuyiyao | jiankangxian |\n\n- 芯片\n\n| 材料设备  | 芯片设计   | 晶圆代工      | 封装测试  |\n| --------- | ---------- | ------------- | --------- |\n| materials | chipdesign | manufacturing | packaging |\n\n- 智慧城市\n\n| 智慧安防      | 智慧教育       | 智慧交通            | 智慧社区       | 智慧零售       | 智慧政务        | 智慧地产 |\n| ------------- | -------------- | ------------------- | -------------- | -------------- | --------------- | -------- |\n| smartsecurity | smarteducation | smarttransportation | smartcommunity | smartretailing | smartgovernment | proptech |\n\n- 工业互联网\n\n| 工业软件   | 工业安全 | 5G 工业互联网 | 工业转型实践 |\n| ---------- | -------- | ------------- | ------------ |\n| gysoftware | gysafety | 5ggy          | gypratice    |\n\n- AIoT\n\n| 物联网 | 智能硬件 | 机器人 | 智能家居  |\n| ------ | -------- | ------ | --------- |\n| 5G     | arvr     | robot  | smarthome |",
+        "radar": [
+          {
+            "source": [
+              "leiphone.com/category/:catname"
+            ],
+            "target": "/category/:catname"
+          }
+        ],
+        "name": "栏目",
+        "maintainers": [
+          "vlcheng"
+        ],
+        "url": "leiphone.com/",
+        "location": "category.ts",
+        "module": () => import('@/routes/leiphone/category.ts')
+      },
+      "/": {
+        "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/leiphone",
         "radar": [
           {
             "source": [
@@ -131014,8 +133613,10 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "最新文章",
+        "maintainers": [
+          "vlcheng"
+        ],
         "url": "leiphone.com/",
         "location": "index.ts",
         "module": () => import('@/routes/leiphone/index.ts')
@@ -131039,11 +133640,14 @@ export default {
           {
             "source": [
               "leiphone.com/"
-            ]
+            ],
+            "target": "/newsflash"
           }
         ],
         "name": "业界资讯",
-        "maintainers": [],
+        "maintainers": [
+          "vlcheng"
+        ],
         "url": "leiphone.com/",
         "location": "newsflash.ts",
         "module": () => import('@/routes/leiphone/newsflash.ts')
@@ -131118,6 +133722,14 @@ export default {
       },
       "/tag/:tagId?": {
         "path": "/tag/:tagId?",
+        "categories": [
+          "game"
+        ],
+        "example": "/lfsyd/tag/17",
+        "parameters": {
+          "tagId": "订阅分区类型"
+        },
+        "description": "| 炉石传说 | 万智牌 | 游戏王 | 昆特牌 | 影之诗 | 符文之地传奇 | 阴阳师百闻牌 |\n| :------: | :----: | :----: | :----: | :----: | :----------: | :----------: |\n|    17    |   18   |   16   |   19   |   20   |      329     |      221     |\n\n| 英雄联盟 | 电子游戏 | 桌面游戏 | 卡牌游戏 | 玩家杂谈 | 二次元 |\n| :------: | :------: | :------: | :------: | :------: | :----: |\n|    112   |    389   |    24    |    102   |    23    |   117  |",
         "radar": [
           {
             "source": [
@@ -131126,15 +133738,24 @@ export default {
             "target": "/tag/:tagId"
           }
         ],
-        "name": "Unknown",
+        "name": "分区",
         "maintainers": [
           "auto-bot-ty"
         ],
+        "url": "www.iyingdi.com/",
         "location": "tag.ts",
         "module": () => import('@/routes/lfsyd/tag.ts')
       },
       "/user/:id?": {
         "path": "/user/:id?",
+        "categories": [
+          "game"
+        ],
+        "example": "/lfsyd/user/55547",
+        "parameters": {
+          "id": "用户 id"
+        },
+        "description": "可以在用户主页的 URL 中找到\n\nExample：`https://www.iyingdi.com/tz/people/55547` ，id 是 `55547`",
         "radar": [
           {
             "source": [
@@ -131144,10 +133765,11 @@ export default {
             "target": "/user/:id"
           }
         ],
-        "name": "Unknown",
+        "name": "用户的帖子",
         "maintainers": [
           "auto-bot-ty"
         ],
+        "url": "www.iyingdi.com/",
         "location": "user.ts",
         "module": () => import('@/routes/lfsyd/user.ts')
       }
@@ -131310,6 +133932,586 @@ export default {
     "name": "LinkedIn",
     "url": "linkedin.com",
     "lang": "en"
+  },
+  "liulinblog": {
+    "routes": {
+      "/itnews/:channel": {
+        "path": "/itnews/:channel",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/liulinblog/itnews/seo",
+        "parameters": {
+          "channel": "频道，见下表"
+        },
+        "name": "网络营销",
+        "maintainers": [
+          "Fatpandac",
+          "nczitzk"
+        ],
+        "description": "| 网络营销 | 电商运营  | 互联网早报 | 站长圈 |\n| -------- | --------- | ---------- | ------ |\n|          | dianshang | internet   | seo    |",
+        "location": "itnews.ts",
+        "module": () => import('@/routes/liulinblog/itnews.ts')
+      },
+      "/:channel?": {
+        "path": "/:channel?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/liulinblog",
+        "parameters": {
+          "channel": "频道 id，可在对应频道页 URL 中找到，见下表，默认为最新"
+        },
+        "radar": [
+          {
+            "source": [
+              "liulinblog.com/:channel",
+              "liulinblog.com/"
+            ],
+            "target": "/:channel"
+          }
+        ],
+        "name": "频道",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 最新 | 60 秒读懂世界 | 精品资源 | 视频资源 | 音频资源 |\n| ---- | ------------- | -------- | -------- | -------- |\n|      | kuaixun       | ziyuan   | video    | yinpin   |\n\n| 绝版资源 | 实用文档 | PPT 素材  | 后期素材 | 技能教程  |\n| -------- | -------- | --------- | -------- | --------- |\n| jueban   | wendang  | ppt-sucai | sucai    | jiaocheng |\n\n| 创业副业 | 单机游戏 | 冒险解谜 | 竞技格斗    | 赛车竞技 |\n| -------- | -------- | -------- | ----------- | -------- |\n| money    | game     | mxjm     | jingjigedou | saiche   |\n\n| 模拟经营 | 角色扮演 | 飞行游戏 | 塔防策略 | 射击游戏 |\n| -------- | -------- | -------- | -------- | -------- |\n| moni     | jiaose   | feixing  | tafang   | sheji    |\n\n| 恐怖冒险 | 策略生存 | 动作冒险 | 电商运营  | 互联网早报 |\n| -------- | -------- | -------- | --------- | ---------- |\n| kongbu   | celve    | dongzuo  | dianshang | internet   |\n\n| 站长圈 | 自媒体运营 | 短视频      |\n| ------ | ---------- | ----------- |\n| seo    | zimeiti    | duan-shipin |",
+        "location": "index.ts",
+        "module": () => import('@/routes/liulinblog/index.ts')
+      },
+      "/kuaixun": {
+        "path": "/kuaixun",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/liulinblog/kuaixun",
+        "radar": [
+          {
+            "source": [
+              "liulinblog.com/kuaixun",
+              "liulinblog.com/"
+            ],
+            "target": "/kuaixun"
+          }
+        ],
+        "name": "60 秒读懂世界",
+        "maintainers": [
+          "Fatpandac",
+          "nczitzk"
+        ],
+        "location": "kuaixun.ts",
+        "module": () => import('@/routes/liulinblog/kuaixun.ts')
+      },
+      "/search/:keyword": {
+        "path": "/search/:keyword",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/liulinblog/search/单机游戏",
+        "parameters": {
+          "keyword": "关键字"
+        },
+        "radar": [
+          {
+            "source": [
+              "liulinblog.com/search/:keyword",
+              "liulinblog.com/"
+            ],
+            "target": "/search/:keyword"
+          }
+        ],
+        "name": "搜索",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "search.ts",
+        "module": () => import('@/routes/liulinblog/search.ts')
+      },
+      "/series/:id": {
+        "path": "/series/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/liulinblog/series/xunlei",
+        "parameters": {
+          "id": "专题 id，可在对应标签页 URL 中找到，见下表"
+        },
+        "radar": [
+          {
+            "source": [
+              "liulinblog.com/series/:id",
+              "liulinblog.com/"
+            ],
+            "target": "/series/:id"
+          }
+        ],
+        "name": "专题",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 【免费速存】迅雷资源合集 | 直播带货教程 | 电商培训课程    | 拼多多运营培训 | 小红书运营  | 抖音运营      | 闲鱼运营      | 短视频运营        |\n| ------------------------ | ------------ | --------------- | -------------- | ----------- | ------------- | ------------- | ----------------- |\n| xunlei                   | zhibodaihuo  | dianshangpeixun | pinduoduo      | xiaohongshu | douyinyunying | xianyuyunying | duanshipinyunying |",
+        "location": "series.ts",
+        "module": () => import('@/routes/liulinblog/series.ts')
+      },
+      "/tag/:id": {
+        "path": "/tag/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/liulinblog/tag/qukuailian",
+        "parameters": {
+          "id": "标签 id，可在对应标签页 URL 中找到，见下表"
+        },
+        "radar": [
+          {
+            "source": [
+              "liulinblog.com/tag/:id",
+              "liulinblog.com/"
+            ],
+            "target": "/tag/:id"
+          }
+        ],
+        "name": "标签",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 区块链     | 小红书      | 小说项目 | 微信公众号 | 微信营销 |\n| ---------- | ----------- | -------- | ---------- | -------- |\n| qukuailian | xiaohongshu | xiaoshuo | 微信公众号 | we-chat  |\n\n| 抖音 | 抖音直播 | 拼多多    | 支付宝 | 教育 |\n| ---- | -------- | --------- | ------ | ---- |\n| 抖音 | 抖音直播 | pinduoduo | alipay | 教育 |\n\n| chrome 插件 | galgame 汉化游戏 | honeyselect 汉化游戏 | PSD 笔刷素材 | ps 插件    |\n| ----------- | ---------------- | -------------------- | ------------ | ---------- |\n| chrome 插件 | galgame          | honey-select         | psd-bishua   | ps-chajian |\n\n| vip 视频   | windows 实用技巧 | 下载软件 | 丝袜玉足 | 免费字体下载 |\n| ---------- | ---------------- | -------- | -------- | ------------ |\n| vip-shipin | computer         | download | siwa     | ziti         |\n\n| 二战游戏下载 | 冒险解谜游戏 | 动作游戏下载 | 安卓游戏     | 策略游戏   |\n| ------------ | ------------ | ------------ | ------------ | ---------- |\n| war-games    | 冒险解谜游戏 | 动作游戏下载 | android-game | game-celve |\n\n| Pr 插件 | Python | seo 优化 | VLOG | wordpress | word 技巧 |\n| ------- | ------ | -------- | ---- | --------- | --------- |\n| pr 插件 | python | seo      | vlog | wordpress | word      |",
+        "location": "tag.ts",
+        "module": () => import('@/routes/liulinblog/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "木木博客",
+    "url": "liulinblog.com",
+    "lang": "zh-CN"
+  },
+  "logclub": {
+    "routes": {
+      "/news/:id?": {
+        "path": "/news/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/logclub/news",
+        "parameters": {
+          "id": "资讯 id，见下表，可在对应资讯页 URL 中找到，默认为全部"
+        },
+        "radar": [
+          {
+            "source": [
+              "logclub.com/news"
+            ],
+            "target": "/news"
+          },
+          {
+            "source": [
+              "logclub.com/news/:id"
+            ],
+            "target": "/news/:id"
+          }
+        ],
+        "name": "资讯",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 供应链 | 快递 | 快运 / 运输 | 仓储 / 地产 | 物流综合 | 国际与跨境物流 | 科技创新 |\n| ------ | ---- | ----------- | ----------- | -------- | -------------- | -------- |\n| 10-16  | 11   | 30          | 9           | 32       | 114            | 107      |\n\n| 绿色供应链 | 低碳物流 | 碳中和碳达峰 |\n| ---------- | -------- | ------------ |\n| 213        | 214      | 215          |",
+        "location": "index.ts",
+        "module": () => import('@/routes/logclub/index.ts')
+      },
+      "/lc_report/:id?": {
+        "path": "/lc_report/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/logclub/lc_report",
+        "parameters": {
+          "id": "报告 id，见下表，默认为罗戈研究出品"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "logclub.com/lc_report"
+            ],
+            "target": "/lc_report"
+          },
+          {
+            "title": "报告 - 罗戈研究出品",
+            "source": [
+              "logclub.com/lc_report"
+            ],
+            "target": "/lc_report/Report"
+          },
+          {
+            "title": "报告 - 物流报告",
+            "source": [
+              "logclub.com/lc_report"
+            ],
+            "target": "/lc_report/IndustryReport"
+          },
+          {
+            "title": "报告 - 绿色双碳报告",
+            "source": [
+              "logclub.com/lc_report"
+            ],
+            "target": "/lc_report/GreenDualCarbonReport"
+          }
+        ],
+        "name": "报告",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 罗戈研究出品 | 物流报告       | 绿色双碳报告          |\n| ------------ | -------------- | --------------------- |\n| Report       | IndustryReport | GreenDualCarbonReport |",
+        "location": "report.ts",
+        "module": () => import('@/routes/logclub/report.ts')
+      },
+      "/columnist/articleList/:id?": {
+        "path": "/columnist/articleList/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/logclub/columnist/articleList/27",
+        "parameters": {
+          "id": "专家 id，见下表，可在对应企业页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "logclub.com/columnist/articleList/:id"
+            ],
+            "target": "/columnist/articleList/:id"
+          }
+        ],
+        "name": "专家说",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "#### 精选专家\n\n| 潘永刚 | Tracy | 唐隆基 | 褚建新 |\n| ------ | ----- | ------ | ------ |\n| 27     | 157   | 91     | 9749   |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/experts) 查看更多专家\n\n#### 资深作者\n\n| 物流麻将胡 | 小周伯通 | 郭嘉 | 周艳青 |\n| ---------- | -------- | ---- | ------ |\n| 10         | 19       | 7    | 559    |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/author) 查看更多专家\n\n#### 综合物流\n\n| 韩雪峰 | 李赛赛 | 陈晓曦 | 李长宏 |\n| ------ | ------ | ------ | ------ |\n| 41     | 12378  | 1495   | 110    |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/integrated_logistics) 查看更多专家\n\n#### 数字化\n\n| 秦愉 | 冯雷 | 卢立新 | 段琰 |\n| ---- | ---- | ------ | ---- |\n| 160  | 147  | 95     | 284  |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/digitization) 查看更多专家\n\n#### 智能化\n\n| 曾志宏 | 亦橙 | 马荣 | 陈晓春 |\n| ------ | ---- | ---- | ------ |\n| 34     | 201  | 130  | 123    |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/intellectualization) 查看更多专家\n\n#### 快运\n\n| 王坚 | 王拥军 | 靖晟 | 廖文明 |\n| ---- | ------ | ---- | ------ |\n| 172  | 252    | 84   | 50     |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/express_transportation) 查看更多专家\n\n#### 合同物流\n\n| 非红 | 王鹏飞 | 周海 | 王伟 |\n| ---- | ------ | ---- | ---- |\n| 40   | 2274   | 168  | 158  |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/contract_logistics) 查看更多专家\n\n#### 供应链\n\n| 黄尧笛 | 卓弘毅 | 胡珉 | 雷文军 Jason |\n| ------ | ------ | ---- | ------------ |\n| 26     | 35     | 188  | 303          |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/supply_chain) 查看更多专家\n\n#### 快递\n\n| 致快递 | 中通之声 | 科技中通 | 明兴 |\n| ------ | -------- | -------- | ---- |\n| 9633   | 618      | 385      | 265  |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/express) 查看更多专家\n\n#### 城配\n\n| 张春鑫 (荡漾哥) | 梁佳 | 赵波 | 王行广 |\n| --------------- | ---- | ---- | ------ |\n| 1527            | 3374 | 49   | 75     |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/urban_distribution) 查看更多专家\n\n#### 仓储\n\n| 叶剑 | 木棉 | 陈艺 | 冯银川 |\n| ---- | ---- | ---- | ------ |\n| 1881 | 59   | 1637 | 215    |\n\n前往 [更多](https://www.logclub.com/columnist/authorMore/storage) 查看更多专家",
+        "location": "columnist.ts",
+        "module": () => import('@/routes/logclub/columnist.ts')
+      },
+      "/company/:id": {
+        "path": "/company/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/logclub/company/14",
+        "parameters": {
+          "id": "企业 id，见下表，可在对应企业页 URL 中找到"
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "logclub.com/company/:id"
+            ],
+            "target": "/company/:id"
+          }
+        ],
+        "name": "大企业",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "#### 明星企业\n\n| 顺丰 | 菜鸟 | 京东物流 | 德邦快递 / 德邦股份 |\n| ---- | ---- | -------- | ------------------- |\n| 14   | 56   | 453      | 145                 |\n\n| 百世集团 | 中国物流集团 | 极兔速递 | 中通快递 |\n| -------- | ------------ | -------- | -------- |\n| 116      | 6807         | 3246     | 132      |\n\n前往 [更多](https://www.logclub.com/columnist/more/star) 查看更多企业\n\n#### 综合物流 / 供应链企业\n\n| 锐特信息 | 中国物流与采购网 | 则一 | 普路通 |\n| -------- | ---------------- | ---- | ------ |\n| 716      | 525              | 524  | 464    |\n\n| 安得智联 | 集保中国 | 上汽安吉物流 | 苏宁物流 |\n| -------- | -------- | ------------ | -------- |\n| 215      | 147      | 15           | 12       |\n\n| 准时达 | 深国际 | 益邦控股 | 卓志跨境供应链 |\n| ------ | ------ | -------- | -------------- |\n| 158    | 167    | 758      | 130            |\n\n| 日日顺 | 传化智联 | CJ 荣庆物流 | 江苏飞力达 |\n| ------ | -------- | ----------- | ---------- |\n| 179    | 166      | 770         | 548        |\n\n前往 [更多](https://www.logclub.com/columnist/more/integrated_logistics) 查看更多企业\n\n#### 快递 / 快运企业\n\n| 盛丰物流 | 跨越速运 | 顺心捷达 | 中国邮政 |\n| -------- | -------- | -------- | -------- |\n| 819      | 372      | 327      | 134      |\n\n| 韵达 | 申通快递 | 圆通 | 壹米滴答集团 |\n| ---- | -------- | ---- | ------------ |\n| 113  | 137      | 143  | 97           |\n\n| 安能物流 | 联邦快递 FedEx | UPS | DHL |\n| -------- | -------------- | --- | --- |\n| 151      | 104            | 388 | 219 |\n\n| 优速快递 | 中铁快运 | 德坤物流 | 商桥物流 |\n| -------- | -------- | -------- | -------- |\n| 1243     | 1015     | 2254     | 99       |\n\n前往 [更多](https://www.logclub.com/columnist/more/express) 查看更多企业\n\n#### 系统 / 智能平台 / 智能硬件 / 设施企业\n\n| 甲子光年 | 炬星科技 | 斑马智行 | 智行者 |\n| -------- | -------- | -------- | ------ |\n| 700      | 665      | 540      | 510    |\n\n| 纵行科技 | 行深智能 | 地上铁 | 图森未来 |\n| -------- | -------- | ------ | -------- |\n| 509      | 508      | 500    | 445      |\n\n| oTMS 运输管理云平台 | 聚龄供应链 | 博科资讯 | 富勒 FLUX |\n| ------------------- | ---------- | -------- | --------- |\n| 53                  | 5806       | 6870     | 122       |\n\n| 科箭软件 | 通天晓软件 | 嬴彻科技 | 货车宝 |\n| -------- | ---------- | -------- | ------ |\n| 180      | 503        | 462      | 129    |\n\n前往 [更多](https://www.logclub.com/columnist/more/intellectualization) 查看更多企业\n\n#### 货运 / 配送平台 / 仓储 / 地产企业\n\n| 卡力互联 | 想乐送 | 宝湾物流 | 卡车之家 |\n| -------- | ------ | -------- | -------- |\n| 1660     | 1558   | 1031     | 365      |\n\n| 罗宾升 | 好多车 | 饿了么 | 闪送 |\n| ------ | ------ | ------ | ---- |\n| 308    | 269    | 172    | 80   |\n\n| 宏昌物流园 | 路歌互联网物流平台 | 福佑卡车 | 普洛斯 |\n| ---------- | ------------------ | -------- | ------ |\n| 6816       | 182                | 18       | 150    |\n\n| 菜鸟速递 | 达达集团 | 满帮集团 | 货拉拉 |\n| -------- | -------- | -------- | ------ |\n| 1972     | 748      | 193      | 79     |\n\n前往 [更多](https://www.logclub.com/columnist/more/freight_transport) 查看更多企业\n\n#### 证券交运 / 咨询机构\n\n| 罗戈网 | 物流沙龙 | 罗戈研究 | 招商证券 |\n| ------ | -------- | -------- | -------- |\n| 17     | 21       | 26       | 51       |\n\n| 兴业证券 | 环球物流咨询规划 | 华创证券 | 艾瑞咨询 |\n| -------- | ---------------- | -------- | -------- |\n| 161      | 29               | 1287     | 58       |\n\n| 安信证券 | 天风证券 | 方正证券 | 中信证券 |\n| -------- | -------- | -------- | -------- |\n| 1295     | 1136     | 1169     | 469      |\n\n| 申万宏源证券 | 国海证券 | 华泰证券 | 东方证券 |\n| ------------ | -------- | -------- | -------- |\n| 1296         | 6381     | 2119     | 1772     |\n\n前往 [更多](https://www.logclub.com/columnist/more/securities_delivery) 查看更多企业\n\n#### 资本\n\n| 源码资本 | 华兴资本 | IDG 资本 | 元赋资本 |\n| -------- | -------- | -------- | -------- |\n| 1037     | 931      | 787      | 393      |\n\n| 钟鼎资本 | 红杉资本 |\n| -------- | -------- |\n| 159      | 5265     |\n\n前往 [更多](https://www.logclub.com/columnist/more/capital) 查看更多企业",
+        "location": "company.ts",
+        "module": () => import('@/routes/logclub/company.ts')
+      },
+      "/original": {
+        "path": "/original",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/logclub/original",
+        "radar": [
+          {
+            "source": [
+              "logclub.com/original"
+            ],
+            "target": "/original"
+          }
+        ],
+        "name": "原创",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "original.ts",
+        "module": () => import('@/routes/logclub/original.ts')
+      },
+      "/recruit": {
+        "path": "/recruit",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/logclub/recruit",
+        "radar": [
+          {
+            "source": [
+              "logclub.com/recruit"
+            ],
+            "target": "/recruit"
+          }
+        ],
+        "name": "招聘",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "recruit.ts",
+        "module": () => import('@/routes/logclub/recruit.ts')
+      },
+      "/tender": {
+        "path": "/tender",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/logclub/tender",
+        "radar": [
+          {
+            "source": [
+              "logclub.com/tender"
+            ],
+            "target": "/tender"
+          }
+        ],
+        "name": "招投标",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "tender.ts",
+        "module": () => import('@/routes/logclub/tender.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "罗戈网",
+    "url": "logclub.com",
+    "lang": "zh-CN"
+  },
+  "logonews": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "design"
+        ],
+        "example": "/logonews",
+        "radar": [
+          {
+            "source": [
+              "logonews.cn/"
+            ],
+            "target": "/"
+          }
+        ],
+        "name": "首页",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "logonews.cn/",
+        "location": "index.tsx",
+        "module": () => import('@/routes/logonews/index.tsx')
+      },
+      "/category/:category/:type": {
+        "path": "/category/:category/:type",
+        "categories": [
+          "design"
+        ],
+        "example": "/logonews/category/news/newsletter",
+        "parameters": {
+          "category": "分类，可在对应分类页 URL 中找到",
+          "type": "类型，可在对应分类页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "logonews.cn/category/:category/:type?"
+            ],
+            "target": "/category/:category/:type?"
+          }
+        ],
+        "name": "文章分类",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "logonews.cn/",
+        "description": "如 [简讯 - 标志情报局](https://www.logonews.cn/category/news/newsletter) 的 URL 为 `https://www.logonews.cn/category/news/newsletter`，可得路由为 [`/logonews/category/news/newsletter`](https://rsshub.app/logonews/category/news/newsletter)。",
+        "location": "category.ts",
+        "module": () => import('@/routes/logonews/category.ts')
+      },
+      "/tag/:tag": {
+        "path": "/tag/:tag",
+        "categories": [
+          "design"
+        ],
+        "example": "/logonews/tag/china",
+        "parameters": {
+          "tag": "标签，可在对应标签页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "logonews.cn/tag/:tag"
+            ],
+            "target": "/tag/:tag"
+          }
+        ],
+        "name": "文章标签",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "logonews.cn/",
+        "description": "如 [中国 - 标志情报局](https://www.logonews.cn/tag/china) 的 URL 为 `https://www.logonews.cn/tag/china`，可得路由为 [`/logonews/tag/china`](https://rsshub.app/logonews/tag/china)。",
+        "location": "tag.ts",
+        "module": () => import('@/routes/logonews/tag.ts')
+      },
+      "/work/categorys/:category": {
+        "path": "/work/categorys/:category",
+        "categories": [
+          "design"
+        ],
+        "example": "/logonews/work/categorys/hotel-catering",
+        "parameters": {
+          "category": "分类，可在对应分类页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "logonews.cn/work/categorys/:category"
+            ],
+            "target": "/work/categorys/:category"
+          }
+        ],
+        "name": "作品分类",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "logonews.cn/",
+        "description": "如 [LOGO 作品分类：酒店餐饮 - 标志情报局](https://www.logonews.cn/work/categorys/hotel-catering) 的 URL 为 `https://www.logonews.cn/work/categorys/hotel-catering`，可得路由为 [`/logonews/work/categorys/hotel-catering`](https://rsshub.app/logonews/work/categorys/hotel-catering)。",
+        "location": "work-category.ts",
+        "module": () => import('@/routes/logonews/work-category.ts')
+      },
+      "/work/tags/:tag?": {
+        "path": "/work/tags/:tag?",
+        "categories": [
+          "design"
+        ],
+        "example": "/logonews/work/tags/旅游",
+        "parameters": {
+          "tag": "标签，可在对应标签页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "logonews.cn/work/tags/:tag"
+            ],
+            "target": "/work/tags/:tag"
+          }
+        ],
+        "name": "作品标签",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "logonews.cn/",
+        "description": "如 [LOGO 标签：旅游 - 标志情报局](https://www.logonews.cn/work/tags/旅游) 的 URL 为 [https://www.logonews.cn/work/tags/ 旅游](https://www.logonews.cn/work/tags/旅游)，可得路由为 [`/logonews/work/tags/旅游`](https://rsshub.app/logonews/work/tags/旅游)。",
+        "location": "work-tag.ts",
+        "module": () => import('@/routes/logonews/work-tag.ts')
+      },
+      "/work": {
+        "path": "/work",
+        "categories": [
+          "design"
+        ],
+        "example": "/logonews/work",
+        "radar": [
+          {
+            "source": [
+              "logonews.cn/work"
+            ],
+            "target": "/work"
+          }
+        ],
+        "name": "作品",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "logonews.cn/",
+        "location": "work.ts",
+        "module": () => import('@/routes/logonews/work.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "LogoNews 标志情报局",
+    "url": "logonews.cn",
+    "lang": "zh-CN"
+  },
+  "m4": {
+    "routes": {
+      "/news/:category?": {
+        "path": "/news/:category?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/m4/news/china",
+        "parameters": {
+          "category": "分类，见下表，默认为国内新闻"
+        },
+        "description": "| 分类                                  | ID         |\n| ------------------------------------- | ---------- |\n| [国内新闻](http://news.m4.cn/china/)  | china      |\n| [国际新闻](http://news.m4.cn/world/)  | world      |\n| [民生](http://news.m4.cn/livelihood/) | livelihood |\n| [社会](http://news.m4.cn/society/)    | society    |\n| [财经](http://news.m4.cn/finance/)    | finance    |\n| [科技](http://news.m4.cn/tech/)       | tech       |",
+        "radar": [
+          {
+            "source": [
+              "news.m4.cn/:category",
+              "news.m4.cn/"
+            ],
+            "target": "/news/:category"
+          }
+        ],
+        "name": "要闻",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "news.m4.cn",
+        "location": "index.ts",
+        "module": () => import('@/routes/m4/index.ts')
+      },
+      "/mil/:category?": {
+        "path": "/mil/:category?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/m4/mil/china",
+        "parameters": {
+          "category": "分类，见下表，默认为中国军情"
+        },
+        "description": "| 分类                                  | ID      |\n| ------------------------------------- | ------- |\n| [中国军情](http://mil.m4.cn/china/)   | china   |\n| [国际军情](http://mil.m4.cn/world/)   | world   |\n| [军事评论](http://mil.m4.cn/views/)   | views   |\n| [军事历史](http://mil.m4.cn/history/) | history |\n| [军迷说](http://mil.m4.cn/talk/)      | talk    |\n| [武器库](http://mil.m4.cn/arms/)      | arms    |",
+        "radar": [
+          {
+            "source": [
+              "mil.m4.cn/:category",
+              "mil.m4.cn/"
+            ],
+            "target": "/mil/:category"
+          }
+        ],
+        "name": "军事",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "mil.m4.cn",
+        "location": "mil.ts",
+        "module": () => import('@/routes/m4/mil.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "四月网",
+    "url": "news.m4.cn",
+    "lang": "zh-CN"
   },
   "makerworld": {
     "routes": {
@@ -131539,6 +134741,93 @@ export default {
     "apiRoutes": {},
     "name": "Medium",
     "url": "medium.com",
+    "lang": "en"
+  },
+  "metacritic": {
+    "routes": {
+      "/game/:sort?/:filter?": {
+        "path": "/game/:sort?/:filter?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/metacritic/game",
+        "parameters": {
+          "sort": "Sort, see below, `new` for Newest Releases by default",
+          "filter": "Filter"
+        },
+        "description": "| Metascore | User Score | Most Popular | Newest Releases |\n| --------- | ---------- | ------------ | --------------- |\n| metascore | userscore  | popular      | new             |\n\n::: tip\nThe Filter parameter comes from the corresponding page URL. The following is an example:\n\nThe URL of [Action Games to Play on PS5](https://www.metacritic.com/browse/game/all/all/all-time/new/?platform=ps5\\&genre=action) is `https://www.metacritic.com/browse/game/all/all/all-time/new/?platform=ps5&genre=action`. The Filter parameter is `platform=ps5&genre=action` and the route is [`/metacritic/game/new/platform=ps5&genre=action`](https://rsshub.app/metacritic/game/new/platform=ps5\\&genre=action)\n:::",
+        "radar": [
+          {
+            "source": [
+              "metacritic.com/browse/game/*"
+            ],
+            "target": "/game"
+          }
+        ],
+        "name": "Games",
+        "maintainers": [
+          "HenryQW",
+          "nczitzk"
+        ],
+        "location": "index.tsx",
+        "module": () => import('@/routes/metacritic/index.tsx')
+      },
+      "/movie/:sort?/:filter?": {
+        "path": "/movie/:sort?/:filter?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/metacritic/movie",
+        "parameters": {
+          "sort": "Sort, see below, `new` for Newest Releases by default",
+          "filter": "Filter"
+        },
+        "description": "| Metascore | User Score | Most Popular | Newest Releases |\n| --------- | ---------- | ------------ | --------------- |\n| metascore | userscore  | popular      | new             |\n\n::: tip\nThe Filter parameter comes from the corresponding page URL. The following is an example:\n\nThe URL of [Action Movies to Watch on Netflix](https://www.metacritic.com/browse/movie/all/all/all-time/new/?network=netflix\\&genre=action) is `https://www.metacritic.com/browse/movie/all/all/all-time/new/?network=netflix&genre=action`. The Filter parameter is `network=netflix&genre=action` and the route is [`/metacritic/movie/new/network=netflix&genre=action`](https://rsshub.app/metacritic/movie/new/network=netflix\\&genre=action)\n:::",
+        "radar": [
+          {
+            "source": [
+              "metacritic.com/browse/movie/*"
+            ],
+            "target": "/movie"
+          }
+        ],
+        "name": "Movies",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "movie.ts",
+        "module": () => import('@/routes/metacritic/movie.ts')
+      },
+      "/tv/:sort?/:filter?": {
+        "path": "/tv/:sort?/:filter?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/metacritic/tv",
+        "parameters": {
+          "sort": "Sort, see below, `new` for Newest Releases by default",
+          "filter": "Filter"
+        },
+        "description": "| Metascore | User Score | Most Popular | Newest Releases |\n| --------- | ---------- | ------------ | --------------- |\n| metascore | userscore  | popular      | new             |\n\n::: tip\nThe Filter parameter comes from the corresponding page URL. The following is an example:\n\nThe URL of [Documentary TV Shows to Watch on Prime Video](https://www.metacritic.com/browse/tv/all/all/all-time/new/?network=prime-video\\&genre=documentary) is `https://www.metacritic.com/browse/tv/all/all/all-time/new/?network=prime-video&genre=documentary`. The Filter parameter is `network=prime-video&genre=documentary` and the route is [`/metacritic/tv/new/network=prime-video&genre=documentary`](https://rsshub.app/metacritic/tv/new/network=prime-video\\&genre=documentary)\n:::",
+        "radar": [
+          {
+            "source": [
+              "metacritic.com/browse/tv/*"
+            ],
+            "target": "/tv"
+          }
+        ],
+        "name": "TV Shows",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "tv.ts",
+        "module": () => import('@/routes/metacritic/tv.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Metacritic",
+    "url": "metacritic.com",
     "lang": "en"
   },
   "mirrormedia": {
@@ -132003,6 +135292,10 @@ export default {
     "routes": {
       "/eshop/jp": {
         "path": "/eshop/jp",
+        "categories": [
+          "game"
+        ],
+        "example": "/nintendo/eshop/jp",
         "radar": [
           {
             "source": [
@@ -132011,14 +135304,20 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "eShop New Game Releases (JP)",
+        "maintainers": [
+          "HFO4"
+        ],
         "url": "nintendo.co.jp/software/switch/index.html",
         "location": "eshop-jp.ts",
         "module": () => import('@/routes/nintendo/eshop-jp.ts')
       },
       "/eshop/us": {
         "path": "/eshop/us",
+        "categories": [
+          "game"
+        ],
+        "example": "/nintendo/eshop/us",
         "radar": [
           {
             "source": [
@@ -132027,8 +135326,10 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "eShop New Game Releases (US)",
+        "maintainers": [
+          "HFO4"
+        ],
         "url": "nintendo.com/store/games",
         "location": "eshop-us.ts",
         "module": () => import('@/routes/nintendo/eshop-us.ts')
@@ -132066,6 +135367,10 @@ export default {
       },
       "/eshop/hk": {
         "path": "/eshop/hk",
+        "categories": [
+          "game"
+        ],
+        "example": "/nintendo/eshop/hk",
         "radar": [
           {
             "source": [
@@ -132074,8 +135379,10 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "eShop New Game Releases (HK)",
+        "maintainers": [
+          "HFO4"
+        ],
         "url": "nintendo.com.hk/software/switch",
         "location": "eshop-hk.ts",
         "module": () => import('@/routes/nintendo/eshop-hk.ts')
@@ -132113,6 +135420,10 @@ export default {
       },
       "/eshop/cn": {
         "path": "/eshop/cn",
+        "categories": [
+          "game"
+        ],
+        "example": "/nintendo/eshop/cn",
         "radar": [
           {
             "source": [
@@ -132121,8 +135432,10 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "eShop New Game Releases (CN)",
+        "maintainers": [
+          "HFO4"
+        ],
         "url": "nintendoswitch.com.cn/software",
         "location": "eshop-cn.ts",
         "module": () => import('@/routes/nintendo/eshop-cn.ts')
@@ -132270,76 +135583,6 @@ export default {
     "apiRoutes": {},
     "name": "南京中医药大学",
     "url": "lib.njucm.edu.cn",
-    "lang": "zh-CN"
-  },
-  "njxzc": {
-    "routes": {
-      "/libtzgg": {
-        "path": "/libtzgg",
-        "categories": [
-          "university"
-        ],
-        "example": "/njxzc/libtzgg",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "lib.njxzc.edu.cn/pxyhd/list.htm",
-              "lib.njxzc.edu.cn/"
-            ]
-          }
-        ],
-        "name": "图书馆通知公告",
-        "maintainers": [
-          "real-jiakai"
-        ],
-        "url": "lib.njxzc.edu.cn/pxyhd/list.htm",
-        "location": "lib.ts",
-        "module": () => import('@/routes/njxzc/lib.ts')
-      },
-      "/tzgg": {
-        "path": "/tzgg",
-        "categories": [
-          "university"
-        ],
-        "example": "/njxzc/tzgg",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.njxzc.edu.cn/89/list.htm",
-              "www.njxzc.edu.cn/"
-            ]
-          }
-        ],
-        "name": "官网通知公告",
-        "maintainers": [
-          "real-jiakai"
-        ],
-        "url": "www.njxzc.edu.cn/89/list.htm",
-        "location": "home.ts",
-        "module": () => import('@/routes/njxzc/home.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "南京晓庄学院",
-    "url": "lib.njxzc.edu.cn",
     "lang": "zh-CN"
   },
   "nua": {
@@ -132555,10 +135798,26 @@ export default {
     "routes": {
       "/app/channel/:id": {
         "path": "/app/channel/:id",
-        "name": "Unknown",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/oeeee/app/channel/50",
+        "parameters": {
+          "id": "南都号 ID"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "南都客户端（按南都号 ID）",
         "maintainers": [
           "TimWu007"
         ],
+        "description": "南都号的 UID 可通过 `m.mp.oeeee.com` 下的文章页面获取。点击文章上方的南都号头像，进入该南都号的个人主页，即可从 url 中获取。",
         "location": "app/channel.ts",
         "module": () => import('@/routes/oeeee/app/channel.ts')
       },
@@ -132736,6 +135995,93 @@ export default {
     "url": "openai.com",
     "lang": "en"
   },
+  "pikabu": {
+    "routes": {
+      "/community/:name": {
+        "path": "/community/:name",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/pikabu/community/real_true_story",
+        "parameters": {
+          "name": "Community name"
+        },
+        "radar": [
+          {
+            "source": [
+              "pikabu.ru/community/:name"
+            ],
+            "target": "/community/:name"
+          }
+        ],
+        "name": "Community",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "community.ts",
+        "module": () => import('@/routes/pikabu/community.ts')
+      },
+      "/user/:name": {
+        "path": "/user/:name",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/pikabu/user/@bula.dragon",
+        "parameters": {
+          "name": "User name"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "pikabu.ru/:name"
+            ]
+          }
+        ],
+        "name": "User",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "user.ts",
+        "module": () => import('@/routes/pikabu/user.ts')
+      },
+      "/tag/:name": {
+        "path": "/tag/:name",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/pikabu/tag/Metallica",
+        "parameters": {
+          "name": "Tag name"
+        },
+        "radar": [
+          {
+            "source": [
+              "pikabu.ru/tag/:name"
+            ],
+            "target": "/tag/:name"
+          }
+        ],
+        "name": "Tag",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "tag.ts",
+        "module": () => import('@/routes/pikabu/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Pikabu",
+    "url": "pikabu.ru",
+    "lang": "ru"
+  },
   "pku": {
     "routes": {
       "/bbs/hot": {
@@ -132834,10 +136180,12 @@ export default {
       },
       "/eecs/:type?": {
         "path": "/eecs/:type?",
-        "name": "Unknown",
+        "name": "信科公告通知",
+        "example": "/pku/eecs/0",
         "maintainers": [
           "Ir1d"
         ],
+        "description": "| 全部 | 学院通知 | 人事通知 | 教务通知 | 学工通知 | 工会通知 | 院友通知 |\n| ---- | -------- | -------- | -------- | -------- | -------- | -------- |\n| 0    | 1        | 2        | 6        | 8        | 3        | 4        |",
         "location": "eecs.ts",
         "module": () => import('@/routes/pku/eecs.ts')
       },
@@ -133023,6 +136371,19 @@ export default {
       },
       "/ss/notice": {
         "path": "/ss/notice",
+        "categories": [
+          "university"
+        ],
+        "example": "/pku/ss/notice",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "radar": [
           {
             "source": [
@@ -133031,7 +136392,7 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "软件与微电子学院 - 通知公告",
         "maintainers": [
           "legr4ndk"
         ],
@@ -133329,6 +136690,266 @@ export default {
     "description": "ProjectJAV provides adult video content information and streaming.",
     "lang": "en"
   },
+  "pts": {
+    "routes": {
+      "/live/:id": {
+        "path": "/live/:id",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/live/62e8e4bbb4de2cbd74468b2b",
+        "parameters": {
+          "id": "報導 id，可在对应整理報導页 URL 中找到"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/live/:id",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "name": "整理報導",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "live.ts",
+        "module": () => import('@/routes/pts/live.ts')
+      },
+      "/curations": {
+        "path": "/curations",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/curations",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/curations",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "name": "專題策展",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "news.pts.org.tw/curations",
+        "location": "curations.ts",
+        "module": () => import('@/routes/pts/curations.ts')
+      },
+      "/dailynews": {
+        "path": "/dailynews",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/dailynews",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/dailynews",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "name": "即時新聞",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "news.pts.org.tw/dailynews",
+        "location": "index.ts",
+        "module": () => import('@/routes/pts/index.ts')
+      },
+      "/projects": {
+        "path": "/projects",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/projects",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/projects",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "name": "數位敘事",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "news.pts.org.tw/projects",
+        "location": "projects.ts",
+        "module": () => import('@/routes/pts/projects.ts')
+      },
+      "/category/:id": {
+        "path": "/category/:id",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/category/9",
+        "parameters": {
+          "id": "分類 id，见下表，可在对应分類页 URL 中找到"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/category/:id",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "description": "| 名称     | 编号 |\n| -------- | ---- |\n| 政治     | 1    |\n| 社會     | 7    |\n| 全球     | 4    |\n| 生活     | 5    |\n| 兩岸     | 9    |\n| 地方     | 11   |\n| 產經     | 10   |\n| 文教科技 | 6    |\n| 環境     | 3    |\n| 社福人權 | 12   |",
+        "name": "分類",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "category.ts",
+        "module": () => import('@/routes/pts/category.ts')
+      },
+      "/opinion": {
+        "path": "/opinion",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/opinion",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/opinion",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "name": "觀點",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "news.pts.org.tw/opinion",
+        "location": "opinion.ts",
+        "module": () => import('@/routes/pts/opinion.ts')
+      },
+      "/report": {
+        "path": "/report",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/report",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/report",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "name": "深度報導",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "news.pts.org.tw/report",
+        "location": "report.ts",
+        "module": () => import('@/routes/pts/report.ts')
+      },
+      "/tag/:id": {
+        "path": "/tag/:id",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/pts/tag/230",
+        "parameters": {
+          "id": "標籤 id，可在对应標籤页 URL 中找到"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "news.pts.org.tw/tag/:id",
+              "news.pts.org.tw/"
+            ]
+          }
+        ],
+        "name": "標籤",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "tag.ts",
+        "module": () => import('@/routes/pts/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "公視新聞網",
+    "url": "news.pts.org.tw",
+    "lang": "zh-TW"
+  },
   "qq": {
     "routes": {
       "/weread/:category": {
@@ -133440,6 +137061,13 @@ export default {
       },
       "/ac/comic/:id?": {
         "path": "/ac/comic/:id?",
+        "categories": [
+          "anime"
+        ],
+        "example": "/qq/ac/comic/531490",
+        "parameters": {
+          "id": "编号，可在对应页 URL 中找到"
+        },
         "radar": [
           {
             "source": [
@@ -133449,8 +137077,10 @@ export default {
             "target": "/ac/comic/:id"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "漫画",
+        "maintainers": [
+          "nczitzk"
+        ],
         "location": "ac/comic.ts",
         "module": () => import('@/routes/qq/ac/comic.ts')
       },
@@ -133700,7 +137330,7 @@ export default {
         ],
         "example": "/ruancan/category/news",
         "parameters": {
-          "category": "分类 id，可在对应分类页 URL 中找到，默认为业界"
+          "category": "分类 id，可在对应分类页 URL 中找到"
         },
         "features": {
           "requireConfig": false,
@@ -133720,13 +137350,19 @@ export default {
           }
         ],
         "name": "分类",
-        "maintainers": [],
+        "maintainers": [
+          "nczitzk"
+        ],
         "url": "ruancan.com/",
         "location": "category.ts",
         "module": () => import('@/routes/ruancan/category.ts')
       },
       "/": {
         "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/ruancan",
         "radar": [
           {
             "source": [
@@ -133735,8 +137371,10 @@ export default {
             "target": ""
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "首页",
+        "maintainers": [
+          "nczitzk"
+        ],
         "url": "ruancan.com/",
         "location": "index.ts",
         "module": () => import('@/routes/ruancan/index.ts')
@@ -133748,7 +137386,7 @@ export default {
         ],
         "example": "/ruancan/search/Windows",
         "parameters": {
-          "keyword": "关键字，默认为空"
+          "keyword": "关键字"
         },
         "features": {
           "requireConfig": false,
@@ -133767,13 +137405,22 @@ export default {
           }
         ],
         "name": "搜索",
-        "maintainers": [],
+        "maintainers": [
+          "nczitzk"
+        ],
         "url": "ruancan.com/",
         "location": "search.ts",
         "module": () => import('@/routes/ruancan/search.ts')
       },
       "/user/:id": {
         "path": "/user/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/ruancan/user/72",
+        "parameters": {
+          "id": "用户 id，可在对应用户页 URL 中找到"
+        },
         "radar": [
           {
             "source": [
@@ -133782,8 +137429,10 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "name": "用户文章",
+        "maintainers": [
+          "nczitzk"
+        ],
         "url": "ruancan.com/",
         "location": "user.ts",
         "module": () => import('@/routes/ruancan/user.ts')
@@ -134699,6 +138348,84 @@ export default {
     "url": "finance.sina.com.cn",
     "lang": "zh-CN"
   },
+  "sinchew": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/sinchew",
+        "radar": [
+          {
+            "source": [
+              "sinchew.com.my/"
+            ],
+            "target": "/"
+          }
+        ],
+        "name": "首页",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "sinchew.com.my/",
+        "location": "index.tsx",
+        "module": () => import('@/routes/sinchew/index.tsx')
+      },
+      "/category/:category{.+}?": {
+        "path": "/category/:category{.+}?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/sinchew/category/头条",
+        "parameters": {
+          "category": "分类，见下表，亦可以在对应分类页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "sinchew.com.my/category/:category",
+              "sinchew.com.my/"
+            ],
+            "target": "/category/:category"
+          }
+        ],
+        "name": "分类",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "description": "| 头条 | 国内 | 国际 | 言路 | 财经 | 地方 | 副刊 | 娱乐 | 体育 | 百格 | 星角攝 | 好运来 |\n| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ------ | ------ |\n\n::: tip\n若订阅单级分类 [头条](https://www.sinchew.com.my/category/头条)，其 URL 为 [https://www.sinchew.com.my/category/ 头条](https://www.sinchew.com.my/category/头条)，则路由为 [`/sinchew/category/头条`](https://rsshub.app/sinchew/category/头条)。\n\n若订阅多级分类 [国际 > 天下事](https://www.sinchew.com.my/category/国际/天下事)，其 URL 为 [https://www.sinchew.com.my/category/ 国际 / 天下事](https://www.sinchew.com.my/category/国际/天下事)，则路由为 [`/sinchew/category/国际/天下事`](https://rsshub.app/sinchew/category/国际/天下事)。\n:::",
+        "location": "category.ts",
+        "module": () => import('@/routes/sinchew/category.ts')
+      },
+      "/latest": {
+        "path": "/latest",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/sinchew/latest",
+        "radar": [
+          {
+            "source": [
+              "sinchew.com.my/latest",
+              "sinchew.com.my/"
+            ],
+            "target": "/latest"
+          }
+        ],
+        "name": "最新",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "latest.ts",
+        "module": () => import('@/routes/sinchew/latest.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "星洲网",
+    "url": "sinchew.com.my",
+    "lang": "zh-CN"
+  },
   "sjtu": {
     "routes": {
       "/tongqu/:type?": {
@@ -135185,7 +138912,11 @@ export default {
     "routes": {
       "/": {
         "path": "/",
-        "name": "Unknown",
+        "categories": [
+          "blog"
+        ],
+        "example": "/stratechery",
+        "name": "Blog",
         "maintainers": [
           "chazeon"
         ],
@@ -135282,6 +139013,67 @@ export default {
     "apiRoutes": {},
     "name": "Go 语言中文网",
     "url": "studygolang.com",
+    "lang": "zh-CN"
+  },
+  "subhd": {
+    "routes": {
+      "/sub/:category?": {
+        "path": "/sub/:category?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/subhd/sub/new",
+        "parameters": {
+          "category": "分类，见下表，默认为最新"
+        },
+        "radar": [
+          {
+            "source": [
+              "subhd.tv/sub/:category",
+              "subhd.tv/"
+            ],
+            "target": "/sub/:category?"
+          }
+        ],
+        "name": "字幕",
+        "description": "| 最新字幕 | 热门字幕 | 剧集字幕 | 电影字幕 |\n| -------- | -------- | -------- | -------- |\n| new      | top      | tv       | movie    |",
+        "maintainers": [
+          "laampui",
+          "nczitzk"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/subhd/index.ts')
+      },
+      "/zu/:category?": {
+        "path": "/zu/:category?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/subhd/zu/14",
+        "parameters": {
+          "category": "字幕组，见下表，默认为 YYeTs字幕组"
+        },
+        "radar": [
+          {
+            "source": [
+              "subhd.tv/zu/:category",
+              "subhd.tv/"
+            ],
+            "target": "/zu/:category?"
+          }
+        ],
+        "name": "字幕组",
+        "description": "| YYeTs 字幕组 | F.I.X 字幕侠 | 深影字幕组 | 擦枪字幕组 | 哒哒字幕组 | 迪幻字幕组 | 伊甸园字幕组 | H-SGDK 字幕组 | 蓝血字幕组 | GA 字幕组 | CC 标准电影字幕组 | NEW 字幕组 | Orange 字幕组 | 圣城家园 SCG 字幕组 | 纪录片之家字幕组 |\n| ------------ | ------------ | ---------- | ---------- | ---------- | ---------- | ------------ | ------------- | ---------- | --------- | ----------------- | ---------- | ------------- | ------------------- | ---------------- |\n| 14           | 28           | 2          | 118        | 132        | 20         | 1            | 18            | 71         | 11        | 75                | 130        | 66            | 19                  | 10               |",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "zu.ts",
+        "module": () => import('@/routes/subhd/zu.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Sub HD",
+    "url": "subhd.tv",
     "lang": "zh-CN"
   },
   "syosetu": {
@@ -138694,6 +142486,219 @@ export default {
       "description": "::: tip\n设置环境变量 `INITIUM_MEMBER_COOKIE` 可获取付费文章全文。登录 theinitium.com 后，从浏览器开发者工具中复制 Cookie。\n\n旧的环境变量 `INITIUM_USERNAME`、`INITIUM_PASSWORD` 和 `INITIUM_BEARER_TOKEN` 已不再使用（网站已迁移至 Ghost CMS）。\n:::"
     }
   },
+  "thenewslens": {
+    "routes": {
+      "/latest-article/:sort{.+}?": {
+        "path": "/latest-article/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/latest-article",
+        "parameters": {
+          "sort": "排序方式，见下表，可在对应排序页 URL 中找到"
+        },
+        "description": "| 最新文章 | 最多觀看 | 最多分享 | 本日      | 本週     | 本月      | 今年     | 去年         | 有史以來    |\n| -------- | -------- | -------- | --------- | -------- | --------- | -------- | ------------ | ----------- |\n|          | hot      | social   | hot/today | hot/week | hot/month | hot/year | hot/lastYear | hot/history |",
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/latest-article/:sort?",
+              "thenewslens.com/"
+            ],
+            "target": "/latest-article/:sort?"
+          }
+        ],
+        "name": "最新",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/thenewslens/index.ts')
+      },
+      "/author/:id/:sort{.+}?": {
+        "path": "/author/:id/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/author/BBC",
+        "parameters": {
+          "id": "作者 id，可在对应作者页 URL 中找到",
+          "sort": "排序方式，同上表，可在对应排序页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/author/:id/:sort?",
+              "thenewslens.com/"
+            ],
+            "target": "/author/:id/:sort?"
+          }
+        ],
+        "name": "作者",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "author.ts",
+        "module": () => import('@/routes/thenewslens/author.ts')
+      },
+      "/category/:id/:sort{.+}?": {
+        "path": "/category/:id/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/category/politics",
+        "parameters": {
+          "id": "分类 id，可在对应分类页 URL 中找到",
+          "sort": "排序方式，同上表，可在对应排序页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/category/:id/:sort?",
+              "thenewslens.com/"
+            ],
+            "target": "/category/:id/:sort?"
+          }
+        ],
+        "name": "分类",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "category.ts",
+        "module": () => import('@/routes/thenewslens/category.ts')
+      },
+      "/channel/:id/:sort{.+}?": {
+        "path": "/channel/:id/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/channel/hk",
+        "parameters": {
+          "id": "标签 id，可在对应标签页 URL 中找到",
+          "sort": "排序方式，同上表，可在对应排序页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/channel/:id/:sort?",
+              "thenewslens.com/"
+            ],
+            "target": "/channel/:id/:sort?"
+          }
+        ],
+        "name": "频道",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "channel.ts",
+        "module": () => import('@/routes/thenewslens/channel.ts')
+      },
+      "/news/:sort{.+}?": {
+        "path": "/news/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/news",
+        "parameters": {
+          "sort": "排序方式，见下表，可在对应排序页 URL 中找到"
+        },
+        "description": "| 最新文章 | 最多觀看 | 最多分享 |\n| -------- | -------- | -------- |\n|          | hot      | social   |",
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/news/:sort?",
+              "thenewslens.com/"
+            ],
+            "target": "/news/:sort?"
+          }
+        ],
+        "name": "新闻",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "news.ts",
+        "module": () => import('@/routes/thenewslens/news.ts')
+      },
+      "/review/:sort{.+}?": {
+        "path": "/review/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/review",
+        "parameters": {
+          "sort": "排序方式，同上表，可在对应排序页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/review/:sort?",
+              "thenewslens.com/"
+            ],
+            "target": "/review/:sort?"
+          }
+        ],
+        "name": "评论",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "review.ts",
+        "module": () => import('@/routes/thenewslens/review.ts')
+      },
+      "/tag/:id/:sort{.+}?": {
+        "path": "/tag/:id/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/tag/中國",
+        "parameters": {
+          "id": "标签 id，可在对应标签页 URL 中找到",
+          "sort": "排序方式，同上表，可在对应排序页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/tag/:id/:sort?",
+              "thenewslens.com/"
+            ],
+            "target": "/tag/:id/:sort?"
+          }
+        ],
+        "name": "标签",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "tag.ts",
+        "module": () => import('@/routes/thenewslens/tag.ts')
+      },
+      "/videos/Projects/:sort{.+}?": {
+        "path": "/videos/Projects/:sort{.+}?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/thenewslens/videos/Projects",
+        "parameters": {
+          "sort": "排序方式，同上表，可在对应排序页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "thenewslens.com/videos/Projects/:sort?"
+            ],
+            "target": "/videos/Projects/:sort?"
+          }
+        ],
+        "name": "影音",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "videos.ts",
+        "module": () => import('@/routes/thenewslens/videos.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "The News Lens 關鍵評論",
+    "url": "thenewslens.com",
+    "lang": "zh-TW"
+  },
   "thepaper": {
     "routes": {
       "/factpaper/:status?": {
@@ -138731,6 +142736,14 @@ export default {
       },
       "/839studio/:id": {
         "path": "/839studio/:id",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/thepaper/839studio/2",
+        "parameters": {
+          "id": "分类 id，默认订阅全部分类"
+        },
+        "description": "| 视频 | 交互 | 信息图 | 数据故事 |\n| ---- | ---- | ------ | -------- |\n| 2    | 4    | 3      | 453      |",
         "radar": [
           {
             "source": [
@@ -138748,6 +142761,10 @@ export default {
       },
       "/839studio": {
         "path": "/839studio",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/thepaper/839studio",
         "name": "澎湃美数课作品集",
         "maintainers": [
           "umm233"
@@ -139489,6 +143506,134 @@ export default {
     "url": "bksy.tongji.edu.cn",
     "lang": "zh-CN"
   },
+  "toodaylab": {
+    "routes": {
+      "/posts": {
+        "path": "/posts",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toodaylab/posts",
+        "radar": [
+          {
+            "source": [
+              "toodaylab.com/posts"
+            ],
+            "target": "/posts"
+          }
+        ],
+        "name": "滚动",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/toodaylab/index.ts')
+      },
+      "/column/:id": {
+        "path": "/column/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toodaylab/column/299",
+        "parameters": {
+          "id": "专栏 id，见下表，可在对应专栏页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "toodaylab.com/column/:id"
+            ],
+            "target": "/column/:id"
+          }
+        ],
+        "name": "专栏",
+        "description": "| 专题 | 攻略 |\n| ---- | ---- |\n| 299  | 300  |",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "column.ts",
+        "module": () => import('@/routes/toodaylab/column.ts')
+      },
+      "/field/:id": {
+        "path": "/field/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toodaylab/field/308",
+        "parameters": {
+          "id": "领域 id，见下表，可在对应领域页 URL 中找到"
+        },
+        "radar": [
+          {
+            "source": [
+              "toodaylab.com/field/:id"
+            ],
+            "target": "/field/:id"
+          }
+        ],
+        "name": "领域",
+        "description": "| 快消 | 时尚 | 智能 | 娱乐 | 运动 | 生活 | 设计 | 出行 |\n| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |\n| 308  | 307  | 306  | 305  | 304  | 303  | 302  | 301  |",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "field.ts",
+        "module": () => import('@/routes/toodaylab/field.ts')
+      },
+      "/hot": {
+        "path": "/hot",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toodaylab/hot",
+        "radar": [
+          {
+            "source": [
+              "toodaylab.com/posts"
+            ],
+            "target": "/hot"
+          }
+        ],
+        "name": "最热",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "hot.ts",
+        "module": () => import('@/routes/toodaylab/hot.ts')
+      },
+      "/topic/:id": {
+        "path": "/topic/:id",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toodaylab/topic/309",
+        "parameters": {
+          "id": "话题 id，见下表，可在对应话题页 URL 中找到"
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "toodaylab.com/topic/:id"
+            ],
+            "target": "/topic/:id"
+          }
+        ],
+        "name": "话题",
+        "description": "| 今日消费资讯 | 实验室带你过周末 | 实验室带你过假期 | 每日一图 | 每周一书 | 实验室数字 | 新鲜社会人 | 实验室 TV |\n| ------------ | ---------------- | ---------------- | -------- | -------- | ---------- | ---------- | --------- |\n| 309          | 37               | 40               | 32       | 33       | 310        | 316        | 476       |",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "location": "topic.ts",
+        "module": () => import('@/routes/toodaylab/topic.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "理想生活实验室",
+    "url": "toodaylab.com",
+    "lang": "zh-CN"
+  },
   "vocus": {
     "routes": {
       "/publication/:id": {
@@ -139715,6 +143860,21 @@ export default {
       },
       "/data258/:id?": {
         "path": "/data258/:id?",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/wechat/data258/gh_cbbad4c1d33c",
+        "parameters": {
+          "id": "公众号 id 或分类 id，可在公众号页或分类页 URL 中找到；若略去，则抓取首页"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "radar": [
           {
             "source": [
@@ -139723,11 +143883,12 @@ export default {
             ]
           }
         ],
-        "name": "Unknown",
+        "name": "公众号（微阅读来源）",
         "maintainers": [
           "Rongronggg9"
         ],
         "url": "mp.data258.com/",
+        "description": "::: warning\n由于使用了一些针对反爬的缓解措施，本路由响应较慢。默认只抓取前 5 条，可通过 `?limit=` 改变（不推荐，容易被反爬）。\n\n该网站使用 IP 甄别访客，且应用严格的每日阅读量限额（约 15 次），请自建并确保正确配置缓存；如使用内存缓存而非 Redis 缓存，请增大缓存容量。该限额足够订阅至少 3 个公众号（假设公众号每日仅更新一次）；首页 / 分类页更新相当频繁，不推荐订阅。\n:::",
         "location": "data258.ts",
         "module": () => import('@/routes/wechat/data258.ts')
       },
@@ -139827,7 +143988,7 @@ export default {
         },
         "name": "公众号（搜狗来源）",
         "maintainers": [
-          "EthanWng97",
+          "IvanWng97",
           "pseudoyu"
         ],
         "location": "sogou.ts",
@@ -140668,6 +144829,103 @@ export default {
     "apiRoutes": {},
     "name": "虎皮椒",
     "url": "www.xunhupay.com",
+    "lang": "zh-CN"
+  },
+  "xyzrank": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/xyzrank",
+        "radar": [
+          {
+            "source": [
+              "xyzrank.com/"
+            ],
+            "target": "/"
+          }
+        ],
+        "name": "热门节目",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "xyzrank.com/",
+        "location": "index.tsx",
+        "module": () => import('@/routes/xyzrank/index.tsx')
+      },
+      "/hot-episodes-new": {
+        "path": "/hot-episodes-new",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/xyzrank/hot-episodes-new",
+        "radar": [
+          {
+            "source": [
+              "xyzrank.com/"
+            ],
+            "target": "/hot-episodes-new"
+          }
+        ],
+        "name": "新锐节目",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "xyzrank.com/",
+        "location": "hot-episodes-new.ts",
+        "module": () => import('@/routes/xyzrank/hot-episodes-new.ts')
+      },
+      "/hot-podcasts": {
+        "path": "/hot-podcasts",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/xyzrank/hot-podcasts",
+        "radar": [
+          {
+            "source": [
+              "xyzrank.com/"
+            ],
+            "target": "/hot-podcasts"
+          }
+        ],
+        "name": "热门播客",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "xyzrank.com/",
+        "location": "hot-podcasts.ts",
+        "module": () => import('@/routes/xyzrank/hot-podcasts.ts')
+      },
+      "/new-podcasts": {
+        "path": "/new-podcasts",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/xyzrank/new-podcasts",
+        "radar": [
+          {
+            "source": [
+              "xyzrank.com/"
+            ],
+            "target": "/new-podcasts"
+          }
+        ],
+        "name": "新锐播客",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "xyzrank.com/",
+        "location": "new-podcasts.ts",
+        "module": () => import('@/routes/xyzrank/new-podcasts.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "中文播客榜",
+    "url": "xyzrank.com",
+    "description": "::: tip\n可以通过指定 `limit` 参数确定榜单排名下限，默认为 250。\n\n若只查看榜单前 50，可在订阅 URL 后加入 `?limit=50`。\n\n即，以 [热门节目](https://xyzrank.com/#/) 为例，路由为[`/xyzrank?limit=50`](https://rsshub.app/xyzrank?limit=50)。\n:::",
     "lang": "zh-CN"
   },
   "yahoo": {
@@ -141542,47 +145800,6 @@ export default {
         "location": "daily.ts",
         "module": () => import('@/routes/zhihu/daily.ts')
       },
-      "/posts/:usertype/:id": {
-        "path": "/posts/:usertype/:id",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/zhihu/posts/people/frederchen",
-        "parameters": {
-          "usertype": "作者 id，可在用户主页 URL 中找到",
-          "id": "用户类型usertype，参考用户主页的URL。目前有两种，见下表"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "ZHIHU_COOKIES",
-              "description": "",
-              "optional": true
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.zhihu.com/:usertype/:id/posts",
-              "www.zhihu.com/:usertype/:id"
-            ]
-          }
-        ],
-        "name": "用户文章",
-        "maintainers": [
-          "whtsky",
-          "Colin-XKL"
-        ],
-        "description": "| 普通用户 | 机构用户 |\n| -------- | -------- |\n| people   | org      |",
-        "location": "posts.ts",
-        "module": () => import('@/routes/zhihu/posts.ts')
-      },
       "/weekly": {
         "path": "/weekly",
         "categories": [
@@ -141827,6 +146044,47 @@ export default {
         "location": "daily-section.ts",
         "module": () => import('@/routes/zhihu/daily-section.ts')
       },
+      "/posts/:usertype/:id": {
+        "path": "/posts/:usertype/:id",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/zhihu/posts/people/frederchen",
+        "parameters": {
+          "usertype": "作者 id，可在用户主页 URL 中找到",
+          "id": "用户类型usertype，参考用户主页的URL。目前有两种，见下表"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "ZHIHU_COOKIES",
+              "description": "",
+              "optional": true
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.zhihu.com/:usertype/:id/posts",
+              "www.zhihu.com/:usertype/:id"
+            ]
+          }
+        ],
+        "name": "用户文章",
+        "maintainers": [
+          "whtsky",
+          "Colin-XKL"
+        ],
+        "description": "| 普通用户 | 机构用户 |\n| -------- | -------- |\n| people   | org      |",
+        "location": "posts.ts",
+        "module": () => import('@/routes/zhihu/posts.ts')
+      },
       "/question/:questionId/:sortBy?": {
         "path": "/question/:questionId/:sortBy?",
         "categories": [
@@ -141860,7 +146118,10 @@ export default {
           }
         ],
         "name": "问题",
-        "maintainers": [],
+        "maintainers": [
+          "xyqfer",
+          "hacklu"
+        ],
         "location": "question.ts",
         "module": () => import('@/routes/zhihu/question.ts')
       },
