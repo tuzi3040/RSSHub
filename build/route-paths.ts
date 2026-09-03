@@ -282,6 +282,7 @@ export type RoutePath =
   | `/baby-kingdom/:id/:order?`
   | `/backlinko/blog`
   | `/bad/:path{.+}?`
+  | `/baidu/baijiahao/:id/:tab?`
   | `/baidu/gushitong/index/:market?`
   | `/baidu/search/:keyword`
   | `/baidu/tieba/forum/:kw/:sortBy?`
@@ -2522,6 +2523,7 @@ export type RoutePath =
   | `/onejav/:type/:key?`
   | `/onenotegem/release`
   | `/onet/news`
+  | `/onlyfans/:username`
   | `/oo-software/changelog/:id`
   | `/openai/chatgpt-atlas/release-notes`
   | `/openai/chatgpt/release-notes`
@@ -3318,6 +3320,7 @@ export type RoutePath =
   | `/topys/:keyword?`
   | `/toranoana/news/:category?`
   | `/touhougarakuta/:language/:type`
+  | `/toutiao/channel/:category`
   | `/toutiao/user/token/:token`
   | `/towardsdatascience/latest`
   | `/tpre/cqzr`

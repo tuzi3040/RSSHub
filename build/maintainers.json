@@ -1133,6 +1133,9 @@
   "/nanhua/report/:type1/:type2": [
     "TonyRL"
   ],
+  "/onlyfans/:username": [
+    "TonyRL"
+  ],
   "/openalex/:journals/:type?/:ids?": [
     "emdoe"
   ],
@@ -1610,9 +1613,6 @@
     "TonyRL"
   ],
   "/tingtingfm/program/:programId": [
-    "TonyRL"
-  ],
-  "/toutiao/user/token/:token": [
     "TonyRL"
   ],
   "/tqyb/sncsyjxh": [
@@ -2741,22 +2741,11 @@
     "CaoMeiYouRen",
     "hutianyu2006"
   ],
-  "/baidu/tieba/forum/good/:kw/:cid?/:sortBy?": [
-    "u3u",
-    "FlanChanXwO"
-  ],
   "/baidu/tieba/forum/:kw/:sortBy?": [
     "u3u",
     "FlanChanXwO"
   ],
-  "/baidu/search/:keyword": [
-    "CaoMeiYouRen"
-  ],
   "/baidu/tieba/post/:id": [
-    "u3u",
-    "FlanChanXwO"
-  ],
-  "/baidu/tieba/post/lz/:id": [
     "u3u",
     "FlanChanXwO"
   ],
@@ -2768,6 +2757,20 @@
     "igxlin",
     "nczitzk",
     "FlanChanXwO"
+  ],
+  "/baidu/tieba/forum/good/:kw/:cid?/:sortBy?": [
+    "u3u",
+    "FlanChanXwO"
+  ],
+  "/baidu/tieba/post/lz/:id": [
+    "u3u",
+    "FlanChanXwO"
+  ],
+  "/baidu/baijiahao/:id/:tab?": [
+    "TonyRL"
+  ],
+  "/baidu/search/:keyword": [
+    "CaoMeiYouRen"
   ],
   "/baidu/top/:board?": [
     "xyqfer"
@@ -8505,6 +8508,12 @@
   ],
   "/toranoana/news/:category?": [
     "Tsuyumi25"
+  ],
+  "/toutiao/user/token/:token": [
+    "TonyRL"
+  ],
+  "/toutiao/channel/:category": [
+    "TonyRL"
   ],
   "/towardsdatascience/latest": [
     "mintyfrankie"

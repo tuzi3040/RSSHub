@@ -4038,6 +4038,19 @@
       }
     ]
   },
+  "onlyfans.com": {
+    "_name": "OnlyFans",
+    ".": [
+      {
+        "title": "Creator Posts",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:username"
+        ],
+        "target": "/onlyfans/:username"
+      }
+    ]
+  },
   "openalex.org": {
     "_name": "OpenAlex",
     ".": [
@@ -5452,19 +5465,6 @@
           "/v3/program/:programId"
         ],
         "target": "/tingtingfm/program/:programId"
-      }
-    ]
-  },
-  "toutiao.com": {
-    "_name": "今日头条",
-    "www": [
-      {
-        "title": "头条主页",
-        "docs": "https://docs.rsshub.app/routes/new-media",
-        "source": [
-          "/c/user/token/:token"
-        ],
-        "target": "/toutiao/user/token/:token"
       }
     ]
   },
@@ -12667,14 +12667,6 @@
           "/p/:id"
         ],
         "target": "/baidu/tieba/post/:id"
-      },
-      {
-        "title": "帖子动态",
-        "docs": "https://docs.rsshub.app/routes/bbs",
-        "source": [
-          "/p/:id"
-        ],
-        "target": "/baidu/tieba/post/lz/:id"
       }
     ]
   },
@@ -41814,6 +41806,35 @@
           "/category/:category"
         ],
         "target": "/toranoana/news/:category"
+      }
+    ]
+  },
+  "toutiao.com": {
+    "_name": "今日头条",
+    "www": [
+      {
+        "title": "头条主页",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/c/user/token/:token"
+        ],
+        "target": "/toutiao/user/token/:token"
+      },
+      {
+        "title": "频道",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/ch/:category"
+        ],
+        "target": "/toutiao/channel/:category"
+      },
+      {
+        "title": "推荐",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/"
+        ],
+        "target": "/toutiao/channel/recommend"
       }
     ]
   },
