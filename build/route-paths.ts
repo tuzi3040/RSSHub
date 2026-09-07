@@ -444,6 +444,7 @@ export type RoutePath =
   | `/booru/mmda/tags/:tags?`
   | `/booth.pm/shop/:subdomain`
   | `/bossdesign/:category?`
+  | `/br-klassik/aktuell`
   | `/brave/latest`
   | `/brooklynmuseum/exhibitions/:state?`
   | `/bse/:category?/:keyword?`
@@ -500,6 +501,8 @@ export type RoutePath =
   | `/caixinglobal/latest`
   | `/camchina/:id?`
   | `/canada.ca/news/:lang/:department?`
+  | `/canalmuseum/consulting/:type`
+  | `/canalmuseum/lszl`
   | `/cankaoxiaoxi/:id?`
   | `/cankaoxiaoxi/column/:id?`
   | `/capitalmind/insights`
@@ -2218,6 +2221,7 @@ export type RoutePath =
   | `/minecraft/java-runtime/:arch?/:javaType?`
   | `/minecraft/version/:versionType?/:linkType?`
   | `/mingpao/:type?/:category?`
+  | `/minhangmuseum/interim`
   | `/miniflux/entry/:feeds/:parameters?`
   | `/miniflux/subscription/:parameters?`
   | `/mirror/:id`

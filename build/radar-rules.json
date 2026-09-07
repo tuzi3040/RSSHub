@@ -4859,6 +4859,20 @@
       }
     ]
   },
+  "gamebase.com.tw": {
+    "_name": "遊戲基地 Gamebase",
+    "news": [
+      {
+        "title": "新聞",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/news",
+          "/news/:type"
+        ],
+        "target": "/gamebase(params,url)=>{const type=params.type;const urlObj=new URL(url);const category=urlObj.searchParams.get(\"type\")??void 0;return`/gamebase/news${type?`/${type}${category?`/${category}`:\"\"}`:\"\"}`}"
+      }
+    ]
+  },
   "gettr.com": {
     "_name": "GETTR",
     ".": [
@@ -5358,7 +5372,7 @@
       }
     ]
   },
-  "shanghaimuseum.net": {
+  "shanghaimuseum.cn": {
     "_name": "Shanghai Museum",
     "www": [
       {
@@ -14358,6 +14372,27 @@
       }
     ]
   },
+  "canalmuseum.org.cn": {
+    "_name": "The Grand Canal Museum of Beijing",
+    "www": [
+      {
+        "title": "NEWS",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/consulting.html"
+        ],
+        "target": "/canalmuseum/consulting/tzgg"
+      },
+      {
+        "title": "临时展览",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/lszl.html"
+        ],
+        "target": "/canalmuseum/lszl"
+      }
+    ]
+  },
   "capitalmuseum.org.cn": {
     "_name": "Capital Museum",
     "www": [
@@ -21860,20 +21895,6 @@
           "/"
         ],
         "target": "/gameapps/"
-      }
-    ]
-  },
-  "gamebase.com.tw": {
-    "_name": "遊戲基地 Gamebase",
-    "news": [
-      {
-        "title": "新聞",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/news",
-          "/news/:type"
-        ],
-        "target": "/gamebase(params,url)=>{const type=params.type;const urlObj=new URL(url);const category=urlObj.searchParams.get(\"type\")??void 0;return`/gamebase/news${type?`/${type}${category?`/${category}`:\"\"}`:\"\"}`}"
       }
     ]
   },
@@ -30422,6 +30443,19 @@
           "/pns/:categoryName/section/:date/:category"
         ],
         "target": "/mingpao/mingpao/pns/:category"
+      }
+    ]
+  },
+  "shmh.gov.cn": {
+    "_name": "Minhang Museum",
+    "minhangmuseum": [
+      {
+        "title": "临时展览",
+        "docs": "https://docs.rsshub.app/routes/travel",
+        "source": [
+          "/weixin/interim/list.htm"
+        ],
+        "target": "/minhangmuseum/interim"
       }
     ]
   },
@@ -43780,14 +43814,6 @@
         "target": "/xueqiu/user_stock/:id"
       },
       {
-        "title": "用户专栏",
-        "docs": "https://docs.rsshub.app/routes/finance",
-        "source": [
-          "/:id/column"
-        ],
-        "target": "/xueqiu/column/:id"
-      },
-      {
         "title": "组合最新调仓信息",
         "docs": "https://docs.rsshub.app/routes/finance",
         "source": [
@@ -43828,6 +43854,14 @@
           "/u/:id"
         ],
         "target": "/xueqiu/user/:id"
+      },
+      {
+        "title": "用户专栏",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/:id/column"
+        ],
+        "target": "/xueqiu/column/:id"
       },
       {
         "title": "股票评论",
@@ -45526,6 +45560,19 @@
           "/authors/:id/:slug"
         ],
         "target": "/bloomberg/authors/:id/:slug"
+      }
+    ]
+  },
+  "br-klassik.de": {
+    "_name": "BR-Klassik",
+    "www": [
+      {
+        "title": "Aktuell (News & Kritik)",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/aktuell/index.html"
+        ],
+        "target": "/br-klassik/aktuell"
       }
     ]
   },
@@ -53779,6 +53826,67 @@
       }
     ]
   },
+  "pixiv.net": {
+    "_name": "pixiv",
+    "www": [
+      {
+        "title": "User Bookmark",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id/bookmarks/artworks",
+          "/en/users/:id/bookmarks/artworks"
+        ],
+        "target": "/pixiv/user/bookmarks/:id"
+      },
+      {
+        "title": "Following timeline",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/bookmark_new_illust.php"
+        ],
+        "target": "/pixiv/user/illustfollows"
+      },
+      {
+        "title": "User Activity",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id",
+          "/en/users/:id"
+        ],
+        "target": "/pixiv/user/:id"
+      },
+      {
+        "title": "Novel Series",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/novel/series/:id"
+        ],
+        "target": "/pixiv/novel/series/:id"
+      },
+      {
+        "title": "User Novels (簡介 Basic info)",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id/novels",
+          "/users/:id",
+          "/en/users/:id/novels",
+          "/en/users/:id"
+        ],
+        "target": "/pixiv/user/novels/:id"
+      },
+      {
+        "title": "User Novels (全文 Full text)",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/users/:id/novels",
+          "/users/:id",
+          "/en/users/:id/novels",
+          "/en/users/:id"
+        ],
+        "target": "/pixiv/user/novels/:id/true"
+      }
+    ]
+  },
   "ryo.lu": {
     "_name": "Ryo Lu",
     ".": [
@@ -53894,67 +54002,6 @@
           "/"
         ],
         "target": "/google/research"
-      }
-    ]
-  },
-  "pixiv.net": {
-    "_name": "pixiv",
-    "www": [
-      {
-        "title": "User Bookmark",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id/bookmarks/artworks",
-          "/en/users/:id/bookmarks/artworks"
-        ],
-        "target": "/pixiv/user/bookmarks/:id"
-      },
-      {
-        "title": "Following timeline",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/bookmark_new_illust.php"
-        ],
-        "target": "/pixiv/user/illustfollows"
-      },
-      {
-        "title": "User Activity",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id",
-          "/en/users/:id"
-        ],
-        "target": "/pixiv/user/:id"
-      },
-      {
-        "title": "Novel Series",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/novel/series/:id"
-        ],
-        "target": "/pixiv/novel/series/:id"
-      },
-      {
-        "title": "User Novels (簡介 Basic info)",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id/novels",
-          "/users/:id",
-          "/en/users/:id/novels",
-          "/en/users/:id"
-        ],
-        "target": "/pixiv/user/novels/:id"
-      },
-      {
-        "title": "User Novels (全文 Full text)",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/users/:id/novels",
-          "/users/:id",
-          "/en/users/:id/novels",
-          "/en/users/:id"
-        ],
-        "target": "/pixiv/user/novels/:id/true"
       }
     ]
   },
