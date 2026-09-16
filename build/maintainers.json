@@ -342,6 +342,9 @@
   "/jl1mall/forum/:type?/:key?": [
     "nczitzk"
   ],
+  "/jma/wxchart/:type?": [
+    "TonyRL"
+  ],
   "/joneslanglasalle/:language?/:category{.+}?": [
     "nczitzk",
     "pseudoyu"
@@ -1015,6 +1018,22 @@
   "/eleduck/posts/:id?": [
     "running-grass"
   ],
+  "/everia/": [
+    "KTachibanaM",
+    "AiraNadih"
+  ],
+  "/everia/search/:keyword": [
+    "KTachibanaM",
+    "AiraNadih"
+  ],
+  "/everia/category/:category": [
+    "KTachibanaM",
+    "AiraNadih"
+  ],
+  "/everia/tag/:tag": [
+    "KTachibanaM",
+    "AiraNadih"
+  ],
   "/fantia/search/:type?/:caty?/:period?/:order?/:rating?/:keyword?": [
     "nczitzk"
   ],
@@ -1203,6 +1222,9 @@
   ],
   "/tkww/:column{.+}?": [
     "quiniapiezoelectricity"
+  ],
+  "/toei/ridership": [
+    "pseudoyu"
   ],
   "/topbook/:id?": [
     "nczitzk"
@@ -1669,6 +1691,12 @@
   ],
   "/xkb/:channel": [
     "TimWu007"
+  ],
+  "/yinxubwg/notice": [
+    "magazian"
+  ],
+  "/yinxubwg/exhibitionIndex/:type": [
+    "magazian"
   ],
   "/yoasobi-music/info/:category?": [
     "Kiotlin"
@@ -2230,10 +2258,6 @@
   "/19lou/:city?": [
     "nczitzk"
   ],
-  "/1lou/:params{.+}?": [
-    "falling",
-    "nczitzk"
-  ],
   "/1point3acres/user/:id/posts": [
     "Maecenas"
   ],
@@ -2342,6 +2366,9 @@
   "/91porn/:lang?": [
     "TonyRL"
   ],
+  "/98zhibo/zuqiujijin": [
+    "chouj"
+  ],
   "/99percentinvisible/transcript": [
     "Ji4n1ng"
   ],
@@ -2357,6 +2384,12 @@
   ],
   "/abc/:category{.+}?": [
     "nczitzk",
+    "pseudoyu"
+  ],
+  "/abc-tenpo/property/:pref?": [
+    "pseudoyu"
+  ],
+  "/abc-tenpo/rent-benchmark/:pref?": [
     "pseudoyu"
   ],
   "/abskoop/nsfw": [
@@ -2377,6 +2410,9 @@
   ],
   "/acfun/article/:categoryId/:sortType?/:timeRange?": [
     "TonyRL"
+  ],
+  "/acfun/user/article/:uid": [
+    "tiaod"
   ],
   "/acfun/user/video/:uid/:embed?": [
     "wdssmq"
@@ -3026,6 +3062,9 @@
   ],
   "/bugzilla/bug/:site/:bugId": [
     "FranklinYu"
+  ],
+  "/bukenavi/object/:region?/:pref?": [
+    "pseudoyu"
   ],
   "/bulianglin/": [
     "cnkmmk"
@@ -4509,22 +4548,6 @@
   "/eventernote/actors/:name/:id": [
     "KTachibanaM"
   ],
-  "/everia/category/:category": [
-    "KTachibanaM",
-    "AiraNadih"
-  ],
-  "/everia/": [
-    "KTachibanaM",
-    "AiraNadih"
-  ],
-  "/everia/search/:keyword": [
-    "KTachibanaM",
-    "AiraNadih"
-  ],
-  "/everia/tag/:tag": [
-    "KTachibanaM",
-    "AiraNadih"
-  ],
   "/expats/czech-news/:category?": [
     "nczitzk"
   ],
@@ -5386,6 +5409,9 @@
   "/ichunqiu/": [
     "8430177"
   ],
+  "/icity/imuseum/:city/:type?": [
+    "chouj"
+  ],
   "/icity/:id": [
     "nczitzk"
   ],
@@ -5512,8 +5538,17 @@
   "/inoreader/rss/:user/:tag": [
     "IvanWng97"
   ],
+  "/inshokuten/bukken/:area?": [
+    "pseudoyu"
+  ],
+  "/inshokuten/rent-benchmark/:area?/:line?": [
+    "pseudoyu"
+  ],
   "/instructables/projects/:category?": [
     "wolfg1969"
+  ],
+  "/inuki-ichiba/rent/:pref?": [
+    "pseudoyu"
   ],
   "/investor/:id{.+}?": [
     "nczitzk"
@@ -5548,6 +5583,12 @@
   ],
   "/iqnew/latest": [
     "nczitzk"
+  ],
+  "/iracing/news": [
+    "canonnizq"
+  ],
+  "/iri-search/estate/:area?": [
+    "pseudoyu"
   ],
   "/itc/collection/:colType": [
     "cnkmmk"
@@ -5605,6 +5646,9 @@
   ],
   "/jbma/report/:filter{.+}?": [
     "nczitzk"
+  ],
+  "/jfnet/industry-report": [
+    "pseudoyu"
   ],
   "/jgsu/jwc": [
     "butten42"
@@ -5711,6 +5755,9 @@
   "/jpxgmn/weekly": [
     "Urabartin"
   ],
+  "/jreast/ridership/:year?": [
+    "pseudoyu"
+  ],
   "/jrj/:channelNum": [
     "p3psi-boo"
   ],
@@ -5774,6 +5821,9 @@
   ],
   "/keepass/": [
     "TonyRL"
+  ],
+  "/keio/ridership": [
+    "pseudoyu"
   ],
   "/kelownacapnews/:type": [
     "hualiong"
@@ -5926,6 +5976,15 @@
   "/letterboxd/:username/watchlist": [
     "johan456789"
   ],
+  "/lg/tokyo/rail-ridership/:table?": [
+    "pseudoyu"
+  ],
+  "/lg/osaka/food-permit": [
+    "pseudoyu"
+  ],
+  "/lg/tokyo/food-permit/:ward?": [
+    "pseudoyu"
+  ],
   "/lhratings/research/:type?": [
     "nczitzk"
   ],
@@ -6062,6 +6121,9 @@
   ],
   "/magnumphotos/magazine": [
     "IvanWng97"
+  ],
+  "/maldita/updates/:category?": [
+    "canonnizq"
   ],
   "/manhuagui/comic/:id/:chapterCnt?": [
     "MegrezZhu"
@@ -6281,6 +6343,9 @@
   ],
   "/naceweb/blog/:sort?": [
     "nczitzk"
+  ],
+  "/namoc/zhanlan": [
+    "magazian"
   ],
   "/nankai/ai/:type?": [
     "LMark"
@@ -6847,6 +6912,9 @@
   ],
   "/odaily/user/:id": [
     "nczitzk"
+  ],
+  "/odakyu/ridership": [
+    "pseudoyu"
   ],
   "/oesw/:path{.+}?": [
     "sk22"
@@ -7989,6 +8057,9 @@
     "hang333",
     "TonyRL"
   ],
+  "/sonomama/property/:pref?": [
+    "pseudoyu"
+  ],
   "/sony/downloads/:productType/:productId": [
     "IvanWng97"
   ],
@@ -8337,6 +8408,15 @@
     "synchrone",
     "pseudoyu"
   ],
+  "/temponw/estates/:area?": [
+    "pseudoyu"
+  ],
+  "/temposmart/estates/:pref?": [
+    "pseudoyu"
+  ],
+  "/tenant-shop/chintai/:pref?/:type?": [
+    "pseudoyu"
+  ],
   "/tencent/pvp/newsindex/:type": [
     "Jeason0228",
     "HenryQW"
@@ -8505,6 +8585,12 @@
   ],
   "/tokeninsight/report/:lang?": [
     "fuergaosi233"
+  ],
+  "/tokyometro/ridership/:year?": [
+    "pseudoyu"
+  ],
+  "/tokyu/ridership/:year?": [
+    "pseudoyu"
   ],
   "/tongli/news/:type": [
     "CokeMine"
@@ -9619,6 +9705,13 @@
   "/18comic/search/:option?/:category?/:keyword?/:time?/:order?": [
     "nczitzk",
     "pseudoyu"
+  ],
+  "/1lou/:params{.+}?": [
+    "falling",
+    "nczitzk"
+  ],
+  "/1lou/search/:params": [
+    "JimenezLi"
   ],
   "/36kr/:category/:subCategory?/:keyword?": [
     "nczitzk",
