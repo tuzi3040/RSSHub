@@ -22672,39 +22672,7 @@ export default {
   "ff14": {
     "routes": {
       "/global/:lang/:type?": {
-        "path": [
-          "/global/:lang/:type?",
-          "/ff14_global/:lang/:type?"
-        ],
-        "categories": [
-          "game"
-        ],
-        "example": "/ff14/global/na/all",
-        "parameters": {
-          "lang": "Region",
-          "type": "Category, `all` by default"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "FINAL FANTASY XIV (The Lodestone)",
-        "maintainers": [
-          "kmod-midori"
-        ],
-        "description": "Region\n\n| North Ameria | Europe | France | Germany | Japan |\n| ------------ | ------ | ------ | ------- | ----- |\n| na           | eu     | fr     | de      | jp    |\n\nCategory\n\n| all | topics | notices | maintenance | updates | status | developers |\n| --- | ------ | ------- | ----------- | ------- | ------ | ---------- |",
-        "location": "ff14-global.ts",
-        "module": () => import('@/routes/ff14/ff14-global.ts')
-      },
-      "/ff14_global/:lang/:type?": {
-        "path": [
-          "/global/:lang/:type?",
-          "/ff14_global/:lang/:type?"
-        ],
+        "path": "/global/:lang/:type?",
         "categories": [
           "game"
         ],
@@ -22730,49 +22698,7 @@ export default {
         "module": () => import('@/routes/ff14/ff14-global.ts')
       },
       "/zh/:type?": {
-        "path": [
-          "/zh/:type?",
-          "/ff14_zh/:type?"
-        ],
-        "categories": [
-          "game"
-        ],
-        "example": "/ff14/zh/news",
-        "parameters": {
-          "type": "分类名，预设为 `all`"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "ff.web.sdo.com/web8/index.html"
-            ],
-            "target": "/zh"
-          }
-        ],
-        "name": "最终幻想 14 国服",
-        "maintainers": [
-          "Kiotlin",
-          "ZeroClad",
-          "15x15G"
-        ],
-        "url": "ff.web.sdo.com/web8/index.html",
-        "description": "| 新闻 | 公告     | 活动   | 广告      | 所有 |\n| ---- | -------- | ------ | --------- | ---- |\n| news | announce | events | advertise | all  |",
-        "location": "ff14-zh.ts",
-        "module": () => import('@/routes/ff14/ff14-zh.ts')
-      },
-      "/ff14_zh/:type?": {
-        "path": [
-          "/zh/:type?",
-          "/ff14_zh/:type?"
-        ],
+        "path": "/zh/:type?",
         "categories": [
           "game"
         ],
@@ -30086,6 +30012,53 @@ export default {
     "apiRoutes": {},
     "name": "30 Seconds of code",
     "url": "www.30secondsofcode.org",
+    "lang": "en"
+  },
+  "35mmc": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "categories": [
+          "picture"
+        ],
+        "view": 0,
+        "example": "/35mmc/5-frames-with",
+        "parameters": {
+          "category": "Category slug, see the table below or the URL of a category page. All posts by default"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.35mmc.com/category/:category",
+              "www.35mmc.com/category/:parent/:category",
+              "www.35mmc.com/"
+            ]
+          }
+        ],
+        "name": "Posts",
+        "maintainers": [
+          "IvanWng97"
+        ],
+        "description": "The official feed only carries excerpts; this route returns the full post with all images.\n\n| Category                      | Slug                              |\n| ----------------------------- | --------------------------------- |\n| 5 frames with...              | `5-frames-with`                   |\n| Gear Reviews & Experiences    | `reviews-experinces`              |\n| Photos & Projects             | `photos-projects`                 |\n| Theory & Reflections          | `theory-reflections`              |\n| Philosophy & Reflections      | `philosophy-reflections`          |\n| News & Events                 | `news-events`                     |\n| One Shot Story                | `one-shot-story`                  |\n| Tutorials & Knowhow           | `tutorials-knowhow`               |\n| Processes, Tutorials & Guides | `tutorials`                       |\n| Learning Journeys             | `learning-journeys`               |\n| Film                          | `film`                            |\n| Lenses                        | `lenses`                          |\n| Gear Theory                   | `gear-theory`                     |\n| Compact Cameras               | `compact-cameras`                 |\n| Point & Shoot                 | `point-shoot-film-camera-reviews` |\n| Rangefinder Cameras           | `rangefinder-cameras`             |\n| SLRs                          | `slrs`                            |\n| Scale Focus                   | `scale-focus-cameras`             |\n| Medium & Large Format         | `medium-format`                   |\n| Digital Cameras               | `digital-cameras`                 |\n| Accessories & More            | `accessories-more`                |\n| Mods, DIY & Lens Adapting     | `lens-adapting-mods`              |",
+        "location": "index.tsx",
+        "module": () => import('@/routes/35mmc/index.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "35mmc",
+    "url": "35mmc.com",
+    "categories": [
+      "picture"
+    ],
+    "description": "Film photography blog: camera and lens reviews, \"5 frames with…\", photo projects and essays.",
     "lang": "en"
   },
   "3dmgame": {
@@ -85241,6 +85214,27 @@ export default {
     "name": "厚生労働省",
     "url": "www.mhlw.go.jp"
   },
+  "mikiki": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/mikiki",
+        "name": "最新記事",
+        "maintainers": [
+          "ashi-koki"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/mikiki/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Mikiki",
+    "url": "mikiki.tokyo.jp",
+    "lang": "ja"
+  },
   "mindmeister": {
     "routes": {
       "/:category?/:language?": {
@@ -94013,6 +94007,27 @@ export default {
     "name": "隆众资讯",
     "url": "oilchem.net",
     "lang": "zh-CN"
+  },
+  "okayafrica": {
+    "routes": {
+      "/music/latest": {
+        "path": "/music/latest",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/okayafrica/music/latest",
+        "name": "Music Latest",
+        "maintainers": [
+          "ashi-koki"
+        ],
+        "location": "music.ts",
+        "module": () => import('@/routes/okayafrica/music.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "OkayAfrica",
+    "url": "www.okayafrica.com",
+    "lang": "en"
   },
   "okx": {
     "routes": {
@@ -109635,6 +109650,60 @@ export default {
     "url": "www.sourceforge.net",
     "lang": "en"
   },
+  "south-plus": {
+    "routes": {
+      "/forum/:fid?": {
+        "path": "/forum/:fid?",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/south-plus/forum/8",
+        "parameters": {
+          "fid": "论坛版块 ID，默认为 8（ACG交流）。可在 thread.php?fid-XXX.html 中找到。常用 fid 见下方说明"
+        },
+        "description": "::: tip 常用版块 ID\n\n| fid | 版块名称 | 需要登录 |\n| --- | -------- | :------: |\n| 48  | 询问求物 |    是    |\n| 8   | ACG 交流 |    否    |\n| 12  | 轻小说   |    是    |\n| 9   | 茶馆     |    是    |\n| 201 | COSPLAY  |    是    |\n| 6   | 游戏资源 |    是    |\n| 5   | 实用漫画 |    是    |\n| 4   | 实用动画 |    是    |\n| 128 | 同人音声 |    是    |\n| 208 | AI 交流  |    是    |\n\n:::\n\n::: tip Cookie 示例\n\n```\neb9e6_winduser=XXXX...XXXX%3D%3D; eb9e6_cknum=YYYY...YYYY%3D; eb9e6_ck_info=%2F%09; cf_clearance=ZZZZ...ZZZZ; eb9e6_lastpos=other; eb9e6_ol_offset=123456; eb9e6_readlog=%2C...; eb9e6_threadlog=%2C...; eb9e6_lastvisit=...; peacemaker=1\n```\n\n`eb9e6_winduser` 和 `eb9e6_cknum` 是必需的认证 cookie，其余可选。\n:::\n\n::: tip UA 说明\nSouth Plus 服务器会校验 Cookie 与浏览器 User-Agent 的绑定关系。Cookie 仅在登录时使用的浏览器版本下有效，不同版本或不同平台的 UA 均会被拒绝。\n\n如需更换 Cookie，请同时设置 `SOUTHPLUS_UA` 为对应浏览器的 UA 字符串。未设置时 RSSHub 会自动生成随机的浏览器 UA。\n\n如果 Cookie 是通过代理获取的，需设置 RSSHub 全局环境变量 `PROXY_URI`（如 `http://host:port`），否则服务器会拒绝认证。\n:::\n:::",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "SOUTHPLUS_COOKIE",
+              "optional": true,
+              "description": "登录 Cookie，格式为分号+空格分隔的 key=value 对。核心字段：eb9e6_winduser（认证令牌）、eb9e6_cknum（会话校验）。从浏览器登录后导出完整 cookie 字符串即可。"
+            },
+            {
+              "name": "SOUTHPLUS_UA",
+              "optional": true,
+              "description": "浏览器 User-Agent，需与获取 Cookie 时使用的浏览器版本完全一致。可从浏览器 F12 → Network → 请求头中复制。未设置时由 RSSHub 自动生成随机浏览器 UA。"
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "south-plus.net/thread.php",
+              "snow-plus.net/thread.php"
+            ],
+            "target": "/forum/:fid"
+          }
+        ],
+        "name": "论坛帖子",
+        "maintainers": [
+          "NicholasYZ"
+        ],
+        "location": "forum.ts",
+        "module": () => import('@/routes/south-plus/forum.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "South Plus",
+    "url": "south-plus.net",
+    "description": "::: tip\nSouth Plus (南 +) 是一个基于 PHPWind 架构的 ACG 综合交流论坛。\n\n部分板块需要登录才能访问，请配置 `SOUTHPLUS_COOKIE` 环境变量。\n\n**获取 Cookie 和 User-Agent 步骤：**\n\n1. 在浏览器中登录 [south-plus.net](https://south-plus.net) 或 [snow-plus.net](https://snow-plus.net)\n2. 确认右上角显示用户名和「退出」链接（而非「登录」）\n3. 按 F12 → **Network**（网络）→ 刷新页面 → 点击任意请求 → **Request Headers**（请求头）\n4. 复制 `Cookie` 字段的完整值（单行，分号 + 空格分隔），设置为 `SOUTHPLUS_COOKIE`\n5. 复制 `User-Agent` 字段的值，设置为 `SOUTHPLUS_UA`（Cookie 与 UA 版本绑定，必须匹配）\n6. 如果 Cookie 是通过代理获取的，需设置 RSSHub 全局环境变量 `PROXY_URI`（如 `http://host:port`）\n\n:::",
+    "lang": "zh-CN"
+  },
   "spankbang": {
     "routes": {
       "/new_videos": {
@@ -115148,7 +115217,7 @@ export default {
           "HenryQW",
           "vbali"
         ],
-        "description": "| Hub         | Hub name            |\n| ----------- | ------------------- |\n|             | All Posts           |\n| android     | Android             |\n| apple       | Apple               |\n| apps        | Apps & Software     |\n| blackberry  | BlackBerry          |\n| culture     | Culture             |\n| gaming      | Gaming              |\n| hd          | HD & Home           |\n| microsoft   | Microsoft           |\n| photography | Photography & Video |\n| policy      | Policy & Law        |\n| web         | Web & Social        |\n\nProvides a better reading experience (full text articles) over the official one.",
+        "description": "| Hub            | Hub name       |\n| -------------- | -------------- |\n|                | All Posts      |\n| amazon         | Amazon         |\n| android        | Android        |\n| apple          | Apple          |\n| apps           | Apps           |\n| blackberry     | BlackBerry     |\n| business       | Business       |\n| creators       | Creators       |\n| culture        | Culture        |\n| entertainment  | Entertainment  |\n| film           | Film           |\n| games          | Gaming         |\n| google         | Google         |\n| health         | Health         |\n| meta           | Meta           |\n| microsoft      | Microsoft      |\n| music          | Music          |\n| policy         | Policy         |\n| reviews        | Reviews        |\n| samsung        | Samsung        |\n| science        | Science        |\n| space          | Space          |\n| streaming      | Streaming      |\n| tech           | Tech           |\n| transportation | Transportation |\n| tv             | TV Shows       |\n| web            | Web            |\n\nProvides a better reading experience (full text articles) over the official one.",
         "location": "index.ts",
         "module": () => import('@/routes/theverge/index.ts')
       }
@@ -149928,6 +149997,14 @@ export default {
         "categories": [
           "programming"
         ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
         "description": "OpenAI Cookbook 提供了大量使用 OpenAI API 的实用指南和示例代码，涵盖了从基础到高级的各种主题，包括 GPT 模型、嵌入、函数调用、微调等。这里汇集了最新的 API 功能介绍和流行的应用案例，是开发者学习和应用 OpenAI 技术的宝贵资源。",
         "maintainers": [
           "liyaozhong"
@@ -149935,11 +150012,12 @@ export default {
         "radar": [
           {
             "source": [
+              "developers.openai.com/cookbook",
               "cookbook.openai.com/"
             ]
           }
         ],
-        "url": "cookbook.openai.com/",
+        "url": "developers.openai.com/cookbook",
         "example": "/openai/cookbook",
         "name": "Cookbook",
         "location": "cookbook.ts",
