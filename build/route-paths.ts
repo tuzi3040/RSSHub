@@ -1107,6 +1107,7 @@ export type RoutePath =
   | `/esquirehk/tag/:id?`
   | `/etherscan/transactions/:address`
   | `/etoland/:bo_table`
+  | `/eurogamer/:category?`
   | `/europapress/:category?`
   | `/europechinese/latest`
   | `/eventbrite/:region/:eventType?/:includePromoted?`
@@ -1808,7 +1809,6 @@ export type RoutePath =
   | `/inspirehep/authors/:id`
   | `/inspirehep/literature/:q`
   | `/instagram/:category/:key`
-  | `/instagram/2/:category/:key`
   | `/instructables/projects/:category?`
   | `/inuki-ichiba/rent/:pref?`
   | `/investor/:id{.+}?`
@@ -2004,6 +2004,7 @@ export type RoutePath =
   | `/kongfz/shop/:id/:cat?`
   | `/konghq/blog-posts`
   | `/koreaherald/:category{.+}?`
+  | `/kosmofoto/:category?`
   | `/kovidgoyal/kitty/changelog`
   | `/koyso/:category?/:sort?`
   | `/kpmg/insights/:lang?`
@@ -3786,7 +3787,7 @@ export type RoutePath =
   | `/youtube/community/:handle`
   | `/youtube/live/:username/:embed?`
   | `/youtube/playlist/:id/:embed?`
-  | `/youtube/streams/:handle/:routeParams?`
+  | `/youtube/shows/:username`
   | `/youtube/subscriptions/:embed?`
   | `/youtube/user/:username/:routeParams?`
   | `/youzan/goods/:id`

@@ -2071,13 +2071,6 @@
     "Max-Tortoise",
     "Rongronggg9"
   ],
-  "/instagram/:category/:key": [
-    "oppilate",
-    "DIYgod"
-  ],
-  "/instagram/2/:category/:key": [
-    "TonyRL"
-  ],
   "/javtrailers/casts/:cast": [
     "TonyRL"
   ],
@@ -4508,6 +4501,9 @@
   "/etoland/:bo_table": [
     "mengx8"
   ],
+  "/eurogamer/:category?": [
+    "mcdp-adk"
+  ],
   "/europapress/:category?": [
     "nczitzk"
   ],
@@ -5864,6 +5860,9 @@
   ],
   "/koreaherald/:category{.+}?": [
     "quiniapiezoelectricity"
+  ],
+  "/kosmofoto/:category?": [
+    "IvanWng97"
   ],
   "/kovidgoyal/kitty/changelog": [
     "xbot"
@@ -11086,6 +11085,9 @@
     "ranpox",
     "xyqfer"
   ],
+  "/instagram/:category/:key": [
+    "TonyRL"
+  ],
   "/jandan/": [
     "lonelykid",
     "nczitzk",
@@ -12440,9 +12442,6 @@
   "/youtube/c/:username/:embed?": [
     "TonyRL"
   ],
-  "/youtube/live/:username/:embed?": [
-    "sussurr127"
-  ],
   "/youtube/charts/:category?/:country?/:embed?": [
     "TonyRL"
   ],
@@ -12453,11 +12452,15 @@
     "DIYgod",
     "pseudoyu"
   ],
+  "/youtube/live/:username/:embed?": [
+    "sussurr127",
+    "ouuan"
+  ],
   "/youtube/playlist/:id/:embed?": [
     "HenryQW"
   ],
-  "/youtube/streams/:handle/:routeParams?": [
-    "ouuan"
+  "/youtube/shows/:username": [
+    "TonyRL"
   ],
   "/youtube/user/:username/:routeParams?": [
     "DIYgod",

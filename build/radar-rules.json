@@ -21276,6 +21276,27 @@
       }
     ]
   },
+  "eurogamer.net": {
+    "_name": "Eurogamer",
+    "www": [
+      {
+        "title": "Articles",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/latest"
+        ],
+        "target": "/eurogamer/"
+      },
+      {
+        "title": "Articles",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/:category"
+        ],
+        "target": "/eurogamer/:category"
+      }
+    ]
+  },
   "blogspot.com": {
     "_name": "歐洲動態（國際）",
     "europechinese": [
@@ -27126,6 +27147,21 @@
           "/:category"
         ],
         "target": "/koreaherald/:category"
+      }
+    ]
+  },
+  "kosmofoto.com": {
+    "_name": "Kosmo Foto",
+    ".": [
+      {
+        "title": "Posts",
+        "docs": "https://docs.rsshub.app/routes/picture",
+        "source": [
+          "/category/:category",
+          "/category/:parent/:category",
+          "/"
+        ],
+        "target": "/kosmofoto/:category?"
       }
     ]
   },
@@ -54673,20 +54709,22 @@
         "target": "/youtube/channel/:id"
       },
       {
-        "title": "Live Streams",
+        "title": "Live",
         "docs": "https://docs.rsshub.app/routes/live",
         "source": [
-          "/@:handle/streams"
+          "/:username/streams",
+          "/channel/:username/streams"
         ],
-        "target": "/youtube/streams/@:handle"
+        "target": "/youtube/live/:username"
       },
       {
-        "title": "Live Streams",
-        "docs": "https://docs.rsshub.app/routes/live",
+        "title": "Shows",
+        "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
-          "/channel/:handle/streams"
+          "/:username/shows",
+          "/channel/:username/shows"
         ],
-        "target": "/youtube/streams/:handle"
+        "target": "/youtube/shows/:username"
       },
       {
         "title": "Channel with user handle",

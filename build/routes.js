@@ -26121,95 +26121,6 @@ export default {
     "description": "::: warning\n反爬严格，需要启用 Playwright。抖音的视频 CDN 会验证 Referer，意味着许多阅读器都无法直接播放内嵌视频，以下是一些变通解决方案：\n\n1. 启用内嵌视频 (`embed=1`), 参考 [通用参数 -> 多媒体处理](/parameter#多媒体处理) 配置 `multimedia_hotlink_template` **或** `wrap_multimedia_in_iframe`。\n2. 关闭内嵌视频 (`embed=0`)，手动点击 `视频直链` 超链接，一般情况下均可成功播放视频。若仍然出现 HTTP 403，请复制 URL 以后到浏览器打开。\n3. 点击原文链接打开抖音网页版的视频详情页播放视频。\n\n:::\n\n额外参数\n\n| 键      | 含义             | 值                     | 默认值  |\n| ------- | ---------------- | ---------------------- | ------- |\n| `embed` | 是否启用内嵌视频 | `0`/`1`/`true`/`false` | `false` |",
     "lang": "zh-CN"
   },
-  "instagram": {
-    "routes": {
-      "/:category/:key": {
-        "path": "/:category/:key",
-        "categories": [
-          "social-media"
-        ],
-        "view": 1,
-        "example": "/instagram/user/stefaniejoosten",
-        "parameters": {
-          "category": {
-            "description": "Feed category",
-            "default": "user",
-            "options": [
-              {
-                "label": "User",
-                "value": "user"
-              },
-              {
-                "label": "Tags",
-                "value": "tags"
-              }
-            ]
-          },
-          "key": "Username / Hashtag name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "IG_PROXY",
-              "optional": true,
-              "description": ""
-            },
-            {
-              "name": "IG_USERNAME",
-              "description": "Instagram username"
-            },
-            {
-              "name": "IG_PASSWORD",
-              "description": "Instagram password, due to [Instagram Private API](https://github.com/dilame/instagram-private-api) restrictions, you have to setup your credentials on the server. 2FA is not supported."
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "User Profile / Hashtag - Private API",
-        "maintainers": [
-          "oppilate",
-          "DIYgod"
-        ],
-        "location": "private-api/index.ts",
-        "module": () => import('@/routes/instagram/private-api/index.ts')
-      },
-      "/2/:category/:key": {
-        "path": "/2/:category/:key",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/instagram/2/user/stefaniejoosten",
-        "parameters": {
-          "category": "Feed category, see table below",
-          "key": "Username / Hashtag name"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "User Profile / Hashtag",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "description": "::: tip\nYou may need to setup cookie for a less restrictive rate limit and private profiles.\n:::\n\n| User timeline | Hashtag |\n| ------------- | ------- |\n| user          | tags    |",
-        "location": "web-api/index.ts",
-        "module": () => import('@/routes/instagram/web-api/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Instagram",
-    "url": "www.instagram.com",
-    "description": "::: tip\nIt's highly recommended to deploy with Redis cache enabled.\n:::",
-    "lang": "en"
-  },
   "javtrailers": {
     "routes": {
       "/casts/:cast": {
@@ -61339,6 +61250,113 @@ export default {
     ],
     "lang": "ko"
   },
+  "eurogamer": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "name": "Articles",
+        "url": "www.eurogamer.net/latest",
+        "maintainers": [
+          "mcdp-adk"
+        ],
+        "example": "/eurogamer",
+        "parameters": {
+          "category": {
+            "description": "Article type. Omit or use `latest` for the latest mix.",
+            "default": "",
+            "options": [
+              {
+                "value": "latest",
+                "label": "Latest"
+              },
+              {
+                "value": "blogs",
+                "label": "blogs"
+              },
+              {
+                "value": "competitions",
+                "label": "competitions"
+              },
+              {
+                "value": "deals",
+                "label": "deals"
+              },
+              {
+                "value": "features",
+                "label": "features"
+              },
+              {
+                "value": "guides",
+                "label": "guides"
+              },
+              {
+                "value": "interviews",
+                "label": "interviews"
+              },
+              {
+                "value": "news",
+                "label": "news"
+              },
+              {
+                "value": "opinions",
+                "label": "opinions"
+              },
+              {
+                "value": "podcasts",
+                "label": "podcasts"
+              },
+              {
+                "value": "previews",
+                "label": "previews"
+              },
+              {
+                "value": "reviews",
+                "label": "reviews"
+              },
+              {
+                "value": "videos",
+                "label": "videos"
+              }
+            ]
+          }
+        },
+        "description": "Eurogamer's official RSS feeds only include excerpts. This route fetches the full article body from each article page.",
+        "categories": [
+          "game"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.eurogamer.net/latest"
+            ],
+            "target": "/"
+          },
+          {
+            "source": [
+              "www.eurogamer.net/:category"
+            ],
+            "target": "/:category"
+          }
+        ],
+        "view": 0,
+        "location": "index.ts",
+        "module": () => import('@/routes/eurogamer/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Eurogamer",
+    "url": "www.eurogamer.net",
+    "lang": "en"
+  },
   "europapress": {
     "routes": {
       "/:category?": {
@@ -78929,6 +78947,53 @@ export default {
     "apiRoutes": {},
     "name": "The Korea Herald",
     "url": "koreaherald.com"
+  },
+  "kosmofoto": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "categories": [
+          "picture"
+        ],
+        "view": 0,
+        "example": "/kosmofoto/news",
+        "parameters": {
+          "category": "Category slug, see the table below or the URL of a category page. All posts by default"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "kosmofoto.com/category/:category",
+              "kosmofoto.com/category/:parent/:category",
+              "kosmofoto.com/"
+            ]
+          }
+        ],
+        "name": "Posts",
+        "maintainers": [
+          "IvanWng97"
+        ],
+        "description": "The official feed only carries excerpts; this route returns the full post with all images.\n\n| Category           | Slug                   |\n| ------------------ | ---------------------- |\n| News               | `news`                 |\n| Film               | `film-2`               |\n| Featured           | `featured`             |\n| Analogue lifestyle | `analogue-lifestyle-2` |\n| Analogue Culture   | `analogue-culture`     |\n| Analogue History   | `analogue-history`     |\n| Camera reviews     | `camera-review-2`      |\n| Classic cameras    | `classic-cameras`      |\n| Vintage cameras    | `vintage-cameras`      |\n| Soviet cameras     | `soviet-cameras`       |\n| Lomography         | `lomography`           |\n| Kosmo Foto Mono    | `kosmo-foto-mono`      |",
+        "location": "index.tsx",
+        "module": () => import('@/routes/kosmofoto/index.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Kosmo Foto",
+    "url": "kosmofoto.com",
+    "categories": [
+      "picture"
+    ],
+    "description": "Film photography news, camera reviews and analogue culture.",
+    "lang": "en"
   },
   "kovidgoyal": {
     "routes": {
@@ -126018,28 +126083,76 @@ export default {
                 "label": "全部"
               },
               {
-                "value": "4",
-                "label": "知行小酒馆"
+                "value": "1",
+                "label": "孟岩专栏"
               },
               {
                 "value": "2",
                 "label": "知行黑板报"
               },
               {
-                "value": "10",
-                "label": "无人知晓"
-              },
-              {
-                "value": "1",
-                "label": "孟岩专栏"
-              },
-              {
                 "value": "3",
                 "label": "知行读书会"
               },
               {
+                "value": "4",
+                "label": "知行小酒馆"
+              },
+              {
+                "value": "5",
+                "label": "保险专栏"
+              },
+              {
+                "value": "6",
+                "label": "知行头条"
+              },
+              {
+                "value": "7",
+                "label": "精选文章"
+              },
+              {
+                "value": "8",
+                "label": "一周新知"
+              },
+              {
+                "value": "9",
+                "label": "一周好想法"
+              },
+              {
+                "value": "10",
+                "label": "无人知晓"
+              },
+              {
                 "value": "11",
-                "label": "你好，同路人"
+                "label": "你好同路人"
+              },
+              {
+                "value": "13",
+                "label": "知行周报"
+              },
+              {
+                "value": "14",
+                "label": "有理有据"
+              },
+              {
+                "value": "15",
+                "label": "Ta 的投资故事"
+              },
+              {
+                "value": "16",
+                "label": "投资 ABC"
+              },
+              {
+                "value": "17",
+                "label": "海外投资Blog"
+              },
+              {
+                "value": "18",
+                "label": "中国大类资产投资年报"
+              },
+              {
+                "value": "19",
+                "label": "夸下海口"
               }
             ],
             "default": "0"
@@ -126068,7 +126181,7 @@ export default {
           "nczitzk"
         ],
         "url": "youzhiyouxing.cn/materials",
-        "description": "| 全部 | 知行小酒馆 | 知行黑板报 | 无人知晓 | 孟岩专栏 | 知行读书会 | 你好，同路人 |\n| :--: | :--------: | :--------: | :------: | :------: | :--------: | :----------: |\n|   0  |      4     |      2     |    10    |     1    |      3     |      11      |",
+        "description": "| 编号 | 栏目 |\n| :--: | :--- |\n| 0 | 全部 |\n| 1 | 孟岩专栏 |\n| 2 | 知行黑板报 |\n| 3 | 知行读书会 |\n| 4 | 知行小酒馆 |\n| 5 | 保险专栏 |\n| 6 | 知行头条 |\n| 7 | 精选文章 |\n| 8 | 一周新知 |\n| 9 | 一周好想法 |\n| 10 | 无人知晓 |\n| 11 | 你好同路人 |\n| 13 | 知行周报 |\n| 14 | 有理有据 |\n| 15 | Ta 的投资故事 |\n| 16 | 投资 ABC |\n| 17 | 海外投资Blog |\n| 18 | 中国大类资产投资年报 |\n| 19 | 夸下海口 |",
         "location": "materials.ts",
         "module": () => import('@/routes/youzhiyouxing/materials.ts')
       }
@@ -146054,6 +146167,47 @@ export default {
     "url": "www.infzm.com",
     "lang": "zh-CN"
   },
+  "instagram": {
+    "routes": {
+      "/:category/:key": {
+        "path": "/:category/:key",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/instagram/user/stefaniejoosten",
+        "parameters": {
+          "category": "Feed category, see table below",
+          "key": "Username / Hashtag name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "INSTAGRAM_COOKIE",
+              "optional": true,
+              "description": "Instagram cookie, only `sessionid` and `ds_user_id` are required."
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "User",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "description": "| User Posts | Current stories | Highlighted stories | Hashtag |\n| ---------- | --------------- | ------------------- | ------- |\n| user       | stories         | highlights          | tags    |\n\nStories, highlights and hashtags require a cookie.",
+        "location": "index.ts",
+        "module": () => import('@/routes/instagram/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Instagram",
+    "url": "www.instagram.com",
+    "description": "::: tip\nIt's highly recommended to deploy with Redis cache enabled.\n:::",
+    "lang": "en"
+  },
   "jandan": {
     "routes": {
       "/": {
@@ -161227,6 +161381,10 @@ export default {
         ],
         "url": "www.czechstepbystep.cz/kategorie/kratke-ceske-zpravy",
         "description": "Short Czech news (Krátké české zprávy) from CzechStepByStep including video, full transcript, online exercises, and worksheets.",
+        "zh": {
+          "name": "捷克语短新闻",
+          "description": "来自 CzechStepByStep 的捷克语短新闻（Krátké české zprávy），包含视频、完整文字记录、在线练习和工作表。"
+        },
         "location": "kratke-ceske-zpravy.ts",
         "module": () => import('@/routes/czechstepbystep/kratke-ceske-zpravy.ts')
       }
@@ -161234,7 +161392,11 @@ export default {
     "apiRoutes": {},
     "name": "CzechStepByStep",
     "url": "www.czechstepbystep.cz",
-    "lang": "cs"
+    "lang": "cs",
+    "zh": {
+      "name": "捷克语学习",
+      "description": "捷克语学习网站，提供短新闻、在线练习与工作表。"
+    }
   },
   "finology": {
     "routes": {
@@ -162474,36 +162636,6 @@ export default {
         "location": "custom.ts",
         "module": () => import('@/routes/youtube/custom.ts')
       },
-      "/live/:username/:embed?": {
-        "path": "/live/:username/:embed?",
-        "categories": [
-          "live"
-        ],
-        "example": "/youtube/live/@GawrGura",
-        "parameters": {
-          "username": "YouTuber id",
-          "embed": "Default to embed the video, set to any value to disable embedding"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "YOUTUBE_KEY",
-              "description": "YouTube API Key (enable YouTube Data API v3), support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/), [YouTube Data API v3](https://console.cloud.google.com/apis/library/youtube.googleapis.com)"
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Live",
-        "maintainers": [
-          "sussurr127"
-        ],
-        "location": "live.ts",
-        "module": () => import('@/routes/youtube/live.ts')
-      },
       "/charts/:category?/:country?/:embed?": {
         "path": "/charts/:category?/:country?/:embed?",
         "categories": [
@@ -162610,6 +162742,35 @@ export default {
         "location": "channel.ts",
         "module": () => import('@/routes/youtube/channel.ts')
       },
+      "/live/:username/:embed?": {
+        "path": "/live/:username/:embed?",
+        "categories": [
+          "live"
+        ],
+        "view": 3,
+        "example": "/youtube/live/@GawrGura",
+        "parameters": {
+          "username": "YouTube handle or channel id",
+          "embed": "Default to embed the video, set to any value to disable embedding"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/:username/streams",
+              "www.youtube.com/channel/:username/streams"
+            ],
+            "target": "/live/:username"
+          }
+        ],
+        "name": "Live",
+        "maintainers": [
+          "sussurr127",
+          "ouuan"
+        ],
+        "description": "::: tip\nEvery stream is categorized as `live`, `upcoming` or `completed`, so a single state can be picked out with the `filter_category` and `filterout_category` [common parameters](https://docs.rsshub.app/guide/parameters#filtering). For example, `/youtube/live/@GawrGura?filterout_category=completed` only tracks streams that are live or about to start.\n:::",
+        "location": "live.ts",
+        "module": () => import('@/routes/youtube/live.ts')
+      },
       "/playlist/:id/:embed?": {
         "path": "/playlist/:id/:embed?",
         "categories": [
@@ -162642,38 +162803,30 @@ export default {
         "location": "playlist.ts",
         "module": () => import('@/routes/youtube/playlist.ts')
       },
-      "/streams/:handle/:routeParams?": {
-        "path": "/streams/:handle/:routeParams?",
+      "/shows/:username": {
+        "path": "/shows/:username",
         "categories": [
-          "live"
+          "social-media"
         ],
-        "view": 3,
-        "example": "/youtube/streams/@GawrGura",
+        "example": "/youtube/shows/@LinusTechTips",
         "parameters": {
-          "handle": "YouTube handle or channel id",
-          "routeParams": "Extra parameters, see the table below"
+          "username": "YouTube handle or channel id"
         },
         "radar": [
           {
             "source": [
-              "www.youtube.com/@:handle/streams"
+              "www.youtube.com/:username/shows",
+              "www.youtube.com/channel/:username/shows"
             ],
-            "target": "/streams/@:handle"
-          },
-          {
-            "source": [
-              "www.youtube.com/channel/:handle/streams"
-            ],
-            "target": "/streams/:handle"
+            "target": "/shows/:username"
           }
         ],
-        "name": "Live Streams",
+        "name": "Shows",
         "maintainers": [
-          "ouuan"
+          "TonyRL"
         ],
-        "description": "::: tip Parameter\n\n| Name               | Description                                                                                 | Default |\n| ------------------ | ------------------------------------------------------------------------------------------- | ------- |\n| embed              | Whether to embed the video, fill in any value to disable embedding                          | embed   |\n| includeDescription | Whether to include the description of each stream, fill in any truthy value to include them | false   |\n\n:::\n\n::: tip\nUnlike [Live](#youtube-live), this route reads the channel's Live tab, so it also covers scheduled and finished streams, and it does not require an API key.\n\nEvery stream is categorized as `live`, `upcoming` or `completed`, so a single state can be picked out with the `filter_category` and `filterout_category` [common parameters](https://docs.rsshub.app/guide/parameters#filtering). For example, `/youtube/streams/@GawrGura?filterout_category=completed` only tracks streams that are live or about to start.\n\nThe Live tab does not carry the stream descriptions, so `includeDescription` costs one extra request per stream and is off by default.\n:::",
-        "location": "streams.ts",
-        "module": () => import('@/routes/youtube/streams.ts')
+        "location": "shows.ts",
+        "module": () => import('@/routes/youtube/shows.ts')
       },
       "/user/:username/:routeParams?": {
         "path": "/user/:username/:routeParams?",
