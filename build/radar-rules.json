@@ -4864,6 +4864,28 @@
       }
     ]
   },
+  "facebook.com": {
+    "_name": "Facebook",
+    "www": [
+      {
+        "title": "Group",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/groups/:id"
+        ],
+        "target": "/facebook/group/:id"
+      },
+      {
+        "title": "Page / Profile",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:id",
+          "/people/:name/:id"
+        ],
+        "target": "/facebook/page/:id"
+      }
+    ]
+  },
   "fantia.jp": {
     "_name": "Fantia",
     ".": [
@@ -5406,6 +5428,20 @@
           "/subscriptions/images"
         ],
         "target": "/iwara/subscriptions"
+      }
+    ]
+  },
+  "ixigua.com": {
+    "_name": "西瓜视频",
+    ".": [
+      {
+        "title": "用户视频投稿",
+        "docs": "https://docs.rsshub.app/routes/multimedia",
+        "source": [
+          "/home/:uid",
+          "/user/:uid"
+        ],
+        "target": "/ixigua/user/video/:uid"
       }
     ]
   },
@@ -21495,19 +21531,6 @@
       }
     ]
   },
-  "facebook.com": {
-    "_name": "Facebook",
-    "www": [
-      {
-        "title": "Page",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/:id"
-        ],
-        "target": "/facebook/page/:id"
-      }
-    ]
-  },
   "famitsu.com": {
     "_name": "ファミ通",
     "www": [
@@ -26256,19 +26279,6 @@
           "/zxxw/"
         ],
         "target": "/itsec/news"
-      }
-    ]
-  },
-  "ixigua.com": {
-    "_name": "西瓜视频",
-    ".": [
-      {
-        "title": "用户视频投稿",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/home/:uid"
-        ],
-        "target": "/ixigua/user/video/:uid"
       }
     ]
   },
@@ -39566,7 +39576,7 @@
         "target": "/smzdm/baoliao/:uid"
       }
     ],
-    "post": [
+    "www": [
       {
         "title": "好文分类",
         "docs": "https://docs.rsshub.app/routes/shopping",

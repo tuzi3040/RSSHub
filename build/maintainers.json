@@ -1353,6 +1353,12 @@
     "KTachibanaM",
     "AiraNadih"
   ],
+  "/facebook/group/:id": [
+    "TonyRL"
+  ],
+  "/facebook/page/:id": [
+    "TonyRL"
+  ],
   "/fantia/search/:type?/:caty?/:period?/:order?/:rating?/:keyword?": [
     "nczitzk"
   ],
@@ -1444,6 +1450,11 @@
   ],
   "/iwara/subscriptions": [
     "FeCCC"
+  ],
+  "/ixigua/user/video/:uid/:disableEmbed?": [
+    "FlashWingShadow",
+    "Fatpandac",
+    "pseudoyu"
   ],
   "/javtrailers/casts/:cast": [
     "TonyRL"
@@ -1615,6 +1626,9 @@
   ],
   "/rockstargames/newswire": [
     "dapexyz"
+  ],
+  "/romielf/news/:tagId?": [
+    "TonyRL"
   ],
   "/sctv/programme/:id?/:limit?/:isFull?": [
     "nczitzk"
@@ -4528,9 +4542,6 @@
   "/f95zone/thread/:thread": [
     "wsmbsbbz"
   ],
-  "/facebook/page/:id": [
-    "TonyRL"
-  ],
   "/famitsu/category/:category?": [
     "TonyRL"
   ],
@@ -5603,11 +5614,6 @@
   ],
   "/itsec/news": [
     "ch3n4y"
-  ],
-  "/ixigua/user/video/:uid/:disableEmbed?": [
-    "FlashWingShadow",
-    "Fatpandac",
-    "pseudoyu"
   ],
   "/j-test/news": [
     "kuhahku"
@@ -8009,7 +8015,7 @@
   "/smzdm/baoliao/:uid": [
     "nczitzk"
   ],
-  "/smzdm/haowen/fenlei/:name/:sort?": [
+  "/smzdm/haowen/fenlei/:name": [
     "LogicJake"
   ],
   "/smzdm/haowen/:day?": [
