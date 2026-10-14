@@ -104599,6 +104599,37 @@ export default {
     "url": "readhub.cn",
     "lang": "zh-CN"
   },
+  "reinet": {
+    "routes": {
+      "/publications": {
+        "path": "/publications",
+        "name": "公表資料・刊行物",
+        "categories": [
+          "finance"
+        ],
+        "example": "/reinet/publications",
+        "maintainers": [
+          "pentaoa"
+        ],
+        "description": "The latest 20 published reports, publication announcements, and columns from the Japan Real Estate Institute, including links to public PDF reports. Use the common limit parameter to change the number of entries.",
+        "radar": [
+          {
+            "source": [
+              "www.reinet.or.jp/publications/",
+              "www.reinet.or.jp/visitors-report.html"
+            ],
+            "target": "/publications"
+          }
+        ],
+        "location": "publications.ts",
+        "module": () => import('@/routes/reinet/publications.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "日本不動産研究所",
+    "url": "www.reinet.or.jp",
+    "lang": "ja"
+  },
   "rescuetime": {
     "routes": {
       "/release-notes/:os?": {
@@ -121475,6 +121506,35 @@ export default {
     "url": "v2ex.com",
     "lang": "zh-CN"
   },
+  "vb-audio": {
+    "routes": {
+      "/voicemeeter/changelog": {
+        "path": "/voicemeeter/changelog",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/vb-audio/voicemeeter/changelog",
+        "radar": [
+          {
+            "source": [
+              "forum.vb-audio.com/viewtopic.php"
+            ]
+          }
+        ],
+        "name": "Voicemeeter Version History",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "forum.vb-audio.com/viewtopic.php?t=498",
+        "location": "voicemeeter-changelog.ts",
+        "module": () => import('@/routes/vb-audio/voicemeeter-changelog.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "VB-Audio",
+    "url": "forum.vb-audio.com",
+    "lang": "en"
+  },
   "verfghbw": {
     "routes": {
       "/press": {
@@ -134112,6 +134172,14 @@ export default {
           "supportPodcast": false,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "space.bilibili.com/:uid/lists/:sid"
+            ],
+            "target": "/user/channel/:uid/:sid"
+          }
+        ],
         "name": "UP 主频道的视频列表",
         "maintainers": [
           "weirongxu"
@@ -134140,6 +134208,14 @@ export default {
           "supportPodcast": false,
           "supportScihub": false
         },
+        "radar": [
+          {
+            "source": [
+              "space.bilibili.com/:uid/lists/:sid"
+            ],
+            "target": "/user/collection/:uid/:sid"
+          }
+        ],
         "name": "UP 主频道的合集",
         "maintainers": [
           "shininome",
@@ -162938,30 +163014,6 @@ export default {
         "location": "author.ts",
         "module": () => import('@/routes/yahoo/author.ts')
       },
-      "/finance/:topic?": {
-        "path": "/finance/:topic?",
-        "example": "/yahoo/finance/latest-news",
-        "name": "Finance news",
-        "categories": [
-          "finance"
-        ],
-        "maintainers": [
-          "DIYgod"
-        ],
-        "parameters": {
-          "topic": "Topic slug from the Yahoo Finance URL, defaults to latest-news."
-        },
-        "radar": [
-          {
-            "source": [
-              "finance.yahoo.com/topic/:topic"
-            ],
-            "target": "/finance/:topic"
-          }
-        ],
-        "location": "finance.ts",
-        "module": () => import('@/routes/yahoo/finance.ts')
-      },
       "/gaming": {
         "path": "/gaming",
         "categories": [
@@ -163006,6 +163058,54 @@ export default {
         ],
         "location": "news/publisher.tsx",
         "module": () => import('@/routes/yahoo/news/publisher.tsx')
+      },
+      "/finance/hk/:topic?": {
+        "path": "/finance/hk/:topic?",
+        "example": "/yahoo/finance/hk/latest-news",
+        "name": "Finance news (Hong Kong)",
+        "categories": [
+          "finance"
+        ],
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "parameters": {
+          "topic": "Topic slug from the Yahoo Finance Hong Kong URL, defaults to latest-news."
+        },
+        "radar": [
+          {
+            "source": [
+              "hk.finance.yahoo.com/topic/:topic"
+            ],
+            "target": "/finance/hk/:topic"
+          }
+        ],
+        "location": "finance-hk.ts",
+        "module": () => import('@/routes/yahoo/finance-hk.ts')
+      },
+      "/finance/:topic?": {
+        "path": "/finance/:topic?",
+        "example": "/yahoo/finance/latest-news",
+        "name": "Finance news",
+        "categories": [
+          "finance"
+        ],
+        "maintainers": [
+          "DIYgod"
+        ],
+        "parameters": {
+          "topic": "Topic slug from the Yahoo Finance URL, defaults to latest-news."
+        },
+        "radar": [
+          {
+            "source": [
+              "finance.yahoo.com/topic/:topic"
+            ],
+            "target": "/finance/:topic"
+          }
+        ],
+        "location": "finance.ts",
+        "module": () => import('@/routes/yahoo/finance.ts')
       },
       "/news/:region/:category?": {
         "path": "/news/:region/:category?",
