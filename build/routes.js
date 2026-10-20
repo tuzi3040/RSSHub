@@ -16859,6 +16859,64 @@ export default {
   },
   "nanhua": {
     "routes": {
+      "/index-research/:category?": {
+        "path": "/index-research/:category?",
+        "categories": [
+          "finance"
+        ],
+        "example": "/nanhua/index-research/daily",
+        "parameters": {
+          "category": {
+            "description": "报告类型",
+            "default": "daily",
+            "options": [
+              {
+                "value": "daily",
+                "label": "指数日报"
+              },
+              {
+                "value": "weekly",
+                "label": "指数周报"
+              },
+              {
+                "value": "quarterly",
+                "label": "指数季报"
+              }
+            ]
+          }
+        },
+        "radar": [
+          {
+            "title": "指数日报",
+            "source": [
+              "www.nanhua.net/subpage/research/nawaaindex/indexresearch/index-daily.html"
+            ],
+            "target": "/index-research/daily"
+          },
+          {
+            "title": "指数周报",
+            "source": [
+              "www.nanhua.net/subpage/research/nawaaindex/indexresearch/index-weekly.html"
+            ],
+            "target": "/index-research/weekly"
+          },
+          {
+            "title": "指数季报",
+            "source": [
+              "www.nanhua.net/subpage/research/nawaaindex/indexresearch/seminar.html"
+            ],
+            "target": "/index-research/quarterly"
+          }
+        ],
+        "name": "南华指数研究",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "url": "www.nanhua.net/subpage/research/nawaaindex/indexresearch/index-daily.html",
+        "description": "报告正文为 PDF，条目链接直接指向 PDF 文件。",
+        "location": "index-research.ts",
+        "module": () => import('@/routes/nanhua/index-research.ts')
+      },
       "/report/:type1/:type2": {
         "path": "/report/:type1/:type2",
         "categories": [
@@ -81595,6 +81653,84 @@ export default {
     "url": "www.lovelive-anime.jp",
     "lang": "ja"
   },
+  "lowendtalk": {
+    "routes": {
+      "/discussion/:id": {
+        "path": "/discussion/:id",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/lowendtalk/discussion/168480",
+        "parameters": {
+          "id": "Discussion id, can be found in the URL"
+        },
+        "radar": [
+          {
+            "source": [
+              "lowendtalk.com/discussion/:id/*",
+              "lowendtalk.com/discussion/:id"
+            ]
+          }
+        ],
+        "name": "Discussion",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "lowendtalk.com",
+        "location": "discussion.ts",
+        "module": () => import('@/routes/lowendtalk/discussion.ts')
+      },
+      "/profile/:type/:username": {
+        "path": "/profile/:type/:username",
+        "categories": [
+          "bbs"
+        ],
+        "example": "/lowendtalk/profile/discussions/Ikoula",
+        "parameters": {
+          "type": {
+            "description": "Content type",
+            "options": [
+              {
+                "value": "discussions",
+                "label": "Discussions"
+              },
+              {
+                "value": "comments",
+                "label": "Comments"
+              }
+            ]
+          },
+          "username": "Username, can be found in the profile URL"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "LOWENDTALK_COOKIE",
+              "description": "The `Cookie` header of a logged-in session. Profile pages are only visible to signed-in users."
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "lowendtalk.com/profile/:type/:username"
+            ]
+          }
+        ],
+        "name": "User Discussions / Comments",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "lowendtalk.com",
+        "location": "profile.ts",
+        "module": () => import('@/routes/lowendtalk/profile.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "LowEndTalk",
+    "url": "lowendtalk.com",
+    "lang": "en"
+  },
   "lrepacks": {
     "routes": {
       "/:category?": {
@@ -104234,6 +104370,31 @@ export default {
   },
   "reuters": {
     "routes": {
+      "/my-news": {
+        "path": "/my-news",
+        "categories": [
+          "traditional-media"
+        ],
+        "view": 0,
+        "example": "/reuters/my-news",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "REUTERS_AUTH_TOKEN",
+              "optional": false,
+              "description": "Sign in to Reuters and open Browser Devtools to find `rt_token` from Local Storage."
+            }
+          ],
+          "requirePuppeteer": false
+        },
+        "name": "My News",
+        "maintainers": [
+          "dzx-dzx"
+        ],
+        "description": "The first page of the configured Reuters account's personalized My News feed. Requires a self-hosted instance with `REUTERS_AUTH_TOKEN` configured.",
+        "location": "my-news.ts",
+        "module": () => import('@/routes/reuters/my-news.ts')
+      },
       "/:category/:topic?": {
         "path": "/:category/:topic?",
         "categories": [
@@ -115851,7 +116012,7 @@ export default {
           "synchrone",
           "pseudoyu"
         ],
-        "description": "::: tip\nDue to Telegram restrictions, some channels involving pornography, copyright, and politics cannot be subscribed. You can confirm by visiting `https://t.me/s/:username`, it's recommended to deploy your own instance with telegram api configs (create your telegram application via `https://core.telegram.org/api/obtaining_api_id`, run this command `node ./lib/routes/telegram/scripts/get-telegram-session.mjs` to get `TELEGRAM_SESSION` and set it as Environment Variable).\nMTProto connections can use a SOCKS4/5 `PROXY_URI` (for example, `socks5://127.0.0.1:1080`) or the dedicated `TELEGRAM_PROXY_HOST`, `TELEGRAM_PROXY_PORT`, and `TELEGRAM_PROXY_SECRET` MTProxy settings, which take precedence. HTTP proxies only apply to the public web feed; use a SOCKS or MTProxy endpoint for authenticated MTProto feeds.\n\nWhen a reverse proxy removes a public URL prefix (for example, `/rss`), set its `X-Forwarded-Prefix` request header to that prefix so Telegram media links include it. Access-control `key` and `code` parameters are preserved in these media links.\n:::",
+        "description": "::: tip\nDue to Telegram restrictions, some channels involving pornography, copyright, and politics cannot be subscribed. You can confirm by visiting `https://t.me/s/:username`, it's recommended to deploy your own instance with telegram api configs (create your telegram application via `https://core.telegram.org/api/obtaining_api_id`, run this command `node ./lib/routes/telegram/scripts/get-telegram-session.mjs` to get `TELEGRAM_SESSION` and set it as Environment Variable).\nMTProto connections can use a SOCKS4/5 `PROXY_URI` (for example, `socks5://127.0.0.1:1080`) or the dedicated `TELEGRAM_PROXY_HOST`, `TELEGRAM_PROXY_PORT`, and `TELEGRAM_PROXY_SECRET` MTProxy settings, which take precedence. HTTP proxies only apply to the public web feed; use a SOCKS or MTProxy endpoint for authenticated MTProto feeds.\nWhen MTProto fails or gives no response within `REQUEST_TIMEOUT`, the route falls back to the public web feed. Cloudflare Workers deployments always use the public web feed.\n\nWhen a reverse proxy removes a public URL prefix (for example, `/rss`), set its `X-Forwarded-Prefix` request header to that prefix so Telegram media links include it. Access-control `key` and `code` parameters are preserved in these media links.\n:::",
         "location": "channel.ts",
         "module": () => import('@/routes/telegram/channel.ts')
       }

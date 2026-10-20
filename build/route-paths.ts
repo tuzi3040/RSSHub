@@ -2176,6 +2176,8 @@ export type RoutePath =
   | `/loongarch/post/:type?`
   | `/lorientlejour/:category?`
   | `/lovelive-anime/news/:abbr?/:category?/:option?`
+  | `/lowendtalk/discussion/:id`
+  | `/lowendtalk/profile/:type/:username`
   | `/lrepacks/:category?`
   | `/lsnu/jiaowc/tzgg/:category?`
   | `/ltaaa/article`
@@ -2377,6 +2379,7 @@ export type RoutePath =
   | `/mysql/release/:version?`
   | `/naceweb/blog/:sort?`
   | `/namoc/zhanlan`
+  | `/nanhua/index-research/:category?`
   | `/nanhua/report/:type1/:type2`
   | `/nankai/ai/:type?`
   | `/nankai/cc/:type?`
@@ -2911,6 +2914,7 @@ export type RoutePath =
   | `/resonac/products`
   | `/reuters/:category/:topic?`
   | `/reuters/investigates`
+  | `/reuters/my-news`
   | `/rfa/:language?/:channel?/:subChannel?`
   | `/rfi/:path{.+}?`
   | `/right/forum/:id?`
