@@ -8017,6 +8017,36 @@ export default {
     "url": "hashnode.dev",
     "lang": "en"
   },
+  "hn.plus": {
+    "routes": {
+      "/konek/newest": {
+        "path": "/konek/newest",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/hn.plus/konek/newest",
+        "name": "Deep Web Konek - Newest posts",
+        "maintainers": [
+          "TungHaHuy"
+        ],
+        "radar": [
+          {
+            "source": [
+              "konek.hn.plus/newest"
+            ],
+            "target": "/konek/newest"
+          }
+        ],
+        "url": "konek.hn.plus/newest",
+        "location": "newest.ts",
+        "module": () => import('@/routes/hn.plus/newest.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "HN+",
+    "url": "hn.plus",
+    "lang": "en"
+  },
   "hnu": {
     "routes": {
       "/careers": {
@@ -13672,6 +13702,56 @@ export default {
     "name": "華視",
     "url": "news.cts.com.tw",
     "lang": "zh-TW"
+  },
+  "cum.st": {
+    "routes": {
+      "/:service?/:id?/:type?": {
+        "path": "/:service?/:id?/:type?",
+        "categories": [
+          "multimedia"
+        ],
+        "example": "/cum.st/posts",
+        "parameters": {
+          "service": "Platform (`onlyfans`, `fansly`, or `patreon`), or `posts` / `dms` for the latest posts / DMs across all creators (defaults to `posts`)",
+          "id": "Creator ID from the creator URL; required when a platform is specified",
+          "type": "Use `dms` for the creator’s DMs; defaults to posts"
+        },
+        "features": {
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "cum.st/posts"
+            ],
+            "target": "/posts"
+          },
+          {
+            "source": [
+              "cum.st/dms"
+            ],
+            "target": "/dms"
+          },
+          {
+            "source": [
+              "cum.st/creators/:service/:id"
+            ],
+            "target": "/:service/:id"
+          }
+        ],
+        "name": "Posts and DMs",
+        "maintainers": [
+          "gekangen"
+        ],
+        "description": "Sources\n\n| Latest posts | Latest DMs | OnlyFans creator | Fansly creator | Patreon creator |\n| ------------ | ---------- | ---------------- | -------------- | --------------- |\n| posts        | dms        | onlyfans         | fansly         | patreon         |\n\n::: tip\nWhen **service** is `posts` or `dms`, **id** is not used. For a creator, use `/cum.st/onlyfans/CREATOR_ID` for posts or `/cum.st/onlyfans/CREATOR_ID/dms` for DMs. Replace `onlyfans` with `fansly` or `patreon` for other creators. Available images are included in the feed entries.\n:::",
+        "location": "index.ts",
+        "module": () => import('@/routes/cum.st/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "OnlyHeaven",
+    "url": "cum.st",
+    "lang": "en"
   },
   "dahecube": {
     "routes": {
@@ -60705,6 +60785,92 @@ export default {
     ],
     "lang": "en"
   },
+  "game-wisdom": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "name": "Articles",
+        "url": "game-wisdom.com",
+        "maintainers": [
+          "mcdp-adk"
+        ],
+        "example": "/game-wisdom",
+        "parameters": {
+          "category": {
+            "description": "Category. Omit for the latest articles.",
+            "options": [
+              {
+                "value": "analysis",
+                "label": "Analysis"
+              },
+              {
+                "value": "critical",
+                "label": "Critical Pieces"
+              },
+              {
+                "value": "general",
+                "label": "General"
+              },
+              {
+                "value": "guest",
+                "label": "Guest Pieces"
+              },
+              {
+                "value": "podcast",
+                "label": "Podcast"
+              },
+              {
+                "value": "series",
+                "label": "Series"
+              },
+              {
+                "value": "spotlight",
+                "label": "Spotlight"
+              },
+              {
+                "value": "videos",
+                "label": "Videos"
+              }
+            ]
+          }
+        },
+        "description": "Game Wisdom's official RSS feeds only include excerpts. This route fetches the full article body from each article page.",
+        "categories": [
+          "game"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "game-wisdom.com/"
+            ],
+            "target": "/"
+          },
+          {
+            "source": [
+              "game-wisdom.com/category/:category"
+            ],
+            "target": "/:category"
+          }
+        ],
+        "view": 0,
+        "location": "index.ts",
+        "module": () => import('@/routes/game-wisdom/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Game Wisdom",
+    "url": "game-wisdom.com",
+    "lang": "en"
+  },
   "gameapps": {
     "routes": {
       "/": {
@@ -65439,8 +65605,8 @@ export default {
   },
   "hackernews": {
     "routes": {
-      "/:section?/:type?/:value?": {
-        "path": "/:section?/:type?/:value?",
+      "/:section?/:type?/:value?/:minComments?": {
+        "path": "/:section?/:type?/:value?/:minComments?",
         "categories": [
           "programming"
         ],
@@ -65454,7 +65620,10 @@ export default {
             "description": "Content format, default to `sources`. `sources` links to original articles, `comments` fetches full comment threads, `comments_list` shows parent story with single comment"
           },
           "value": {
-            "description": "For `threads`/`submitted` sections, set user ID. For `over` section, set minimum points threshold (default 100). For other sections, appended as `?id=<value>` (e.g. `value=dang` → `?id=dang`)"
+            "description": "For `threads`/`submitted` sections, set user ID. For `over` section, set minimum points threshold (default 100). For other sections, appended as `?id=<value>` (e.g. `value=dang` → `?id=dang`). In story-listing sections (`index`, `best`, `front`, `active`, `newest`, `ask`, `show`, `shownew`, `asknew`, `noobstories`, `pool`, `classic`, `launches`, `news`, `invited`), a purely numeric value acts as minimum comment count instead (same as `minComments`)"
+          },
+          "minComments": {
+            "description": "Minimum comment count, items below it are filtered out. Works with any story-listing section, e.g. `/hackernews/over/sources/100/10`. For sections where `value` is unused (`index`, `best`, `front`, `active`, `newest`, `ask`, `show`, `shownew`, `asknew`, `noobstories`, `pool`, `classic`, `launches`, `news`, `invited`), the number may be placed in `value` instead, e.g. `/hackernews/index/sources/10`. Ignored on sections without story comment counts (`jobs`, `threads`, `newcomments`, `bestcomments`, `noobcomments`, `highlights`)"
           }
         },
         "features": {
@@ -65526,7 +65695,7 @@ export default {
           "nczitzk",
           "xie-dongping"
         ],
-        "description": "Subscribe to Hacker News content by section, user, or minimum points\n\nExamples:\n\n| HN100              | User submitted                       | User threads                       | Comments list                            |\n| ------------------ | ------------------------------------ | ---------------------------------- | ---------------------------------------- |\n| `/hackernews/over` | `/hackernews/submitted/sources/dang` | `/hackernews/threads/sources/dang` | `/hackernews/threads/comments_list/dang` |",
+        "description": "Subscribe to Hacker News content by section, user, minimum points, or minimum comments\n\nExamples:\n\n| HN100              | User submitted                       | User threads                       | Comments list                            | Min comments                   |\n| ------------------ | ------------------------------------ | ---------------------------------- | ---------------------------------------- | ------------------------------ |\n| `/hackernews/over` | `/hackernews/submitted/sources/dang` | `/hackernews/threads/sources/dang` | `/hackernews/threads/comments_list/dang` | `/hackernews/index/sources/10` |",
         "location": "index.ts",
         "module": () => import('@/routes/hackernews/index.ts')
       }
@@ -68501,6 +68670,65 @@ export default {
         ],
         "location": "index.ts",
         "module": () => import('@/routes/hotukdeals/index.ts')
+      },
+      "/tag/:tag/:sort?": {
+        "path": "/tag/:tag/:sort?",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/hotukdeals/tag/flight",
+        "parameters": {
+          "tag": "Tag, can be found in URL, e.g. `flight` for `https://www.hotukdeals.com/tag/flight`",
+          "sort": {
+            "description": "Sort order",
+            "default": "new",
+            "options": [
+              {
+                "value": "new",
+                "label": "Most recent"
+              },
+              {
+                "value": "temp",
+                "label": "Hottest"
+              },
+              {
+                "value": "highest_price",
+                "label": "Highest price"
+              },
+              {
+                "value": "lowest_price",
+                "label": "Lowest price"
+              },
+              {
+                "value": "discussion",
+                "label": "Recently commented"
+              }
+            ]
+          }
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.hotukdeals.com/tag/:tag"
+            ],
+            "target": "/tag/:tag"
+          }
+        ],
+        "name": "Tag",
+        "maintainers": [
+          "zhgqthomas"
+        ],
+        "url": "www.hotukdeals.com",
+        "location": "tag.ts",
+        "module": () => import('@/routes/hotukdeals/tag.ts')
       }
     },
     "apiRoutes": {},
@@ -128410,6 +128638,48 @@ export default {
     "url": "xsijishe.com",
     "lang": "zh-CN"
   },
+  "xsw": {
+    "routes": {
+      "/:bookId": {
+        "path": "/:bookId",
+        "categories": [
+          "reading"
+        ],
+        "example": "/xsw/17301350",
+        "parameters": {
+          "bookId": "书籍编号，见网址如 /17301350/ 中的数字"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "m.xsw.tw/:bookId/"
+            ]
+          }
+        ],
+        "name": "章节目录",
+        "maintainers": [
+          "xbpk3t"
+        ],
+        "location": "index.ts",
+        "module": () => import('@/routes/xsw/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "台湾小说网",
+    "url": "m.xsw.tw",
+    "categories": [
+      "reading"
+    ],
+    "lang": "zh-TW"
+  },
   "xueqiu": {
     "routes": {
       "/user_stock/:id": {
@@ -131562,6 +131832,102 @@ export default {
     "categories": [
       "university"
     ],
+    "lang": "zh-CN"
+  },
+  "zjnu": {
+    "routes": {
+      "/academic": {
+        "path": "/academic",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/academic",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "学术动态",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "academic/index.ts",
+        "module": () => import('@/routes/zjnu/academic/index.ts')
+      },
+      "/general": {
+        "path": "/general",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/general",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "综合新闻",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "general/index.ts",
+        "module": () => import('@/routes/zjnu/general/index.ts')
+      },
+      "/media": {
+        "path": "/media",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/media",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "媒体视角",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "media/index.ts",
+        "module": () => import('@/routes/zjnu/media/index.ts')
+      },
+      "/news": {
+        "path": "/news",
+        "categories": [
+          "university"
+        ],
+        "example": "/zjnu/news",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "浙师要闻",
+        "maintainers": [
+          "gushen610140"
+        ],
+        "location": "news/index.ts",
+        "module": () => import('@/routes/zjnu/news/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "浙江师范大学",
+    "url": "www.zjnu.edu.cn",
     "lang": "zh-CN"
   },
   "zjol": {
