@@ -783,6 +783,7 @@ export type RoutePath =
   | `/cqwu/news/:type?`
   | `/crac/:type?`
   | `/crac/exam`
+  | `/craigslist/:location/:type/:query?`
   | `/creaders/headline`
   | `/creative-comic/book/:id/:coverOnly?/:quality?`
   | `/crossbell/feeds/following/:characterId`
@@ -2591,6 +2592,7 @@ export type RoutePath =
   | `/nytimes/daily_briefing_chinese`
   | `/nytimes/rss/:cat?`
   | `/nytimes/wirecutter`
+  | `/oaktree/insights`
   | `/obsidian/plugins`
   | `/obsidian/publish/:id`
   | `/obsidian/themes`
@@ -2666,6 +2668,7 @@ export type RoutePath =
   | `/p-articles/section/:section`
   | `/p-bandai/new`
   | `/pacilution/latest`
+  | `/panasonic/firmware`
   | `/panewslab/author/:id`
   | `/panewslab/column/:id`
   | `/panewslab/news`
@@ -3356,6 +3359,7 @@ export type RoutePath =
   | `/tgbus/list/:category`
   | `/the/:filter{.+}?`
   | `/theatlantic/:category`
+  | `/theatlantic/author/:id`
   | `/theblock/category/:category`
   | `/theblockbeats/:channel?/:original?`
   | `/thebrain/blog`

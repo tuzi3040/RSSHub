@@ -3560,6 +3560,9 @@
   "/crac/:type?": [
     "Misaka13514"
   ],
+  "/craigslist/:location/:type/:query?": [
+    "TonyRL"
+  ],
   "/creaders/headline": [
     "nczitzk"
   ],
@@ -6607,6 +6610,9 @@
   "/nytimes/wirecutter": [
     "IvanWng97"
   ],
+  "/oaktree/insights": [
+    "argsno"
+  ],
   "/obsidian/plugins": [
     "DIYgod"
   ],
@@ -6763,6 +6769,9 @@
   ],
   "/pacilution/latest": [
     "PrinOrange"
+  ],
+  "/panasonic/firmware": [
+    "fdkevin0"
   ],
   "/papers/query/:keyword{.+}?": [
     "Muyun99"
@@ -8238,6 +8247,9 @@
   ],
   "/the/:filter{.+}?": [
     "nczitzk",
+    "pseudoyu"
+  ],
+  "/theatlantic/author/:id": [
     "pseudoyu"
   ],
   "/theatlantic/:category": [
