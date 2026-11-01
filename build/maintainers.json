@@ -66,6 +66,9 @@
   "/8264/list/:id?": [
     "nczitzk"
   ],
+  "/10086/b2b/:type?": [
+    "TonyRL"
+  ],
   "/12306/:date/:from/:to/:type?": [
     "Fatpandac"
   ],
@@ -190,6 +193,9 @@
   ],
   "/cowlevel/element/:id": [
     "hoilc"
+  ],
+  "/datalekt/incidents": [
+    "shoeper"
   ],
   "/daum/potplayer/:lang?": [
     "nczitzk"
@@ -1234,12 +1240,6 @@
     "KTachibanaM",
     "AiraNadih"
   ],
-  "/facebook/group/:id": [
-    "TonyRL"
-  ],
-  "/facebook/page/:id": [
-    "TonyRL"
-  ],
   "/fediverse/timeline/:account": [
     "DIYgod",
     "pseudoyu"
@@ -1779,6 +1779,18 @@
   ],
   "/discord/search/:guildId/:routeParams": [
     "NekoAria"
+  ],
+  "/facebook/group/:id": [
+    "TonyRL"
+  ],
+  "/facebook/page/:id": [
+    "TonyRL"
+  ],
+  "/facebook/photos/:id": [
+    "TonyRL"
+  ],
+  "/facebook/reels/:id": [
+    "TonyRL"
   ],
   "/fanbox/:creator": [
     "KarasuShin",
@@ -2573,9 +2585,6 @@
   "/atcoder/post/:language?/:keyword?": [
     "nczitzk"
   ],
-  "/athome/rent-store/:pref/:city": [
-    "pseudoyu"
-  ],
   "/augmentcode/blog": [
     "nczitzk"
   ],
@@ -2941,6 +2950,9 @@
   "/caixinglobal/latest": [
     "TonyRL"
   ],
+  "/calif/research": [
+    "shoeper"
+  ],
   "/camchina/:id?": [
     "nczitzk"
   ],
@@ -3305,6 +3317,9 @@
   ],
   "/cline/blog": [
     "yeshan333"
+  ],
+  "/cloudflare/blog": [
+    "ljh12138164"
   ],
   "/cloudnative/blog": [
     "aneasystone"
@@ -7287,6 +7302,9 @@
   "/resonac/products": [
     "valuex"
   ],
+  "/reuters/investigates": [
+    "LyleLee"
+  ],
   "/reuters/my-news": [
     "dzx-dzx"
   ],
@@ -7297,9 +7315,6 @@
     "black-desk",
     "nczitzk",
     "pseudoyu"
-  ],
-  "/reuters/investigates": [
-    "LyleLee"
   ],
   "/rfa/:language?/:channel?/:subChannel?": [
     "zphw"
@@ -9762,6 +9777,18 @@
   "/asiantolick/tag/:id": [
     "nczitzk"
   ],
+  "/athome/rent-store/:pref/:city": [
+    "pseudoyu"
+  ],
+  "/athome/chintai/:pref/:city": [
+    "pseudoyu"
+  ],
+  "/athome/kodate/chuko/:pref/:city": [
+    "pseudoyu"
+  ],
+  "/athome/mansion/chuko/:pref/:city": [
+    "pseudoyu"
+  ],
   "/bandcamp/live": [
     "nczitzk"
   ],
@@ -11103,6 +11130,15 @@
     "Fatpandac",
     "nczitzk"
   ],
+  "/homes/chintai/:pref/:city": [
+    "pseudoyu"
+  ],
+  "/homes/kodate/chuko/:pref/:city": [
+    "pseudoyu"
+  ],
+  "/homes/mansion/chuko/:pref/:city": [
+    "pseudoyu"
+  ],
   "/hpoi/bannerItem": [
     "DIYgod"
   ],
@@ -11485,6 +11521,18 @@
   ],
   "/line/today/:edition?/:tab?": [
     "nczitzk"
+  ],
+  "/lingowhale/channel/:id": [
+    "TonyRL"
+  ],
+  "/lingowhale/hot/:type?": [
+    "TonyRL"
+  ],
+  "/lingowhale/search/:keyword/:type?": [
+    "TonyRL"
+  ],
+  "/lingowhale/topic/:id": [
+    "TonyRL"
   ],
   "/linkedin/company/:company_id/posts": [
     "saifazmi"
@@ -12096,6 +12144,15 @@
   ],
   "/subhd/zu/:category?": [
     "nczitzk"
+  ],
+  "/suumo/chintai/:pref/:city": [
+    "pseudoyu"
+  ],
+  "/suumo/chukoikkodate/:pref/:city": [
+    "pseudoyu"
+  ],
+  "/suumo/ms/chuko/:pref/:city": [
+    "pseudoyu"
   ],
   "/szftedu/dongtai": [
     "valuex"
