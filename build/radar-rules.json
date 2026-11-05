@@ -199,19 +199,6 @@
       }
     ]
   },
-  "fuliba2023.net": {
-    "_name": "福利吧",
-    ".": [
-      {
-        "title": "最新",
-        "docs": "https://docs.rsshub.app/routes/fuliba",
-        "source": [
-          "/"
-        ],
-        "target": "/fuliba/latest"
-      }
-    ]
-  },
   "7gogo.jp": {
     "_name": "755",
     ".": [
@@ -3132,6 +3119,15 @@
     "_name": "4chan",
     "boards": [
       {
+        "title": "Thread",
+        "docs": "https://docs.rsshub.app/routes/4chan",
+        "source": [
+          "/:board/thread/:threadId",
+          "/:board/thread/:threadId/*"
+        ],
+        "target": "/4chan/:board/thread/:threadId/:routeParams?"
+      },
+      {
         "title": "Board's catalog",
         "docs": "https://docs.rsshub.app/routes/4chan",
         "source": [
@@ -3383,6 +3379,19 @@
           "/profile/:principalId"
         ],
         "target": "/kuaishou/profile/:principalId"
+      }
+    ]
+  },
+  "mi.com": {
+    "_name": "小米",
+    "m": [
+      {
+        "title": "众筹",
+        "docs": "https://docs.rsshub.app/routes/mi",
+        "source": [
+          "/crowdfunding/home"
+        ],
+        "target": "/mi/crowdfunding"
       }
     ]
   },
@@ -4395,19 +4404,6 @@
       }
     ]
   },
-  "mi.com": {
-    "_name": "小米",
-    "m": [
-      {
-        "title": "众筹",
-        "docs": "https://docs.rsshub.app/routes/mi",
-        "source": [
-          "/crowdfunding/home"
-        ],
-        "target": "/mi/crowdfunding"
-      }
-    ]
-  },
   "mymusicfive.com": {
     "_name": "mymusic5 (MyMusicSheet)",
     ".": [
@@ -5215,7 +5211,7 @@
         "target": "/xiaomiyoupin/crowdfunding"
       },
       {
-        "title": "每日上新",
+        "title": "上新",
         "docs": "https://docs.rsshub.app/routes/xiaomiyoupin",
         "source": [
           "/"
@@ -6585,6 +6581,39 @@
           "/"
         ],
         "target": "/utgd/topic"
+      }
+    ]
+  },
+  "viva-la-vita.org": {
+    "_name": "生如夏花论坛",
+    "bbs": [
+      {
+        "title": "精华帖子",
+        "docs": "https://docs.rsshub.app/routes/viva-la-vita",
+        "source": [
+          "/",
+          "/all"
+        ],
+        "target": "/viva-la-vita/featured"
+      },
+      {
+        "title": "热门帖子",
+        "docs": "https://docs.rsshub.app/routes/viva-la-vita",
+        "source": [
+          "/",
+          "/all"
+        ],
+        "target": "/viva-la-vita/hot"
+      },
+      {
+        "title": "最新帖子",
+        "docs": "https://docs.rsshub.app/routes/viva-la-vita",
+        "source": [
+          "/",
+          "/all",
+          "/d/:id"
+        ],
+        "target": "/viva-la-vita/latest"
       }
     ]
   },
@@ -22396,6 +22425,19 @@
       }
     ]
   },
+  "fuliba2023.net": {
+    "_name": "福利吧",
+    ".": [
+      {
+        "title": "最新",
+        "docs": "https://docs.rsshub.app/routes/fuliba",
+        "source": [
+          "/"
+        ],
+        "target": "/fuliba/latest"
+      }
+    ]
+  },
   "funresearch.cn": {
     "_name": "泛研网",
     "www": [
@@ -22963,22 +23005,6 @@
         "target": "/github/notifications"
       },
       {
-        "title": "Organization Event",
-        "docs": "https://docs.rsshub.app/routes/github",
-        "source": [
-          "/orgs/:org"
-        ],
-        "target": "/github/org_event/:org"
-      },
-      {
-        "title": "User's Feed",
-        "docs": "https://docs.rsshub.app/routes/github",
-        "source": [
-          "/:user"
-        ],
-        "target": "/github/feed/:user"
-      },
-      {
         "title": "Repo Pull Requests",
         "docs": "https://docs.rsshub.app/routes/github",
         "source": [
@@ -22987,14 +23013,6 @@
           "/:user/:repo"
         ],
         "target": "/github/pull/:user/:repo"
-      },
-      {
-        "title": "Repository Event",
-        "docs": "https://docs.rsshub.app/routes/github",
-        "source": [
-          "/:owner/:repo"
-        ],
-        "target": "/github/repo_event/:owner/:repo"
       },
       {
         "title": "User Repo",
@@ -23020,6 +23038,30 @@
           "/:user"
         ],
         "target": "/github/starred_repos/:user"
+      },
+      {
+        "title": "Organization Event",
+        "docs": "https://docs.rsshub.app/routes/github",
+        "source": [
+          "/orgs/:org"
+        ],
+        "target": "/github/org_event/:org"
+      },
+      {
+        "title": "User's Feed",
+        "docs": "https://docs.rsshub.app/routes/github",
+        "source": [
+          "/:user"
+        ],
+        "target": "/github/feed/:user"
+      },
+      {
+        "title": "Repository Event",
+        "docs": "https://docs.rsshub.app/routes/github",
+        "source": [
+          "/:owner/:repo"
+        ],
+        "target": "/github/repo_event/:owner/:repo"
       },
       {
         "title": "User Event",
@@ -23216,6 +23258,29 @@
           "/"
         ],
         "target": "/gmcmonline/chinacustoms"
+      }
+    ]
+  },
+  "gmw.cn": {
+    "_name": "光明日报",
+    "epaper": [
+      {
+        "title": "电子版",
+        "docs": "https://docs.rsshub.app/routes/gmrb",
+        "source": [
+          "/gmrb",
+          "/gmrb/html/layout/index.html",
+          "/gmrb/paperindex.htm"
+        ],
+        "target": "/gmrb/paper"
+      },
+      {
+        "title": "电子版",
+        "docs": "https://docs.rsshub.app/routes/gmrb",
+        "source": [
+          "/gmrb/html/layout/:yearMonth/:day/node_:page.html"
+        ],
+        "target": "/gmrb/paper/:page"
       }
     ]
   },
@@ -36405,15 +36470,7 @@
         "title": "政治外交",
         "docs": "https://docs.rsshub.app/routes/nippon",
         "source": [
-          "/cn/sci-tech"
-        ],
-        "target": "/nippon/Science,Technology"
-      },
-      {
-        "title": "政治外交",
-        "docs": "https://docs.rsshub.app/routes/nippon",
-        "source": [
-          "/cn/in-depth"
+          "/cn/insight"
         ],
         "target": "/nippon/In-depth"
       },
@@ -36421,15 +36478,7 @@
         "title": "政治外交",
         "docs": "https://docs.rsshub.app/routes/nippon",
         "source": [
-          "/cn/japan-topics"
-        ],
-        "target": "/nippon/japan-topics"
-      },
-      {
-        "title": "政治外交",
-        "docs": "https://docs.rsshub.app/routes/nippon",
-        "source": [
-          "/cn/japan-data"
+          "/cn/data"
         ],
         "target": "/nippon/japan-data"
       },
@@ -37645,6 +37694,54 @@
           "/419/list.htm"
         ],
         "target": "/nuist/xgc"
+      }
+    ]
+  },
+  "nvidia.com": {
+    "_name": "NVIDIA",
+    "developer": [
+      {
+        "title": "Technical Blog",
+        "docs": "https://docs.rsshub.app/routes/nvidia",
+        "source": [
+          "/blog",
+          "/blog/:slug"
+        ],
+        "target": "/nvidia/developer/en"
+      },
+      {
+        "title": "Technical Blog",
+        "docs": "https://docs.rsshub.app/routes/nvidia",
+        "source": [
+          "/zh-cn/blog",
+          "/zh-cn/blog/:slug"
+        ],
+        "target": "/nvidia/developer/zh-CN"
+      }
+    ],
+    "nvidianews": [
+      {
+        "title": "Newsroom",
+        "docs": "https://docs.rsshub.app/routes/nvidia",
+        "source": [
+          "/",
+          "/news/:slug"
+        ],
+        "target": "/nvidia/newsroom"
+      }
+    ]
+  },
+  "nvidia.cn": {
+    "_name": "NVIDIA",
+    "developer": [
+      {
+        "title": "Technical Blog",
+        "docs": "https://docs.rsshub.app/routes/nvidia",
+        "source": [
+          "/blog",
+          "/blog/:slug"
+        ],
+        "target": "/nvidia/developer/zh-CN"
       }
     ]
   },
@@ -43656,16 +43753,6 @@
   },
   "shopback.com.tw": {
     "_name": "ShopBack",
-    "www": [
-      {
-        "title": "Merchant cashback rates",
-        "docs": "https://docs.rsshub.app/routes/shopback",
-        "source": [
-          "/:store"
-        ],
-        "target": "/shopback/cashback/:store/tw"
-      }
-    ],
     ".": [
       {
         "title": "Store",
@@ -43675,6 +43762,16 @@
           "/"
         ],
         "target": "/shopback/:store"
+      }
+    ],
+    "www": [
+      {
+        "title": "Merchant cashback rates",
+        "docs": "https://docs.rsshub.app/routes/shopback",
+        "source": [
+          "/:store"
+        ],
+        "target": "/shopback/cashback/:store/tw"
       }
     ]
   },
@@ -52395,6 +52492,57 @@
       }
     ]
   },
+  "amd.com": {
+    "_name": "AMD",
+    "newsroom": [
+      {
+        "title": "Newsroom",
+        "docs": "https://docs.rsshub.app/routes/amd",
+        "source": [
+          "/",
+          "/news/:slug"
+        ],
+        "target": "/amd/newsroom"
+      },
+      {
+        "title": "Newsroom",
+        "docs": "https://docs.rsshub.app/routes/amd",
+        "source": [
+          "/category/:category"
+        ],
+        "target": "/amd/newsroom/:category"
+      }
+    ],
+    "www": [
+      {
+        "title": "Newsroom",
+        "docs": "https://docs.rsshub.app/routes/amd",
+        "source": [
+          "/zh-cn/newsroom.html"
+        ],
+        "target": "/amd/newsroom/all/zh-CN"
+      },
+      {
+        "title": "Press Releases",
+        "docs": "https://docs.rsshub.app/routes/amd",
+        "source": [
+          "/zh-cn/newsroom/press-releases/:slug"
+        ],
+        "target": "/amd/press-releases/zh-CN"
+      }
+    ],
+    "ir": [
+      {
+        "title": "Press Releases",
+        "docs": "https://docs.rsshub.app/routes/amd",
+        "source": [
+          "/news-events/press-releases",
+          "/news-events/press-releases/detail/:id/:slug"
+        ],
+        "target": "/amd/press-releases/en"
+      }
+    ]
+  },
   "apnews.com": {
     "_name": "AP News",
     ".": [
@@ -52631,6 +52779,16 @@
           "/discover"
         ],
         "target": "/bandcamp/tag"
+      }
+    ],
+    "daily": [
+      {
+        "title": "Daily",
+        "docs": "https://docs.rsshub.app/routes/bandcamp",
+        "source": [
+          "/latest"
+        ],
+        "target": "/bandcamp/daily"
       }
     ]
   },
@@ -60661,6 +60819,177 @@
           "/xshd.html"
         ],
         "target": "/sjtu/cs/xshd"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 本科生培养 - 国际交流",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bkspy_gjjl.html",
+          "/bkspy_gjjl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bkspy_gjjl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 招生工作",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_zsgz.html",
+          "/bsyjs_zsgz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_zsgz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 学籍管理",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_xjgl.html",
+          "/bsyjs_xjgl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_xjgl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 培养管理",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_pygl.html",
+          "/bsyjs_pygl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_pygl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 学位管理",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_xwgl.html",
+          "/bsyjs_xwgl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_xwgl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 答辩公告",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_dbgg.html",
+          "/bsyjs_dbgg.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_dbgg"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 国际交流",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_gjjl.html",
+          "/bsyjs_gjjl.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_gjjl"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 教师事务",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_jssw.html",
+          "/bsyjs_jssw.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_jssw"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 研究生培养 - 通知公告",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/bsyjs_notice.html",
+          "/bsyjs_notice.html"
+        ],
+        "target": "/sjtu/cs/rcpy/bsyjs_notice"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 微专业培养",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/wzypy.html",
+          "/wzypy.html"
+        ],
+        "target": "/sjtu/cs/rcpy/wzypy"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - PRP 项目",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/jxsj_kcsj_prp.html",
+          "/jxsj_kcsj_prp.html"
+        ],
+        "target": "/sjtu/cs/rcpy/jxsj_kcsj_prp"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - 专业实习",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/jxsj_kcsj_zysx.html",
+          "/jxsj_kcsj_zysx.html"
+        ],
+        "target": "/sjtu/cs/rcpy/jxsj_kcsj_zysx"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 教学实践 - 学生科创组织",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/jxsj_xskczz.html",
+          "/jxsj_xskczz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/jxsj_xskczz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 党建德育",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-djdy.html",
+          "/xsgz-tzgg-djdy.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-djdy"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 团学工作",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-txgz.html",
+          "/xsgz-tzgg-txgz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-txgz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 学生事务",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-xssw.html",
+          "/xsgz-tzgg-xssw.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-xssw"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 职业发展",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-tzgg-zyfz.html",
+          "/xsgz-tzgg-zyfz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-tzgg-zyfz"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 学生事务",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-gzzd-xssw.html",
+          "/xsgz-gzzd-xssw.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-gzzd-xssw"
+      },
+      {
+        "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 职业发展",
+        "docs": "https://docs.rsshub.app/routes/sjtu",
+        "source": [
+          "/xsgz-gzzd-zyfz.html",
+          "/xsgz-gzzd-zyfz.html"
+        ],
+        "target": "/sjtu/cs/rcpy/xsgz-gzzd-zyfz"
       }
     ],
     "gs": [
