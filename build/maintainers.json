@@ -2,6 +2,9 @@
   "/81/81rc/:category{.+}?": [
     "nczitzk"
   ],
+  "/81/jfjb/:page?": [
+    "zhangsan-xyz"
+  ],
   "/121/weatherLive": [
     "nczitzk"
   ],
@@ -473,6 +476,9 @@
   ],
   "/tableau/viz-of-the-day": [
     "KaiyoungYu"
+  ],
+  "/the-decoder/news": [
+    "ljh12138164"
   ],
   "/trendingpapers/papers/:category?/:time?/:cited?": [
     "CookiePieWw"
@@ -965,6 +971,9 @@
   "/yinxubwg/exhibitionIndex/:type": [
     "magazian"
   ],
+  "/zagg/new-arrivals/:query?": [
+    "IvanWng97"
+  ],
   "/zaozao/article/:type?": [
     "shaomingbo"
   ],
@@ -1326,6 +1335,9 @@
   "/inspirehep/authors/:id": [
     "TonyRL"
   ],
+  "/instagram/:category/:key": [
+    "TonyRL"
+  ],
   "/iwara/users/:username/:type?": [
     "Fatpandac"
   ],
@@ -1536,13 +1548,13 @@
     "TonyRL"
   ],
   "/skebetter/illust/:type": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/skebetter/:type": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/skebetter/manga/:order": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/sorrycc/": [
     "KarasuShin"
@@ -1930,7 +1942,7 @@
   ],
   "/misskey/users/notes/:username/:routeParams?": [
     "siygle",
-    "SnowAgar25",
+    "Tsuyumi25",
     "HanaokaYuzu"
   ],
   "/myfans/user/:username": [
@@ -2000,22 +2012,22 @@
     "ocleo1"
   ],
   "/skeb/:category": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/skeb/search/:keyword": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/skeb/works/:username": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/skeb/following_creators/:username": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/skeb/following_works/:username": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/skeb/friend_works/:username": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/techflowpost/express": [
     "nczitzk"
@@ -3113,6 +3125,9 @@
   "/ce/district/:category?": [
     "cscnk52"
   ],
+  "/ce/paper/:page?": [
+    "zhangsan-xyz"
+  ],
   "/cebbank/quotation/all": [
     "linbuxiao"
   ],
@@ -3410,7 +3425,8 @@
     "nczitzk"
   ],
   "/cntheory/paper/:id?": [
-    "nczitzk"
+    "nczitzk",
+    "zhangsan-xyz"
   ],
   "/cnu/iec": [
     "liueic"
@@ -5560,6 +5576,9 @@
   "/keio/ridership": [
     "pseudoyu"
   ],
+  "/keke.app/:category?": [
+    "TonyRL"
+  ],
   "/kelownacapnews/:type": [
     "hualiong"
   ],
@@ -6954,7 +6973,7 @@
     "nczitzk"
   ],
   "/pixivision/:lang/:category?": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/piyao/jrpy": [
     "Fatpandac"
@@ -7219,9 +7238,10 @@
   "/qstheory/:category?": [
     "nczitzk"
   ],
-  "/qstheory/magazine/:magazine": [
+  "/qstheory/magazine/:magazine/:issue?": [
     "TonyRL",
-    "cscnk52"
+    "cscnk52",
+    "zhangsan-xyz"
   ],
   "/qttabbar/change-log": [
     "nczitzk"
@@ -9410,9 +9430,6 @@
     "HaitianLiu",
     "yy4382"
   ],
-  "/zagg/new-arrivals/:query?": [
-    "IvanWng97"
-  ],
   "/zaker/channel/:id?": [
     "LogicJake",
     "kt286",
@@ -10126,25 +10143,25 @@
     "xyqfer"
   ],
   "/chikubi/category/:keyword": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/chikubi/": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/chikubi/:keyword": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/chikubi/nipple-video-category/:keyword": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/chikubi/nipple-video-maker/:keyword": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/chikubi/search/:keyword": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/chikubi/tag/:keyword": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/cna/web/:id?": [
     "dzx-dzx"
@@ -11291,9 +11308,6 @@
     "KarasuShin",
     "ranpox",
     "xyqfer"
-  ],
-  "/instagram/:category/:key": [
-    "TonyRL"
   ],
   "/iplaysoft/": [
     "kimi360",
@@ -12753,12 +12767,12 @@
     "DIYgod"
   ],
   "/pixiv/novel/series/:id": [
-    "SnowAgar25",
+    "Tsuyumi25",
     "keocheung"
   ],
   "/pixiv/user/novels/:id/:full_content?": [
     "TonyRL",
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/ryo.lu/journal/:lang?": [
     "TonyRL"
@@ -12776,20 +12790,20 @@
     "nczitzk"
   ],
   "/syosetu/dev": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/syosetu/:ncode": [
     "eternasuno",
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/syosetu/rankingr18/:sub/:type": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/syosetu/search/:sub/:query": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/syosetu/ranking/:listType/:type": [
-    "SnowAgar25"
+    "Tsuyumi25"
   ],
   "/taptap/topic/:id/:type?/:sort?/:lang?": [
     "hoilc",
@@ -12857,36 +12871,6 @@
   "/google/play/:id/:lang?": [
     "surwall"
   ],
-  "/youtube/community/:handle": [
-    "TonyRL"
-  ],
-  "/youtube/c/:username/:embed?": [
-    "TonyRL"
-  ],
-  "/youtube/charts/:category?/:country?/:embed?": [
-    "TonyRL"
-  ],
-  "/youtube/subscriptions/:embed?": [
-    "TonyRL"
-  ],
-  "/youtube/channel/:id/:routeParams?": [
-    "DIYgod",
-    "pseudoyu"
-  ],
-  "/youtube/live/:username/:embed?": [
-    "sussurr127",
-    "ouuan"
-  ],
-  "/youtube/playlist/:id/:embed?": [
-    "HenryQW"
-  ],
-  "/youtube/shows/:username": [
-    "TonyRL"
-  ],
-  "/youtube/user/:username/:routeParams?": [
-    "DIYgod",
-    "pseudoyu"
-  ],
   "/twitter/trends/:woeid?": [
     "sakamossan"
   ],
@@ -12929,6 +12913,36 @@
     "yindaheng98",
     "Rongronggg9",
     "CaoMeiYouRen",
+    "pseudoyu"
+  ],
+  "/youtube/community/:handle": [
+    "TonyRL"
+  ],
+  "/youtube/c/:username/:embed?": [
+    "TonyRL"
+  ],
+  "/youtube/charts/:category?/:country?/:embed?": [
+    "TonyRL"
+  ],
+  "/youtube/subscriptions/:embed?": [
+    "TonyRL"
+  ],
+  "/youtube/channel/:id/:routeParams?": [
+    "DIYgod",
+    "pseudoyu"
+  ],
+  "/youtube/live/:username/:embed?": [
+    "sussurr127",
+    "ouuan"
+  ],
+  "/youtube/playlist/:id/:embed?": [
+    "HenryQW"
+  ],
+  "/youtube/shows/:username": [
+    "TonyRL"
+  ],
+  "/youtube/user/:username/:routeParams?": [
+    "DIYgod",
     "pseudoyu"
   ],
   "/economist/global-business-review/:language?": [

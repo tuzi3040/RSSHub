@@ -11,6 +11,23 @@
         ],
         "target": "/81/81rc/:category?"
       }
+    ],
+    "www": [
+      {
+        "title": "解放军报",
+        "docs": "https://docs.rsshub.app/routes/81",
+        "source": [
+          "/szb_223187/szblb/index.html",
+          "/szb_223187/szblb",
+          "/szb_223187/szbxq/index.html",
+          "/szb_223187/szbxq",
+          "/szb_223187/szblb/index.html",
+          "/szb_223187/szblb",
+          "/szb_223187/szbxq/index.html",
+          "/szb_223187/szbxq"
+        ],
+        "target": "/81/jfjb"
+      }
     ]
   },
   "121.com.cn": {
@@ -1411,6 +1428,20 @@
           "/"
         ],
         "target": "/spotify/top/tracks"
+      }
+    ]
+  },
+  "the-decoder.com": {
+    "_name": "The Decoder",
+    ".": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/the-decoder",
+        "source": [
+          "/",
+          "/artificial-intelligence-news/"
+        ],
+        "target": "/the-decoder/news"
       }
     ]
   },
@@ -15356,6 +15387,30 @@
         ],
         "target": "/ce/district"
       }
+    ],
+    "paper": [
+      {
+        "title": "电子版",
+        "docs": "https://docs.rsshub.app/routes/ce",
+        "source": [
+          "/",
+          "/index.html",
+          "/pc/layout",
+          "/pc/layout/index.html",
+          "/pad/layout",
+          "/pad/layout/index.html"
+        ],
+        "target": "/ce/paper"
+      },
+      {
+        "title": "电子版",
+        "docs": "https://docs.rsshub.app/routes/ce",
+        "source": [
+          "/pc/layout/:yearMonth/:day/node_:page.html",
+          "/pad/layout/:yearMonth/:day/node_:page.html"
+        ],
+        "target": "/ce/paper/:page"
+      }
     ]
   },
   "cebbank.com": {
@@ -17332,6 +17387,28 @@
           "/news/?classid=31"
         ],
         "target": "/cnljxh/news/31"
+      }
+    ]
+  },
+  "studytimes.cn": {
+    "_name": "理论网",
+    "paper": [
+      {
+        "title": "学习时报",
+        "docs": "https://docs.rsshub.app/routes/cntheory",
+        "source": [
+          "/",
+          "/cntheory"
+        ],
+        "target": "/cntheory/paper"
+      },
+      {
+        "title": "学习时报",
+        "docs": "https://docs.rsshub.app/routes/cntheory",
+        "source": [
+          "/cntheory/:yearMonth/:day/node_:id.html"
+        ],
+        "target": "/cntheory/paper/:id"
       }
     ]
   },
@@ -30741,6 +30818,19 @@
       }
     ]
   },
+  "keke1.app": {
+    "_name": "可可影视",
+    "www": [
+      {
+        "title": "分类",
+        "docs": "https://docs.rsshub.app/routes/keke.app",
+        "source": [
+          "/"
+        ],
+        "target": "/keke.app/latest"
+      }
+    ]
+  },
   "kelownacapnews.com": {
     "_name": "Kelowna Capital News",
     ".": [
@@ -41837,7 +41927,7 @@
         "source": [
           "/:magazine/mulu.htm"
         ],
-        "target": "/qstheory/magazine/:magazine"
+        "target": "/qstheory/magazine/:magazine/:issue?"
       }
     ]
   },
@@ -63898,64 +63988,6 @@
       }
     ]
   },
-  "youtube.com": {
-    "_name": "YouTube",
-    "www": [
-      {
-        "title": "Custom URL",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/c/:id"
-        ],
-        "target": "/youtube/c/:id"
-      },
-      {
-        "title": "Subscriptions",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/feed/subscriptions",
-          "/feed/channels"
-        ],
-        "target": "/youtube/subscriptions"
-      },
-      {
-        "title": "Channel with id",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/channel/:id"
-        ],
-        "target": "/youtube/channel/:id"
-      },
-      {
-        "title": "Live",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/:username/streams",
-          "/channel/:username/streams"
-        ],
-        "target": "/youtube/live/:username"
-      },
-      {
-        "title": "Shows",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/:username/shows",
-          "/channel/:username/shows"
-        ],
-        "target": "/youtube/shows/:username"
-      },
-      {
-        "title": "Channel with user handle",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/user/:username",
-          "/:username",
-          "/:username/videos"
-        ],
-        "target": "/youtube/user/:username"
-      }
-    ]
-  },
   "x.com": {
     "_name": "X (Twitter)",
     ".": [
@@ -64014,6 +64046,64 @@
           "/:id"
         ],
         "target": "/twitter/user/:id"
+      }
+    ]
+  },
+  "youtube.com": {
+    "_name": "YouTube",
+    "www": [
+      {
+        "title": "Custom URL",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/c/:id"
+        ],
+        "target": "/youtube/c/:id"
+      },
+      {
+        "title": "Subscriptions",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/feed/subscriptions",
+          "/feed/channels"
+        ],
+        "target": "/youtube/subscriptions"
+      },
+      {
+        "title": "Channel with id",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/channel/:id"
+        ],
+        "target": "/youtube/channel/:id"
+      },
+      {
+        "title": "Live",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/:username/streams",
+          "/channel/:username/streams"
+        ],
+        "target": "/youtube/live/:username"
+      },
+      {
+        "title": "Shows",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/:username/shows",
+          "/channel/:username/shows"
+        ],
+        "target": "/youtube/shows/:username"
+      },
+      {
+        "title": "Channel with user handle",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/user/:username",
+          "/:username",
+          "/:username/videos"
+        ],
+        "target": "/youtube/user/:username"
       }
     ]
   },
