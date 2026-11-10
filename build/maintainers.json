@@ -111,9 +111,6 @@
   "/bandbbs/:watch_type?/:list_type?": [
     "hoilc"
   ],
-  "/bbcnewslabs/news": [
-    "elxy"
-  ],
   "/bestblogs/feeds/:category?": [
     "zhenlohuang"
   ],
@@ -6226,8 +6223,9 @@
   "/ncwu/notice": [
     "vuhe"
   ],
-  "/ndss-symposium/ndss": [
-    "ZeddYu"
+  "/ndss-symposium/ndss/:abstract?": [
+    "ZeddYu",
+    "yuguorui"
   ],
   "/neatdownloadmanager/download/:os?": [
     "nczitzk"

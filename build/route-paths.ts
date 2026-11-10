@@ -341,7 +341,6 @@ export type RoutePath =
   | `/bbc/sport/:sport`
   | `/bbc/topics/:topic`
   | `/bbc/zhongwen/topics/:topic/:variant?`
-  | `/bbcnewslabs/news`
   | `/bc3ts/post/list/:sort?`
   | `/bcg/search/:params?`
   | `/bdys/:caty?/:type?/:area?/:year?/:order?`
@@ -2451,7 +2450,7 @@ export type RoutePath =
   | `/ncpssd/newlist`
   | `/ncu/jwc`
   | `/ncwu/notice`
-  | `/ndss-symposium/ndss`
+  | `/ndss-symposium/ndss/:abstract?`
   | `/neatdownloadmanager/download/:os?`
   | `/neea/jlpt`
   | `/neea/local/:type`
