@@ -511,6 +511,19 @@
       }
     ]
   },
+  "cspengyuan.com": {
+    "_name": "中证鹏元",
+    "www": [
+      {
+        "title": "信用研究",
+        "docs": "https://docs.rsshub.app/routes/cspengyuan",
+        "source": [
+          "/credit-research/:category"
+        ],
+        "target": "/cspengyuan/research/:category"
+      }
+    ]
+  },
   "datalekt.nl": {
     "_name": "Datalekt",
     ".": [
@@ -649,6 +662,19 @@
           "/"
         ],
         "target": "/daxiaamu/home"
+      }
+    ]
+  },
+  "dblp.org": {
+    "_name": "DBLP",
+    ".": [
+      {
+        "title": "Keyword Search",
+        "docs": "https://docs.rsshub.app/routes/dblp",
+        "source": [
+          "/search"
+        ],
+        "target": "/dblp/:field"
       }
     ]
   },
@@ -1334,20 +1360,6 @@
       }
     ]
   },
-  "the-decoder.com": {
-    "_name": "The Decoder",
-    ".": [
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/the-decoder",
-        "source": [
-          "/",
-          "/artificial-intelligence-news/"
-        ],
-        "target": "/the-decoder/news"
-      }
-    ]
-  },
   "unusualwhales.com": {
     "_name": "Unusual Whales",
     ".": [
@@ -1628,6 +1640,19 @@
           "/"
         ],
         "target": "/bnext/"
+      }
+    ]
+  },
+  "bse.cn": {
+    "_name": "北京证券交易所",
+    ".": [
+      {
+        "title": "栏目",
+        "docs": "https://docs.rsshub.app/routes/bse",
+        "source": [
+          "/"
+        ],
+        "target": "/bse/:category?/:keyword?"
       }
     ]
   },
@@ -2451,6 +2476,20 @@
       }
     ]
   },
+  "wfdf.sport": {
+    "_name": "WFDF",
+    ".": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/wfdf",
+        "source": [
+          "/news/",
+          "/"
+        ],
+        "target": "/wfdf/news"
+      }
+    ]
+  },
   "xianbao.fun": {
     "_name": "线报酷",
     "new": [
@@ -2566,19 +2605,6 @@
           "/"
         ],
         "target": "/bitmovin/blog"
-      }
-    ]
-  },
-  "bse.cn": {
-    "_name": "北京证券交易所",
-    ".": [
-      {
-        "title": "栏目",
-        "docs": "https://docs.rsshub.app/routes/bse",
-        "source": [
-          "/"
-        ],
-        "target": "/bse/:category?/:keyword?"
       }
     ]
   },
@@ -2726,16 +2752,30 @@
       }
     ]
   },
-  "cspengyuan.com": {
-    "_name": "中证鹏元",
+  "crac.org.cn": {
+    "_name": "中国无线电协会业余无线电分会",
     "www": [
       {
-        "title": "信用研究",
-        "docs": "https://docs.rsshub.app/routes/cspengyuan",
+        "title": "最新资讯",
+        "docs": "https://docs.rsshub.app/routes/crac",
         "source": [
-          "/credit-research/:category"
+          "/",
+          "/News/*"
         ],
-        "target": "/cspengyuan/research/:category"
+        "target": "/crac/:type?"
+      }
+    ]
+  },
+  "allspectrum.cn": {
+    "_name": "中国无线电协会业余无线电分会",
+    "zhipu": [
+      {
+        "title": "考试信息",
+        "docs": "https://docs.rsshub.app/routes/crac",
+        "source": [
+          "/CRAC/crac/pages/list_examMsg.html"
+        ],
+        "target": "/crac/exam"
       }
     ]
   },
@@ -2749,19 +2789,6 @@
           "/:name"
         ],
         "target": "/curius/links/:name"
-      }
-    ]
-  },
-  "dblp.org": {
-    "_name": "DBLP",
-    ".": [
-      {
-        "title": "Keyword Search",
-        "docs": "https://docs.rsshub.app/routes/dblp",
-        "source": [
-          "/search"
-        ],
-        "target": "/dblp/:field"
       }
     ]
   },
@@ -2814,6 +2841,19 @@
           "/user/:id"
         ],
         "target": "/gettr/user/:id"
+      }
+    ]
+  },
+  "hiring.cafe": {
+    "_name": "HiringCafe",
+    ".": [
+      {
+        "title": "Jobs",
+        "docs": "https://docs.rsshub.app/routes/hiring.cafe",
+        "source": [
+          "/"
+        ],
+        "target": "/hiring.cafe/jobs/:keywords"
       }
     ]
   },
@@ -3148,6 +3188,20 @@
       }
     ]
   },
+  "ryo.lu": {
+    "_name": "Ryo Lu",
+    ".": [
+      {
+        "title": "Journal",
+        "docs": "https://docs.rsshub.app/routes/ryo.lu",
+        "source": [
+          "/journal",
+          "/"
+        ],
+        "target": "/ryo.lu/journal"
+      }
+    ]
+  },
   "scmuseum.cn": {
     "_name": "Sichuan Museum",
     "www": [
@@ -3437,6 +3491,20 @@
           "/column/:id"
         ],
         "target": "/barronschina/:id"
+      }
+    ]
+  },
+  "bitget.com": {
+    "_name": "Bitget",
+    "www": [
+      {
+        "title": "Announcement",
+        "docs": "https://docs.rsshub.app/routes/bitget",
+        "source": [
+          "/:lang/promotion/inmail",
+          "/:lang/inmail"
+        ],
+        "target": "/bitget/announcement/all/:lang"
       }
     ]
   },
@@ -3886,6 +3954,27 @@
           "/"
         ],
         "target": "/foresightnews/news"
+      }
+    ]
+  },
+  "fortnite.com": {
+    "_name": "Fortnite",
+    "www": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/fortnite",
+        "source": [
+          "/news"
+        ],
+        "target": "/fortnite/news"
+      },
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/fortnite",
+        "source": [
+          "/news/tag/:tag"
+        ],
+        "target": "/fortnite/news/tag=:tag"
       }
     ]
   },
@@ -4349,6 +4438,20 @@
       }
     ]
   },
+  "mymusicfive.com": {
+    "_name": "mymusic5 (MyMusicSheet)",
+    ".": [
+      {
+        "title": "User Sheets",
+        "docs": "https://docs.rsshub.app/routes/mymusicsheet",
+        "source": [
+          "/:username/*",
+          "/:username"
+        ],
+        "target": "/mymusicsheet/user/sheets/:username"
+      }
+    ]
+  },
   "nanhua.net": {
     "_name": "南华期货",
     "www": [
@@ -4595,6 +4698,19 @@
           "/:searchType/search/:q"
         ],
         "target": "/pixabay/search/:q"
+      }
+    ]
+  },
+  "producthunt.com": {
+    "_name": "Product Hunt",
+    "www": [
+      {
+        "title": "Top Products Launching Today",
+        "docs": "https://docs.rsshub.app/routes/producthunt",
+        "source": [
+          "/"
+        ],
+        "target": "/producthunt/today"
       }
     ]
   },
@@ -5602,6 +5718,67 @@
           "/quest-home"
         ],
         "target": "/discord/quests"
+      }
+    ]
+  },
+  "dr.dk": {
+    "_name": "DR (Danmarks Radio)",
+    "www": [
+      {
+        "title": "Nyheder",
+        "docs": "https://docs.rsshub.app/routes/dr",
+        "source": [
+          "/nyheder"
+        ],
+        "target": "/dr/senestenyt"
+      },
+      {
+        "title": "Nyheder",
+        "docs": "https://docs.rsshub.app/routes/dr",
+        "source": [
+          "/nyheder/indland"
+        ],
+        "target": "/dr/indland"
+      },
+      {
+        "title": "Nyheder",
+        "docs": "https://docs.rsshub.app/routes/dr",
+        "source": [
+          "/nyheder/udland"
+        ],
+        "target": "/dr/udland"
+      },
+      {
+        "title": "Nyheder",
+        "docs": "https://docs.rsshub.app/routes/dr",
+        "source": [
+          "/nyheder/penge"
+        ],
+        "target": "/dr/penge"
+      },
+      {
+        "title": "Nyheder",
+        "docs": "https://docs.rsshub.app/routes/dr",
+        "source": [
+          "/nyheder/politik"
+        ],
+        "target": "/dr/politik"
+      },
+      {
+        "title": "Nyheder",
+        "docs": "https://docs.rsshub.app/routes/dr",
+        "source": [
+          "/sporten"
+        ],
+        "target": "/dr/sporten"
+      },
+      {
+        "title": "Nyheder",
+        "docs": "https://docs.rsshub.app/routes/dr",
+        "source": [
+          "/nyheder/viden"
+        ],
+        "target": "/dr/viden"
       }
     ]
   },
@@ -6786,6 +6963,76 @@
       }
     ]
   },
+  "voronoiapp.com": {
+    "_name": "Voronoi",
+    "www": [
+      {
+        "title": "Author Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/author/:username"
+        ],
+        "target": "/voronoiapp/author/:username"
+      },
+      {
+        "title": "Editor's Pick Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/posts/editors-pick"
+        ],
+        "target": "/voronoiapp/editors-pick"
+      },
+      {
+        "title": "Home Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/",
+          "/posts/voronoi"
+        ],
+        "target": "/voronoiapp/home"
+      },
+      {
+        "title": "Latest Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/posts/latest"
+        ],
+        "target": "/voronoiapp/latest"
+      },
+      {
+        "title": "Most Liked Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/posts/most-popular"
+        ],
+        "target": "/voronoiapp/popular/most-popular"
+      },
+      {
+        "title": "Most Discussed Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/posts/most-discussed"
+        ],
+        "target": "/voronoiapp/popular/most-discussed"
+      },
+      {
+        "title": "Most Viewed Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/posts/most-viewed"
+        ],
+        "target": "/voronoiapp/popular/most-viewed"
+      },
+      {
+        "title": "Search Keyword Posts",
+        "docs": "https://docs.rsshub.app/routes/voronoiapp",
+        "source": [
+          "/explore"
+        ],
+        "target": "/voronoiapp/search/:keyword"
+      }
+    ]
+  },
   "wellcee.com": {
     "_name": "Wellcee 唯心所寓",
     "www": [
@@ -6796,37 +7043,6 @@
           "/"
         ],
         "target": "/wellcee/support-city"
-      }
-    ]
-  },
-  "douyin.com": {
-    "_name": "抖音直播",
-    ".": [
-      {
-        "title": "标签",
-        "docs": "https://docs.rsshub.app/routes/douyin",
-        "source": [
-          "/hashtag/:cid"
-        ],
-        "target": "/douyin/hashtag/:cid"
-      },
-      {
-        "title": "博主",
-        "docs": "https://docs.rsshub.app/routes/douyin",
-        "source": [
-          "/user/:uid"
-        ],
-        "target": "/douyin/user/:uid"
-      }
-    ],
-    "live": [
-      {
-        "title": "直播间开播",
-        "docs": "https://docs.rsshub.app/routes/douyin",
-        "source": [
-          "/:rid"
-        ],
-        "target": "/douyin/live/:rid/:showTime?"
       }
     ]
   },
@@ -11552,6 +11768,22 @@
       }
     ]
   },
+  "amazon.com": {
+    "_name": "Amazon",
+    "aws": [
+      {
+        "title": "AWS Blog",
+        "docs": "https://docs.rsshub.app/routes/amazon",
+        "source": [
+          "/blogs",
+          "/blogs/:category",
+          "/blogs/:category/feed",
+          "/blogs/:category/:slug"
+        ],
+        "target": "/amazon/blogs/:category?"
+      }
+    ]
+  },
   "android.com": {
     "_name": "Android",
     "source": [
@@ -11775,6 +12007,33 @@
           "/:language/100100"
         ],
         "target": "/apple/security-releases/:language?"
+      }
+    ],
+    "machinelearning": [
+      {
+        "title": "Machine Learning Research",
+        "docs": "https://docs.rsshub.app/routes/apple",
+        "source": [
+          "/",
+          "/research/:slug"
+        ],
+        "target": "/apple/ml-research"
+      },
+      {
+        "title": "Machine Learning Research",
+        "docs": "https://docs.rsshub.app/routes/apple",
+        "source": [
+          "/highlights"
+        ],
+        "target": "/apple/ml-research/highlights"
+      },
+      {
+        "title": "Machine Learning Research",
+        "docs": "https://docs.rsshub.app/routes/apple",
+        "source": [
+          "/research"
+        ],
+        "target": "/apple/ml-research/research"
       }
     ],
     "podcasts": [
@@ -13458,20 +13717,6 @@
           "/"
         ],
         "target": "/bit/yjs"
-      }
-    ]
-  },
-  "bitget.com": {
-    "_name": "Bitget",
-    "www": [
-      {
-        "title": "Announcement",
-        "docs": "https://docs.rsshub.app/routes/bitget",
-        "source": [
-          "/:lang/promotion/inmail",
-          "/:lang/inmail"
-        ],
-        "target": "/bitget/announcement/all/:lang"
       }
     ]
   },
@@ -16616,6 +16861,20 @@
       }
     ]
   },
+  "chrome.com": {
+    "_name": "Chrome for Developers",
+    "developer": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/chrome",
+        "source": [
+          "/blog",
+          "/blog/:slug"
+        ],
+        "target": "/chrome/blog/:lang?"
+      }
+    ]
+  },
   "chsi.com.cn": {
     "_name": "中国研究生招生信息网",
     "yz": [
@@ -17009,7 +17268,7 @@
     ]
   },
   "cline.bot": {
-    "_name": "cline",
+    "_name": "Cline Official Blog",
     ".": [
       {
         "title": "Blog",
@@ -18308,33 +18567,6 @@
       }
     ]
   },
-  "allspectrum.cn": {
-    "_name": "中国无线电协会业余无线电分会",
-    "zhipu": [
-      {
-        "title": "考试信息",
-        "docs": "https://docs.rsshub.app/routes/crac",
-        "source": [
-          "/CRAC/crac/pages/list_examMsg.html"
-        ],
-        "target": "/crac/exam"
-      }
-    ]
-  },
-  "crac.org.cn": {
-    "_name": "中国无线电协会业余无线电分会",
-    "www": [
-      {
-        "title": "最新资讯",
-        "docs": "https://docs.rsshub.app/routes/crac",
-        "source": [
-          "/",
-          "/News/*"
-        ],
-        "target": "/crac/:type?"
-      }
-    ]
-  },
   "crush.ninja": {
     "_name": "CrushNinja",
     "www": [
@@ -18989,6 +19221,19 @@
           "/mergers-and-acquisitions-report"
         ],
         "target": "/cybersecurityventures/news/mergers-and-acquisitions-report"
+      }
+    ]
+  },
+  "czechstepbystep.cz": {
+    "_name": "CzechStepByStep",
+    "www": [
+      {
+        "title": "Krátké české zprávy",
+        "docs": "https://docs.rsshub.app/routes/czechstepbystep",
+        "source": [
+          "/kategorie/kratke-ceske-zpravy"
+        ],
+        "target": "/czechstepbystep/kratke-ceske-zpravy"
       }
     ]
   },
@@ -20343,6 +20588,37 @@
       }
     ]
   },
+  "douyin.com": {
+    "_name": "抖音直播",
+    ".": [
+      {
+        "title": "标签",
+        "docs": "https://docs.rsshub.app/routes/douyin",
+        "source": [
+          "/hashtag/:cid"
+        ],
+        "target": "/douyin/hashtag/:cid"
+      },
+      {
+        "title": "博主",
+        "docs": "https://docs.rsshub.app/routes/douyin",
+        "source": [
+          "/user/:uid"
+        ],
+        "target": "/douyin/user/:uid"
+      }
+    ],
+    "live": [
+      {
+        "title": "直播间开播",
+        "docs": "https://docs.rsshub.app/routes/douyin",
+        "source": [
+          "/:rid"
+        ],
+        "target": "/douyin/live/:rid/:showTime?"
+      }
+    ]
+  },
   "dpm.org.cn": {
     "_name": "The Palace Museum",
     "www": [
@@ -20645,17 +20921,25 @@
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/design-resources"
+          "/blog/thoughts"
         ],
-        "target": "/eagle/blog/design-resources/cn"
+        "target": "/eagle/blog/thoughts/cn"
       },
       {
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/learn-design"
+          "/blog/guides"
         ],
-        "target": "/eagle/blog/learn-design/cn"
+        "target": "/eagle/blog/guides/cn"
+      },
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/eagle",
+        "source": [
+          "/blog/design-resources"
+        ],
+        "target": "/eagle/blog/design-resources/cn"
       },
       {
         "title": "Blog",
@@ -20669,9 +20953,9 @@
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/why-eagle"
+          "/blog/product-news"
         ],
-        "target": "/eagle/blog/why-eagle/cn"
+        "target": "/eagle/blog/product-news/cn"
       }
     ],
     "tw": [
@@ -20679,17 +20963,25 @@
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/design-resources"
+          "/blog/thoughts"
         ],
-        "target": "/eagle/blog/design-resources/tw"
+        "target": "/eagle/blog/thoughts/tw"
       },
       {
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/learn-design"
+          "/blog/guides"
         ],
-        "target": "/eagle/blog/learn-design/tw"
+        "target": "/eagle/blog/guides/tw"
+      },
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/eagle",
+        "source": [
+          "/blog/design-resources"
+        ],
+        "target": "/eagle/blog/design-resources/tw"
       },
       {
         "title": "Blog",
@@ -20703,9 +20995,9 @@
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/why-eagle"
+          "/blog/product-news"
         ],
-        "target": "/eagle/blog/why-eagle/tw"
+        "target": "/eagle/blog/product-news/tw"
       },
       {
         "title": "Blog",
@@ -20721,17 +21013,25 @@
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/design-resources"
+          "/blog/thoughts"
         ],
-        "target": "/eagle/blog/design-resources/en"
+        "target": "/eagle/blog/thoughts/en"
       },
       {
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/learn-design"
+          "/blog/guides"
         ],
-        "target": "/eagle/blog/learn-design/en"
+        "target": "/eagle/blog/guides/en"
+      },
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/eagle",
+        "source": [
+          "/blog/design-resources"
+        ],
+        "target": "/eagle/blog/design-resources/en"
       },
       {
         "title": "Blog",
@@ -20745,9 +21045,9 @@
         "title": "Blog",
         "docs": "https://docs.rsshub.app/routes/eagle",
         "source": [
-          "/blog/why-eagle"
+          "/blog/product-news"
         ],
-        "target": "/eagle/blog/why-eagle/en"
+        "target": "/eagle/blog/product-news/en"
       },
       {
         "title": "Blog",
@@ -22671,71 +22971,6 @@
           "/grant/search"
         ],
         "target": "/funresearch/grants"
-      }
-    ]
-  },
-  "futunn.com": {
-    "_name": "Futubull 富途牛牛",
-    "news": [
-      {
-        "title": "快讯",
-        "docs": "https://docs.rsshub.app/routes/futunn",
-        "source": [
-          "/main/live"
-        ],
-        "target": "/futunn/live"
-      },
-      {
-        "title": "快讯",
-        "docs": "https://docs.rsshub.app/routes/futunn",
-        "source": [
-          "/hk/main/live"
-        ],
-        "target": "/futunn/live/Cantonese"
-      },
-      {
-        "title": "快讯",
-        "docs": "https://docs.rsshub.app/routes/futunn",
-        "source": [
-          "/en/main/live"
-        ],
-        "target": "/futunn/live/English"
-      },
-      {
-        "title": "视频",
-        "docs": "https://docs.rsshub.app/routes/futunn",
-        "source": [
-          "/main/video-list",
-          "/:lang/main/video-list"
-        ],
-        "target": "/futunn/video"
-      },
-      {
-        "title": "要闻",
-        "docs": "https://docs.rsshub.app/routes/futunn",
-        "source": [
-          "/main",
-          "/:lang/main"
-        ],
-        "target": "/futunn/main"
-      },
-      {
-        "title": "要闻",
-        "docs": "https://docs.rsshub.app/routes/futunn",
-        "source": [
-          "/main",
-          "/:lang/main"
-        ],
-        "target": "/futunn/main"
-      },
-      {
-        "title": "专题",
-        "docs": "https://docs.rsshub.app/routes/futunn",
-        "source": [
-          "/news-topics/:id/*",
-          "/:lang/news-topics/:id/*"
-        ],
-        "target": "/futunn/topic/:id"
       }
     ]
   },
@@ -24935,19 +25170,6 @@
           "/"
         ],
         "target": "/hinatazaka46/news"
-      }
-    ]
-  },
-  "hiring.cafe": {
-    "_name": "HiringCafe",
-    ".": [
-      {
-        "title": "Jobs",
-        "docs": "https://docs.rsshub.app/routes/hiring.cafe",
-        "source": [
-          "/"
-        ],
-        "target": "/hiring.cafe/jobs/:keywords"
       }
     ]
   },
@@ -31124,14 +31346,14 @@
   },
   "komica1.org": {
     "_name": "Komica",
-    "gita": [
+    "gaia": [
       {
         "title": "討論板",
         "docs": "https://docs.rsshub.app/routes/komica",
         "source": [
           "/:board/"
         ],
-        "target": "/komica/gita/:board"
+        "target": "/komica/gaia/:board"
       }
     ]
   },
@@ -32342,6 +32564,19 @@
           "/:category/"
         ],
         "target": "/maldita/updates/:category"
+      }
+    ]
+  },
+  "manager.dev": {
+    "_name": "Manager.dev",
+    "www": [
+      {
+        "title": "Newsletter",
+        "docs": "https://docs.rsshub.app/routes/manager-dev",
+        "source": [
+          "/newsletter"
+        ],
+        "target": "/manager-dev/newsletter"
       }
     ]
   },
@@ -36658,6 +36893,21 @@
           "/realtime/:category"
         ],
         "target": "/nextapple/realtime/:category?"
+      }
+    ]
+  },
+  "nextjs.org": {
+    "_name": "Next.js",
+    ".": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/nextjs",
+        "source": [
+          "/blog",
+          "/blog/:slug",
+          "/feed.xml"
+        ],
+        "target": "/nextjs/blog"
       }
     ]
   },
@@ -41827,6 +42077,59 @@
           "/"
         ],
         "target": "/psnine/trade"
+      }
+    ]
+  },
+  "psyche.co": {
+    "_name": "Psyche",
+    ".": [
+      {
+        "title": "Topics",
+        "docs": "https://docs.rsshub.app/routes/psyche",
+        "source": [
+          "/therapeia"
+        ],
+        "target": "/psyche/topic/therapeia"
+      },
+      {
+        "title": "Topics",
+        "docs": "https://docs.rsshub.app/routes/psyche",
+        "source": [
+          "/eudaimonia"
+        ],
+        "target": "/psyche/topic/eudaimonia"
+      },
+      {
+        "title": "Topics",
+        "docs": "https://docs.rsshub.app/routes/psyche",
+        "source": [
+          "/poiesis"
+        ],
+        "target": "/psyche/topic/poiesis"
+      },
+      {
+        "title": "Types",
+        "docs": "https://docs.rsshub.app/routes/psyche",
+        "source": [
+          "/ideas"
+        ],
+        "target": "/psyche/type/ideas"
+      },
+      {
+        "title": "Types",
+        "docs": "https://docs.rsshub.app/routes/psyche",
+        "source": [
+          "/guides"
+        ],
+        "target": "/psyche/type/guides"
+      },
+      {
+        "title": "Types",
+        "docs": "https://docs.rsshub.app/routes/psyche",
+        "source": [
+          "/films"
+        ],
+        "target": "/psyche/type/films"
       }
     ]
   },
@@ -48174,6 +48477,20 @@
       }
     ]
   },
+  "the-decoder.com": {
+    "_name": "The Decoder",
+    ".": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/the-decoder",
+        "source": [
+          "/",
+          "/artificial-intelligence-news/"
+        ],
+        "target": "/the-decoder/news"
+      }
+    ]
+  },
   "theatlantic.com": {
     "_name": "The Atlantic",
     "www": [
@@ -48556,6 +48873,23 @@
       }
     ]
   },
+  "together.ai": {
+    "_name": "Together AI",
+    "www": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/together",
+        "source": [
+          "/blog",
+          "/blog/:slug",
+          "/blog/rss.xml",
+          "/blog",
+          "/blog/:slug"
+        ],
+        "target": "/together/blog"
+      }
+    ]
+  },
   "tokeninsight.com": {
     "_name": "TokenInsight",
     ".": [
@@ -48736,6 +49070,14 @@
     "_name": "今日头条",
     "www": [
       {
+        "title": "头条主页",
+        "docs": "https://docs.rsshub.app/routes/toutiao",
+        "source": [
+          "/c/user/token/:token"
+        ],
+        "target": "/toutiao/user/token/:token"
+      },
+      {
         "title": "频道",
         "docs": "https://docs.rsshub.app/routes/toutiao",
         "source": [
@@ -48750,14 +49092,6 @@
           "/"
         ],
         "target": "/toutiao/channel/recommend"
-      },
-      {
-        "title": "头条主页",
-        "docs": "https://docs.rsshub.app/routes/toutiao",
-        "source": [
-          "/c/user/token/:token"
-        ],
-        "target": "/toutiao/user/token/:token"
       }
     ]
   },
@@ -49677,6 +50011,19 @@
       }
     ]
   },
+  "uscc.gov": {
+    "_name": "U.S.-China Economic and Security Review Commission",
+    "www": [
+      {
+        "title": "Research",
+        "docs": "https://docs.rsshub.app/routes/uscc",
+        "source": [
+          "/research"
+        ],
+        "target": "/uscc/research"
+      }
+    ]
+  },
   "usenix.org": {
     "_name": "USENIX",
     ".": [
@@ -49845,6 +50192,27 @@
           "/t/:postid"
         ],
         "target": "/v2ex/post/:postid"
+      }
+    ]
+  },
+  "valueresearchonline.com": {
+    "_name": "Value Research",
+    "www": [
+      {
+        "title": "Knowledge Center",
+        "docs": "https://docs.rsshub.app/routes/valueresearchonline",
+        "source": [
+          "/indexinvestor/"
+        ],
+        "target": "/valueresearchonline/knowledge-center/index-investor"
+      },
+      {
+        "title": "Knowledge Center",
+        "docs": "https://docs.rsshub.app/routes/valueresearchonline",
+        "source": [
+          "/knowledge-center/:section/"
+        ],
+        "target": "/valueresearchonline/knowledge-center/:section"
       }
     ]
   },
@@ -50309,20 +50677,6 @@
           "/myblog/:id/all.html"
         ],
         "target": "/wenxuecity/blog/:id"
-      }
-    ]
-  },
-  "wfdf.sport": {
-    "_name": "WFDF",
-    ".": [
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/wfdf",
-        "source": [
-          "/news/",
-          "/"
-        ],
-        "target": "/wfdf/news"
       }
     ]
   },
@@ -53838,67 +54192,6 @@
       }
     ]
   },
-  "dr.dk": {
-    "_name": "DR (Danmarks Radio)",
-    "www": [
-      {
-        "title": "Nyheder",
-        "docs": "https://docs.rsshub.app/routes/dr",
-        "source": [
-          "/nyheder"
-        ],
-        "target": "/dr/senestenyt"
-      },
-      {
-        "title": "Nyheder",
-        "docs": "https://docs.rsshub.app/routes/dr",
-        "source": [
-          "/nyheder/indland"
-        ],
-        "target": "/dr/indland"
-      },
-      {
-        "title": "Nyheder",
-        "docs": "https://docs.rsshub.app/routes/dr",
-        "source": [
-          "/nyheder/udland"
-        ],
-        "target": "/dr/udland"
-      },
-      {
-        "title": "Nyheder",
-        "docs": "https://docs.rsshub.app/routes/dr",
-        "source": [
-          "/nyheder/penge"
-        ],
-        "target": "/dr/penge"
-      },
-      {
-        "title": "Nyheder",
-        "docs": "https://docs.rsshub.app/routes/dr",
-        "source": [
-          "/nyheder/politik"
-        ],
-        "target": "/dr/politik"
-      },
-      {
-        "title": "Nyheder",
-        "docs": "https://docs.rsshub.app/routes/dr",
-        "source": [
-          "/sporten"
-        ],
-        "target": "/dr/sporten"
-      },
-      {
-        "title": "Nyheder",
-        "docs": "https://docs.rsshub.app/routes/dr",
-        "source": [
-          "/nyheder/viden"
-        ],
-        "target": "/dr/viden"
-      }
-    ]
-  },
   "dribbble.com": {
     "_name": "Dribbble",
     ".": [
@@ -54339,6 +54632,62 @@
           "/watchlist/by/:username"
         ],
         "target": "/furaffinity/watching/:username"
+      }
+    ]
+  },
+  "futunn.com": {
+    "_name": "Futubull 富途牛牛",
+    "news": [
+      {
+        "title": "快讯",
+        "docs": "https://docs.rsshub.app/routes/futunn",
+        "source": [
+          "/main/live"
+        ],
+        "target": "/futunn/live"
+      },
+      {
+        "title": "快讯",
+        "docs": "https://docs.rsshub.app/routes/futunn",
+        "source": [
+          "/hk/main/live"
+        ],
+        "target": "/futunn/live/Cantonese"
+      },
+      {
+        "title": "快讯",
+        "docs": "https://docs.rsshub.app/routes/futunn",
+        "source": [
+          "/en/main/live"
+        ],
+        "target": "/futunn/live/English"
+      },
+      {
+        "title": "视频",
+        "docs": "https://docs.rsshub.app/routes/futunn",
+        "source": [
+          "/main/video-list",
+          "/:lang/main/video-list"
+        ],
+        "target": "/futunn/video"
+      },
+      {
+        "title": "要闻",
+        "docs": "https://docs.rsshub.app/routes/futunn",
+        "source": [
+          "/main",
+          "/:lang/main"
+        ],
+        "target": "/futunn/main"
+      },
+      {
+        "title": "专题",
+        "docs": "https://docs.rsshub.app/routes/futunn",
+        "source": [
+          "/news-topics/:id/*",
+          "/:lang/news-topics/:id/*"
+        ],
+        "target": "/futunn/topic/:id"
       }
     ]
   },
@@ -60744,6 +61093,32 @@
         ],
         "target": "/scnu/yjs"
       }
+    ],
+    "physics": [
+      {
+        "title": "物理学院通知",
+        "docs": "https://docs.rsshub.app/routes/scnu",
+        "source": [
+          "/NEWS/Notices/*"
+        ],
+        "target": "/scnu/physics-school-announcements"
+      },
+      {
+        "title": "物理学院新闻动态",
+        "docs": "https://docs.rsshub.app/routes/scnu",
+        "source": [
+          "/NEWS/News/*"
+        ],
+        "target": "/scnu/physics-school-news"
+      },
+      {
+        "title": "物理学院科学研究动态",
+        "docs": "https://docs.rsshub.app/routes/scnu",
+        "source": [
+          "/RESEARCH/*"
+        ],
+        "target": "/scnu/physics-school-research-news"
+      }
     ]
   },
   "scu.edu.cn": {
@@ -61849,6 +62224,115 @@
       }
     ]
   },
+  "twreporter.org": {
+    "_name": "報導者",
+    ".": [
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/:category"
+        ],
+        "target": "/twreporter/category/:category"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/world"
+        ],
+        "target": "/twreporter/category/world"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/humanrights"
+        ],
+        "target": "/twreporter/category/humanrights"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/politics-and-society"
+        ],
+        "target": "/twreporter/category/politics_and_society"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/health"
+        ],
+        "target": "/twreporter/category/health"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/environment"
+        ],
+        "target": "/twreporter/category/environment"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/econ"
+        ],
+        "target": "/twreporter/category/econ"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/culture"
+        ],
+        "target": "/twreporter/category/culture"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/education"
+        ],
+        "target": "/twreporter/category/education"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/podcast"
+        ],
+        "target": "/twreporter/category/podcast"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/opinion"
+        ],
+        "target": "/twreporter/category/opinion"
+      },
+      {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/categories/photography"
+        ],
+        "target": "/twreporter/category/photos_section"
+      },
+      {
+        "title": "最新",
+        "docs": "https://docs.rsshub.app/routes/twreporter",
+        "source": [
+          "/"
+        ],
+        "target": "/twreporter/newest"
+      }
+    ]
+  },
   "vocus.cc": {
     "_name": "方格子",
     ".": [
@@ -61860,76 +62344,6 @@
           "/:id/introduce"
         ],
         "target": "/vocus/publication/:id"
-      }
-    ]
-  },
-  "voronoiapp.com": {
-    "_name": "Voronoi",
-    "www": [
-      {
-        "title": "Author Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/author/:username"
-        ],
-        "target": "/voronoiapp/author/:username"
-      },
-      {
-        "title": "Editor's Pick Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/posts/editors-pick"
-        ],
-        "target": "/voronoiapp/editors-pick"
-      },
-      {
-        "title": "Home Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/",
-          "/posts/voronoi"
-        ],
-        "target": "/voronoiapp/home"
-      },
-      {
-        "title": "Latest Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/posts/latest"
-        ],
-        "target": "/voronoiapp/latest"
-      },
-      {
-        "title": "Most Liked Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/posts/most-popular"
-        ],
-        "target": "/voronoiapp/popular/most-popular"
-      },
-      {
-        "title": "Most Discussed Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/posts/most-discussed"
-        ],
-        "target": "/voronoiapp/popular/most-discussed"
-      },
-      {
-        "title": "Most Viewed Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/posts/most-viewed"
-        ],
-        "target": "/voronoiapp/popular/most-viewed"
-      },
-      {
-        "title": "Search Keyword Posts",
-        "docs": "https://docs.rsshub.app/routes/voronoiapp",
-        "source": [
-          "/explore"
-        ],
-        "target": "/voronoiapp/search/:keyword"
       }
     ]
   },
@@ -62690,19 +63104,6 @@
       }
     ]
   },
-  "czechstepbystep.cz": {
-    "_name": "CzechStepByStep",
-    "www": [
-      {
-        "title": "Krátké české zprávy",
-        "docs": "https://docs.rsshub.app/routes/czechstepbystep",
-        "source": [
-          "/kategorie/kratke-ceske-zpravy"
-        ],
-        "target": "/czechstepbystep/kratke-ceske-zpravy"
-      }
-    ]
-  },
   "finology.in": {
     "_name": "Finology Insider",
     "insider": [
@@ -62849,27 +63250,6 @@
           "/tag/:topic"
         ],
         "target": "/finology/tag/:topic"
-      }
-    ]
-  },
-  "fortnite.com": {
-    "_name": "Fortnite",
-    "www": [
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/fortnite",
-        "source": [
-          "/news"
-        ],
-        "target": "/fortnite/news"
-      },
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/fortnite",
-        "source": [
-          "/news/tag/:tag"
-        ],
-        "target": "/fortnite/news/tag=:tag"
       }
     ]
   },
@@ -63152,20 +63532,6 @@
       }
     ]
   },
-  "mymusicfive.com": {
-    "_name": "mymusic5 (MyMusicSheet)",
-    ".": [
-      {
-        "title": "User Sheets",
-        "docs": "https://docs.rsshub.app/routes/mymusicsheet",
-        "source": [
-          "/:username/*",
-          "/:username"
-        ],
-        "target": "/mymusicsheet/user/sheets/:username"
-      }
-    ]
-  },
   "pixiv.net": {
     "_name": "pixiv",
     "www": [
@@ -63227,83 +63593,28 @@
       }
     ]
   },
-  "producthunt.com": {
-    "_name": "Product Hunt",
-    "www": [
-      {
-        "title": "Top Products Launching Today",
-        "docs": "https://docs.rsshub.app/routes/producthunt",
-        "source": [
-          "/"
-        ],
-        "target": "/producthunt/today"
-      }
-    ]
-  },
-  "psyche.co": {
-    "_name": "Psyche",
+  "sherwood.news": {
+    "_name": "Sherwood News",
     ".": [
       {
-        "title": "Topics",
-        "docs": "https://docs.rsshub.app/routes/psyche",
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/sherwood",
         "source": [
-          "/therapeia"
+          "/",
+          "/:category",
+          "/:category/:slug"
         ],
-        "target": "/psyche/topic/therapeia"
+        "target": "/sherwood/news"
       },
       {
-        "title": "Topics",
-        "docs": "https://docs.rsshub.app/routes/psyche",
+        "title": "Snacks",
+        "docs": "https://docs.rsshub.app/routes/sherwood",
         "source": [
-          "/eudaimonia"
+          "/snacks",
+          "/snacks/newsletters",
+          "/snacks/newsletters/*"
         ],
-        "target": "/psyche/topic/eudaimonia"
-      },
-      {
-        "title": "Topics",
-        "docs": "https://docs.rsshub.app/routes/psyche",
-        "source": [
-          "/poiesis"
-        ],
-        "target": "/psyche/topic/poiesis"
-      },
-      {
-        "title": "Types",
-        "docs": "https://docs.rsshub.app/routes/psyche",
-        "source": [
-          "/ideas"
-        ],
-        "target": "/psyche/type/ideas"
-      },
-      {
-        "title": "Types",
-        "docs": "https://docs.rsshub.app/routes/psyche",
-        "source": [
-          "/guides"
-        ],
-        "target": "/psyche/type/guides"
-      },
-      {
-        "title": "Types",
-        "docs": "https://docs.rsshub.app/routes/psyche",
-        "source": [
-          "/films"
-        ],
-        "target": "/psyche/type/films"
-      }
-    ]
-  },
-  "ryo.lu": {
-    "_name": "Ryo Lu",
-    ".": [
-      {
-        "title": "Journal",
-        "docs": "https://docs.rsshub.app/routes/ryo.lu",
-        "source": [
-          "/journal",
-          "/"
-        ],
-        "target": "/ryo.lu/journal"
+        "target": "/sherwood/snacks"
       }
     ]
   },
@@ -63912,115 +64223,6 @@
       }
     ]
   },
-  "twreporter.org": {
-    "_name": "報導者",
-    ".": [
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/:category"
-        ],
-        "target": "/twreporter/category/:category"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/world"
-        ],
-        "target": "/twreporter/category/world"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/humanrights"
-        ],
-        "target": "/twreporter/category/humanrights"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/politics-and-society"
-        ],
-        "target": "/twreporter/category/politics_and_society"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/health"
-        ],
-        "target": "/twreporter/category/health"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/environment"
-        ],
-        "target": "/twreporter/category/environment"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/econ"
-        ],
-        "target": "/twreporter/category/econ"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/culture"
-        ],
-        "target": "/twreporter/category/culture"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/education"
-        ],
-        "target": "/twreporter/category/education"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/podcast"
-        ],
-        "target": "/twreporter/category/podcast"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/opinion"
-        ],
-        "target": "/twreporter/category/opinion"
-      },
-      {
-        "title": "分類",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/categories/photography"
-        ],
-        "target": "/twreporter/category/photos_section"
-      },
-      {
-        "title": "最新",
-        "docs": "https://docs.rsshub.app/routes/twreporter",
-        "source": [
-          "/"
-        ],
-        "target": "/twreporter/newest"
-      }
-    ]
-  },
   "google.com": {
     "_name": "Google",
     "artsandculture": [
@@ -64154,14 +64356,6 @@
     "_name": "YouTube",
     "www": [
       {
-        "title": "Custom URL",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/c/:id"
-        ],
-        "target": "/youtube/c/:id"
-      },
-      {
         "title": "Subscriptions",
         "docs": "https://docs.rsshub.app/routes/youtube",
         "source": [
@@ -64169,6 +64363,14 @@
           "/feed/channels"
         ],
         "target": "/youtube/subscriptions"
+      },
+      {
+        "title": "Custom URL",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/c/:id"
+        ],
+        "target": "/youtube/c/:id"
       },
       {
         "title": "Channel with id",
