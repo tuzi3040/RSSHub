@@ -1542,6 +1542,7 @@ export type RoutePath =
   | `/gov/shenzhen/szpsq/pszfbzzx/:caty?`
   | `/gov/shenzhen/xxgk/zfxxgj/:caty`
   | `/gov/shenzhen/yantian/ytjsj/:caty?`
+  | `/gov/shenzhen/zjj/gkmlpt/:caty?`
   | `/gov/shenzhen/zjj/xxgk/:caty`
   | `/gov/shenzhen/zzb/:caty/:page?`
   | `/gov/sichuan/deyang/govpublicinfo/:countyName/:infoType?`
@@ -2954,6 +2955,7 @@ export type RoutePath =
   | `/researchgate/publications/:id`
   | `/resetera/thread/:id`
   | `/resonac/products`
+  | `/restofworld/latest`
   | `/reuters/:category/:topic?`
   | `/reuters/investigates`
   | `/reuters/my-news`
@@ -3300,6 +3302,7 @@ export type RoutePath =
   | `/subhd/sub/:category?`
   | `/subhd/zu/:category?`
   | `/substack/subscribe/:user`
+  | `/supabase/blog`
   | `/supchina/`
   | `/supchina/podcasts`
   | `/supercell/:game/blog/:locale?`
@@ -3490,6 +3493,7 @@ export type RoutePath =
   | `/tokyometro/ridership/:year?`
   | `/tokyu/ridership/:year?`
   | `/tongji/bks`
+  | `/tongji/cs`
   | `/tongji/gs`
   | `/tongji/sem/:type?`
   | `/tongji/sse/:type?`

@@ -4262,6 +4262,67 @@
       }
     ]
   },
+  "jandan.net": {
+    "_name": "煎蛋",
+    ".": [
+      {
+        "title": "Section",
+        "docs": "https://docs.rsshub.app/routes/jandan",
+        "source": [
+          "/top"
+        ],
+        "target": "/jandan/top"
+      },
+      {
+        "title": "Section",
+        "docs": "https://docs.rsshub.app/routes/jandan",
+        "source": [
+          "/treehole"
+        ],
+        "target": "/jandan/treehole"
+      },
+      {
+        "title": "Section",
+        "docs": "https://docs.rsshub.app/routes/jandan",
+        "source": [
+          "/ooxx"
+        ],
+        "target": "/jandan/ooxx"
+      },
+      {
+        "title": "Section",
+        "docs": "https://docs.rsshub.app/routes/jandan",
+        "source": [
+          "/beauty"
+        ],
+        "target": "/jandan/beauty"
+      },
+      {
+        "title": "Section",
+        "docs": "https://docs.rsshub.app/routes/jandan",
+        "source": [
+          "/pic"
+        ],
+        "target": "/jandan/pic"
+      },
+      {
+        "title": "Section",
+        "docs": "https://docs.rsshub.app/routes/jandan",
+        "source": [
+          "/forum"
+        ],
+        "target": "/jandan/bbs"
+      },
+      {
+        "title": "Feed",
+        "docs": "https://docs.rsshub.app/routes/jandan",
+        "source": [
+          "/"
+        ],
+        "target": "/jandan/"
+      }
+    ]
+  },
   "jin10.com": {
     "_name": "金十数据",
     ".": [
@@ -58318,6 +58379,24 @@
   },
   "sz.gov.cn": {
     "_name": "深圳市人民政府",
+    "zjj": [
+      {
+        "title": "住房和建设局 - 公开目录平台",
+        "docs": "https://docs.rsshub.app/routes/gov/shenzhen",
+        "source": [
+          "/gkmlpt/index"
+        ],
+        "target": "/gov/shenzhen/zjj/gkmlpt/:caty?"
+      },
+      {
+        "title": "住房和建设局 - 信息公开",
+        "docs": "https://docs.rsshub.app/routes/gov/shenzhen",
+        "source": [
+          "/xxgk/:caty"
+        ],
+        "target": "/gov/shenzhen/zjj/xxgk/:caty"
+      }
+    ],
     "hrss": [
       {
         "title": "考试院",
@@ -58326,16 +58405,6 @@
           "/szksy/zwgk/:caty/index.html"
         ],
         "target": "/gov/shenzhen/hrss/szksy/:caty"
-      }
-    ],
-    "zjj": [
-      {
-        "title": "住房和建设局",
-        "docs": "https://docs.rsshub.app/routes/gov/shenzhen",
-        "source": [
-          "/xxgk/:caty"
-        ],
-        "target": "/gov/shenzhen/zjj/xxgk/:caty"
       }
     ],
     "www.zzb": [
@@ -59353,75 +59422,6 @@
           "/tag/:slug"
         ],
         "target": "/iplaysoft/tag/:slug"
-      }
-    ]
-  },
-  "jandan.net": {
-    "_name": "煎蛋",
-    "i": [
-      {
-        "title": "Feed",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/"
-        ],
-        "target": "/jandan/"
-      },
-      {
-        "title": "Section",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/top"
-        ],
-        "target": "/jandan/top"
-      },
-      {
-        "title": "Section",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/qa"
-        ],
-        "target": "/jandan/qa"
-      },
-      {
-        "title": "Section",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/treehole"
-        ],
-        "target": "/jandan/treehole"
-      },
-      {
-        "title": "Section",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/ooxx"
-        ],
-        "target": "/jandan/ooxx"
-      },
-      {
-        "title": "Section",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/beauty"
-        ],
-        "target": "/jandan/beauty"
-      },
-      {
-        "title": "Section",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/pic"
-        ],
-        "target": "/jandan/pic"
-      },
-      {
-        "title": "Section",
-        "docs": "https://docs.rsshub.app/routes/jandan",
-        "source": [
-          "/bbs"
-        ],
-        "target": "/jandan/bbs"
       }
     ]
   },
@@ -60998,6 +60998,21 @@
       }
     ]
   },
+  "restofworld.org": {
+    "_name": "Rest of World",
+    ".": [
+      {
+        "title": "Latest",
+        "docs": "https://docs.rsshub.app/routes/restofworld",
+        "source": [
+          "/",
+          "/latest",
+          "/latest/*"
+        ],
+        "target": "/restofworld/latest"
+      }
+    ]
+  },
   "ruancan.com": {
     "_name": "软餐",
     ".": [
@@ -61665,6 +61680,20 @@
       }
     ]
   },
+  "supabase.com": {
+    "_name": "Supabase",
+    ".": [
+      {
+        "title": "Blog",
+        "docs": "https://docs.rsshub.app/routes/supabase",
+        "source": [
+          "/blog",
+          "/blog/*"
+        ],
+        "target": "/supabase/blog"
+      }
+    ]
+  },
   "suumo.jp": {
     "_name": "SUUMO",
     ".": [
@@ -62141,6 +62170,16 @@
           "/"
         ],
         "target": "/tongji/bks"
+      }
+    ],
+    "cs": [
+      {
+        "title": "计算机科学与技术学院通知公告",
+        "docs": "https://docs.rsshub.app/routes/tongji",
+        "source": [
+          "/index/tzgg.htm"
+        ],
+        "target": "/tongji/cs"
       }
     ],
     "gs": [
